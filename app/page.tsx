@@ -79,14 +79,14 @@ export default function Page() {
       <section className="relative min-h-[100dvh] flex flex-col items-center px-6 pt-10 pb-8 overflow-hidden">
         {/* Background image */}
         <Image
-          src="/products/car-accessories-cover.webp"
+          src="/products/car-accessories-cover-3.webp"
           alt=""
           fill
           className="object-cover object-center scale-105"
           priority
         />
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-gray-950/80" />
+        <div className="absolute inset-0 bg-gray-950/75" />
 
         <div className="flex flex-col gap-4 items-center">
           {/* Logo */}
