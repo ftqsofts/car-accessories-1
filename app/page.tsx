@@ -10,6 +10,15 @@ const PRICE_2 = 219
 const PRICE_3 = 299
 const MAX_SELECT = 3
 
+const PRODUCT_META: Record<string, { badge: string; microCopy: string }> = {
+  "car-vacuum":         { badge: "🔥 الأكثر طلباً",      microCopy: "كينفعك يومياً بلا صداع" },
+  "fast-charger":       { badge: "⭐ اختيار الزبناء",    microCopy: "ما تبقاش تتهم فبطارية الهاتف" },
+  "phone-holder":       { badge: "🔥 الأكثر طلباً",      microCopy: "أمان أكثر وانت كاتسوق" },
+  "sun-protection":     { badge: "☀️ ضروري فالصيف",      microCopy: "خلي كارك باردة حتى فالعز" },
+  "sun-door-protection":{ badge: "👨‍👩‍👧 مثالي للعائلة",    microCopy: "راحة ليك ولولادك فالطريق" },
+  "fm-transmitter":     { badge: "⭐ اختيار الزبناء",    microCopy: "حول كارك لسمارت كار فثواني" },
+}
+
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
 
 export default function Page() {
@@ -123,6 +132,26 @@ export default function Page() {
       {/* ══ LIGHT CONTENT ══ */}
       <div className="bg-gray-50 rounded-t-[2.5rem] -mt-6 pt-8">
 
+        {/* ══ WHY THIS PACK ══ */}
+        <div className="max-w-lg mx-auto px-4 mb-8">
+          <h2 className="text-2xl font-black text-gray-900 text-center mb-5">علاش هاد الباك غادي يعجبك؟</h2>
+          <div className="space-y-3">
+            {[
+              { emoji: "🚗", title: "كلشي لي محتاجو فطوموبيلك", sub: "فباك واحد — بلا تنقل بلا بحث" },
+              { emoji: "💸", title: "أرخص من الشراء بوحدو", sub: "وفر حتى 90 درهم مقارنة بالسوق" },
+              { emoji: "⚡", title: "ساهل وسريع فالطلب", sub: "ختار، دير الطلب، وانتظر التوصيل لباب دارك" },
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-4 bg-white border border-gray-200 rounded-2xl px-5 py-4 shadow-sm">
+                <span className="text-3xl shrink-0">{item.emoji}</span>
+                <div>
+                  <p className="text-gray-900 font-black text-base">{item.title}</p>
+                  <p className="text-gray-400 text-sm mt-0.5">{item.sub}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* ══ PRODUCT SELECTION ══ */}
         <div className="max-w-lg mx-auto px-4 mb-4">
           <h2 className="text-2xl font-black text-gray-900 text-center mb-1">👇 ختار المنتجات ديالك</h2>
@@ -160,6 +189,7 @@ export default function Page() {
               const isSelected = selected.includes(product.id)
               const isExpanded = expandedId === product.id
               const isMaxed = selected.length >= MAX_SELECT && !isSelected
+              const meta = PRODUCT_META[product.id]
               return (
                 <div
                   key={product.id}
@@ -183,8 +213,9 @@ export default function Page() {
                       priority={product.id === products[0].id}
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-                    <span className="absolute top-3 left-3 bg-[#E8B86D] text-black text-xs font-black px-3 py-1 rounded-full">
-                      {product.categoryDarija}
+                    {/* Social proof badge top-left */}
+                    <span className="absolute top-3 left-3 bg-gray-900/80 backdrop-blur-sm text-white text-xs font-black px-3 py-1.5 rounded-full border border-white/10">
+                      {meta.badge}
                     </span>
                     {isSelected && (
                       <div className="absolute top-3 right-3 w-8 h-8 bg-[#E8B86D] rounded-full flex items-center justify-center shadow-lg">
@@ -193,7 +224,8 @@ export default function Page() {
                     )}
                     <div className="absolute bottom-0 right-0 left-0 p-4 text-right">
                       <p className="text-white font-black text-xl leading-tight mb-1">{product.nameDarija}</p>
-                      <p className="text-[#E8B86D] font-bold text-sm">{product.tagline}</p>
+                      <p className="text-[#E8B86D] font-bold text-sm mb-1">{product.tagline}</p>
+                      <p className="text-white/60 text-xs">{meta.microCopy}</p>
                     </div>
                     <div className="absolute bottom-20 left-0 right-0 flex justify-center">
                       <span className="text-xs text-white/60 font-bold">{isExpanded ? "اضغط لإخفاء ▲" : "اضغط للتفاصيل ▼"}</span>
@@ -347,19 +379,17 @@ export default function Page() {
         {/* ══ TRUST ══ */}
         <section className="max-w-lg mx-auto px-4 pb-8">
           <h2 className="text-2xl font-black text-center text-gray-900 mb-4">علاش تختارنا؟</h2>
-          <div className="bg-gray-900 rounded-3xl overflow-hidden">
+          <div className="grid grid-cols-2 gap-3">
             {[
-              { icon: <Wallet className="w-8 h-8" />, title: "الدفع عند الاستلام", sub: "ما خلّصتيش حتى تشوف وتفحص" },
-              { icon: <Truck className="w-8 h-8" />, title: "توصيل فـ 24 حتى 48 ساعة", sub: "لجميع مدن المغرب مجاناً" },
-              { icon: <ShieldCheck className="w-8 h-8" />, title: "تأكيد الطلب عبر الهاتف", sub: "غادي نعيّطو عليك باش نأكدو" },
-              { icon: <Star className="w-8 h-8" />, title: "إمكانية الاستبدال", sub: "إلا ماعجبكش المنتج كنبدلوه ليك" },
-            ].map((t, i, arr) => (
-              <div key={i} className={`flex items-center gap-4 px-5 py-5 ${i < arr.length - 1 ? "border-b border-white/10" : ""}`}>
-                <div className="text-[#E8B86D] shrink-0">{t.icon}</div>
-                <div>
-                  <p className="text-white font-black text-base">{t.title}</p>
-                  <p className="text-white/50 text-sm mt-0.5">{t.sub}</p>
-                </div>
+              { icon: <Wallet className="w-14 h-14" />, title: "الدفع عند الاستلام", sub: "ما خلّصتيش حتى تشوف وتفحص" },
+              { icon: <Truck className="w-14 h-14" />, title: "توصيل 24 — 48 ساعة", sub: "لجميع مدن المغرب مجاناً" },
+              { icon: <ShieldCheck className="w-14 h-14" />, title: "تأكيد عبر الهاتف", sub: "غادي نعيّطو عليك باش نأكدو" },
+              { icon: <Star className="w-14 h-14" />, title: "إمكانية الاستبدال", sub: "إلا ماعجبكش كنبدلوه ليك" },
+            ].map((t, i) => (
+              <div key={i} className="bg-gray-900 rounded-2xl p-5 flex flex-col items-center text-center gap-3">
+                <div className="text-[#E8B86D]">{t.icon}</div>
+                <p className="text-white font-black text-xl leading-tight">{t.title}</p>
+                <p className="text-white/50 text-sm leading-snug">{t.sub}</p>
               </div>
             ))}
           </div>
@@ -385,7 +415,7 @@ export default function Page() {
                 <div className="grid grid-cols-2">
                   <div className="p-4 text-center border-l border-gray-100">
                     <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">البائعين</p>
-                    <p className="text-gray-400 text-base leading-snug line-through">{row.others}</p>
+                    <p className="text-gray-600 font-semibold leading-snug line-through">{row.others}</p>
                   </div>
                   <div className="p-4 text-center bg-gray-950">
                     <p className="text-[10px] font-black text-[#E8B86D] uppercase tracking-widest mb-2">نحن ✦</p>
@@ -415,23 +445,56 @@ export default function Page() {
               </div>
             ))}
           </div>
+
+          {/* WhatsApp screenshots */}
+          <div className="mt-4 space-y-3">
+            <p className="text-center text-gray-400 text-sm font-bold">📲 رسائل حقيقية من الزبناء</p>
+            {["/reviews/reviews-1.webp"].map((src, i) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img key={i} src={src} alt="رأي زبون" className="w-full h-auto rounded-2xl shadow-sm border border-gray-200" />
+            ))}
+          </div>
         </section>
 
       </div>{/* end light content */}
 
-      {/* ══ FLOATING CTA ══ */}
+      {/* ══ STICKY BOTTOM BAR ══ */}
       {!formVisible && (
-        <div className="fixed bottom-0 left-0 right-0 z-40 bg-gray-950/90 backdrop-blur-sm border-t border-white/10">
-          <button
-            onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-            className={`w-full flex items-center justify-center gap-2 font-black text-base py-4 shadow-2xl active:scale-95 transition-all duration-200 ${
-              canOrder
-                ? "bg-[#E8B86D] text-black shadow-[#E8B86D]/40"
-                : "bg-white text-gray-900"
-            }`}
-          >
-            {canOrder ? `🔥 طلب دابا وخلص عند الاستلام — ${total} درهم` : "🚀 ختار وطلب دابا ↑"}
-          </button>
+        <div className="fixed bottom-0 left-0 right-0 z-40 bg-gray-950 border-t border-white/10 px-4 py-3">
+          {canOrder ? (
+            <button
+              onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+              className="w-full bg-[#E8B86D] text-black font-black text-base py-4 rounded-2xl active:scale-95 transition-all shadow-xl shadow-[#E8B86D]/30"
+            >
+              🔥 طلب دابا وخلص عند الاستلام — {total} درهم
+            </button>
+          ) : (
+            <div className="flex items-center justify-between">
+              <div className="flex gap-2">
+                {[0, 1, 2].map((i) => (
+                  <div
+                    key={i}
+                    className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all ${
+                      i < selected.length
+                        ? "bg-[#E8B86D] border-[#E8B86D]"
+                        : "bg-white/5 border-white/20"
+                    }`}
+                  >
+                    {i < selected.length
+                      ? <Check className="w-5 h-5 text-black" strokeWidth={3} />
+                      : <span className="text-white/30 font-black text-sm">{i + 1}</span>
+                    }
+                  </div>
+                ))}
+              </div>
+              <div className="text-right">
+                <p className="text-white font-black text-base">{selected.length} / 3 منتجات</p>
+                <p className="text-white/40 text-xs">
+                  {selected.length === 0 ? "ختار على الأقل جوج" : selected.length === 1 ? "واحد ناقص — زيد ختار" : ""}
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
