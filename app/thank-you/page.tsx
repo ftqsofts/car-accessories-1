@@ -38,6 +38,7 @@ function ThankYouContent() {
           <p className="text-black/70 text-base font-bold">وصلتنا طلبيتك بنجاح</p>
         </div>
 
+
         {/* Order summary */}
         <div className="bg-white border border-gray-200 rounded-3xl p-5 mb-4 shadow-sm" dir="rtl">
           <p className="text-gray-900 font-black text-base mb-4 border-b border-gray-100 pb-3">تفاصيل طلبيتك</p>
