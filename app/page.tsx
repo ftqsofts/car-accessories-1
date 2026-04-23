@@ -53,7 +53,7 @@ export default function Page() {
 
     setLoading(true)
 
-    const skus = selectedProducts.map((p) => p.id).join(";")
+    const skus = selectedProducts.map((p) => p.id).join(",")
 
     fetch("/api/order", {
       method: "POST",
@@ -73,13 +73,13 @@ export default function Page() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-900 pb-12">
+    <div className="min-h-screen bg-gray-950 text-gray-900 mb-12">
 
       {/* ══ HERO — full viewport ══ */}
-      <section className="relative min-h-[100dvh] flex flex-col items-center justify-between px-6 pt-10 pb-8 overflow-hidden">
+      <section className="relative min-h-[100dvh] flex flex-col items-center px-6 pt-10 pb-8 overflow-hidden">
         {/* Background image */}
         <Image
-          src="/products/cleaner-4-in-1.jpg"
+          src="/products/car-accessories-cover.webp"
           alt=""
           fill
           className="object-cover object-center scale-105"
@@ -88,19 +88,21 @@ export default function Page() {
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-gray-950/80" />
 
-        {/* Logo */}
-        <div className="hero-logo relative z-10">
-          <Image src="/storecoma-logo.png" alt="storecoma" width={80} height={50} className="object-contain" />
-        </div>
+        <div className="flex flex-col gap-4 items-center">
+          {/* Logo */}
+          <div className="hero-logo relative z-10">
+            <Image src="/storecoma-logo.png" alt="storecoma" width={80} height={50} className="object-contain" />
+          </div>
 
-        {/* Center block */}
-        <div className="relative z-10 flex flex-col items-center text-center gap-7 w-full">
           <div className="hero-badge mb-12">
             <span className="bg-red-500 text-white text-sm font-black px-5 py-2 rounded-full tracking-wide">
               🔥 عرض الصيف المحدود!
             </span>
           </div>
+        </div>
 
+        {/* Center block */}
+        <div className="relative z-10 flex flex-col items-center text-center gap-7 w-full">
           <h1 className="hero-title glow-title text-6xl! font-black leading-tight w-full mb-8" style={{ fontSize: "clamp(3rem, 14vw, 5rem)" }}>
           أول مرة في المغرب
           </h1>
@@ -130,7 +132,7 @@ export default function Page() {
           <p className="font-black text-lg">اختار منتجاتك</p>
         </div>
         <p className="text-gray-500 text-base font-bold">
-          اختار 2 منتوجات على الأقل 👇
+          اختار 2 منتجات على الأقل 👇
         </p>
       </div>
 
@@ -182,7 +184,7 @@ export default function Page() {
                     <p className="text-gray-300 text-sm">{product.tagline}</p>
                   </div>
                   {/* tap hint */}
-                  <div className="absolute bottom-16 left-0 right-0 flex justify-center">
+                  <div className="absolute bottom-24 left-0 right-0 flex justify-center">
                     <span className="text-xs text-white/60 font-bold">{isExpanded ? "اضغط لإخفاء التفاصيل ▲" : "اضغط للتفاصيل ▼"}</span>
                   </div>
                 </button>
@@ -247,11 +249,11 @@ export default function Page() {
         }`}>
           {canOrder ? (
             <p className="text-[#C8962A] font-black text-sm">
-              ✅ زوين! اختارتي {selected.length} منتوجات — كمّل الطلبية هنا أسفل 👇
+              ✅ زوين! اختارتي {selected.length} منتجات — كمّل الطلبية هنا أسفل 👇
             </p>
           ) : (
             <p className="text-gray-500 text-sm font-bold">
-              محتاج {Math.max(0, 2 - selected.length)} منتوج{2 - selected.length === 1 ? "" : "ات"} على الأقل باش تكمّل
+              محتاج تختار {2 - selected.length} منتوجات باش تقدر تكمل الطلبية
             </p>
           )}
         </div>
@@ -264,7 +266,7 @@ export default function Page() {
           {canOrder && (
             <div className="bg-[#E8B86D] p-5 text-center">
               <p className="text-black/70 text-sm font-bold mb-1">
-                {selected.length} منتوجات + توصيل مجاني + هدية
+                {selected.length} منتجات + توصيل مجاني + هدية
               </p>
               <p className="text-black font-black text-5xl leading-none mb-1">{total}</p>
               <p className="text-black/80 font-black text-xl">درهم فقط</p>
@@ -279,7 +281,7 @@ export default function Page() {
 
             {selected.length > 0 && (
               <div className="bg-gray-50 border border-gray-200 rounded-2xl p-3 mb-5">
-                <p className="text-gray-500 text-xs font-black mb-2">المنتوجات اللي اخترتيها:</p>
+                <p className="text-gray-500 text-xs font-black mb-2">المنتجات اللي اخترتيها:</p>
                 {selectedProducts.map((p) => (
                   <div key={p.id} className="py-2 border-t border-gray-200 text-right">
                     <span className="text-gray-900 text-sm font-bold">✓ {p.nameDarija}</span>
@@ -363,6 +365,43 @@ export default function Page() {
         </div>
       </section>
 
+      {/* ══ WHY US / COMPARISON ══ */}
+      <section className="max-w-lg mx-auto px-4 pb-10">
+
+        <div className="text-center mb-6">
+          <h2 className="text-2xl font-black text-gray-900 mb-2">علاش الزبناء كيختارو يشريو من عندنا؟</h2>
+          <p className="text-gray-500 text-base leading-relaxed">ماشي كاع البائعين كيعطيو نفس الجودة،<br />حنا كنضمنو ليك راحتك وتجربة أحسن.</p>
+        </div>
+
+        {/* Comparison cards */}
+        <div className="space-y-3">
+          {[
+            { feature: "السعر", others: "منتوج واحد بسعر غالي", us: "2-3 منتجات بسعر واحد، وفر على الاقل 50 درهم" },
+            { feature: "الجودة", others: "بلا ضمان على الجودة", us: "جودة مضمونة 100%" },
+            { feature: "الضمان", others: "بلا ضمان", us: "ضمان شهر كامل" },
+            { feature: "ما بعد البيع", others: "تشري وتمشي", us: "فريق دائم معاك" },
+          ].map((row, i) => (
+            <div key={i} className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm" dir="rtl">
+              {/* Feature label */}
+              <div className="bg-gray-900 px-4 py-2">
+                <span className="text-[#E8B86D] font-black text-sm">{row.feature}</span>
+              </div>
+              {/* Others vs Us */}
+              <div className="grid grid-cols-2 divide-x divide-x-reverse divide-gray-100">
+                <div className="p-4 text-center border-l border-gray-100">
+                  <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">البائعين</p>
+                  <p className="text-gray-400 text-base leading-snug line-through">{row.others}</p>
+                </div>
+                <div className="p-4 text-center bg-gray-950">
+                  <p className="text-[10px] font-black text-[#E8B86D] uppercase tracking-widest mb-2">نحن ✦</p>
+                  <p className="text-white font-black text-base leading-snug">{row.us}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ══ SOCIAL PROOF ══ */}
       <section className="max-w-lg mx-auto px-4 pb-8">
         <h2 className="text-xl font-black text-center mb-5 text-gray-900">شنو قالو الكليان ديالنا 💬</h2>
@@ -408,10 +447,10 @@ export default function Page() {
 
       {/* ══ FLOATING CTA ══ */}
       {!formVisible && (
-        <div className="fixed bottom-4 left-0 right-0 z-40 flex justify-center px-4 pointer-events-none">
+        <div className="fixed bottom-0 left-0 right-0 z-40 flex justify-center px-1 pointer-events-none">
           <button
             onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-            className={`pointer-events-auto flex items-center gap-2 font-black text-base px-6 py-4 rounded-full shadow-2xl w-full justify-center active:scale-95 transition-all duration-200 animate-bounce ${
+            className={`pointer-events-auto flex items-center gap-2 font-black text-base px-6 py-4 rounded-lg shadow-2xl w-full justify-center active:scale-95 transition-all duration-200 animate-bounce ${
               canOrder
                 ? "bg-[#E8B86D] text-black shadow-[#E8B86D]/50"
                 : "bg-blue-600 text-white shadow-blue-600/40"
