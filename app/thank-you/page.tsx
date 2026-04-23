@@ -4,7 +4,11 @@ import { products } from "@/lib/products"
 import { Headphones, Truck } from "lucide-react"
 import Image from "next/image"
 import { useRouter, useSearchParams } from "next/navigation"
-import { Suspense } from "react"
+import { Suspense, useEffect } from "react"
+
+declare global {
+  interface Window { fbq?: (...args: unknown[]) => void }
+}
 
 function ThankYouContent() {
   const params = useSearchParams()
@@ -16,6 +20,12 @@ function ThankYouContent() {
   const total = params.get("total") || ""
   const skus = params.get("skus") || ""
   const qty = params.get("qty") || ""
+
+  useEffect(() => {
+    if (window.fbq && total) {
+      window.fbq("track", "Purchase", { value: Number(total), currency: "MAD" })
+    }
+  }, [total])
 
   const orderedProducts = skus
     ? skus.split(";").map(id => products.find(p => p.id === id)).filter(Boolean)

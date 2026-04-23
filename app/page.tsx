@@ -3,12 +3,12 @@
 import { PACK_SHIPPING_FEE, products } from "@/lib/products"
 import { Check, ChevronRight, Headphones, ShieldCheck, ShoppingBag, Star, Truck, Wallet } from "lucide-react"
 import Image from "next/image"
-import { useEffect, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
+import { useEffect, useRef, useState } from "react"
 
 const MIN_TOTAL = 155
 
-type OrderForm = { name: string; city: string; phone: string }
+type OrderForm = { name: string; city: string; phone: string; _hp?: string }
 
 export default function Page() {
   const router = useRouter()
@@ -49,6 +49,8 @@ export default function Page() {
     e.preventDefault()
     if (!canOrder || !validate()) return
 
+    if (form._hp) return
+
     setLoading(true)
 
     const skus = selectedProducts.map((p) => p.id).join(";")
@@ -71,59 +73,55 @@ export default function Page() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900 pb-12">
+    <div className="min-h-screen bg-gray-950 text-gray-900 pb-12">
 
-      {/* ══ HEADER ══ */}
-      <header className="">
-        <div className="max-w-lg mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center mx-auto p-0">
-            <Image
-              src={"/storecoma-logo.png"}
-              alt={"storecoma"}
-              className="object-cover transition-transform duration-300"
-              height={50}
-              width={80}
-            />
+      {/* ══ HERO — full viewport ══ */}
+      <section className="relative min-h-[100dvh] flex flex-col items-center justify-between px-6 pt-10 pb-8 overflow-hidden">
+        {/* Background image */}
+        <Image
+          src="/products/cleaner-4-in-1.jpg"
+          alt=""
+          fill
+          className="object-cover object-center scale-105"
+          priority
+        />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-gray-950/80" />
+
+        {/* Logo */}
+        <div className="hero-logo relative z-10">
+          <Image src="/storecoma-logo.png" alt="storecoma" width={80} height={50} className="object-contain" />
+        </div>
+
+        {/* Center block */}
+        <div className="relative z-10 flex flex-col items-center text-center gap-7 w-full">
+          <div className="hero-badge mb-12">
+            <span className="bg-red-500 text-white text-sm font-black px-5 py-2 rounded-full tracking-wide">
+              🔥 عرض الصيف المحدود!
+            </span>
           </div>
-          {/* <div className="flex items-center gap-1.5 bg-blue-600 rounded-full px-3 py-1.5">
-            <Truck className="w-3 h-3 text-white" />
-            <span className="text-white text-xs font-black">توصيل مجاني</span>
-          </div> */}
-        </div>
-      </header>
 
-      {/* ══ HERO ══ */}
-      <section className="max-w-lg mx-auto px-4 pt-6 pb-0">
+          <h1 className="hero-title glow-title text-6xl! font-black leading-tight w-full mb-8" style={{ fontSize: "clamp(3rem, 14vw, 5rem)" }}>
+          أول مرة في المغرب
+          </h1>
 
-        <div className="flex justify-center mb-4">
-          <span className="bg-red-500 text-white text-sm font-black px-5 py-2 rounded-full">
-            🔥 عرض الصيف المحدود!
-          </span>
+          <p className="hero-sub text-white font-black text-[22px] leading-relaxed">
+            تهلا في طوموبيلتك هاد الصيف مع أحسن باك ديال الإكسسوارات اللي غادي يهنيك!
+          </p>
         </div>
 
-        <h1 className="text-[28px] font-black text-center leading-snug mb-3 text-gray-900">
-          تهلا في طوموبيلتك هاد الصيف مع{" "}
-          <span className="text-[#C8962A]">أحسن باك ديال الإكسسوارات!</span>
-        </h1>
-
-        <p className="text-gray-600 text-center text-base leading-loose mb-5">
-          اختار <span className="text-[#C8962A] font-black">2 منتوجات أو أكثر</span>، وفر فلوسك وسافر مرتاح 🚀
-        </p>
-
-        {/* Trust pills */}
-        <div className="space-y-2 mb-6">
-          {[
-            { icon: <Wallet className="w-10 h-10 mx-auto" />, text: "الدفع عند الاستلام" },
-            { icon: <Truck className="w-10 h-10 mx-auto" />, text: "توصيل سريع لباب الدار" },
-            { icon: <ShieldCheck className="w-10 h-10 mx-auto" />, text: "جودة مضمونة 100%" },
-          ].map((t, i) => (
-            <div key={i} className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-5 py-4 text-center">
-              <div className="gray-blue-700 mb-2">{t.icon}</div>
-              <span className="gray-blue-700 font-black text-base block">{t.text}</span>
-            </div>
-          ))}
+        {/* Scroll hint */}
+        <div className="hero-arrow relative z-10 flex flex-col items-center gap-1">
+          <span className="text-white/40 text-xs font-bold"></span>
+          <svg className="w-5 h-5 text-[#E8B86D]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
         </div>
+
       </section>
+
+      {/* ══ LIGHT CONTENT AREA ══ */}
+      <div className="bg-gray-50 rounded-t-[2.5rem] -mt-6 pt-8">
 
       {/* ══ PRODUCT SELECTION ══ */}
       <div className="max-w-lg mx-auto px-4 mb-5 text-center">
@@ -261,7 +259,7 @@ export default function Page() {
 
       {/* ══ ORDER FORM ══ */}
       <section ref={formRef} className="max-w-lg mx-auto px-4 pb-8" id="order-form">
-        <div className="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg">
+        <div className="border-2 border-blue-400  rounded-3xl overflow-hidden shadow-lg">
 
           {canOrder && (
             <div className="bg-[#E8B86D] p-5 text-center">
@@ -277,9 +275,6 @@ export default function Page() {
           <div className="p-5">
             <div className="text-center mb-5">
               <p className="text-gray-900 font-black text-xl mb-1">أكمّل الطلبية دابا</p>
-              <p className="text-gray-500 text-sm">
-                {canOrder ? "عيّط عليك شي واحد من الفريق ديالنا يأكّد معاك" : "⚠️ خاصّك تختار منتجين على الأقل"}
-              </p>
             </div>
 
             {selected.length > 0 && (
@@ -293,7 +288,9 @@ export default function Page() {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4 rounded-2xl p-5">
+              {/* honeypot — hidden from real users, bots fill it */}
+              <input type="text" name="website" tabIndex={-1} autoComplete="off" style={{ display: "none" }} onChange={(e) => setForm({ ...form, _hp: e.target.value })} />
               <div>
                 <label className="block text-sm text-gray-700 mb-2 font-black">الاسم <span className="font-normal text-gray-400">(اختياري)</span></label>
                 <input
@@ -359,7 +356,7 @@ export default function Page() {
               </button>
 
               <p className="text-center text-gray-400 text-sm font-bold">
-                💳 الدفع عند الاستلام — بلا مخاطرة
+                الدفع عند الاستلام
               </p>
             </form>
           </div>
@@ -377,7 +374,7 @@ export default function Page() {
           ].map((r, i) => (
             <div key={i} className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm text-right">
               <div className="mb-3">
-                {[1,2,3,4,5].map(s => <Star key={s} className="w-5 h-5 fill-[#E8B86D] text-[#E8B86D] inline" />)}
+                {[1,2,3,4,5].map(s => <Star key={s} className="w-5 h-5 fill-blue-600 text-blue-500 inline" />)}
               </div>
               <p className="text-gray-800 text-base leading-loose mb-4">&ldquo;{r.text}&rdquo;</p>
               <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-base font-black text-blue-600 mb-1 mr-auto ml-0">
@@ -426,6 +423,7 @@ export default function Page() {
         </div>
       )}
 
+      </div>{/* end light content area */}
     </div>
   )
 }

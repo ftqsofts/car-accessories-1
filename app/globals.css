@@ -1,16 +1,126 @@
 @import "tailwindcss";
 
 @keyframes slideUp {
-  from { transform: translateY(100%); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes popIn {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes fadeSlideDown {
+  from {
+    transform: translateY(-18px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    transform: translateY(18px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 8px #E8B86D99) drop-shadow(0 0 24px #E8B86D44);
+  }
+
+  50% {
+    filter: drop-shadow(0 0 18px #E8B86Dee) drop-shadow(0 0 48px #E8B86D88);
+  }
+}
+
+@keyframes scrollHint {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
+  }
+}
+
+.hero-logo {
+  animation: fadeSlideDown 0.45s ease both;
+}
+
+.hero-badge {
+  animation: fadeSlideDown 0.5s ease 0.1s both;
+}
+
+.hero-title {
+  animation: fadeSlideDown 0.6s ease 0.2s both;
+}
+
+.hero-sub {
+  animation: fadeSlideUp 0.6s ease 0.45s both;
+}
+
+.hero-arrow {
+  animation: scrollHint 1.6s ease-in-out 1.2s infinite;
+}
+
+.glow-title {
+  background: linear-gradient(135deg, #fff 0%, #f5d78e 35%, #E8B86D 55%, #fffbe0 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 12s linear infinite, glow-pulse 12s ease-in-out infinite;
 }
