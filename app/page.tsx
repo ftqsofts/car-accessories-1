@@ -17,6 +17,7 @@ export default function Page() {
   const [form, setForm] = useState<OrderForm>({ name: "", city: "", phone: "" })
   const [errors, setErrors] = useState<Partial<OrderForm>>({})
   const [formVisible, setFormVisible] = useState(false)
+  const [loading, setLoading] = useState(false)
   const formRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -48,29 +49,21 @@ export default function Page() {
     e.preventDefault()
     if (!canOrder || !validate()) return
 
-    const res = await fetch("/api/order", {
+    setLoading(true)
+
+    const skus = selectedProducts.map((p) => p.id).join(";")
+
+    fetch("/api/order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: form.name,
-        phone: form.phone,
-        city: form.city,
-        skus: selectedProducts.map((p) => p.id).join(";"),
-        qty: selected.length,
-        total,
-      }),
+      body: JSON.stringify({ name: form.name, phone: form.phone, city: form.city, skus, qty: selected.length, total }),
     }).catch(() => null)
-
-    if (res?.status === 429) {
-      setErrors({ phone: "وصلتي للحد الأقصى ديال الطلبيات — عيّط علينا مباشرة" })
-      return
-    }
 
     const params = new URLSearchParams({
       name: form.name,
       phone: form.phone,
       city: form.city,
-      skus: selectedProducts.map((p) => p.id).join(";"),
+      skus,
       qty: String(selected.length),
       total: String(total),
     })
@@ -345,14 +338,22 @@ export default function Page() {
 
               <button
                 type="submit"
-                disabled={!canOrder}
+                disabled={!canOrder || loading}
                 className={`w-full py-5 rounded-2xl font-black text-lg transition-all duration-200 active:scale-95 ${
-                  canOrder
+                  canOrder && !loading
                     ? "bg-[#E8B86D] text-black hover:bg-[#d4a45c] shadow-xl shadow-[#E8B86D]/40"
                     : "bg-gray-100 text-gray-400 cursor-not-allowed"
                 }`}
               >
-                {!canOrder
+                {loading ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <svg className="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                    </svg>
+                    جاري إرسال طلبيتك...
+                  </span>
+                ) : !canOrder
                   ? `اختار ${2 - selected.length} منتوج${2 - selected.length === 1 ? "" : "ات"} باش تكمّل ⚠️`
                   : `🛍️ أطلب الآن — ${total} درهم`}
               </button>
