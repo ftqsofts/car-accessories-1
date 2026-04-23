@@ -1,7 +1,7 @@
 "use client"
 
 import { products } from "@/lib/products"
-import { Check, ChevronRight, ShieldCheck, Star, Truck, Wallet } from "lucide-react"
+import { Check, ShieldCheck, Star, Truck, Wallet } from "lucide-react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
@@ -95,15 +95,13 @@ export default function Page() {
             باك إكسسوارات السيارة
           </h1>
 
-          <p className="hero-sub text-white font-black text-2xl leading-relaxed">
-            ختار حتى لـ 3 منتجات بثمن واحد غير{" "}
-            <span className="text-[#E8B86D]">299 درهم</span>
-          </p>
-
-          <div className="bg-white/10 backdrop-blur-sm border flex flex-col gap-4 border-white/20 rounded-2xl px-5 py-4 w-full text-center">
-            <p className="text-white/60 font-medium line-through mb-1">بدل ما تشريهم بوحدهم بـ 390 درهم+</p>
-            <p className="text-[#E8B86D] font-black text-2xl">💸 وفر حتى 90 درهم</p>
-            <p className="text-white/80 text-lg mt-1">🚚 توصيل سريع + الدفع عند الاستلام</p>
+          <div className="hero-sub w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-5 py-5 text-center space-y-3">
+            <p className="text-white font-black text-xl">ختار جوج منتجات بـ <span className="text-[#E8B86D]">219 درهم</span></p>
+            <div className="border-t border-white/10" />
+            <p className="text-white font-black text-xl">أو 3 منتجات بـ <span className="text-[#E8B86D]">299 درهم</span></p>
+            <div className="border-t border-white/10" />
+            <p className="text-white/60 text-sm line-through">بدل ما تشريهم بوحدهم بـ 390 درهم+</p>
+            <p className="text-[#E8B86D] font-black text-lg">💸 وفر حتى 90 درهم — 🚚 الدفع عند الاستلام</p>
           </div>
 
           {/* <button
@@ -143,14 +141,14 @@ export default function Page() {
             </div>
           </div>
 
-          {/* Counter */}
-          <div className={`rounded-2xl px-4 py-3 text-center border mb-5 transition-all ${
-            canOrder ? "bg-amber-50 border-[#E8B86D]/50" : "bg-gray-100 border-gray-200"
+          {/* Counter — sticky */}
+          <div className={`sticky top-0 z-30 rounded-2xl px-4 py-3 text-center border mb-5 transition-all shadow-md ${
+            canOrder ? "bg-[#E8B86D] border-[#E8B86D]" : "bg-gray-900 border-gray-800"
           }`}>
             {canOrder ? (
-              <p className="text-[#C8962A] font-black">✔️ اخترتي: {selected.length} / {MAX_SELECT} منتجات</p>
+              <p className="text-black font-black text-base">✔️ اخترتي: {selected.length} / {MAX_SELECT} — {total} درهم</p>
             ) : (
-              <p className="text-gray-500 font-bold">⚠️ خاصك تختار على الأقل جوج منتجات</p>
+              <p className="text-white font-black text-base">⚠️ خاصك تختار على الأقل جوج منتجات</p>
             )}
           </div>
         </div>
@@ -214,15 +212,15 @@ export default function Page() {
                       {product.videoUrl && (
                         <video src={product.videoUrl} autoPlay muted loop playsInline preload="none" className="w-full" />
                       )}
-                      <div className="px-4 pb-4 pt-3 space-y-3">
-                        <p className="text-gray-300 text-sm leading-loose">{product.descriptionDarija}</p>
-                        <div className="space-y-2">
+                      <div className="px-5 pb-5 pt-4 space-y-4">
+                        <p className="text-white text-base leading-loose font-medium">{product.descriptionDarija}</p>
+                        <div className="border-t border-white/10 pt-4 space-y-3">
                           {product.featuresDarija.map((f, i) => (
-                            <div key={i} className="flex items-center gap-2">
-                              <div className="w-5 h-5 rounded-full bg-blue-900/60 flex items-center justify-center shrink-0">
-                                <ChevronRight className="w-3 h-3 text-blue-400" />
+                            <div key={i} className="flex items-center gap-3">
+                              <div className="w-6 h-6 rounded-full bg-[#E8B86D] flex items-center justify-center shrink-0">
+                                <Check className="w-3.5 h-3.5 text-black" strokeWidth={3} />
                               </div>
-                              <span className="text-gray-300 text-sm">{f}</span>
+                              <span className="text-white font-bold text-base">{f}</span>
                             </div>
                           ))}
                         </div>
@@ -349,16 +347,19 @@ export default function Page() {
         {/* ══ TRUST ══ */}
         <section className="max-w-lg mx-auto px-4 pb-8">
           <h2 className="text-2xl font-black text-center text-gray-900 mb-4">علاش تختارنا؟</h2>
-          <div className="space-y-3">
+          <div className="bg-gray-900 rounded-3xl overflow-hidden">
             {[
-              { icon: <Wallet className="w-7 h-7" />, text: "الدفع عند الاستلام" },
-              { icon: <Truck className="w-7 h-7" />, text: "توصيل سريع حتى لباب دارك" },
-              { icon: <ShieldCheck className="w-7 h-7" />, text: "ضمان تبديل إلا ماعجبكش المنتج" },
-              { icon: <Star className="w-7 h-7" />, text: "أكثر من 1000 زبون راضي" },
-            ].map((t, i) => (
-              <div key={i} className="flex items-center gap-4 bg-white border border-gray-200 rounded-2xl px-5 py-4 shadow-sm">
+              { icon: <Wallet className="w-8 h-8" />, title: "الدفع عند الاستلام", sub: "ما خلّصتيش حتى تشوف وتفحص" },
+              { icon: <Truck className="w-8 h-8" />, title: "توصيل فـ 24 حتى 48 ساعة", sub: "لجميع مدن المغرب مجاناً" },
+              { icon: <ShieldCheck className="w-8 h-8" />, title: "تأكيد الطلب عبر الهاتف", sub: "غادي نعيّطو عليك باش نأكدو" },
+              { icon: <Star className="w-8 h-8" />, title: "إمكانية الاستبدال", sub: "إلا ماعجبكش المنتج كنبدلوه ليك" },
+            ].map((t, i, arr) => (
+              <div key={i} className={`flex items-center gap-4 px-5 py-5 ${i < arr.length - 1 ? "border-b border-white/10" : ""}`}>
                 <div className="text-[#E8B86D] shrink-0">{t.icon}</div>
-                <p className="text-gray-900 font-black text-base">{t.text}</p>
+                <div>
+                  <p className="text-white font-black text-base">{t.title}</p>
+                  <p className="text-white/50 text-sm mt-0.5">{t.sub}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -420,16 +421,16 @@ export default function Page() {
 
       {/* ══ FLOATING CTA ══ */}
       {!formVisible && (
-        <div className="fixed bottom-0 left-0 right-0 z-40 p-3 bg-gray-950/90 backdrop-blur-sm border-t border-white/10">
+        <div className="fixed bottom-0 left-0 right-0 z-40 bg-gray-950/90 backdrop-blur-sm border-t border-white/10">
           <button
             onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-            className={`w-full flex items-center justify-center gap-2 font-black text-base px-6 py-4 rounded-2xl shadow-2xl active:scale-95 transition-all duration-200 ${
+            className={`w-full flex items-center justify-center gap-2 font-black text-base py-4 shadow-2xl active:scale-95 transition-all duration-200 ${
               canOrder
                 ? "bg-[#E8B86D] text-black shadow-[#E8B86D]/40"
                 : "bg-white text-gray-900"
             }`}
           >
-            {canOrder ? `طلب دابا وخلص عند الاستلام — ${total} درهم` : "اختار الباك ديالك دابا ↑"}
+            {canOrder ? `🔥 طلب دابا وخلص عند الاستلام — ${total} درهم` : "🚀 ختار وطلب دابا ↑"}
           </button>
         </div>
       )}
