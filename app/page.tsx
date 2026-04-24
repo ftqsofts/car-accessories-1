@@ -1,7 +1,7 @@
 "use client"
 
 import { products } from "@/lib/products"
-import { Check, ShieldCheck, Star, Truck, Wallet } from "lucide-react"
+import { Check, ShieldCheck, ShoppingBag, Star, Truck, Wallet } from "lucide-react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
@@ -15,7 +15,7 @@ const PRODUCT_META: Record<string, { badge: string; microCopy: string }> = {
   "fast-charger":       { badge: "⭐ اختيار الزبناء",    microCopy: "ما تبقاش تتهم فبطارية الهاتف" },
   "phone-holder":       { badge: "🔥 الأكثر طلباً",      microCopy: "أمان أكثر وانت كاتسوق" },
   "sun-protection":     { badge: "☀️ ضروري فالصيف",      microCopy: "خلي كارك باردة حتى فالعز" },
-  "sun-door-protection":{ badge: "👨‍👩‍👧 مثالي للعائلة",    microCopy: "راحة ليك ولولادك فالطريق" },
+  "sun-door-protection":{ badge: "مثالي للعائلة",    microCopy: "راحة ليك ولولادك فالطريق" },
   "fm-transmitter":     { badge: "⭐ اختيار الزبناء",    microCopy: "حول كارك لسمارت كار فثواني" },
 }
 
@@ -130,22 +130,25 @@ export default function Page() {
       </section>
 
       {/* ══ LIGHT CONTENT ══ */}
-      <div className="bg-gray-50 rounded-t-[2.5rem] -mt-6 pt-8">
+      <div className="bg-gray-50 rounded-t-[2rem] pt-8">
 
         {/* ══ WHY THIS PACK ══ */}
         <div className="max-w-lg mx-auto px-4 mb-8">
-          <h2 className="text-2xl font-black text-gray-900 text-center mb-5">علاش هاد الباك غادي يعجبك؟</h2>
-          <div className="space-y-3">
+          <h2 className="text-2xl font-black text-gray-900 text-center mb-2">علاش هاد الباك غادي يعجبك؟</h2>
+          <p className="text-gray-400 text-sm text-center mb-5">مقارنة مع الشراء بوحدو من السوق</p>
+          <div className="bg-gray-900 rounded-3xl overflow-hidden divide-y divide-white/10">
             {[
-              { emoji: "🚗", title: "كلشي لي محتاجو فطوموبيلك", sub: "فباك واحد — بلا تنقل بلا بحث" },
-              { emoji: "💸", title: "أرخص من الشراء بوحدو", sub: "وفر حتى 90 درهم مقارنة بالسوق" },
-              { emoji: "⚡", title: "ساهل وسريع فالطلب", sub: "ختار، دير الطلب، وانتظر التوصيل لباب دارك" },
+              { icon: <ShoppingBag className="w-6 h-6" />, title: "كلشي فباك واحد", sub: "بلا تنقل، بلا بحث — كلشي لي محتاجو فطوموبيلك" },
+              { icon: <Wallet className="w-6 h-6" />, title: "وفر حتى 90 درهم", sub: "أرخص بكثير من شراء كل منتج بوحدو" },
+              { icon: <ShieldCheck className="w-6 h-6" />, title: "جودة عالية مضمونة", sub: "كل منتج فالباك مختار بعناية — ماشي أي حاجة، غير الأحسن" },
             ].map((item, i) => (
-              <div key={i} className="flex items-center gap-4 bg-white border border-gray-200 rounded-2xl px-5 py-4 shadow-sm">
-                <span className="text-3xl shrink-0">{item.emoji}</span>
+              <div key={i} className="flex items-center gap-4 px-5 py-8">
+                <div className="size-14 rounded-2xl bg-[#E8B86D]/15 flex items-center justify-center shrink-0 text-[#E8B86D]">
+                  {item.icon}
+                </div>
                 <div>
-                  <p className="text-gray-900 font-black text-base">{item.title}</p>
-                  <p className="text-gray-400 text-sm mt-0.5">{item.sub}</p>
+                  <p className="text-white font-black text-lg leading-tight">{item.title}</p>
+                  <p className="text-white/70 mt-0.5">{item.sub}</p>
                 </div>
               </div>
             ))}
@@ -159,20 +162,20 @@ export default function Page() {
 
           {/* Price indicator */}
           <div className="grid grid-cols-2 gap-3 mb-6">
-            <div className={`rounded-2xl p-4 text-center border-2 transition-all ${selected.length >= 2 && selected.length < 3 ? "border-[#E8B86D] bg-amber-50" : "border-gray-200 bg-white"}`}>
+            <div className={`rounded-2xl p-4 text-center border-2 transition-all ${selected.length >= 2 && selected.length < 3 ? "border-[#E8B86D] bg-[#E8B86D]/10" : "border-gray-200 bg-white"}`}>
               <p className="text-xs font-black text-gray-400 mb-1">2 منتجات</p>
               <p className="text-2xl font-black text-gray-900">{PRICE_2} <span className="text-sm">درهم</span></p>
             </div>
-            <div className={`rounded-2xl p-4 text-center border-2 transition-all ${selected.length === 3 ? "border-[#E8B86D] bg-amber-50" : "border-gray-200 bg-white"}`}>
+            <div className={`rounded-2xl p-4 text-center border-2 transition-all ${selected.length === 3 ? "border-[#E8B86D] bg-[#E8B86D]/10" : "border-gray-200 bg-white"}`}>
               <p className="text-xs font-black text-gray-400 mb-1">3 منتجات</p>
-              <p className="text-2xl font-black text-[#C8962A]">{PRICE_3} <span className="text-sm">درهم</span></p>
-              <p className="text-[10px] text-green-600 font-black">الأوفر!</p>
+              <p className="text-2xl font-black text-gray-900">{PRICE_3} <span className="text-sm">درهم</span></p>
+              <p className="text-[10px] text-[#C8962A] font-black">الأوفر!</p>
             </div>
           </div>
 
           {/* Counter — sticky */}
           <div className={`sticky top-0 z-30 rounded-2xl px-4 py-3 text-center border mb-5 transition-all shadow-md ${
-            canOrder ? "bg-[#E8B86D] border-[#E8B86D]" : "bg-gray-900 border-gray-800"
+            canOrder ? "bg-[#E8B86D] border-[#E8B86D]" : "bg-gray-900 border-gray-900"
           }`}>
             {canOrder ? (
               <p className="text-black font-black text-base">✔️ اخترتي: {selected.length} / {MAX_SELECT} — {total} درهم</p>
@@ -227,15 +230,15 @@ export default function Page() {
                       <p className="text-[#E8B86D] font-bold text-sm mb-1">{product.tagline}</p>
                       <p className="text-white/60 text-xs">{meta.microCopy}</p>
                     </div>
-                    <div className="absolute bottom-20 left-0 right-0 flex justify-center">
+                    <div className="absolute bottom-4 left-2 flex justify-center">
                       <span className="text-xs text-white/60 font-bold">{isExpanded ? "اضغط لإخفاء ▲" : "اضغط للتفاصيل ▼"}</span>
                     </div>
                   </button>
 
                   {/* Stat */}
                   <div className="bg-gray-900 px-4 py-3 text-right">
-                    <p className="text-[#E8B86D] font-black text-4xl leading-none">{product.statNumber}</p>
-                    <p className="text-gray-400 text-sm mt-1">{product.statLabel}</p>
+                    <p className="text-white font-black text-4xl leading-none">{product.statNumber}</p>
+                    <p className="text-gray-400 text-md font-semibold mt-1">{product.statLabel}</p>
                   </div>
 
                   {/* Collapsible */}
@@ -266,9 +269,9 @@ export default function Page() {
                     disabled={isMaxed}
                     className={`w-full text-base font-black py-4 transition-all duration-200 active:scale-95 ${
                       isSelected
-                        ? "bg-green-500 text-white"
+                        ? "bg-gray-900 text-[#E8B86D]"
                         : isMaxed
-                        ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                        ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                         : "bg-[#E8B86D] text-black"
                     }`}
                   >
@@ -283,8 +286,8 @@ export default function Page() {
         {/* ══ URGENCY ══ */}
         <div className="max-w-lg mx-auto px-4 mb-6">
           <div className="bg-red-50 border border-red-200 rounded-2xl p-4 text-center">
-            <p className="text-red-600 font-black text-lg">⏳ العرض محدود اليوم فقط</p>
-            <p className="text-red-500 text-sm font-bold mt-1">الكمية محدودة — لا تفوّت الفرصة</p>
+            <p className="text-red-600 font-black text-lg">⏳ هاد العرض من Storecoma محدود جدا</p>
+            <p className="text-red-500 text-sm font-bold mt-1">نظرا للسطوك قليل — لا تفوّت الفرصة</p>
           </div>
         </div>
 
@@ -304,7 +307,7 @@ export default function Page() {
               ) : (
                 <>
                   <p className="text-white font-black text-lg mb-1">📦 دير الطلب ديالك دابا</p>
-                  <p className="text-white/60 text-sm">عمّر المعلومات وغادي نتاصلوا بيك فـ أقرب وقت</p>
+                  <p className="text-white/60 text-sm">عمّر المعلومات وغادي نتاصلوا بيك فأقرب وقت</p>
                 </>
               )}
             </div>
@@ -312,12 +315,21 @@ export default function Page() {
             <div className="p-5">
               {selected.length > 0 && (
                 <div className="bg-gray-50 border border-gray-200 rounded-2xl p-3 mb-4">
-                  <p className="text-gray-500 text-xs font-black mb-2">المنتجات اللي اخترتيها:</p>
-                  {selectedProducts.map((p) => (
-                    <div key={p.id} className="py-2 border-t border-gray-100 text-right">
-                      <span className="text-gray-900 text-sm font-bold">✓ {p.nameDarija}</span>
-                    </div>
-                  ))}
+                  <p className="text-gray-500 text-xs font-black mb-3">المنتجات اللي اخترتيها:</p>
+                  <div className="space-y-2">
+                    {selectedProducts.map((p) => (
+                      <div key={p.id} className="flex items-center gap-3">
+                        <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0">
+                          <Image src={p.image} alt={p.nameDarija} fill className="object-cover" />
+                        </div>
+                        <div className="text-right flex-1">
+                          <p className="text-gray-900 font-black text-sm">{p.nameDarija}</p>
+                          <p className="text-gray-400 text-xs">{p.tagline}</p>
+                        </div>
+                        <Check className="w-4 h-4 text-[#E8B86D] shrink-0" strokeWidth={3} />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
 
@@ -369,8 +381,6 @@ export default function Page() {
                     ? `طلب دابا وخلص عند الاستلام — ${total} درهم`
                     : "اختار منتجاتك أولاً ⬆️"}
                 </button>
-
-                <p className="text-center text-gray-400 text-sm font-bold">🔒 معلوماتك في أمان تام</p>
               </form>
             </div>
           </div>
@@ -383,7 +393,7 @@ export default function Page() {
             {[
               { icon: <Wallet className="w-14 h-14" />, title: "الدفع عند الاستلام", sub: "ما خلّصتيش حتى تشوف وتفحص" },
               { icon: <Truck className="w-14 h-14" />, title: "توصيل 24 — 48 ساعة", sub: "لجميع مدن المغرب مجاناً" },
-              { icon: <ShieldCheck className="w-14 h-14" />, title: "تأكيد عبر الهاتف", sub: "غادي نعيّطو عليك باش نأكدو" },
+              { icon: <ShieldCheck className="w-14 h-14" />, title: "سيرفيس احترافي", sub: "فريق الدعم ديالنا مساند ليك فكل لحضة" },
               { icon: <Star className="w-14 h-14" />, title: "إمكانية الاستبدال", sub: "إلا ماعجبكش كنبدلوه ليك" },
             ].map((t, i) => (
               <div key={i} className="bg-gray-900 rounded-2xl p-5 flex flex-col items-center text-center gap-3">
