@@ -112,6 +112,7 @@ export const products: Product[] = [
       "ضروري للسفر فالصيف",
     ],
     image: "/products/sun-door-protection.webp",
+    videoUrl: "/products/window-sun-protection.mp4",
     categoryDarija: "حماية",
     statNumber: "UV",
     statLabel: "بلوكاج للأشعة",
@@ -137,5 +138,25 @@ export const products: Product[] = [
     statNumber: "4 in 1",
     statLabel: "كابليات مدمجة",
     tagline: "شارجور واحد.. لكاع العائلة",
+  },
+  {
+    id: "exterior-windshield-cover",
+    nameDarija: "غطاء مغناطيسي خارجي للزجاج",
+    price: 95,
+    descriptionDarija:
+      "عكس المظلة العادية، هاد الغطاء كيركب من برا وكيلصق بالمغناطيس باش مايطيرش مع الريح. مصاوب من 5 ديال الطبقات غلاض كيحميو الباربريز من الشمش القاصحة، الغبرة، الشتا، وحتى الوسخ ديال الطيور. طوموبيلتك كتبقى نقية وباردة.",
+    featuresDarija: [
+      "5 طبقات غليظة لحماية مضاعفة من الحرارة",
+      "تثبيت قوي بالمغناطيس (ماكيطيرش مع الريح)",
+      "مضاد للماء ومناسب لكاع الفصول (4 seasons)",
+      "أشرطة عاكسة للضوء باش تبان الطوموبيل بالليل",
+      "تركيب ساهل فثواني بلا عذاب",
+    ],
+    image: "/products/exterior-windshield-cover.webp",
+    videoUrl: "/products/exterior-windshield-cover.mp4",
+    categoryDarija: "حماية",
+    statNumber: "5 طبقات",
+    statLabel: "متانة وحماية",
+    tagline: "حمي الباربريز ديالك من برا",
   },
 ]

@@ -1,7 +1,7 @@
 "use client"
 
 import { products } from "@/lib/products"
-import { Check, ShieldCheck, ShoppingBag, Star, Truck, Wallet } from "lucide-react"
+import { Check, ShieldCheck, ShoppingBag, Wallet } from "lucide-react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
@@ -14,9 +14,10 @@ const PRODUCT_META: Record<string, { badge: string; microCopy: string }> = {
   "car-vacuum":         { badge: "🔥 الأكثر طلباً",      microCopy: "كينفعك يومياً بلا صداع" },
   "fast-charger":       { badge: "⭐ اختيار الزبناء",    microCopy: "ما تبقاش تتهم فبطارية الهاتف" },
   "phone-holder":       { badge: "🔥 الأكثر طلباً",      microCopy: "أمان أكثر وانت كاتسوق" },
-  "sun-protection":     { badge: "☀️ ضروري فالصيف",      microCopy: "خلي كارك باردة حتى فالعز" },
+  "sun-protection":     { badge: "☀️ ضروري فالصيف",      microCopy: "خلي سيارتك باردة حتى فالعز" },
   "sun-door-protection":{ badge: "مثالي للعائلة",    microCopy: "راحة ليك ولولادك فالطريق" },
-  "4-in-1-retractable-charger": { badge: "⭐ اختيار الزبناء", microCopy: "حول كارك لسمارت كار فثواني" },
+  "4-in-1-retractable-charger": { badge: "⭐ اختيار الزبناء", microCopy: "حول سيارتك لسمارت كار فثواني" },
+  "exterior-windshield-cover": { badge: "🔥 الأكثر طلباً", microCopy: "حمي الباربريز ديالك من برا" },
 }
 
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
@@ -387,7 +388,7 @@ export default function Page() {
         </section>
 
         {/* ══ TRUST ══ */}
-        <section className="max-w-lg mx-auto px-4 pb-8">
+        {/* <section className="max-w-lg mx-auto px-4 pb-8">
           <h2 className="text-2xl font-black text-center text-gray-900 mb-4">علاش تختارنا؟</h2>
           <div className="grid grid-cols-2 gap-3">
             {[
@@ -403,7 +404,7 @@ export default function Page() {
               </div>
             ))}
           </div>
-        </section>
+        </section> */}
 
         {/* ══ WHY US COMPARISON ══ */}
         <section className="max-w-lg mx-auto px-4 pb-10">
@@ -439,8 +440,8 @@ export default function Page() {
 
         {/* ══ REVIEWS ══ */}
         <section className="max-w-lg mx-auto px-4 pb-12">
-          <h2 className="text-2xl font-black text-center text-gray-900 mb-5">آراء الزبناء</h2>
-          <div className="space-y-3">
+          {/* <h2 className="text-2xl font-black text-center text-gray-900 mb-5">آراء الزبناء</h2> */}
+          {/* <div className="space-y-3">
             {[
               { name: "ياسين", city: "الدار البيضاء", text: "وصلني الطلب ديالي فـ نهار واحد، جودة زوينة بزاف" },
               { name: "سمية", city: "الرباط", text: "الباك مفيد بزاف خصوصا فالحر، الشمسية والمكنسة ماشي معقول" },
@@ -454,7 +455,7 @@ export default function Page() {
                 <p className="text-gray-900 text-sm font-black">{r.name} — <span className="text-gray-400 font-normal">{r.city}</span></p>
               </div>
             ))}
-          </div>
+          </div> */}
 
           {/* WhatsApp screenshots */}
           <div className="mt-4 space-y-3">
