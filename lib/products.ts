@@ -152,7 +152,7 @@ export const products: Product[] = [
       "أشرطة عاكسة للضوء باش تبان الطوموبيل بالليل",
       "تركيب ساهل فثواني بلا عذاب",
     ],
-    image: "/products/exterior-windshield-cover.webp",
+    image: "/products/exterior-windshield-cover_.webp",
     videoUrl: "/products/exterior-windshield-cover.mp4",
     categoryDarija: "حماية",
     statNumber: "5 طبقات",
