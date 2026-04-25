@@ -16,7 +16,7 @@ const PRODUCT_META: Record<string, { badge: string; microCopy: string }> = {
   "phone-holder":       { badge: "🔥 الأكثر طلباً",      microCopy: "أمان أكثر وانت كاتسوق" },
   "sun-protection":     { badge: "☀️ ضروري فالصيف",      microCopy: "خلي كارك باردة حتى فالعز" },
   "sun-door-protection":{ badge: "مثالي للعائلة",    microCopy: "راحة ليك ولولادك فالطريق" },
-  "fm-transmitter":     { badge: "⭐ اختيار الزبناء",    microCopy: "حول كارك لسمارت كار فثواني" },
+  "4-in-1-retractable-charger": { badge: "⭐ اختيار الزبناء", microCopy: "حول كارك لسمارت كار فثواني" },
 }
 
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
