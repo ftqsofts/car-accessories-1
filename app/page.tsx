@@ -240,21 +240,17 @@ export default function Page() {
                       <p className="text-[#E8B86D] font-bold text-sm mb-1">{product.tagline}</p>
                       <p className="text-white/60 text-xs">{product.microCopy}</p>
                     </div>
-                    <div className="absolute bottom-4 left-2 flex justify-center">
-                      <span className="text-xs text-white/60 font-bold">{isExpanded ? "اضغط لإخفاء ▲" : "اضغط للتفاصيل ▼"}</span>
-                    </div>
                   </button>
 
-                  {/* Stat */}
-                  <div className="bg-gray-900 px-4 py-3 text-right">
-                    <p className="text-white font-black text-4xl leading-none">{product.statNumber}</p>
-                    <p className="text-gray-400 text-md font-semibold mt-1">{product.statLabel}</p>
-                  </div>
-
-                  {/* Video — always visible, lazy loaded on scroll */}
+                  {/* Video + stat — one dark block */}
                   {product.videoUrl && (
                     <div className="bg-gray-900">
                       <LazyVideo src={product.videoUrl} />
+                      {/* Stat */}
+                      <div className="bg-gray-900 px-4 py-3 text-right">
+                        <p className="text-white font-black text-4xl leading-none">{product.statNumber}</p>
+                        <p className="text-gray-400 text-md font-semibold mt-1">{product.statLabel}</p>
+                      </div>
                     </div>
                   )}
 
