@@ -6,23 +6,21 @@ import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
-function LazyVideo({ src }: { src: string }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [inView, setInView] = useState(false)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect() } }, { rootMargin: "200px" })
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [])
-  return (
-    <div ref={ref} className="w-full">
-      {inView && (
-        <video src={src} autoPlay muted loop playsInline preload="none" className="w-full" />
-      )}
-    </div>
-  )
+function LazyVideo({ src, active, onPlay }: { src: string; active: boolean; onPlay: () => void }) {
+  if (!active) {
+    return (
+      <button
+        onClick={onPlay}
+        className="w-full flex items-center justify-center gap-3 py-4 bg-gray-800 text-white/70 text-sm font-bold active:bg-gray-700 transition-colors"
+      >
+        <svg className="w-5 h-5 text-[#E8B86D]" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+        شوف الفيديو
+      </button>
+    )
+  }
+  return <video src={src} controls autoPlay muted playsInline preload="auto" className="w-full" onVolumeChange={(e) => { const v = e.currentTarget; if (!v.muted) { v.muted = true; v.volume = 0 } }} />
 }
 
 const PRICE_2 = 219
@@ -35,7 +33,7 @@ type OrderForm = { name: string; city: string; phone: string; _hp?: string }
 export default function Page() {
   const router = useRouter()
   const [selected, setSelected] = useState<string[]>([])
-  const [expandedId, setExpandedId] = useState<string | null>(null)
+  const [activeVideo, setActiveVideo] = useState<string | null>(null)
   const [form, setForm] = useState<OrderForm>({ name: "", city: "", phone: "" })
   const [errors, setErrors] = useState<Partial<OrderForm>>({})
   const [formVisible, setFormVisible] = useState(false)
@@ -201,7 +199,6 @@ export default function Page() {
           <div className="flex flex-col gap-5">
             {products.map((product) => {
               const isSelected = selected.includes(product.id)
-              const isExpanded = expandedId === product.id
               const isMaxed = selected.length >= MAX_SELECT && !isSelected
               return (
                 <div
@@ -213,10 +210,7 @@ export default function Page() {
                   }`}
                 >
                   {/* Image */}
-                  <button
-                    onClick={() => setExpandedId(isExpanded ? null : product.id)}
-                    className="relative w-full h-72 bg-gray-900 overflow-hidden block"
-                  >
+                  <div className="relative w-full h-72 bg-gray-900 overflow-hidden">
                     <Image
                       src={product.image}
                       alt={product.nameDarija}
@@ -240,12 +234,12 @@ export default function Page() {
                       <p className="text-[#E8B86D] font-bold text-sm mb-1">{product.tagline}</p>
                       <p className="text-white/60 text-xs">{product.microCopy}</p>
                     </div>
-                  </button>
+                  </div>
 
                   {/* Video + stat — one dark block */}
                   {product.videoUrl && (
                     <div className="bg-gray-900">
-                      <LazyVideo src={product.videoUrl} />
+                      <LazyVideo src={product.videoUrl} active={activeVideo === product.id} onPlay={() => setActiveVideo(product.id)} />
                       {/* Stat */}
                       <div className="bg-gray-900 px-4 py-3 text-right">
                         <p className="text-white font-black text-4xl leading-none">{product.statNumber}</p>
@@ -254,24 +248,22 @@ export default function Page() {
                     </div>
                   )}
 
-                  {/* Collapsible — description + features only */}
-                  {isExpanded && (
-                    <div className="bg-gray-900 border-t border-white/10">
-                      <div className="px-5 pb-5 pt-4 space-y-4">
-                        <p className="text-white text-base leading-loose font-medium">{product.descriptionDarija}</p>
-                        <div className="border-t border-white/10 pt-4 space-y-3">
-                          {product.featuresDarija.map((f, i) => (
-                            <div key={i} className="flex items-center gap-3">
-                              <div className="w-6 h-6 rounded-full bg-[#E8B86D] flex items-center justify-center shrink-0">
-                                <Check className="w-3.5 h-3.5 text-black" strokeWidth={3} />
-                              </div>
-                              <span className="text-white font-bold text-base">{f}</span>
+                  {/* Description + features — always visible */}
+                  <div className="bg-gray-900 border-t border-white/10">
+                    <div className="px-5 pb-5 pt-4 space-y-4">
+                      <p className="text-white text-base leading-loose font-medium">{product.descriptionDarija}</p>
+                      <div className="border-t border-white/10 pt-4 space-y-3">
+                        {product.featuresDarija.map((f, i) => (
+                          <div key={i} className="flex items-center gap-3">
+                            <div className="w-6 h-6 rounded-full bg-[#E8B86D] flex items-center justify-center shrink-0">
+                              <Check className="w-3.5 h-3.5 text-black" strokeWidth={3} />
                             </div>
-                          ))}
-                        </div>
+                            <span className="text-white font-bold text-base">{f}</span>
+                          </div>
+                        ))}
                       </div>
                     </div>
-                  )}
+                  </div>
 
                   {/* Select button */}
                   <button
