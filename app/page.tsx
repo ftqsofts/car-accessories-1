@@ -29,15 +29,6 @@ const PRICE_2 = 219
 const PRICE_3 = 299
 const MAX_SELECT = 3
 
-const PRODUCT_META: Record<string, { badge: string; microCopy: string }> = {
-  "car-vacuum":         { badge: "🔥 الأكثر طلباً",      microCopy: "كينفعك يومياً بلا صداع" },
-  "fast-charger":       { badge: "⭐ اختيار الزبناء",    microCopy: "ما تبقاش تتهم فبطارية الهاتف" },
-  "phone-holder":       { badge: "🔥 الأكثر طلباً",      microCopy: "أمان أكثر وانت كاتسوق" },
-  "sun-protection":     { badge: "☀️ ضروري فالصيف",      microCopy: "خلي سيارتك باردة حتى فالعز" },
-  "sun-door-protection":{ badge: "مثالي للعائلة",    microCopy: "راحة ليك ولولادك فالطريق" },
-  "4-in-1-retractable-charger": { badge: "⭐ اختيار الزبناء", microCopy: "حول سيارتك لسمارت كار فثواني" },
-  "exterior-windshield-cover": { badge: "🔥 الأكثر طلباً", microCopy: "حمي الباربريز ديالك من برا" },
-}
 
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
 
@@ -86,7 +77,7 @@ export default function Page() {
     if (!canOrder || !validate()) return
     if (form._hp) return
     setLoading(true)
-    const skus = selectedProducts.map((p) => p.id).join(";")
+    const skus = selectedProducts.map((p) => p.id).join(",")
     fetch("/api/order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -212,7 +203,6 @@ export default function Page() {
               const isSelected = selected.includes(product.id)
               const isExpanded = expandedId === product.id
               const isMaxed = selected.length >= MAX_SELECT && !isSelected
-              const meta = PRODUCT_META[product.id]
               return (
                 <div
                   key={product.id}
@@ -238,7 +228,7 @@ export default function Page() {
                     <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
                     {/* Social proof badge top-left */}
                     <span className="absolute top-3 left-3 bg-gray-900/80 backdrop-blur-sm text-white text-xs font-black px-3 py-1.5 rounded-full border border-white/10">
-                      {meta.badge}
+                      {product.badge}
                     </span>
                     {isSelected && (
                       <div className="absolute top-3 right-3 w-8 h-8 bg-[#E8B86D] rounded-full flex items-center justify-center shadow-lg">
@@ -248,7 +238,7 @@ export default function Page() {
                     <div className="absolute bottom-0 right-0 left-0 p-4 text-right">
                       <p className="text-white font-black text-xl leading-tight mb-1">{product.nameDarija}</p>
                       <p className="text-[#E8B86D] font-bold text-sm mb-1">{product.tagline}</p>
-                      <p className="text-white/60 text-xs">{meta.microCopy}</p>
+                      <p className="text-white/60 text-xs">{product.microCopy}</p>
                     </div>
                     <div className="absolute bottom-4 left-2 flex justify-center">
                       <span className="text-xs text-white/60 font-bold">{isExpanded ? "اضغط لإخفاء ▲" : "اضغط للتفاصيل ▼"}</span>

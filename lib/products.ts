@@ -1,5 +1,6 @@
 export type Product = {
   id: string
+  sku: string
   nameDarija: string
   price: number
   descriptionDarija: string
@@ -10,13 +11,16 @@ export type Product = {
   statNumber: string
   statLabel: string
   tagline: string
+  badge: string
+  microCopy: string
 }
 
 export const PACK_SHIPPING_FEE = 120
 
 export const products: Product[] = [
   {
-    id: "car-vacuum",
+    id: "176TSC",
+    sku: "CAR-VAC-001",
     nameDarija: "اسبيراتور سيارة 4 فـ 1",
     price: 55,
     descriptionDarija:
@@ -34,10 +38,13 @@ export const products: Product[] = [
     statNumber: "9000 Pa",
     statLabel: "قوة شفط عالية",
     tagline: "طوموبيلتك ديما كتشعل",
+    badge: "🔥 الأكثر طلباً",
+    microCopy: "كينفعك يومياً بلا صداع",
   },
 
   {
     id: "fast-charger",
+    sku: "45KI-FFS-980",
     nameDarija: "شاحن سيارة سريع 120W",
     price: 40,
     descriptionDarija:
@@ -54,10 +61,13 @@ export const products: Product[] = [
     statNumber: "120W",
     statLabel: "سرعة شحن خارقة",
     tagline: "شارجيه فالطريق.. وارتاح",
+    badge: "⭐ اختيار الزبناء",
+    microCopy: "ما تبقاش تتهم فبطارية الهاتف",
   },
 
   {
     id: "phone-holder",
+    sku: "CMBC-CCR-6E9",
     nameDarija: "حامل هاتف مغناطيسي (شفط قوي)",
     price: 25,
     descriptionDarija:
@@ -75,10 +85,13 @@ export const products: Product[] = [
     statNumber: "360°",
     statLabel: "دوران ومرونة",
     tagline: "تيليفونك ثابت.. وسياقتك آمنة",
+    badge: "🔥 الأكثر طلباً",
+    microCopy: "أمان أكثر وانت كاتسوق",
   },
 
   {
     id: "sun-protection",
+    sku: "SPG5-SSN-5F3",
     nameDarija: "مظلة حماية الطابلو من الشمس",
     price: 40,
     descriptionDarija:
@@ -96,10 +109,13 @@ export const products: Product[] = [
     statNumber: "100%",
     statLabel: "حماية للطابلو",
     tagline: "ودّع السخونية وحافظ على طوموبيلتك",
+    badge: "☀️ ضروري فالصيف",
+    microCopy: "خلي سيارتك باردة حتى فالعز",
   },
 
   {
     id: "sun-door-protection",
+    sku: "9DX3-WWN-7C8",
     nameDarija: "واقي شمس للنوافذ الجانبية",
     price: 40,
     descriptionDarija:
@@ -117,10 +133,13 @@ export const products: Product[] = [
     statNumber: "UV",
     statLabel: "بلوكاج للأشعة",
     tagline: "ظل وراحة لعائلتك",
+    badge: "مثالي للعائلة",
+    microCopy: "راحة ليك ولولادك فالطريق",
   },
 
   {
     id: "4-in-1-retractable-charger",
+    sku: "414H-CCR-98A",
     nameDarija: "شاحن 4 فـ 1 بكابليات كتتجر",
     price: 75,
     descriptionDarija:
@@ -138,9 +157,13 @@ export const products: Product[] = [
     statNumber: "4 in 1",
     statLabel: "كابليات مدمجة",
     tagline: "شارجور واحد.. لكاع العائلة",
+    badge: "⭐ اختيار الزبناء",
+    microCopy: "حول سيارتك لسمارت كار فثواني",
   },
+
   {
     id: "exterior-windshield-cover",
+    sku: "L399-EXT-405",
     nameDarija: "غطاء مغناطيسي خارجي للزجاج",
     price: 95,
     descriptionDarija:
@@ -158,5 +181,7 @@ export const products: Product[] = [
     statNumber: "5 طبقات",
     statLabel: "متانة وحماية",
     tagline: "حمي الباربريز ديالك من برا",
+    badge: "🔥 الأكثر طلباً",
+    microCopy: "حمي الباربريز ديالك من برا",
   },
 ]
