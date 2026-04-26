@@ -276,7 +276,7 @@ export default function Page() {
                         : "bg-[#E8B86D] text-black"
                     }`}
                   >
-                    {isSelected ? "✓ مختار — اضغط لإلغاء" : isMaxed ? "وصلتي للحد الأقصى" : "بغيت هاد المنتج"}
+                    {isSelected ? "✓ مختار — اضغط لإلغاء" : isMaxed ? "وصلتي للحد الأقصى" : "ختار هاد المنتج"}
                   </button>
                 </div>
               )
