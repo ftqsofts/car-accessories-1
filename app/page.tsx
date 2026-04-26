@@ -211,7 +211,10 @@ export default function Page() {
                   }`}
                 >
                   {/* Image */}
-                  <div className="relative w-full h-72 bg-gray-900 overflow-hidden">
+                  <div
+                    className="relative w-full h-72 bg-gray-900 overflow-hidden cursor-pointer"
+                    onClick={() => product.videoUrl && setActiveVideo(product.id)}
+                  >
                     <Image
                       src={product.image}
                       alt={product.nameDarija}
@@ -235,6 +238,15 @@ export default function Page() {
                       <p className="text-[#E8B86D] font-bold text-sm mb-1">{product.tagline}</p>
                       <p className="text-white/60 text-xs">{product.microCopy}</p>
                     </div>
+                    {product.videoUrl && activeVideo !== product.id && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-14 h-14 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center border border-white/20">
+                          <svg className="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   {/* Video + stat — one dark block */}
