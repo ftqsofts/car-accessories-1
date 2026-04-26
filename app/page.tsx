@@ -16,7 +16,7 @@ function LazyVideo({ src, active, onPlay }: { src: string; active: boolean; onPl
         <svg className="w-5 h-5 text-[#E8B86D]" fill="currentColor" viewBox="0 0 24 24">
           <path d="M8 5v14l11-7z" />
         </svg>
-        شوف الفيديو
+       شوف فيديو المنتج
       </button>
     )
   }
@@ -32,7 +32,8 @@ type OrderForm = { name: string; city: string; phone: string; _hp?: string }
 
 export default function Page() {
   const router = useRouter()
-  const [selected, setSelected] = useState<string[]>([])
+  const [selected, setSelected] = useState<string[]>(["176TSC", "phone-holder"])
+  const [showAll, setShowAll] = useState(false)
   const [activeVideo, setActiveVideo] = useState<string | null>(null)
   const [form, setForm] = useState<OrderForm>({ name: "", city: "", phone: "" })
   const [errors, setErrors] = useState<Partial<OrderForm>>({})
@@ -197,7 +198,7 @@ export default function Page() {
         {/* Product cards */}
         <section className="max-w-lg mx-auto px-4 pb-6">
           <div className="flex flex-col gap-5">
-            {products.map((product) => {
+            {(showAll ? products : products.slice(0, 3)).map((product) => {
               const isSelected = selected.includes(product.id)
               const isMaxed = selected.length >= MAX_SELECT && !isSelected
               return (
@@ -277,12 +278,22 @@ export default function Page() {
                         : "bg-[#E8B86D] text-black"
                     }`}
                   >
-                    {isSelected ? "✓ مختار — اضغط لإلغاء" : isMaxed ? "وصلتي للحد الأقصى" : "ختار هاد المنتج"}
+                    {isSelected ? "✓ مختار — اضغط لإلغاء" : isMaxed ? "وصلتي للحد الأقصى" : "أضف هاد المنتج"}
                   </button>
                 </div>
               )
             })}
           </div>
+
+          {!showAll && (
+            <button
+              onClick={() => setShowAll(true)}
+              className="w-full mt-4 py-5 rounded-2xl bg-gray-900 text-white font-black text-lg active:scale-95 transition-all shadow-md flex flex-col items-center gap-1"
+            >
+              <span>🔄 بدّل منتج — شوف الباقي</span>
+              <span className="text-white/50 text-sm font-bold">{products.length - 3} منتجات إضافية متاحة</span>
+            </button>
+          )}
         </section>
 
         {/* ══ URGENCY ══ */}
