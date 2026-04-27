@@ -6,7 +6,7 @@ import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
-function LazyVideo({ src, active, onPlay }: { src: string; active: boolean; onPlay: () => void }) {
+function LazyVideo({ src, active }: { src: string; active: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const [preloaded, setPreloaded] = useState(false)
@@ -22,7 +22,14 @@ function LazyVideo({ src, active, onPlay }: { src: string; active: boolean; onPl
   }, [])
 
   useEffect(() => {
-    if (active && videoRef.current) videoRef.current.play()
+    const v = videoRef.current
+    if (!v) return
+    if (active) {
+      v.play().catch(() => null)
+    } else {
+      v.pause()
+      v.currentTime = 0
+    }
   }, [active])
 
   return (
@@ -34,21 +41,9 @@ function LazyVideo({ src, active, onPlay }: { src: string; active: boolean; onPl
           muted
           playsInline
           preload="auto"
-          controls={active}
           className={`w-full ${active ? "block" : "hidden"}`}
           onVolumeChange={(e) => { const v = e.currentTarget; if (!v.muted) { v.muted = true; v.volume = 0 } }}
         />
-      )}
-      {!active && (
-        <button
-          onClick={onPlay}
-          className="w-full flex items-center justify-center gap-3 py-4 bg-gray-800 text-white/70 text-sm font-bold active:bg-gray-700 transition-colors"
-        >
-          <svg className="w-5 h-5 text-[#E8B86D]" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-          شوف فيديو المنتج
-        </button>
       )}
     </div>
   )
@@ -290,7 +285,7 @@ export default function Page() {
                   {/* Video + stat — one dark block */}
                   {product.videoUrl && (
                     <div className="bg-gray-900">
-                      <LazyVideo src={product.videoUrl} active={activeVideo === product.id} onPlay={() => setActiveVideo(product.id)} />
+                      <LazyVideo src={product.videoUrl} active={activeVideo === product.id} />
                       {/* Stat */}
                       <div className="bg-gray-900 px-4 py-3 text-right">
                         <p className="text-white font-black text-4xl leading-none">{product.statNumber}</p>
