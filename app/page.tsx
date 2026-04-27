@@ -7,20 +7,51 @@ import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
 function LazyVideo({ src, active, onPlay }: { src: string; active: boolean; onPlay: () => void }) {
-  if (!active) {
-    return (
-      <button
-        onClick={onPlay}
-        className="w-full flex items-center justify-center gap-3 py-4 bg-gray-800 text-white/70 text-sm font-bold active:bg-gray-700 transition-colors"
-      >
-        <svg className="w-5 h-5 text-[#E8B86D]" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M8 5v14l11-7z" />
-        </svg>
-       شوف فيديو المنتج
-      </button>
-    )
-  }
-  return <video src={src} controls autoPlay muted playsInline preload="auto" className="w-full" onVolumeChange={(e) => { const v = e.currentTarget; if (!v.muted) { v.muted = true; v.volume = 0 } }} />
+  const containerRef = useRef<HTMLDivElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [preloaded, setPreloaded] = useState(false)
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setPreloaded(true); obs.disconnect() }
+    }, { rootMargin: "300px" })
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (active && videoRef.current) videoRef.current.play()
+  }, [active])
+
+  return (
+    <div ref={containerRef}>
+      {preloaded && (
+        <video
+          ref={videoRef}
+          src={src}
+          muted
+          playsInline
+          preload="auto"
+          controls={active}
+          className={`w-full ${active ? "block" : "hidden"}`}
+          onVolumeChange={(e) => { const v = e.currentTarget; if (!v.muted) { v.muted = true; v.volume = 0 } }}
+        />
+      )}
+      {!active && (
+        <button
+          onClick={onPlay}
+          className="w-full flex items-center justify-center gap-3 py-4 bg-gray-800 text-white/70 text-sm font-bold active:bg-gray-700 transition-colors"
+        >
+          <svg className="w-5 h-5 text-[#E8B86D]" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+          شوف فيديو المنتج
+        </button>
+      )}
+    </div>
+  )
 }
 
 const PRICE_2 = 219
