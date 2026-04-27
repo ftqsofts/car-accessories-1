@@ -287,7 +287,7 @@ export default function Page() {
                         ? "bg-gray-900 text-[#E8B86D]"
                         : isMaxed
                         ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                        : "bg-[#E8B86D] text-black"
+                        : "bg-[#E8B86D] text-black btn-pulse"
                     }`}
                   >
                     {isSelected ? "✓ مختار — اضغط لإلغاء" : isMaxed ? "وصلتي للحد الأقصى" : "أضف هاد المنتج"}

@@ -116,6 +116,15 @@
   animation: scrollHint 1.6s ease-in-out 1.2s infinite;
 }
 
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 #E8B86D66; }
+  50% { box-shadow: 0 0 0 10px #E8B86D00; }
+}
+
+.btn-pulse {
+  animation: pulse-gold 1.8s ease-in-out infinite;
+}
+
 .glow-title {
   background: linear-gradient(135deg, #fff 0%, #f5d78e 35%, #E8B86D 55%, #fffbe0 100%);
   background-size: 200% auto;
