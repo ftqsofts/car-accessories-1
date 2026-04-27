@@ -21,7 +21,7 @@ export const products: Product[] = [
   // ── PRE-SELECTED 3 ──
   {
     id: "176TSC",
-    sku: "CAR-VAC-001",
+    sku: "176TSC",
     nameDarija: "اسبيراتور سيارة 4 فـ 1",
     price: 55,
     descriptionDarija:
