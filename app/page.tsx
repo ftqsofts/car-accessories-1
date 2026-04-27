@@ -365,6 +365,7 @@ export default function Page() {
                   <p className="text-black/70 text-sm font-bold mb-1">{selected.length} منتجات + توصيل مجاني</p>
                   <p className="text-black font-black text-6xl leading-none">{total}</p>
                   <p className="text-black/80 font-black text-xl">درهم فقط</p>
+                  <p className="text-black/70 text-sm font-black mt-1">💸 وفرتي أكثر من 90 درهم!</p>
                   <p className="text-black/60 text-xs mt-2">ما خلّصتيش حتى توصلك الطلبية</p>
                 </>
               ) : (
