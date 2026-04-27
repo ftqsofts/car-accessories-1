@@ -40,6 +40,7 @@ export default function Page() {
   const [formVisible, setFormVisible] = useState(false)
   const [loading, setLoading] = useState(false)
   const formRef = useRef<HTMLElement>(null)
+  const productsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -172,15 +173,21 @@ export default function Page() {
 
           {/* Price indicator */}
           <div className="grid grid-cols-2 gap-3 mb-6">
-            <div className={`rounded-2xl p-4 text-center border-2 transition-all ${selected.length >= 2 && selected.length < 3 ? "border-[#E8B86D] bg-[#E8B86D]/10" : "border-gray-200 bg-white"}`}>
+            <button
+              onClick={() => selected.length > 2 && setSelected((prev) => prev.slice(0, 2))}
+              className={`rounded-2xl p-4 text-center border-2 transition-all active:scale-95 ${selected.length >= 2 && selected.length < 3 ? "border-[#E8B86D] bg-[#E8B86D]/10" : "border-gray-200 bg-white"}`}
+            >
               <p className="text-xs font-black text-gray-400 mb-1">2 منتجات</p>
               <p className="text-2xl font-black text-gray-900">{PRICE_2} <span className="text-sm">درهم</span></p>
-            </div>
-            <div className={`rounded-2xl p-4 text-center border-2 transition-all ${selected.length === 3 ? "border-[#E8B86D] bg-[#E8B86D]/10" : "border-gray-200 bg-white"}`}>
+            </button>
+            <button
+              onClick={() => { setShowAll(true); setTimeout(() => productsRef.current?.children[0]?.children[2]?.scrollIntoView({ behavior: "smooth", block: "center" }), 50) }}
+              className={`rounded-2xl p-4 text-center border-2 transition-all active:scale-95 ${selected.length === 3 ? "border-[#E8B86D] bg-[#E8B86D]/10" : "border-gray-200 bg-white"}`}
+            >
               <p className="text-xs font-black text-gray-400 mb-1">3 منتجات</p>
               <p className="text-2xl font-black text-gray-900">{PRICE_3} <span className="text-sm">درهم</span></p>
               <p className="text-[10px] text-[#C8962A] font-black">الأوفر!</p>
-            </div>
+            </button>
           </div>
 
           {/* Counter — sticky */}
@@ -196,9 +203,9 @@ export default function Page() {
         </div>
 
         {/* Product cards */}
-        <section className="max-w-lg mx-auto px-4 pb-6">
+        <section ref={productsRef} className="max-w-lg mx-auto px-4 pb-6">
           <div className="flex flex-col gap-5">
-            {(showAll ? products : products.slice(0, 3)).map((product) => {
+            {(showAll ? products : products.slice(0, 2)).map((product) => {
               const isSelected = selected.includes(product.id)
               const isMaxed = selected.length >= MAX_SELECT && !isSelected
               return (
@@ -240,7 +247,7 @@ export default function Page() {
                     </div>
                     {product.videoUrl && activeVideo !== product.id && (
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-14 h-14 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center border border-white/20">
+                        <div className="w-14 h-14 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center border border-white/20 btn-pulse">
                           <svg className="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z" />
                           </svg>
@@ -303,7 +310,7 @@ export default function Page() {
               className="w-full mt-4 py-5 rounded-2xl bg-gray-900 text-white font-black text-lg active:scale-95 transition-all shadow-md flex flex-col items-center gap-1"
             >
               <span>🔄 بدّل منتج — شوف الباقي</span>
-              <span className="text-white/50 text-sm font-bold">{products.length - 3} منتجات إضافية متاحة</span>
+              <span className="text-white/50 text-sm font-bold">{products.length - 2} منتجات إضافية متاحة</span>
             </button>
           )}
         </section>
