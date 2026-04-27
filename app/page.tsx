@@ -250,7 +250,7 @@ export default function Page() {
                 >
                   {/* Image */}
                   <div
-                    className="relative w-full h-72 bg-gray-900 overflow-hidden cursor-pointer"
+                    className="relative w-full h-96 bg-gray-900 overflow-hidden cursor-pointer"
                     onClick={() => product.videoUrl && setActiveVideo(product.id)}
                   >
                     <Image
