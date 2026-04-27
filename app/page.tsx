@@ -1,77 +1,27 @@
 "use client"
 
 import { products } from "@/lib/products"
-import { Check, ShieldCheck, ShoppingBag, Wallet } from "lucide-react"
+import { Check } from "lucide-react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
-function LazyVideo({ src, active, onPlay }: { src: string; active: boolean; onPlay: () => void }) {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const [preloaded, setPreloaded] = useState(false)
 
-  useEffect(() => {
-    const el = containerRef.current
-    if (!el) return
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { setPreloaded(true); obs.disconnect() }
-    }, { rootMargin: "300px" })
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [])
 
-  useEffect(() => {
-    if (active && videoRef.current) videoRef.current.play()
-  }, [active])
-
-  return (
-    <div ref={containerRef}>
-      {preloaded && (
-        <video
-          ref={videoRef}
-          src={src}
-          muted
-          playsInline
-          preload="auto"
-          controls={active}
-          className={`w-full ${active ? "block" : "hidden"}`}
-          onVolumeChange={(e) => { const v = e.currentTarget; if (!v.muted) { v.muted = true; v.volume = 0 } }}
-        />
-      )}
-      {!active && (
-        <button
-          onClick={onPlay}
-          className="w-full flex items-center justify-center gap-3 py-4 bg-gray-800 text-white/70 text-sm font-bold active:bg-gray-700 transition-colors"
-        >
-          <svg className="w-5 h-5 text-[#E8B86D]" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-          شوف فيديو المنتج
-        </button>
-      )}
-    </div>
-  )
-}
-
-const PRICE_2 = 219
-const PRICE_3 = 299
-const MAX_SELECT = 3
-
+const PACK_PRICE = 250
+const PACK_IDS = ["176TSC", "phone-holder", "4-in-1-retractable-charger"]
 
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
 
 export default function Page() {
   const router = useRouter()
-  const [selected, setSelected] = useState<string[]>(["176TSC", "phone-holder"])
-  const [showAll, setShowAll] = useState(false)
-  const [activeVideo, setActiveVideo] = useState<string | null>(null)
   const [form, setForm] = useState<OrderForm>({ name: "", city: "", phone: "" })
   const [errors, setErrors] = useState<Partial<OrderForm>>({})
-  const [formVisible, setFormVisible] = useState(false)
   const [loading, setLoading] = useState(false)
   const formRef = useRef<HTMLElement>(null)
-  const productsRef = useRef<HTMLDivElement>(null)
+  const [formVisible, setFormVisible] = useState(false)
+
+  const packProducts = products.filter((p) => PACK_IDS.includes(p.id))
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -81,19 +31,6 @@ export default function Page() {
     if (formRef.current) observer.observe(formRef.current)
     return () => observer.disconnect()
   }, [])
-
-  const toggle = (id: string) =>
-    setSelected((prev) =>
-      prev.includes(id)
-        ? prev.filter((x) => x !== id)
-        : prev.length < MAX_SELECT
-        ? [...prev, id]
-        : prev
-    )
-
-  const selectedProducts = products.filter((p) => selected.includes(p.id))
-  const total = selected.length === 3 ? PRICE_3 : selected.length >= 2 ? PRICE_2 : 0
-  const canOrder = selected.length >= 2
 
   const validate = () => {
     const e: Partial<OrderForm> = {}
@@ -105,18 +42,18 @@ export default function Page() {
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault()
-    if (!canOrder || !validate()) return
+    if (!validate()) return
     if (form._hp) return
     setLoading(true)
-    const skus = selectedProducts.map((p) => p.id).join(",")
+    const skus = packProducts.map((p) => p.sku).join(",")
     fetch("/api/order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: form.name, phone: form.phone, city: form.city, skus, qty: selected.length, total }),
+      body: JSON.stringify({ name: form.name, phone: form.phone, city: form.city, skus, qty: 3, total: PACK_PRICE }),
     }).catch(() => null)
     const params = new URLSearchParams({
       name: form.name, phone: form.phone, city: form.city,
-      skus, qty: String(selected.length), total: String(total),
+      skus, qty: "3", total: String(PACK_PRICE),
     })
     router.push(`/thank-you?${params}`)
   }
@@ -141,26 +78,21 @@ export default function Page() {
               🔥 عرض الصيف المحدود!
             </span>
           </div>
-
           <h1 className="hero-title glow-title font-black leading-tight w-full" style={{ fontSize: "clamp(2.8rem, 13vw, 4.5rem)" }}>
             باك إكسسوارات السيارة
           </h1>
-
           <div className="hero-sub w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-5 py-5 text-center space-y-3">
-            <p className="text-white font-black text-xl">ختار جوج منتجات بـ <span className="text-[#E8B86D]">219 درهم</span></p>
-            <div className="border-t border-white/10" />
-            <p className="text-white font-black text-xl">أو 3 منتجات بـ <span className="text-[#E8B86D]">299 درهم</span></p>
+            <p className="text-white font-black text-xl">3 منتجات بـ <span className="text-[#E8B86D]">{PACK_PRICE} درهم</span></p>
             <div className="border-t border-white/10" />
             <p className="text-white/60 text-sm line-through">بدل ما تشريهم بوحدهم بـ 390 درهم+</p>
             <p className="text-[#E8B86D] font-black text-lg">💸 وفر حتى 90 درهم — 🚚 الدفع عند الاستلام</p>
           </div>
-
-          {/* <button
+          <button
             onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
             className="w-full py-4 bg-[#E8B86D] text-black font-black text-lg rounded-2xl active:scale-95 transition-all shadow-xl shadow-[#E8B86D]/30"
           >
-            اختار الباك ديالك دابا ↓
-          </button> */}
+            اطلب دابا ↓
+          </button>
         </div>
 
         {/* Scroll hint */}
@@ -171,231 +103,46 @@ export default function Page() {
         </div>
       </section>
 
+      {/* ══ PACK IMAGE ══ */}
+      <div className="w-full">
+        <Image src="/pages/car-pack-2.webp" alt="محتويات الباك" width={1080} height={1920} className="w-full h-auto" />
+      </div>
+
       {/* ══ LIGHT CONTENT ══ */}
-      <div className="bg-gray-50 rounded-t-[2rem] pt-8">
-
-        {/* ══ WHY THIS PACK ══ */}
-        <div className="max-w-lg mx-auto px-4 mb-8">
-          <h2 className="text-2xl font-black text-gray-900 text-center mb-2">علاش هاد الباك غادي يعجبك؟</h2>
-          <p className="text-gray-400 text-sm text-center mb-5">مقارنة مع الشراء بوحدو من السوق</p>
-          <div className="bg-gray-900 rounded-3xl overflow-hidden divide-y divide-white/10">
-            {[
-              { icon: <ShoppingBag className="w-6 h-6" />, title: "كلشي فباك واحد", sub: "بلا تنقل، بلا بحث — كلشي لي محتاجو فطوموبيلك" },
-              { icon: <Wallet className="w-6 h-6" />, title: "وفر حتى 90 درهم", sub: "أرخص بكثير من شراء كل منتج بوحدو" },
-              { icon: <ShieldCheck className="w-6 h-6" />, title: "جودة عالية مضمونة", sub: "كل منتج فالباك مختار بعناية — ماشي أي حاجة، غير الأحسن" },
-            ].map((item, i) => (
-              <div key={i} className="flex items-center gap-4 px-5 py-8">
-                <div className="size-14 rounded-2xl bg-[#E8B86D]/15 flex items-center justify-center shrink-0 text-[#E8B86D]">
-                  {item.icon}
-                </div>
-                <div>
-                  <p className="text-white font-black text-lg leading-tight">{item.title}</p>
-                  <p className="text-white/70 mt-0.5">{item.sub}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ══ PRODUCT SELECTION ══ */}
-        <div className="max-w-lg mx-auto px-4 mb-4">
-          <h2 className="text-2xl font-black text-gray-900 text-center mb-1">👇 ختار المنتجات ديالك</h2>
-          <p className="text-gray-500 text-base text-center font-bold mb-4">خاصك تختار 2 ولا 3 منتجات</p>
-
-          {/* Price indicator */}
-          <div className="grid grid-cols-2 gap-3 mb-6">
-            <button
-              onClick={() => selected.length > 2 && setSelected((prev) => prev.slice(0, 2))}
-              className={`rounded-2xl p-4 text-center border-2 transition-all active:scale-95 ${selected.length >= 2 && selected.length < 3 ? "border-[#E8B86D] bg-[#E8B86D]/10" : "border-gray-200 bg-white"}`}
-            >
-              <p className="text-xs font-black text-gray-400 mb-1">2 منتجات</p>
-              <p className="text-2xl font-black text-gray-900">{PRICE_2} <span className="text-sm">درهم</span></p>
-            </button>
-            <button
-              onClick={() => { setShowAll(true); setTimeout(() => productsRef.current?.children[0]?.children[2]?.scrollIntoView({ behavior: "smooth", block: "center" }), 50) }}
-              className={`rounded-2xl p-4 text-center border-2 transition-all active:scale-95 ${selected.length === 3 ? "border-[#E8B86D] bg-[#E8B86D]/10" : "border-gray-200 bg-white"}`}
-            >
-              <p className="text-xs font-black text-gray-400 mb-1">3 منتجات</p>
-              <p className="text-2xl font-black text-gray-900">{PRICE_3} <span className="text-sm">درهم</span></p>
-              <p className="text-[10px] text-[#C8962A] font-black">الأوفر!</p>
-            </button>
-          </div>
-
-          {/* Counter — sticky */}
-          <div className={`sticky top-0 z-30 rounded-2xl px-4 py-3 text-center border mb-5 transition-all shadow-md ${
-            canOrder ? "bg-[#E8B86D] border-[#E8B86D]" : "bg-gray-900 border-gray-900"
-          }`}>
-            {canOrder ? (
-              <p className="text-black font-black text-base">✔️ اخترتي: {selected.length} / {MAX_SELECT} — {total} درهم</p>
-            ) : (
-              <p className="text-white font-black text-base">⚠️ خاصك تختار على الأقل جوج منتجات</p>
-            )}
-          </div>
-        </div>
-
-        {/* Product cards */}
-        <section ref={productsRef} className="max-w-lg mx-auto px-4 pb-6">
-          <div className="flex flex-col gap-5">
-            {(showAll ? products : products.slice(0, 2)).map((product) => {
-              const isSelected = selected.includes(product.id)
-              const isMaxed = selected.length >= MAX_SELECT && !isSelected
-              return (
-                <div
-                  key={product.id}
-                  className={`relative rounded-2xl border-2 transition-all duration-200 overflow-hidden ${
-                    isSelected
-                      ? "border-[#E8B86D] shadow-lg shadow-[#E8B86D]/20"
-                      : "border-gray-200 shadow-sm"
-                  }`}
-                >
-                  {/* Image */}
-                  <div
-                    className="relative w-full h-72 bg-gray-900 overflow-hidden cursor-pointer"
-                    onClick={() => product.videoUrl && setActiveVideo(product.id)}
-                  >
-                    <Image
-                      src={product.image}
-                      alt={product.nameDarija}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 512px) 100vw, 512px"
-                      priority={product.id === products[0].id}
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-                    {/* Social proof badge top-left */}
-                    <span className="absolute top-3 left-3 bg-gray-900/80 backdrop-blur-sm text-white text-xs font-black px-3 py-1.5 rounded-full border border-white/10">
-                      {product.badge}
-                    </span>
-                    {isSelected && (
-                      <div className="absolute top-3 right-3 w-8 h-8 bg-[#E8B86D] rounded-full flex items-center justify-center shadow-lg">
-                        <Check className="w-4 h-4 text-black" strokeWidth={3} />
-                      </div>
-                    )}
-                    <div className="absolute bottom-0 right-0 left-0 p-4 text-right">
-                      <p className="text-white font-black text-xl leading-tight mb-1">{product.nameDarija}</p>
-                      <p className="text-[#E8B86D] font-bold text-sm mb-1">{product.tagline}</p>
-                      <p className="text-white/60 text-xs">{product.microCopy}</p>
-                    </div>
-                    {product.videoUrl && activeVideo !== product.id && (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-14 h-14 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center border border-white/20 btn-pulse">
-                          <svg className="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Video + stat — one dark block */}
-                  {product.videoUrl && (
-                    <div className="bg-gray-900">
-                      <LazyVideo src={product.videoUrl} active={activeVideo === product.id} onPlay={() => setActiveVideo(product.id)} />
-                      {/* Stat */}
-                      <div className="bg-gray-900 px-4 py-3 text-right">
-                        <p className="text-white font-black text-4xl leading-none">{product.statNumber}</p>
-                        <p className="text-gray-400 text-md font-semibold mt-1">{product.statLabel}</p>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Description + features — always visible */}
-                  <div className="bg-gray-900 border-t border-white/10">
-                    <div className="px-5 pb-5 pt-4 space-y-4">
-                      <p className="text-white text-base leading-loose font-medium">{product.descriptionDarija}</p>
-                      <div className="border-t border-white/10 pt-4 space-y-3">
-                        {product.featuresDarija.map((f, i) => (
-                          <div key={i} className="flex items-center gap-3">
-                            <div className="w-6 h-6 rounded-full bg-[#E8B86D] flex items-center justify-center shrink-0">
-                              <Check className="w-3.5 h-3.5 text-black" strokeWidth={3} />
-                            </div>
-                            <span className="text-white font-bold text-base">{f}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Select button */}
-                  <button
-                    onClick={() => toggle(product.id)}
-                    disabled={isMaxed}
-                    className={`w-full text-base font-black py-4 transition-all duration-200 active:scale-95 ${
-                      isSelected
-                        ? "bg-gray-900 text-[#E8B86D]"
-                        : isMaxed
-                        ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                        : "bg-[#E8B86D] text-black btn-pulse"
-                    }`}
-                  >
-                    {isSelected ? "✓ مختار — اضغط لإلغاء" : isMaxed ? "وصلتي للحد الأقصى" : "أضف هاد المنتج"}
-                  </button>
-                </div>
-              )
-            })}
-          </div>
-
-          {!showAll && (
-            <button
-              onClick={() => setShowAll(true)}
-              className="w-full mt-4 py-5 rounded-2xl bg-gray-900 text-white font-black text-lg active:scale-95 transition-all shadow-md flex flex-col items-center gap-1"
-            >
-              <span>🔄 بدّل منتج — شوف الباقي</span>
-              <span className="text-white/50 text-sm font-bold">{products.length - 2} منتجات إضافية متاحة</span>
-            </button>
-          )}
-        </section>
-
-        {/* ══ URGENCY ══ */}
-        <div className="max-w-lg mx-auto px-4 mb-6">
-          <div className="bg-red-50 border border-red-200 rounded-2xl p-4 text-center">
-            <p className="text-red-600 font-black text-lg">⏳ هاد العرض من Storecoma محدود جدا</p>
-            <p className="text-red-500 text-sm font-bold mt-1">نظرا للسطوك قليل — لا تفوّت الفرصة</p>
-          </div>
-        </div>
+      <div className="bg-gray-50 rounded-t-[2rem] relative z-10">
 
         {/* ══ ORDER FORM ══ */}
-        <section ref={formRef} className="max-w-lg mx-auto px-4 pb-8" id="order-form">
+        <section ref={formRef} className="max-w-lg mx-auto px-4 pt-8 pb-8" id="order-form">
           <div className="bg-white border-2 border-gray-200 rounded-3xl overflow-hidden shadow-lg">
 
             {/* Price banner */}
-            <div className={`p-5 text-center transition-all ${canOrder ? "bg-[#E8B86D]" : "bg-gray-900"}`}>
-              {canOrder ? (
-                <>
-                  <p className="text-black/70 text-sm font-bold mb-1">{selected.length} منتجات + توصيل مجاني</p>
-                  <p className="text-black font-black text-6xl leading-none">{total}</p>
-                  <p className="text-black/80 font-black text-xl">درهم فقط</p>
-                  <p className="text-black/70 text-sm font-black mt-1">💸 وفرتي أكثر من 90 درهم!</p>
-                  <p className="text-black/60 text-xs mt-2">ما خلّصتيش حتى توصلك الطلبية</p>
-                </>
-              ) : (
-                <>
-                  <p className="text-white font-black text-lg mb-1">📦 دير الطلب ديالك دابا</p>
-                  <p className="text-white/60 text-sm">عمّر المعلومات وغادي نتاصلوا بيك فأقرب وقت</p>
-                </>
-              )}
+            <div className="bg-[#E8B86D] p-5 text-center">
+              <p className="text-black/70 text-sm font-bold mb-1">3 منتجات + توصيل مجاني</p>
+              <p className="text-black font-black text-6xl leading-none">{PACK_PRICE}</p>
+              <p className="text-black/80 font-black text-xl">درهم فقط</p>
+              <p className="text-black/70 text-sm font-black mt-1">💸 وفرتي أكثر من 90 درهم!</p>
+              <p className="text-black/60 text-xs mt-2">ما خلّصتيش حتى توصلك الطلبية</p>
             </div>
 
             <div className="p-5">
-              {selected.length > 0 && (
-                <div className="bg-gray-50 border border-gray-200 rounded-2xl p-3 mb-4">
-                  <p className="text-gray-500 text-xs font-black mb-3">المنتجات اللي اخترتيها:</p>
-                  <div className="space-y-2">
-                    {selectedProducts.map((p) => (
-                      <div key={p.id} className="flex items-center gap-3">
-                        <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0">
-                          <Image src={p.image} alt={p.nameDarija} fill className="object-cover" />
-                        </div>
-                        <div className="text-right flex-1">
-                          <p className="text-gray-900 font-black text-sm">{p.nameDarija}</p>
-                          <p className="text-gray-400 text-xs">{p.tagline}</p>
-                        </div>
-                        <Check className="w-4 h-4 text-[#E8B86D] shrink-0" strokeWidth={3} />
+              {/* Pack products list */}
+              <div className="bg-gray-50 border border-gray-200 rounded-2xl p-3 mb-4">
+                <p className="text-gray-500 text-xs font-black mb-3">محتويات الباك:</p>
+                <div className="space-y-2">
+                  {packProducts.map((p) => (
+                    <div key={p.id} className="flex items-center gap-3">
+                      <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0">
+                        <Image src={p.image} alt={p.nameDarija} fill className="object-cover" />
                       </div>
-                    ))}
-                  </div>
+                      <div className="text-right flex-1">
+                        <p className="text-gray-900 font-black text-sm">{p.nameDarija}</p>
+                        <p className="text-gray-400 text-xs">{p.tagline}</p>
+                      </div>
+                      <Check className="w-4 h-4 text-[#E8B86D] shrink-0" strokeWidth={3} />
+                    </div>
+                  ))}
                 </div>
-              )}
+              </div>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <input type="text" name="website" tabIndex={-1} autoComplete="off" style={{ display: "none" }} onChange={(e) => setForm({ ...form, _hp: e.target.value })} />
@@ -426,9 +173,9 @@ export default function Page() {
 
                 <button
                   type="submit"
-                  disabled={!canOrder || loading}
-                  className={`w-full py-5 rounded-2xl font-black text-lg transition-all duration-200 active:scale-95 ${
-                    canOrder && !loading
+                  disabled={loading}
+                  className={`w-full py-5 rounded-2xl font-black text-lg transition-all duration-200 active:scale-95 btn-pulse ${
+                    !loading
                       ? "bg-[#E8B86D] text-black shadow-xl shadow-[#E8B86D]/40"
                       : "bg-gray-100 text-gray-400 cursor-not-allowed"
                   }`}
@@ -441,33 +188,12 @@ export default function Page() {
                       </svg>
                       جاري إرسال طلبيتك...
                     </span>
-                  ) : canOrder
-                    ? `طلب دابا وخلص عند الاستلام — ${total} درهم`
-                    : "اختار منتجاتك أولاً ⬆️"}
+                  ) : `🔥 طلب دابا وخلص عند الاستلام — ${PACK_PRICE} درهم`}
                 </button>
               </form>
             </div>
           </div>
         </section>
-
-        {/* ══ TRUST ══ */}
-        {/* <section className="max-w-lg mx-auto px-4 pb-8">
-          <h2 className="text-2xl font-black text-center text-gray-900 mb-4">علاش تختارنا؟</h2>
-          <div className="grid grid-cols-2 gap-3">
-            {[
-              { icon: <Wallet className="w-14 h-14" />, title: "الدفع عند الاستلام", sub: "ما خلّصتيش حتى تشوف وتفحص" },
-              { icon: <Truck className="w-14 h-14" />, title: "توصيل 24 — 48 ساعة", sub: "لجميع مدن المغرب مجاناً" },
-              { icon: <ShieldCheck className="w-14 h-14" />, title: "سيرفيس احترافي", sub: "فريق الدعم ديالنا مساند ليك فكل لحضة" },
-              { icon: <Star className="w-14 h-14" />, title: "إمكانية الاستبدال", sub: "إلا ماعجبكش كنبدلوه ليك" },
-            ].map((t, i) => (
-              <div key={i} className="bg-gray-900 rounded-2xl p-5 flex flex-col items-center text-center gap-3">
-                <div className="text-[#E8B86D]">{t.icon}</div>
-                <p className="text-white font-black text-xl leading-tight">{t.title}</p>
-                <p className="text-white/50 text-sm leading-snug">{t.sub}</p>
-              </div>
-            ))}
-          </div>
-        </section> */}
 
         {/* ══ WHY US COMPARISON ══ */}
         <section className="max-w-lg mx-auto px-4 pb-10">
@@ -477,7 +203,7 @@ export default function Page() {
           </div>
           <div className="space-y-3">
             {[
-              { feature: "السعر", others: "منتوج واحد بسعر غالي", us: "2-3 منتجات بسعر واحد، وفر على الأقل 90 درهم" },
+              { feature: "السعر", others: "منتوج واحد بسعر غالي", us: "3 منتجات بسعر واحد، وفر على الأقل 90 درهم" },
               { feature: "الجودة", others: "بلا ضمان على الجودة", us: "جودة مضمونة 100%" },
               { feature: "الضمان", others: "بلا ضمان", us: "ضمان شهر كامل" },
               { feature: "ما بعد البيع", others: "تشري وتمشي", us: "فريق دائم معاك" },
@@ -503,24 +229,6 @@ export default function Page() {
 
         {/* ══ REVIEWS ══ */}
         <section className="max-w-lg mx-auto px-4 pb-12">
-          {/* <h2 className="text-2xl font-black text-center text-gray-900 mb-5">آراء الزبناء</h2> */}
-          {/* <div className="space-y-3">
-            {[
-              { name: "ياسين", city: "الدار البيضاء", text: "وصلني الطلب ديالي فـ نهار واحد، جودة زوينة بزاف" },
-              { name: "سمية", city: "الرباط", text: "الباك مفيد بزاف خصوصا فالحر، الشمسية والمكنسة ماشي معقول" },
-              { name: "يونس", city: "فاس", text: "توصيل سريع والتعامل ناضي، كنصح بيه أي واحد عندو طوموبيل" },
-            ].map((r, i) => (
-              <div key={i} className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm text-right">
-                <div className="mb-3 flex gap-0.5 justify-end">
-                  {[1,2,3,4,5].map(s => <Star key={s} className="w-5 h-5 fill-[#E8B86D] text-[#E8B86D]" />)}
-                </div>
-                <p className="text-gray-800 text-base leading-loose mb-3">&ldquo;{r.text}&rdquo;</p>
-                <p className="text-gray-900 text-sm font-black">{r.name} — <span className="text-gray-400 font-normal">{r.city}</span></p>
-              </div>
-            ))}
-          </div> */}
-
-          {/* WhatsApp screenshots */}
           <div className="mt-4 space-y-3">
             <p className="text-center text-gray-400 text-sm font-bold">📲 رسائل حقيقية من الزبناء</p>
             {["/reviews/reviews-1.webp"].map((src, i) => (
@@ -530,7 +238,7 @@ export default function Page() {
           </div>
         </section>
 
-      </div>{/* end light content */}
+      </div>
 
       {/* ══ WHATSAPP FLOAT ══ */}
       <a
@@ -549,40 +257,12 @@ export default function Page() {
       {/* ══ STICKY BOTTOM BAR ══ */}
       {!formVisible && (
         <div className="fixed bottom-0 left-0 right-0 z-40 bg-gray-950 border-t border-white/10 px-4 py-3">
-          {canOrder ? (
-            <button
-              onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-              className="w-full bg-[#E8B86D] text-black font-black text-base py-4 rounded-2xl active:scale-95 transition-all shadow-xl shadow-[#E8B86D]/30"
-            >
-              🔥 طلب دابا وخلص عند الاستلام — {total} درهم
-            </button>
-          ) : (
-            <div className="flex items-center justify-between">
-              <div className="flex gap-2">
-                {[0, 1, 2].map((i) => (
-                  <div
-                    key={i}
-                    className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all ${
-                      i < selected.length
-                        ? "bg-[#E8B86D] border-[#E8B86D]"
-                        : "bg-white/5 border-white/20"
-                    }`}
-                  >
-                    {i < selected.length
-                      ? <Check className="w-5 h-5 text-black" strokeWidth={3} />
-                      : <span className="text-white/30 font-black text-sm">{i + 1}</span>
-                    }
-                  </div>
-                ))}
-              </div>
-              <div className="text-right">
-                <p className="text-white font-black text-base">{selected.length} / 3 منتجات</p>
-                <p className="text-white/40 text-xs">
-                  {selected.length === 0 ? "ختار على الأقل جوج" : selected.length === 1 ? "واحد ناقص — زيد ختار" : ""}
-                </p>
-              </div>
-            </div>
-          )}
+          <button
+            onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+            className="w-full bg-[#E8B86D] text-black font-black text-base py-4 rounded-2xl active:scale-95 transition-all shadow-xl shadow-[#E8B86D]/30"
+          >
+            🔥 طلب دابا وخلص عند الاستلام — {PACK_PRICE} درهم
+          </button>
         </div>
       )}
     </div>
