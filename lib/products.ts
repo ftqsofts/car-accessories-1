@@ -27,7 +27,7 @@ export const products: Product[] = [
     descriptionDarija:
       "هنّي راسك من الغبرة! مكنسة قوية وعملية كتجبد كاع الوسخ من القنات الصعاب. خفيفة، ساهلة، وديما واجدة تنقي طوموبيلتك فدقيقة بلا ما تمشي للافاج.",
     featuresDarija: [
-      "9000 باسكال — مش بحال الرخيصة اللي كتسخن فدقيقتين",
+      "9000 باسكال — ماشي بحال الرخيصة اللي كتسخن فجوج دقايق",
       "شفط قوي كيحيد الزغب والغبرة من أضيق القنات",
       "ريوس متعددة للبلايص الصعبة",
       "صغيرة وخفيفة — ماتاخدش بلاصة فالكوفر",
@@ -105,8 +105,8 @@ export const products: Product[] = [
       "تنظيف سريع بلا مجهود",
       "مناسب للاستعمال اليومي",
     ],
-    image: "/products/cleaner-4-in-1_v2.jpg",
-    videoUrl: "/products/vacuum-4in-1.mp4",
+    image: "/products/cleaner-3-in-1.jpg",
+    videoUrl: "/products/cleaner-3-in-1.mp4",
     categoryDarija: "تنظيف",
     statNumber: "9000",
     statLabel: "باسكال — قوة شفط عالية",
