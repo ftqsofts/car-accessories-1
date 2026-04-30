@@ -26,7 +26,7 @@ function GifVideo({ src }: { src: string }) {
   }, [loaded])
 
   return (
-    <div ref={containerRef} className="w-full bg-gray-100 h-[50vh]" style={{ overflow: "hidden", flexShrink: 0 }}>
+    <div ref={containerRef} className="w-full bg-gray-100 h-[60vh] min-h-[200px]" style={{ overflow: "hidden", flexShrink: 0 }}>
       {loaded && (
         <video
           ref={videoRef}
@@ -232,7 +232,7 @@ export default function CpaPage() {
         </div>
 
         {/* ══ ORDER FORM ══ */}
-        <section ref={formRef} className="max-w-lg mx-auto px-4 pb-8" id="order-form">
+        <section ref={formRef} className="max-w-lg mx-auto px-4 mb-28 pb-8" id="order-form">
           <div className="bg-white border-2 border-gray-200 rounded-3xl overflow-hidden shadow-lg">
 
             {/* Price banner */}
