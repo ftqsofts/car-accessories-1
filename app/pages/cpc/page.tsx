@@ -45,12 +45,12 @@ function GifVideo({ src }: { src: string }) {
 }
 
 const PACK_PRICE = 249
-const PACK_IDS = ["176TSC", "sun-door-protection", "sun-protection"]
-const packProducts = products.filter((p) => PACK_IDS.includes(p.id))
+const PACK_IDS = ["fast-charger", "phone-holder", "vacuum-3in1"]
+const packProducts = PACK_IDS.map((id) => products.find((p) => p.id === id)!)
 
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
 
-export default function CpbPage() {
+export default function CpcPage() {
   const router = useRouter()
   const [form, setForm] = useState<OrderForm>({ name: "", city: "", phone: "" })
   const [errors, setErrors] = useState<Partial<OrderForm>>({})
@@ -110,24 +110,22 @@ export default function CpbPage() {
         <div className="relative z-10 flex flex-col items-center text-center gap-5 w-full">
           <div className="hero-badge">
             <span className="bg-red-500 text-white text-sm font-black px-5 py-2 rounded-full">
-              ☀️ عرض خاص قبل الصيف!
+              ⚡ حوّل طوموبيلتك لسيارة ذكية!
             </span>
           </div>
 
           <h1 className="hero-title glow-title font-black leading-tight w-full" style={{ fontSize: "clamp(2.8rem, 13vw, 4.5rem)" }}>
-            باك حماية العائلة و السفر
+            باك السيارة الذكية
           </h1>
         </div>
-        
+
         {/* Pack image — inside hero */}
         <div className="relative w-screen overflow-hidden z-20" style={{ height: 320, borderRadius: 20 }}>
-          <Image src="/products/pack-a-4.png" alt="باك إكسسوارات السيارة" fill className="object-cover object-center" />
+          <Image src="/products/pack-a-4.png" alt="باك السيارة الذكية" fill className="object-cover object-center" />
         </div>
-        
+
         {/* Gradient transition dark → light */}
         <div className="absolute left-0 right-0 z-10 pointer-events-none" style={{ bottom: -1, height: 220, background: "linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.3) 40%, rgba(255,255,255,0.7) 65%, rgba(255,255,255,0.95) 85%, #ffffff 100%)" }} />
-        
-        
       </section>
 
       {/* ══ LIGHT CONTENT ══ */}
@@ -137,30 +135,30 @@ export default function CpbPage() {
         <div className="px-4 pt-8 pb-6">
           <div className="max-w-lg mx-auto">
             <div className="text-center mb-6">
-              <span className="inline-block bg-gray-900 text-[#E8B86D] text-xs font-black px-4 py-1.5 rounded-full mb-4">🥵 سفرة مع العائلة ولا عذاب فالطريق؟</span>
+              <span className="inline-block bg-gray-900 text-[#E8B86D] text-xs font-black px-4 py-1.5 rounded-full mb-4">⚡ واش طوموبيلتك لكلاها قديمة؟</span>
               <h2 className="text-3xl font-black text-gray-900 leading-tight">هاد المشاكل كتعرفها مزيان</h2>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {[
                 {
-                  emoji: "🔥",
-                  problem: "كتركن طوموبيلتك وملي كترجع الكراسا والطابلو شاعلين فيهم العافية",
-                  solution: "الواقي الأمامي كيعكس الشمس ويخلي الطوموبيل باردة حتى فالزنقة بلا ضل",
+                  emoji: "🔇",
+                  problem: "عندك طوموبيل ما عندهاش بلوتوث — وكتبغي تسمع موسيقى أو تجاوب مكالمة",
+                  solution: "جهاز البلوتوث كيوصل فثانية براديو طوموبيلتك — موسيقى، مكالمات، وشحن جوج هواتف فنفس الوقت",
                 },
                 {
-                  emoji: "😭",
-                  problem: "وليداتك اللور كيبكيو من شمس ضاربة ليهم فعينيهم طول الطريق",
-                  solution: "واقي النوافذ المغناطيسي كيحمي العائلة من الأشعة المضرة بصحتهم وكيخليهم ناعسين ومرتاحين",
+                  emoji: "📵",
+                  problem: "التيليفون ديما كيطيح فالدودان، وكتحتاج تمسكو بيدك وانت كاتسوق — خطر على حياتك",
+                  solution: "حامل مغناطيسي قوي كيشد التيليفون بحال الحجر — تبع الـ GPS وركز فطريقك بكل أمان",
                 },
                 {
-                  emoji: "🍪",
-                  problem: "فرتيت البسكتوي، رملة البحر، والغبرة معمرين الكراسا والزرابي",
-                  solution: "الاسبيراتور 4 فـ 1 كيجبد كلشي فالبلاصة — حتى تحت الكراسا وفأضيق القنات",
+                  emoji: "🤧",
+                  problem: "الغبرة والوسخ معمرين الكراسا والزرابي وكتحشم تركب معاك شي حد",
+                  solution: "اسبيراتور 3 فـ 1 خفيف وعملي كيجبد كلشي من أضيق البلايص فثواني — طوموبيلتك كتولي كتشعل",
                 },
                 {
                   emoji: "💸",
-                  problem: "تشريهم مفرقين غادي تخلص فوق  380 درهم فالسوق",
-                  solution: "الباك الشامل بـ 249 درهم — وفرتي 130 درهم فضربة وحدة",
+                  problem: "تشريهم مفرقين غادي تخلص فوق 350 درهم فالسوق",
+                  solution: "الباك الشامل بـ 249 درهم — وفرتي أكثر من 100 درهم فدقة وحدة",
                 },
               ].map((item, i) => (
                 <div key={i} className="px-5 py-5 bg-white rounded-2xl shadow-sm" style={{ borderRight: "4px solid #E8B86D" }}>
@@ -180,8 +178,8 @@ export default function CpbPage() {
         {/* ══ PACK CONTENTS INTRO ══ */}
         <div className="px-4 pt-4 pb-6 text-center">
           <span className="bg-[#E8B86D]/15 text-[#E8B86D] text-xs font-black px-4 py-1.5 rounded-full border border-[#E8B86D]/30">شنو كاين فالباك؟</span>
-          <h2 className="text-3xl font-black text-gray-900 mt-4 leading-tight">3 منتجات — راحة كاملة للعائلة</h2>
-          <p className="text-gray-500 mt-2 text-base leading-relaxed">جمعنا ليك كلشي باش تسافر وتصوق مرتاح بلا ما تقلق</p>
+          <h2 className="text-3xl font-black text-gray-900 mt-4 leading-tight">3 منتجات — تجربة قيادة عصرية</h2>
+          <p className="text-gray-500 mt-2 text-base leading-relaxed">كل منتج مختار باش طوموبيلتك تكون ذكية، آمنة، ونظيفة</p>
         </div>
 
         {/* ══ PRODUCT SECTIONS ══ */}
@@ -204,7 +202,7 @@ export default function CpbPage() {
                   <h3 className="text-gray-900 font-black text-xl leading-tight">{product.nameDarija}</h3>
                 </div>
 
-<div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                   {product.featuresDarija.map((f, fi) => (
                     <div key={fi} className="flex items-center gap-3">
                       <Check className="w-4 h-4 text-[#E8B86D] shrink-0" strokeWidth={3} />
@@ -219,8 +217,9 @@ export default function CpbPage() {
 
         {/* ══ URGENCY ══ */}
         <div className="px-4 pb-6">
-          <div className="max-w-lg mx-auto rounded-2xl p-4 text-center bg-orange-50" style={{ border: "1px solid #fed7aa" }}>
-            <p className="text-orange-700 font-black text-lg">⏳ هاد العرض محدود!</p>
+          <div className="max-w-lg mx-auto rounded-2xl p-4 text-center bg-red-100">
+            <p className="text-red-600 font-black text-lg">⏳ هاد العرض من Storecoma محدود جدا</p>
+            <p className="text-red-500 text-sm font-bold mt-1">نظرا للسطوك قليل — لا تفوّت الفرصة</p>
           </div>
         </div>
 
@@ -242,7 +241,7 @@ export default function CpbPage() {
               <p className="text-black/70 text-sm font-bold mb-1">3 منتجات + توصيل مجاني</p>
               <p className="text-black font-black text-6xl leading-none">{PACK_PRICE}</p>
               <p className="text-black/80 font-black text-xl">درهم فقط</p>
-              <p className="text-black/70 text-sm font-black mt-1">💸 وفرتي أكثر من 115 درهم!</p>
+              <p className="text-black/70 text-sm font-black mt-1">💸 وفرتي أكثر من 100 درهم!</p>
               <p className="text-black/60 text-xs mt-2">ما خلّصتيش حتى توصلك الطلبية</p>
             </div>
 
@@ -386,7 +385,7 @@ export default function CpbPage() {
             className="w-full bg-[#E8B86D] text-black font-black text-base py-4 rounded-2xl active:scale-95 transition-all"
             style={{ boxShadow: "0 8px 32px #E8B86D44" }}
           >
-            ☀️ طلب باك العائلة — {PACK_PRICE} درهم
+            ⚡ طلب باك السيارة الذكية — {PACK_PRICE} درهم
           </button>
         </div>
       )}

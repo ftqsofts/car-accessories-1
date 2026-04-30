@@ -247,7 +247,7 @@ export default function CpaPage() {
           <div className="bg-white border-2 border-gray-200 rounded-3xl overflow-hidden shadow-lg">
 
             {/* Price banner */}
-            <div className="bg-[#E8B86D] p-5 text-center">
+            <div className="bg-[#ecc78a] p-5 text-center">
               <p className="text-black/70 text-sm font-bold mb-1">3 منتجات + توصيل مجاني</p>
               <p className="text-black font-black text-6xl leading-none">{PACK_PRICE}</p>
               <p className="text-black/80 font-black text-xl">درهم فقط</p>
