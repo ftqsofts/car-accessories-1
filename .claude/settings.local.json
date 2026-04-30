@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(npm run *)",
-      "Bash(curl -s http://localhost:3000)"
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(npx tailwindcss *)",
+      "Bash(node_modules/.bin/tailwindcss --input app/globals.css --output /tmp/tw-check.css)"
     ]
   }
 }
