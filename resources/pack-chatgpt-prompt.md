@@ -1,16 +1,22 @@
-Act as a professional product photographer for a premium tech brand. Generate a high-end product bundle shot (packshot) of three car accessories on a solid, pure white background (#FFFFFF).
+Act as a premium product photographer. Generate a high-end, compact product bundle shot of three car accessories on a pure transparent background.
 
-LIGHTING & GLOW EFFECT:
+COMPOSITION RULES (CRITICAL):
 
-- Apply a soft, elegant white rim light (white glow) around the edges of all products to make them look premium and pop against the white background.
-- Use diffused studio lighting to create realistic reflections on the metallic and plastic surfaces.
-- Subtle, soft professional drop shadows on the floor to ground the items.
+- TIGHT GROUPING: The products must be grouped very closely together, overlapping slightly to look like a single "Smart Kit" bundle.
+- NO SMALL DETAILS: Do NOT show the small vacuum nozzles, brushes, or loose USB cables. Show only the three main units.
+- CENTER FOCUS: The "Smart MP3 Car Charger" (fast-charger_v2.jpg) must be the prominent middle product, slightly in front of the others to catch the most light.
 
-PRODUCT ARRANGEMENT:
+LIGHTING & STYLE:
 
-1. CENTER: The dark green handheld vacuum cleaner from "cleaner-4-in-1_v2.jpg" standing vertically. Its black nozzles and USB cable should be neatly organized in a small row in front of it.
-2. LEFT SIDE: The black C1 MP3 Car Charger from "charger-c1.jpg" positioned at an angle to show the buttons and the digital display clearly.
-3. RIGHT SIDE: The premium black magnetic phone mount from "magnetic-mount.jpg", standing tall in its fully extended position to show its high-tech design.
+- Apply a clean, soft white "halo" glow around the edges of the bundle to make it pop.
+- Use professional studio rim lighting to highlight the textures of the black plastic and the green vacuum body.
+- Very soft, natural drop shadows only where the products touch the white floor.
+
+PRODUCT PLACEMENT:
+
+1. CENTER (Front): The black C1 MP3 Car Charger (fast-charger_v2.jpg) angled slightly toward the camera to show the digital display and the green call button.
+2. LEFT (Tucked Behind): The dark green vacuum cleaner (cleaner-4-in-1_v2_2.jpg) standing vertically, partially overlapped by the charger.
+3. RIGHT (Tucked Behind): The premium magnetic phone mount (Sc75379b014aa4698917cbdfaab226b50H.jpg) in a sleek, folded or low-profile position, completing the triangle shape of the bundle.
 
 FINAL QUALITY:
-8k resolution, photorealistic, sharp focus on textures. The background must remain 100% pure white. NO car interiors, NO text, NO labels.
+8k resolution, photorealistic, ultra-clean aesthetic. Zero text, zero labels, zero extra parts. Just the 3 main units as a compact "Smart Pack."

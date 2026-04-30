@@ -45,7 +45,7 @@ function GifVideo({ src }: { src: string }) {
 }
 
 const PACK_PRICE = 249
-const PACK_IDS = ["176TSC", "sun-door-protection", "sun-protection"]
+const PACK_IDS = ["sun-door-protection", "sun-protection", "176TSC"]
 const packProducts = products.filter((p) => PACK_IDS.includes(p.id))
 
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
@@ -97,7 +97,7 @@ export default function CpbPage() {
     <div className="min-h-screen bg-white text-gray-900" dir="rtl">
 
       {/* ══ HERO — dark ══ */}
-      <section className="relative min-h-[90vh] flex flex-col items-center justify-between px-6 pb-0 overflow-hidden" style={{ backgroundColor: "#030712" }}>
+      <section className="relative min-h-[88vh] flex flex-col items-center justify-between px-6 pb-0 overflow-hidden" style={{ backgroundColor: "#030712" }}>
         <Image src="/products/car-accessories-cover-3.webp" alt="" fill className="object-cover object-center" priority />
         <div className="absolute inset-0 bg-gray-950/78" />
 
@@ -120,7 +120,7 @@ export default function CpbPage() {
         </div>
         
         {/* Pack image — inside hero */}
-        <div className="relative w-screen overflow-hidden z-20" style={{ height: 320, borderRadius: 20 }}>
+        <div className="relative w-screen overflow-hidden z-20" style={{ height: 290, borderRadius: 20 }}>
           <Image src="/products/pack-b.png" alt="باك إكسسوارات السيارة" fill className="object-cover object-center" />
         </div>
         
@@ -153,9 +153,9 @@ export default function CpbPage() {
                   solution: "واقي النوافذ المغناطيسي كيحمي العائلة من الأشعة المضرة بصحتهم وكيخليهم ناعسين ومرتاحين",
                 },
                 {
-                  emoji: "🍪",
-                  problem: "فرتيت البسكتوي، رملة البحر، والغبرة معمرين الكراسا والزرابي",
-                  solution: "الاسبيراتور 4 فـ 1 كيجبد كلشي فالبلاصة — حتى تحت الكراسا وفأضيق القنات",
+                  emoji: "🤧",
+                  problem: "كتحشم تركب معاك شي حد حيت الطوموبيل ديما عامرة غبرة فكل قنت؟",
+                  solution: "الاسبيراتور 4 فـ 1 قوي بزاف، كيجبد أصعب الأوساخ من أضيق البلايص فثواني باش تبقى طوموبيلتك ديما نقية كتشعل.",
                 },
                 {
                   emoji: "💸",
