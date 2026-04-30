@@ -121,7 +121,7 @@ export default function CpbPage() {
         
         {/* Pack image — inside hero */}
         <div className="relative w-screen overflow-hidden z-20" style={{ height: 320, borderRadius: 20 }}>
-          <Image src="/products/pack-a-4.png" alt="باك إكسسوارات السيارة" fill className="object-cover object-center" />
+          <Image src="/products/pack-b.png" alt="باك إكسسوارات السيارة" fill className="object-cover object-center" />
         </div>
         
         {/* Gradient transition dark → light */}
