@@ -96,7 +96,7 @@ export default function CpaPage() {
     <div className="min-h-screen bg-white text-gray-900" dir="rtl">
 
       {/* ══ HERO — dark ══ */}
-      <section className="relative min-h-[80vh] flex flex-col items-center justify-between px-6 pb-0 overflow-hidden" style={{ backgroundColor: "#030712" }}>
+      <section className="relative min-h-[90vh] flex flex-col items-center justify-between px-6 pb-0 overflow-hidden" style={{ backgroundColor: "#030712" }}>
         <Image src="/products/car-accessories-cover-3.webp" alt="" fill className="object-cover object-center" priority />
         <div className="absolute inset-0 bg-gray-950/78" />
 
