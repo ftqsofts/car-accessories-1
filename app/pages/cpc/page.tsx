@@ -88,7 +88,7 @@ export default function CpcPage() {
     }).catch(() => null)
     const params = new URLSearchParams({
       name: form.name, phone: form.phone, city: form.city,
-      skus, qty: "3", total: String(PACK_PRICE),
+      skus, qty: "3", total: String(PACK_PRICE), pack: "cpc",
     })
     router.push(`/thank-you?${params}`)
   }

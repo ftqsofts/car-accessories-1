@@ -15,7 +15,39 @@ export type Product = {
   microCopy: string
 }
 
+export type Pack = {
+  id: string
+  nameDarija: string
+  descriptionDarija: string
+  price: number
+  productIds: string[]
+}
+
 export const PACK_SHIPPING_FEE = 120
+
+export const packs: Pack[] = [
+  {
+    id: "cpa",
+    nameDarija: "باك الذكاء — Pack Premium",
+    descriptionDarija: "باك كامل ديال التكنولوجيا: اسبيراتور قوي، حامل هاتف مغناطيسي، وشاحن 4 في 1 بإضاءة نجوم",
+    price: 275,
+    productIds: ["176TSC", "phone-holder", "4-in-1-retractable-charger"]
+  },
+  {
+    id: "cpb",
+    nameDarija: "باك الحماية — Pack Protection",
+    descriptionDarija: "باك الحماية الكاملة: اسبيراتور قوي، مظلة حماية الطابلو، وواقي شمس للنوافذ",
+    price: 249,
+    productIds: ["sun-door-protection", "sun-protection", "176TSC"]
+  },
+  {
+    id: "cpc",
+    nameDarija: "باك الأساسي — Pack Essentiel",
+    descriptionDarija: "باك أساسي ومتكامل: بلوتوث ذكي، حامل هاتف مغناطيسي، واسبيراتور 3 في 1",
+    price: 249,
+    productIds: ["fast-charger", "phone-holder", "vacuum-3in1"]
+  }
+]
 
 export const products: Product[] = [
   // ── PRE-SELECTED 3 ──
@@ -130,7 +162,7 @@ export const products: Product[] = [
       "شحن جوج هواتف فنفس الوقت",
       "شاشة كتبين باطري الطوموبيل — تعرف وقتاش دير الكاربور",
     ],
-    image: "/products/fast-charger_v2.jpg",
+    image: "/products/fast-charger.webp",
     videoUrl: "/products/smart-car-kit-2.mp4",
     categoryDarija: "إلكترونيات",
     statNumber: "5.0",
