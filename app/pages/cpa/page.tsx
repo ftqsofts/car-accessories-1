@@ -26,7 +26,7 @@ function GifVideo({ src }: { src: string }) {
   }, [loaded])
 
   return (
-    <div ref={containerRef} className="w-full bg-gray-100" style={{ height: 600, overflow: "hidden", flexShrink: 0 }}>
+    <div ref={containerRef} className="w-full bg-gray-100 h-[50vh]" style={{ overflow: "hidden", flexShrink: 0 }}>
       {loaded && (
         <video
           ref={videoRef}
