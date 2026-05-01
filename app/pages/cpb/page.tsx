@@ -46,7 +46,7 @@ function GifVideo({ src }: { src: string }) {
 
 const PACK_PRICE = 249
 const PACK_IDS = ["sun-door-protection", "sun-protection", "176TSC"]
-const packProducts = products.filter((p) => PACK_IDS.includes(p.id))
+const packProducts = PACK_IDS.map((id) => products.find((p) => p.id === id)!)
 
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
 
