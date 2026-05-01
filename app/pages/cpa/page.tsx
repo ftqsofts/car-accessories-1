@@ -144,7 +144,7 @@ export default function CpaPage() {
             <h2 className="text-3xl font-black text-gray-900 leading-tight"><span className="text-red-600">كل واحد عندو</span> طوموبيل محتاج هاد الباك</h2>
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <Image src="/products/pain-points-pack-a.webp" alt="مشاكل السيارة" className="w-full h-auto" width={400} height={300} />
+          <Image src="/products/pain-points-pack-a.webp" alt="مشاكل السيارة" className="w-full rounded-[40px] h-auto" width={400} height={300} />
         </div>
 
         {/* ══ PACK CONTENTS INTRO ══ */}
