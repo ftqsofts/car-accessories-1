@@ -2,7 +2,7 @@
 
 import TrustBadges from "@/components/TrustBadges"
 import { products } from "@/lib/products"
-import { Baby, Check, Flame, Wind } from "lucide-react"
+import { Check } from "lucide-react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
@@ -140,37 +140,15 @@ export default function CpbPage() {
               <span className="inline-block bg-gray-900 text-[#E8B86D] text-xs font-black px-4 py-1.5 rounded-full mb-4">🥵 سفرة مع العائلة ولا عذاب فالطريق؟</span>
               <h2 className="text-3xl font-black text-gray-900 leading-tight">هاد المشاكل كتعرفها مزيان</h2>
             </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {[
-                {
-                  icon: <Flame className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />,
-                  problem: "كتركن طوموبيلتك وملي كترجع الكراسا والطابلو شاعلين فيهم العافية",
-                  solution: "الواقي الأمامي كيعكس الشمس ويخلي الطوموبيل باردة حتى فالزنقة بلا ضل",
-                },
-                {
-                  icon: <Baby className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />,
-                  problem: "وليداتك اللور كيبكيو من شمس ضاربة ليهم فعينيهم طول الطريق",
-                  solution: "واقي النوافذ المغناطيسي كيحمي العائلة من الأشعة المضرة بصحتهم وكيخليهم ناعسين ومرتاحين",
-                },
-                {
-                  icon: <Wind className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />,
-                  problem: "كتحشم تركب معاك شي حد حيت الطوموبيل ديما عامرة غبرة فكل قنت؟",
-                  solution: "الاسبيراتور 4 فـ 1 قوي بزاف، كيجبد أصعب الأوساخ من أضيق البلايص فثواني باش تبقى طوموبيلتك ديما نقية كتشعل.",
-                },
-                // {
-                //   icon: <Banknote className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />,
-                //   problem: "تشريهم مفرقين غادي تخلص فوق 350 درهم فالسوق",
-                //   solution: "الباك الكامل بـ 219 درهم فقط — وفرتي 130 درهم فضربة وحدة",
-                // },
-              ].map((item, i) => (
-                <div key={i} className="px-5 py-5 bg-white rounded-2xl shadow-sm" style={{ borderRight: "4px solid #e86d6d" }}>
-                  <div className="flex items-start gap-3">
-                    {item.icon}
-                    <div>
-                      <p className="text-gray-900 font-black text-lg leading-tight mb-2">{item.problem}</p>
-                      <p className="text-gray-600 text-base leading-snug">✅ {item.solution}</p>
-                    </div>
-                  </div>
+                "كتركن طوموبيلتك ساعة، ترجع الكراسا والطابلو شاعلين بحال الفران",
+                "فالسفر وليداتك اللور كيبكيو، الشمس ضاربة فعينيهم الطريق كاملة",
+                "كتحشم تركب معاك شي حد حيت الطوموبيل ديما عامرة غبرة فكل قنت؟",
+              ].map((problem, i) => (
+                <div key={i} className="px-6 py-7 bg-white rounded-2xl shadow-sm" style={{ border: "1px solid #f3f4f6", borderRight: "4px solid #ef4444" }}>
+                  <span className="block font-black text-red-500 mb-3" style={{ fontSize: "clamp(2.5rem, 10vw, 3.5rem)", lineHeight: 1 }}>{i + 1}</span>
+                  <p className="text-gray-900 font-black leading-snug" style={{ fontSize: "clamp(1.1rem, 5vw, 1.35rem)" }}>{problem}</p>
                 </div>
               ))}
             </div>
