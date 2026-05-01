@@ -140,28 +140,24 @@ export default function CpaPage() {
       <div className="bg-white">
 
         {/* ══ PAIN SECTION ══ */}
-        <div className="pt-6 pb-8">
+        <div className="pt-6 pb-8 mt-12">
           <div className="text-center mb-6 px-4">
-            <span className="inline-block bg-gray-900 text-[#E8B86D] text-xs font-black px-4 py-1.5 rounded-full mb-4 tracking-wide">🚨 واش هاد المشاكل تعرفها؟</span>
+            {/* <span className="inline-block bg-gray-900 text-[#E8B86D] text-xs font-black px-4 py-1.5 rounded-full mb-4 tracking-wide">🚨 واش هاد المشاكل تعرفها؟</span> */}
             <h2 className="text-3xl font-black text-gray-900 leading-tight"><span className="text-red-600">كل واحد عندو</span> طوموبيل محتاج هاد الباك</h2>
           </div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <Image src="/products/pain-points-pack-a.webp" alt="مشاكل السيارة" className="w-full rounded-[40px] h-auto" width={400} height={300} />
+          {/* <Image src="/products/pain-points-pack-a.webp" alt="مشاكل السيارة" className="w-full rounded-[40px] h-auto" width={400} height={300} /> */}
         </div>
 
-        {/* ══ PACK CONTENTS INTRO ══ */}
         <div className="px-4 pt-4 pb-6 text-center">
           <span className="bg-[#E8B86D]/15 text-[#E8B86D] text-xs font-black px-4 py-1.5 rounded-full border border-[#E8B86D]/30">شنو كاين فالباك؟</span>
           <h2 className="text-3xl font-black text-gray-900 mt-4 leading-tight">3 منتجات — حل كامل لطوموبيلتك</h2>
           <p className="text-gray-500 mt-2 text-base leading-relaxed">كل منتج مختار بعناية باش تكون سيارتك نظيفة، منظمة، وآمنة</p>
         </div>
 
-        {/* ══ PRODUCT SECTIONS ══ */}
         <div className="px-4 pb-6" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
           {packProducts.map((product, i) => (
             <div key={product.id} className="rounded-3xl overflow-hidden bg-white border border-gray-200 shadow-sm">
 
-              {/* Autoplay video — acts as GIF */}
               {product.videoUrl
                 ? <GifVideo src={product.videoUrl} />
                 : <div className="w-full bg-gray-100" style={{ height: 260, overflow: "hidden" }}>
@@ -171,7 +167,6 @@ export default function CpaPage() {
                   </div>
               }
 
-              {/* Name + features */}
               <div className="px-5 py-5">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-6 h-6 rounded-full bg-[#E8B86D] flex items-center justify-center shrink-0">

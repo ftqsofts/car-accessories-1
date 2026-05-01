@@ -134,7 +134,7 @@ export default function CpbPage() {
       <div className="bg-white">
 
         {/* ══ PAIN SECTION ══ */}
-        <div className="px-4 pt-8 pb-6">
+        <div className="px-4 pt-8 hidden pb-6">
           <div className="max-w-lg mx-auto">
             <div className="text-center mb-6">
               <span className="inline-block bg-gray-900 text-[#E8B86D] text-xs font-black px-4 py-1.5 rounded-full mb-4">🥵 سفرة مع العائلة ولا عذاب فالطريق؟</span>
