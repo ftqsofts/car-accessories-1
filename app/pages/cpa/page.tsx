@@ -44,7 +44,7 @@ function GifVideo({ src }: { src: string }) {
   )
 }
 
-const PACK_PRICE = 275
+const PACK_PRICE = 219
 const PACK_IDS = ["176TSC", "phone-holder", "4-in-1-retractable-charger"]
 const packProducts = PACK_IDS.map((id) => products.find((p) => p.id === id)!)
 
