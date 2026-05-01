@@ -137,44 +137,23 @@ export default function CpaPage() {
       {/* ══ LIGHT CONTENT ══ */}
       <div className="bg-white">
 
-        {/* ══ WHY THIS PACK ══ */}
+        {/* ══ PAIN SECTION ══ */}
         <div className="px-4 pt-6 pb-8">
           <div className="max-w-lg mx-auto">
             <div className="text-center mb-6">
               <span className="inline-block bg-gray-900 text-[#E8B86D] text-xs font-black px-4 py-1.5 rounded-full mb-4 tracking-wide">🚨 واش هاد المشاكل تعرفها؟</span>
               <h2 className="text-3xl font-black text-gray-900 leading-tight">كل واحد عندو طوموبيل محتاج هاد الباك</h2>
             </div>
-           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {[
-                {
-                  emoji: "🤧",
-                  problem: "كتحشم تركب معاك شي حد حيت الطوموبيل ديما عامرة غبرة فكل قنت؟",
-                  solution: "الاسبيراتور 4 فـ 1 قوي بزاف، كيجبد أصعب الأوساخ من أضيق البلايص فثواني باش تبقى طوموبيلتك ديما نقية كتشعل.",
-                },
-                {
-                  emoji: "🔌",
-                  problem: "عييتي من روينة الكابليات مخبلين، والتيليفون ديما كيطفى ليك فالطريق؟",
-                  solution: "شارجور 4 فـ 1 كيشحن 4 أجهزة فدقة بشحن سريع، مع إضاءة نجوم كتعطي منظر فخم لسيارتك بالليل.",
-                },
-                {
-                  emoji: "📵",
-                  problem: "التيليفون ديما كيطيح ليك فالدودان، والسياقة بيد وحدة مغامرة بحياتك؟",
-                  solution: "سيبورة مغناطيسية كتشد التيليفون بحال الحجر.. تبع الـ GPS وركز فطريقك بكل راحة وأمان.",
-                },
-                {
-                  emoji: "💸",
-                  problem: "تضيع فلوسك وتشري هاد المنتجات مفرقة بأكثر من 390 درهم فالسوق؟",
-                  solution: "خوذ الباك الشامل بـ 275 درهم فقط! وفرتي 115 درهم فدقة وحدة وهنيتي راسك من مشاكل الطوموبيل.",
-                },
-              ].map((item, i) => (
-                <div key={i} className="px-5 py-5 bg-white rounded-2xl shadow-sm" style={{ borderRight: "4px solid #E8B86D" }}>
-                  <div className="flex items-start gap-3">
-                    <span className="text-2xl shrink-0">{item.emoji}</span>
-                    <div>
-                      <p className="text-gray-900 font-black text-base leading-tight mb-2">{item.problem}</p>
-                      <p className="text-gray-600 text-sm leading-snug">✅ {item.solution}</p>
-                    </div>
-                  </div>
+                "كتحشم تركب معاك شي حد — الطوموبيل ديما عامرة غبرة فكل قنت",
+                "عييتي من روينة الكابليات — والتيليفون ديما كيطفى فالطريق",
+                "التيليفون كيطيح فالدودان — والسياقة بيد وحدة مغامرة بحياتك",
+                // "تشري هاد المنتجات مفرقين — غادي تخلص فوق 390 درهم فالسوق",
+              ].map((problem, i) => (
+                <div key={i} className="px-6 py-7 bg-white rounded-2xl shadow-sm" style={{ border: "1px solid #f3f4f6", borderRight: "4px solid #ef4444" }}>
+                  <span className="block font-black text-red-500 mb-3" style={{ fontSize: "clamp(2.5rem, 10vw, 3.5rem)", lineHeight: 1 }}>{i + 1}</span>
+                  <p className="text-gray-900 font-black leading-snug" style={{ fontSize: "clamp(1.1rem, 5vw, 1.35rem)" }}>{problem}</p>
                 </div>
               ))}
             </div>
