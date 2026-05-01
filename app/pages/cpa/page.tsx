@@ -115,8 +115,9 @@ export default function CpaPage() {
           </div>
 
           <h1 className="hero-title glow-title font-black leading-tight w-full" style={{ fontSize: "clamp(2.8rem, 13vw, 4.5rem)" }}>
-            باك إكسسوارات السيارة
+            العناية الحقيقية لطوموبيلتك
           </h1>
+          <p className="text-white font-bold text-xl">تهلا فطوموبيلك بأحسن ثمن</p>
         </div>
         
         {/* Pack image — inside hero */}
