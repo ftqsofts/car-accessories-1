@@ -138,26 +138,13 @@ export default function CpaPage() {
       <div className="bg-white">
 
         {/* ══ PAIN SECTION ══ */}
-        <div className="px-4 pt-6 pb-8">
-          <div className="max-w-lg mx-auto">
-            <div className="text-center mb-6">
-              <span className="inline-block bg-gray-900 text-[#E8B86D] text-xs font-black px-4 py-1.5 rounded-full mb-4 tracking-wide">🚨 واش هاد المشاكل تعرفها؟</span>
-              <h2 className="text-3xl font-black text-gray-900 leading-tight">كل واحد عندو طوموبيل محتاج هاد الباك</h2>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-              {[
-                "كتحشم تركب معاك شي حد — الطوموبيل ديما عامرة غبرة فكل قنت",
-                "عييتي من روينة الكابليات — والتيليفون ديما كيطفى فالطريق",
-                "التيليفون كيطيح فالدودان — والسياقة بيد وحدة مغامرة بحياتك",
-                // "تشري هاد المنتجات مفرقين — غادي تخلص فوق 390 درهم فالسوق",
-              ].map((problem, i) => (
-                <div key={i} className="px-6 py-7 bg-white rounded-2xl shadow-sm" style={{ border: "1px solid #f3f4f6", borderRight: "4px solid #ef4444" }}>
-                  <span className="block font-black text-red-500 mb-3" style={{ fontSize: "clamp(2.5rem, 10vw, 3.5rem)", lineHeight: 1 }}>{i + 1}</span>
-                  <p className="text-gray-900 font-black leading-snug" style={{ fontSize: "clamp(1.1rem, 5vw, 1.35rem)" }}>{problem}</p>
-                </div>
-              ))}
-            </div>
+        <div className="pt-6 pb-8">
+          <div className="text-center mb-6 px-4">
+            <span className="inline-block bg-gray-900 text-[#E8B86D] text-xs font-black px-4 py-1.5 rounded-full mb-4 tracking-wide">🚨 واش هاد المشاكل تعرفها؟</span>
+            <h2 className="text-3xl font-black text-gray-900 leading-tight">كل واحد عندو طوموبيل محتاج هاد الباك</h2>
           </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/products/pain-points-pack-a.png" alt="مشاكل السيارة" className="w-full h-auto" />
         </div>
 
         {/* ══ PACK CONTENTS INTRO ══ */}
