@@ -273,7 +273,7 @@ export default function CpaPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-5 rounded-2xl font-black text-lg transition-all duration-200 active:scale-95 bg-[#E8B86D] text-black shadow-xl shadow-[#E8B86D]/30"
+                  className="w-full py-5 rounded-2xl font-black text-md transition-all duration-200 active:scale-95 bg-[#E8B86D] text-black shadow-xl shadow-[#E8B86D]/30"
                 >
                   {loading ? (
                     <span className="flex items-center justify-center gap-2">
