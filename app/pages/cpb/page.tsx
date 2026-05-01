@@ -44,7 +44,7 @@ function GifVideo({ src }: { src: string }) {
   )
 }
 
-const PACK_PRICE = 229
+const PACK_PRICE = 245
 const PACK_IDS = ["sun-door-protection", "sun-protection", "176TSC"]
 const packProducts = PACK_IDS.map((id) => products.find((p) => p.id === id)!)
 
@@ -115,7 +115,7 @@ export default function CpbPage() {
           </div>
 
           <h1 className="hero-title glow-title font-black leading-tight w-full" style={{ fontSize: "clamp(2.8rem, 13vw, 4.5rem)" }}>
-            باك حماية العائلة و السفر
+           الباك لي غيهنيك نتا وعائلتك
           </h1>
         </div>
         
@@ -159,7 +159,7 @@ export default function CpbPage() {
         <div className="px-4 pt-4 pb-6 text-center">
           <span className="bg-[#E8B86D]/15 text-[#E8B86D] text-xs font-black px-4 py-1.5 rounded-full border border-[#E8B86D]/30">شنو كاين فالباك؟</span>
           <h2 className="text-3xl font-black text-gray-900 mt-4 leading-tight">3 منتجات — راحة كاملة للعائلة</h2>
-          <p className="text-gray-500 mt-2 text-base leading-relaxed">جمعنا ليك كلشي باش تسافر وتصوق مرتاح بلا ما تقلق</p>
+          <p className="text-gray-500 mt-2 text-base leading-relaxed">جمعنا ليك كلشي باش تسافر وتصوق مرتاح</p>
         </div>
 
         {/* ══ PRODUCT SECTIONS ══ */}
