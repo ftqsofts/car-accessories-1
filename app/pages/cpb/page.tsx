@@ -44,7 +44,7 @@ function GifVideo({ src }: { src: string }) {
   )
 }
 
-const PACK_PRICE = 249
+const PACK_PRICE = 219
 const PACK_IDS = ["sun-door-protection", "sun-protection", "176TSC"]
 const packProducts = PACK_IDS.map((id) => products.find((p) => p.id === id)!)
 
@@ -157,11 +157,11 @@ export default function CpbPage() {
                   problem: "كتحشم تركب معاك شي حد حيت الطوموبيل ديما عامرة غبرة فكل قنت؟",
                   solution: "الاسبيراتور 4 فـ 1 قوي بزاف، كيجبد أصعب الأوساخ من أضيق البلايص فثواني باش تبقى طوموبيلتك ديما نقية كتشعل.",
                 },
-                {
-                  emoji: "💸",
-                  problem: "تشريهم مفرقين غادي تخلص فوق  380 درهم فالسوق",
-                  solution: "الباك الشامل بـ 249 درهم — وفرتي 130 درهم فضربة وحدة",
-                },
+                // {
+                //   emoji: "💸",
+                //   problem: "تشريهم مفرقين غادي تخلص فوق  380 درهم فالسوق",
+                //   solution: "الباك الشامل بـ 249 درهم — وفرتي 130 درهم فضربة وحدة",
+                // },
               ].map((item, i) => (
                 <div key={i} className="px-5 py-5 bg-white rounded-2xl shadow-sm" style={{ borderRight: "4px solid #E8B86D" }}>
                   <div className="flex items-start gap-3">
