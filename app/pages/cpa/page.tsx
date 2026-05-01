@@ -120,8 +120,8 @@ export default function CpaPage() {
         </div>
         
         {/* Pack image — inside hero */}
-        <div className="relative w-screen overflow-hidden z-20" style={{ height: 320, borderRadius: 20 }}>
-          <Image src="/products/pack-a-4.png" alt="باك إكسسوارات السيارة" fill className="object-cover object-center" />
+        <div className="relative w-screen overflow-hidden z-20" style={{ height: 280, borderRadius: 20 }}>
+          <Image src="/products/pack-a-7.webp" alt="باك إكسسوارات السيارة" fill className="object-cover object-center" />
         </div>
         
         {/* Gradient transition dark → light */}

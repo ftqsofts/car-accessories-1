@@ -44,7 +44,7 @@ function GifVideo({ src }: { src: string }) {
   )
 }
 
-const PACK_PRICE = 219
+const PACK_PRICE = 229
 const PACK_IDS = ["sun-door-protection", "sun-protection", "176TSC"]
 const packProducts = PACK_IDS.map((id) => products.find((p) => p.id === id)!)
 
@@ -220,7 +220,7 @@ export default function CpbPage() {
               <p className="text-black/70 text-sm font-bold mb-1">3 منتجات + توصيل مجاني</p>
               <div className="flex items-center justify-center gap-3 mb-1">
                 <span className="text-black/40 text-2xl font-black line-through">349 درهم</span>
-                <span className="bg-red-500 text-white text-xs font-black px-2 py-1 rounded-full">-37%</span>
+                <span className="bg-red-500 text-white text-xs font-black px-2 py-1 rounded-full">-35%</span>
               </div>
               <p className="text-black font-black text-6xl leading-none">{PACK_PRICE}</p>
               <p className="text-black/80 font-black text-xl">درهم فقط</p>
