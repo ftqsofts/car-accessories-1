@@ -141,10 +141,10 @@ export default function CpaPage() {
         <div className="pt-6 pb-8">
           <div className="text-center mb-6 px-4">
             <span className="inline-block bg-gray-900 text-[#E8B86D] text-xs font-black px-4 py-1.5 rounded-full mb-4 tracking-wide">🚨 واش هاد المشاكل تعرفها؟</span>
-            <h2 className="text-3xl font-black text-gray-900 leading-tight">كل واحد عندو طوموبيل محتاج هاد الباك</h2>
+            <h2 className="text-3xl font-black text-gray-900 leading-tight"><span className="text-red-600">كل واحد عندو</span> طوموبيل محتاج هاد الباك</h2>
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/products/pain-points-pack-a.png" alt="مشاكل السيارة" className="w-full h-auto" />
+          <Image src="/products/pain-points-pack-a.png" alt="مشاكل السيارة" className="w-full h-auto" width={400} height={300} />
         </div>
 
         {/* ══ PACK CONTENTS INTRO ══ */}
