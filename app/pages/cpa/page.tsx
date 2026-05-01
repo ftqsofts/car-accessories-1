@@ -226,11 +226,14 @@ export default function CpaPage() {
           <div className="bg-white border-2 border-gray-200 rounded-3xl overflow-hidden shadow-lg">
 
             {/* Price banner */}
-            <div className="bg-[#ecc78a] p-5 text-center">
+            <div className="bg-[#E8B86D] p-5 text-center">
               <p className="text-black/70 text-sm font-bold mb-1">3 منتجات + توصيل مجاني</p>
+              <div className="flex items-center justify-center gap-3 mb-1">
+                <span className="text-black/40 text-2xl font-black line-through">390 درهم</span>
+                <span className="bg-red-500 text-white text-xs font-black px-2 py-1 rounded-full">-29%</span>
+              </div>
               <p className="text-black font-black text-6xl leading-none">{PACK_PRICE}</p>
               <p className="text-black/80 font-black text-xl">درهم فقط</p>
-              <p className="text-black/70 text-sm font-black mt-1">💸 وفرتي أكثر من 115 درهم!</p>
               <p className="text-black/60 text-xs mt-2">ما خلّصتيش حتى توصلك الطلبية</p>
             </div>
 
