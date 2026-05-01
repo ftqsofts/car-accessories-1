@@ -2,7 +2,7 @@
 
 import TrustBadges from "@/components/TrustBadges"
 import { products } from "@/lib/products"
-import { Check } from "lucide-react"
+import { Baby, Check, Flame, Wind } from "lucide-react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
@@ -143,32 +143,32 @@ export default function CpbPage() {
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {[
                 {
-                  emoji: "🔥",
+                  icon: <Flame className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />,
                   problem: "كتركن طوموبيلتك وملي كترجع الكراسا والطابلو شاعلين فيهم العافية",
                   solution: "الواقي الأمامي كيعكس الشمس ويخلي الطوموبيل باردة حتى فالزنقة بلا ضل",
                 },
                 {
-                  emoji: "😭",
+                  icon: <Baby className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />,
                   problem: "وليداتك اللور كيبكيو من شمس ضاربة ليهم فعينيهم طول الطريق",
                   solution: "واقي النوافذ المغناطيسي كيحمي العائلة من الأشعة المضرة بصحتهم وكيخليهم ناعسين ومرتاحين",
                 },
                 {
-                  emoji: "🤧",
+                  icon: <Wind className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />,
                   problem: "كتحشم تركب معاك شي حد حيت الطوموبيل ديما عامرة غبرة فكل قنت؟",
                   solution: "الاسبيراتور 4 فـ 1 قوي بزاف، كيجبد أصعب الأوساخ من أضيق البلايص فثواني باش تبقى طوموبيلتك ديما نقية كتشعل.",
                 },
                 // {
-                //   emoji: "💸",
-                //   problem: "تشريهم مفرقين غادي تخلص فوق  380 درهم فالسوق",
-                //   solution: "الباك الشامل بـ 249 درهم — وفرتي 130 درهم فضربة وحدة",
+                //   icon: <Banknote className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />,
+                //   problem: "تشريهم مفرقين غادي تخلص فوق 350 درهم فالسوق",
+                //   solution: "الباك الكامل بـ 219 درهم فقط — وفرتي 130 درهم فضربة وحدة",
                 // },
               ].map((item, i) => (
-                <div key={i} className="px-5 py-5 bg-white rounded-2xl shadow-sm" style={{ borderRight: "4px solid #E8B86D" }}>
+                <div key={i} className="px-5 py-5 bg-white rounded-2xl shadow-sm" style={{ borderRight: "4px solid #e86d6d" }}>
                   <div className="flex items-start gap-3">
-                    <span className="text-2xl shrink-0">{item.emoji}</span>
+                    {item.icon}
                     <div>
-                      <p className="text-gray-900 font-black text-base leading-tight mb-2">{item.problem}</p>
-                      <p className="text-gray-600 text-sm leading-snug">✅ {item.solution}</p>
+                      <p className="text-gray-900 font-black text-lg leading-tight mb-2">{item.problem}</p>
+                      <p className="text-gray-600 text-base leading-snug">✅ {item.solution}</p>
                     </div>
                   </div>
                 </div>
@@ -240,9 +240,12 @@ export default function CpbPage() {
             {/* Price banner */}
             <div className="bg-[#ecc78a] p-5 text-center">
               <p className="text-black/70 text-sm font-bold mb-1">3 منتجات + توصيل مجاني</p>
+              <div className="flex items-center justify-center gap-3 mb-1">
+                <span className="text-black/40 text-2xl font-black line-through">349 درهم</span>
+                <span className="bg-red-500 text-white text-xs font-black px-2 py-1 rounded-full">-37%</span>
+              </div>
               <p className="text-black font-black text-6xl leading-none">{PACK_PRICE}</p>
               <p className="text-black/80 font-black text-xl">درهم فقط</p>
-              <p className="text-black/70 text-sm font-black mt-1">💸 وفرتي أكثر من 115 درهم!</p>
               <p className="text-black/60 text-xs mt-2">ما خلّصتيش حتى توصلك الطلبية</p>
             </div>
 
