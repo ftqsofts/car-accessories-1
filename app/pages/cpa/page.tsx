@@ -123,7 +123,7 @@ export default function CpaPage() {
           <h1 className="hero-title glow-title font-black leading-tight w-full" style={{ fontSize: "clamp(2.4rem, 11vw, 4rem)" }}>
             العناية الحقيقية لطوموبيلتك
           </h1>
-          <p className="text-white/80 font-bold text-lg mt-2">تهلا فطوموبيلك بأحسن ثمن</p>
+          <p className="text-white/80 font-bold text-lg mt-2">3 منتجات غادي توفر عليك الوقت، الجهد، والمصاريف</p>
         </div>
 
         {/* Pack image — full width, no gap */}
@@ -181,7 +181,7 @@ export default function CpaPage() {
             {/* Form header */}
             <div className="px-5 py-5 text-center" style={{ background: "#030712" }}>
               <p className="text-[#E8B86D] font-black text-xl" style={{ animation: "pulse 1.5s ease-in-out infinite" }}>للطلب ادخل معلوماتك اسفله 👇</p>
-              <p className="text-white font-bold text-base mt-2">باك بجودة مزيانة، ومعاه ضمان شهر كامل باش تجربو ✔️</p>
+              <p className="text-white font-bold text-base mt-2">فقط عند Storecoma — باك بجودة مزيانة، ومعاه ضمان شهر كامل باش تجربو ✔️</p>
             </div>
 
             <div className="px-5 pb-8 pt-6">
