@@ -100,8 +100,8 @@ export default function CpaPage() {
     <div className="min-h-screen bg-white text-gray-900" dir="rtl">
 
       {/* ══ COD BANNER — top of page ══ */}
-      <div className="w-full" style={{ lineHeight: 0 }}>
-        <Image src="/resources/cod-header-banner.webp" alt="توصيل مجاني — الدفع عند الاستلام" width={800} height={60} className="w-full h-auto" priority />
+      <div className="w-full overflow-hidden" style={{ lineHeight: 0 }}>
+        <Image src="/resources/cod-header-banner.webp" alt="توصيل مجاني — الدفع عند الاستلام" width={800} height={60} className="w-auto h-[50px]" priority />
       </div>
 
       {/* ══ HERO — dark ══ */}
