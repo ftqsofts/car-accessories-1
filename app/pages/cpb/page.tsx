@@ -176,7 +176,7 @@ export default function CpbPage() {
         <div className="max-w-lg mx-auto">
 
           {/* Urgency */}
-          <p className="text-center text-red-600 font-black text-sm mb-3">⏳ الكمية محدودة — اطلب دابا قبل ما يسالو</p>
+          <p className="text-center text-red-600 font-black text-base mb-3">هام: الكمية محدودة و العرض سينتهي خلال ساعات قليلة</p>
 
           <div className="bg-white rounded-3xl overflow-hidden shadow-lg" style={{ border: "2.5px dashed #E8B86D" }}>
 
