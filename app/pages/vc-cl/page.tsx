@@ -88,7 +88,7 @@ export default function VcClPage() {
         {/* Product image with glow */}
         <div className="relative w-full max-w-sm mx-auto mb-8">
           <img
-            src="/products/ChatGPT Image May 2, 2026, 08_23_17 PM.png"
+            src="/products/vacuum-4in-1-preview.webp"
             alt="لاسبيراتور 4 في 1"
             className="w-full h-auto rounded-3xl relative z-10"
             fetchPriority="high"
@@ -101,17 +101,10 @@ export default function VcClPage() {
           <p className="text-blue-400 text-xs font-black tracking-widest uppercase text-center mb-1">شنو كاين فيها؟</p>
           <p className="text-white font-black text-xl text-center mb-3" style={{ fontSize: "clamp(1.2rem, 6vw, 1.6rem)" }}>هادا ماشي السبيراتور العادي هاد الموديل راه مجرّب ومعروف بالقوة ديالو</p>
           
-          <img src="/products/vc-cl-features.png" alt="" className="w-full h-auto block" />
+          <img src="/products/vc-cl-features.webp" alt="" className="w-full h-auto block" />
 
         </div>
       </section>
-
-      {/* ══ PRODUCT BREAKDOWN ══ */}
-      <div style={{ backgroundColor: "#030712" }}>
-        <div className="max-w-lg mx-auto">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-        </div>
-      </div>
 
       {/* ══ IN USE GALLERY ══ */}
       <div className="px-5 pt-2 pb-8" style={{ backgroundColor: "#030712" }}>
