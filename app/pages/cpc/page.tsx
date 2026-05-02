@@ -103,7 +103,7 @@ export default function CpcPage() {
 
         {/* Logo */}
         <div className="hero-logo relative z-10">
-          <Image src="/storecoma-logo.png" alt="storecoma" width={90} height={55} className="object-contain" />
+          <Image src="/storecoma-logo.webp" alt="storecoma" width={90} height={90} className="object-contain" priority />
         </div>
 
         {/* Center */}

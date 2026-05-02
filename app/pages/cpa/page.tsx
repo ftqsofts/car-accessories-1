@@ -45,7 +45,8 @@ function GifVideo({ src }: { src: string }) {
 }
 
 
-const PACK_PRICE = 219
+const PACK_PRICE = 275
+const ORIGINAL_PRICE = 390
 const PACK_IDS = ["176TSC", "phone-holder", "4-in-1-retractable-charger"]
 const packProducts = PACK_IDS.map((id) => products.find((p) => p.id === id)!)
 
@@ -55,17 +56,18 @@ export default function CpaPage() {
   const router = useRouter()
   const [form, setForm] = useState<OrderForm>({ name: "", city: "", phone: "" })
   const [errors, setErrors] = useState<Partial<OrderForm>>({})
-  const [formVisible, setFormVisible] = useState(false)
+  const [formPassed, setFormPassed] = useState(false)
   const [loading, setLoading] = useState(false)
   const formRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setFormVisible(entry.isIntersecting),
-      { threshold: 0.1 }
-    )
-    if (formRef.current) observer.observe(formRef.current)
-    return () => observer.disconnect()
+    const check = () => {
+      if (!formRef.current) return
+      const rect = formRef.current.getBoundingClientRect()
+      setFormPassed(rect.bottom < 0)
+    }
+    window.addEventListener("scroll", check, { passive: true })
+    return () => window.removeEventListener("scroll", check)
   }, [])
 
   const validate = () => {
@@ -97,149 +99,91 @@ export default function CpaPage() {
   return (
     <div className="min-h-screen bg-white text-gray-900" dir="rtl">
 
-      {/* ══ HERO — dark ══ */}
-      <section className="relative min-h-[88vh] flex flex-col items-center justify-between px-6 pb-0 overflow-hidden" style={{ backgroundColor: "#030712" }}>
-        <Image src="/products/car-accessories-cover-3.webp" alt="" fill className="object-cover object-center" priority />
-        <div className="absolute inset-0 bg-gray-950/78" />
+      {/* ══ COD BANNER — top of page ══ */}
+      <div className="w-full" style={{ lineHeight: 0 }}>
+        <Image src="/resources/cod-header-banner.webp" alt="توصيل مجاني — الدفع عند الاستلام" width={800} height={60} className="w-full h-auto" priority />
+      </div>
 
+      {/* ══ HERO — dark ══ */}
+      <section className="relative flex flex-col items-center px-0 pb-0 overflow-hidden" style={{ backgroundColor: "#030712" }}>
         {/* Logo */}
-        <div className="hero-logo relative z-10">
-          <Image src="/storecoma-logo.png" alt="storecoma" width={90} height={55} className="object-contain" />
+        <div className="relative z-10 pt-4 pb-2">
+          <Image src="/storecoma-logo.webp" alt="storecoma" width={90} height={90} className="object-contain" priority />
         </div>
 
-        {/* Center */}
-        <div className="relative z-10 flex flex-col items-center text-center gap-5 w-full">
-          <div className="hero-badge">
-            <span className="bg-red-500 text-white text-sm font-black px-5 py-2 rounded-full">
-              🔥 عرض الصيف المحدود!
-            </span>
-          </div>
+        {/* Badge */}
+        <div className="relative z-10 pb-3">
+          <span className="bg-red-500 text-white text-sm font-black px-5 py-2 rounded-full">
+            🔥 عرض الصيف المحدود!
+          </span>
+        </div>
 
-          <h1 className="hero-title glow-title font-black leading-tight w-full" style={{ fontSize: "clamp(2.8rem, 13vw, 4.5rem)" }}>
+        {/* Title */}
+        <div className="relative z-10 text-center px-6 pb-4">
+          <h1 className="hero-title glow-title font-black leading-tight w-full" style={{ fontSize: "clamp(2.4rem, 11vw, 4rem)" }}>
             العناية الحقيقية لطوموبيلتك
           </h1>
-          <p className="text-white font-bold text-xl">تهلا فطوموبيلك بأحسن ثمن</p>
+          <p className="text-white/80 font-bold text-lg mt-2">تهلا فطوموبيلك بأحسن ثمن</p>
         </div>
-        
-        {/* Pack image — inside hero */}
-        <div className="relative w-screen overflow-hidden z-20" style={{ height: 320, borderRadius: 20 }}>
-          <Image src="/products/pack-a-10.webp" alt="باك إكسسوارات السيارة" fill className="object-cover object-center" />
+
+        {/* Pack image — full width, no gap */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/products/pack-a-10.webp" alt="باك إكسسوارات السيارة" width={800} height={600} className="w-full h-auto z-10 relative" style={{ display: "block" }} fetchPriority="high" decoding="sync" />
+
+        {/* Price strip — overlapping bottom of image */}
+        <div className="relative z-20 w-full px-4 -mt-6 pb-0">
+          <div className="rounded-2xl overflow-hidden shadow-xl" style={{ background: "#E8B86D" }}>
+            <div className="flex items-center justify-between px-5 py-4">
+              <div>
+                <p className="text-black/60 text-xs font-bold mb-0.5">السعر الأصلي</p>
+                <p className="text-black/40 text-xl font-black line-through">{ORIGINAL_PRICE} درهم</p>
+              </div>
+              <div className="bg-red-500 text-white text-sm font-black px-3 py-1.5 rounded-full">
+                -{Math.round((1 - PACK_PRICE / ORIGINAL_PRICE) * 100)}%
+              </div>
+              <div className="text-right">
+                <p className="text-black/60 text-xs font-bold mb-0.5">تدفع فقط</p>
+                <p className="text-black font-black" style={{ fontSize: "clamp(2rem, 9vw, 3rem)", lineHeight: 1 }}>{PACK_PRICE} درهم</p>
+              </div>
+            </div>
+          </div>
         </div>
-        
-        {/* Gradient transition dark → light */}
-        <div className="absolute left-0 right-0 z-10 pointer-events-none" style={{ bottom: -1, height: 220, background: "linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.3) 40%, rgba(255,255,255,0.7) 65%, rgba(255,255,255,0.95) 85%, #ffffff 100%)" }} />
-        
-        
+
+        {/* What's in the pack */}
+        <div className="relative z-10 w-full px-4 pt-5 pb-6">
+          <p className="text-white/50 text-xs font-bold text-center mb-3 tracking-wide">شنو كاين فالباك؟</p>
+          <div className="flex flex-col gap-2">
+            {packProducts.map((p, i) => (
+              <div key={p.id} className="flex items-center gap-3 px-4 py-3 rounded-2xl" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                <div className="w-7 h-7 rounded-full bg-[#E8B86D] flex items-center justify-center shrink-0">
+                  <span className="text-black font-black text-xs">{i + 1}</span>
+                </div>
+                <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 bg-white/10">
+                  <Image src={p.image} alt={p.nameDarija} fill className="object-cover" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-white font-black text-sm leading-tight">{p.nameDarija}</p>
+                  <p className="text-white/50 text-xs mt-0.5 truncate">{p.tagline}</p>
+                </div>
+                <Check className="w-4 h-4 text-[#E8B86D] shrink-0" strokeWidth={3} />
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
+      {/* ══ DIRECT ORDER FORM ══ */}
+      <section ref={formRef} className="bg-white px-4 pt-6 pb-8" id="order-form">
+        <div className="max-w-lg mx-auto">
 
+<div className="bg-white border-2 border-gray-200 rounded-3xl overflow-hidden shadow-lg">
 
-      
-
-      {/* ══ LIGHT CONTENT ══ */}
-      <div className="bg-white">
-
-        {/* ══ PAIN SECTION ══ */}
-        <div className="pt-6 pb-8 mt-12">
-          <div className="text-center mb-6 px-4">
-            {/* <span className="inline-block bg-gray-900 text-[#E8B86D] text-xs font-black px-4 py-1.5 rounded-full mb-4 tracking-wide">🚨 واش هاد المشاكل تعرفها؟</span> */}
-            <h2 className="text-3xl font-black text-gray-900 leading-tight"><span className="text-red-600">كل واحد عندو</span> طوموبيل محتاج هاد الباك</h2>
-          </div>
-          {/* <Image src="/products/pain-points-pack-a.webp" alt="مشاكل السيارة" className="w-full rounded-[40px] h-auto" width={400} height={300} /> */}
-        </div>
-
-        <div className="px-4 pt-4 pb-6 text-center">
-          <span className="bg-[#E8B86D]/15 text-[#E8B86D] text-xs font-black px-4 py-1.5 rounded-full border border-[#E8B86D]/30">شنو كاين فالباك؟</span>
-          <h2 className="text-3xl font-black text-gray-900 mt-4 leading-tight">3 منتجات — حل كامل لطوموبيلتك</h2>
-          <p className="text-gray-500 mt-2 text-base leading-relaxed">كل منتج مختار بعناية باش تكون سيارتك نظيفة، منظمة، وآمنة</p>
-        </div>
-
-        <div className="px-4 pb-6" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-          {packProducts.map((product, i) => (
-            <div key={product.id} className="rounded-3xl overflow-hidden bg-white border border-gray-200 shadow-sm">
-
-              {product.videoUrl
-                ? <GifVideo src={product.videoUrl} />
-                : <div className="w-full bg-gray-100" style={{ height: 260, overflow: "hidden" }}>
-                    <div className="relative w-full h-full">
-                      <Image src={product.image} alt={product.nameDarija} fill className="object-cover" />
-                    </div>
-                  </div>
-              }
-
-              <div className="px-5 py-5">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-6 h-6 rounded-full bg-[#E8B86D] flex items-center justify-center shrink-0">
-                    <span className="text-black font-black text-xs">{i + 1}</span>
-                  </div>
-                  <h3 className="text-gray-900 font-black text-xl leading-tight">{product.nameDarija}</h3>
-                </div>
-
-<div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                  {product.featuresDarija.map((f, fi) => (
-                    <div key={fi} className="flex items-center gap-3">
-                      <Check className="w-4 h-4 text-[#E8B86D] shrink-0" strokeWidth={3} />
-                      <span className="text-gray-700 text-sm font-semibold">{f}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* ══ URGENCY ══ */}
-        <div className="px-4 pb-6">
-          <div className="max-w-lg mx-auto rounded-2xl p-4 text-center bg-red-100">
-            <p className="text-red-600 font-black text-lg">⏳ هاد العرض من Storecoma محدود جدا</p>
-            <p className="text-red-500 text-sm font-bold mt-1">نظرا للسطوك قليل — لا تفوّت الفرصة</p>
-          </div>
-        </div>
-
-        {/* ══ MYSTERY GIFT ══ */}
-        <div className="px-4 pb-6">
-          <div className="max-w-lg mx-auto rounded-2xl p-5 text-center" style={{ background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)", border: "1px solid #E8B86D44" }}>
-            <p className="text-3xl mb-2">🎁</p>
-            <p className="text-[#E8B86D] font-black text-lg">هدية مع كل طلب!</p>
-            <p className="text-white/60 text-sm mt-1">كل زبون كيثق فـ Storecoma كيستاهل هدية</p>
-          </div>
-        </div>
-
-        {/* ══ ORDER FORM ══ */}
-        <section ref={formRef} className="max-w-lg mx-auto px-4 mb-28 pb-8" id="order-form">
-          <div className="bg-white border-2 border-gray-200 rounded-3xl overflow-hidden shadow-lg">
-
-            {/* Price banner */}
-            <div className="bg-[#E8B86D] p-5 text-center">
-              <p className="text-black/70 text-sm font-bold mb-1">3 منتجات + توصيل مجاني</p>
-              <div className="flex items-center justify-center gap-3 mb-1">
-                <span className="text-black/40 text-2xl font-black line-through">390 درهم</span>
-                <span className="bg-red-500 text-white text-xs font-black px-2 py-1 rounded-full">-29%</span>
-              </div>
-              <p className="text-black font-black text-6xl leading-none">{PACK_PRICE}</p>
-              <p className="text-black/80 font-black text-xl">درهم فقط</p>
-              <p className="text-black/60 text-xs mt-2">ما خلّصتيش حتى توصلك الطلبية</p>
+            {/* Form header */}
+            <div className="px-5 py-5 text-center" style={{ background: "#030712" }}>
+              <p className="text-[#E8B86D] font-black text-xl" style={{ animation: "pulse 1.5s ease-in-out infinite" }}>للطلب ادخل معلوماتك اسفله 👇</p>
             </div>
 
-            {/* Pack summary */}
-            <div className="px-5 pt-5 pb-3">
-              <div className="space-y-3">
-                {packProducts.map((p) => (
-                  <div key={p.id} className="flex items-center gap-3">
-                    <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 bg-gray-100">
-                      <Image src={p.image} alt={p.nameDarija} fill className="object-cover" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-gray-900 font-black text-sm">{p.nameDarija}</p>
-                      <p className="text-gray-400 text-xs">{p.tagline}</p>
-                    </div>
-                    <Check className="w-4 h-4 text-[#E8B86D] shrink-0" strokeWidth={3} />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="px-5 pb-6 pt-3 border-t border-gray-100">
+            <div className="px-5 pb-6 pt-4">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <input type="text" name="website" tabIndex={-1} autoComplete="off" style={{ display: "none" }} onChange={(e) => setForm({ ...form, _hp: e.target.value })} />
 
@@ -280,12 +224,117 @@ export default function CpaPage() {
                       </svg>
                       جاري إرسال طلبيتك...
                     </span>
-                  ) : `طلب دابا وخلص عند الاستلام — ${PACK_PRICE} درهم`}
+                  ) : `اضغط هنا للطلب 🛒`}
                 </button>
               </form>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
+
+      {/* ══ LIGHT CONTENT ══ */}
+      <div className="bg-white">
+
+        {/* ══ PAIN SECTION ══ */}
+        <div className="px-4 pt-8 pb-6">
+  <div className="text-center mb-6">
+    <h2 className="text-3xl font-black text-gray-900 leading-tight">
+      <span className="text-red-600">واش حتى نتا</span> كتعيش هاد المشاكل؟
+    </h2>
+  </div>
+
+  <div className="flex flex-col gap-4">
+
+    {/* Problem 1 */}
+    <div className="bg-white rounded-2xl p-5 shadow-sm border-l-4 border-red-500">
+      <p className="text-xl font-black text-gray-900">
+        📱 تيليفونك كيطّيح… وماكتشوف والو فالسياقة
+      </p>
+    </div>
+
+    {/* Problem 2 */}
+    <div className="bg-white rounded-2xl p-5 shadow-sm border-l-4 border-red-500">
+      <p className="text-xl font-black text-gray-900">
+        🔌 الكابليات معوجين… وكل مرة خاصك تبدل الشارجوج
+      </p>
+    </div>
+
+    {/* Problem 3 */}
+    <div className="bg-white rounded-2xl p-5 shadow-sm border-l-4 border-red-500">
+      <p className="text-xl font-black text-gray-900">
+        🚗 الطوموبيل عامرة غبرة… وكتحشم تركب شي حد
+      </p>
+    </div>
+
+  </div>
+</div>
+
+        {/* ══ PRODUCT DETAILS ══ */}
+        <div className="px-4 pt-4 pb-2 text-center">
+          <h2 className="text-3xl font-black text-gray-900 leading-tight">3 منتجات — حل كامل لطوموبيلتك</h2>
+          <p className="text-gray-500 mt-2 text-base leading-relaxed">كل منتج مختار بعناية</p>
+        </div>
+
+        <div className="px-4 pb-6" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          {packProducts.map((product, i) => (
+            <div key={product.id} className="rounded-3xl overflow-hidden bg-white border border-gray-200 shadow-sm">
+
+              {product.videoUrl
+                ? <GifVideo src={product.videoUrl} />
+                : <div className="w-full bg-gray-100" style={{ height: 260, overflow: "hidden" }}>
+                    <div className="relative w-full h-full">
+                      <Image src={product.image} alt={product.nameDarija} fill className="object-cover" />
+                    </div>
+                  </div>
+              }
+
+              <div className="px-5 py-5">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-6 h-6 rounded-full bg-[#E8B86D] flex items-center justify-center shrink-0">
+                    <span className="text-black font-black text-xs">{i + 1}</span>
+                  </div>
+                  <h3 className="text-gray-900 font-black text-xl leading-tight">{product.nameDarija}</h3>
+                </div>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                  {product.featuresDarija.map((f, fi) => (
+                    <div key={fi} className="flex items-center gap-3">
+                      <Check className="w-4 h-4 text-[#E8B86D] shrink-0" strokeWidth={3} />
+                      <span className="text-gray-700 text-sm font-semibold">{f}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ══ SECOND CTA ══ */}
+        <div className="px-4 pb-6">
+          <button
+            onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+            className="w-full py-5 rounded-2xl font-black text-lg transition-all duration-200 active:scale-95 bg-[#E8B86D] text-black shadow-xl shadow-[#E8B86D]/30 max-w-lg mx-auto block"
+          >
+            🛒 اضغط هنا للطلب — {PACK_PRICE} درهم
+          </button>
+        </div>
+
+        {/* ══ URGENCY ══ */}
+        <div className="px-4 pb-6">
+          <div className="max-w-lg mx-auto rounded-2xl p-4 text-center bg-red-100">
+            <p className="text-red-600 font-black text-lg">⏳ هاد العرض من Storecoma محدود جدا</p>
+            <p className="text-red-500 text-sm font-bold mt-1">نظرا للسطوك قليل — لا تفوّت الفرصة</p>
+          </div>
+        </div>
+
+        {/* ══ MYSTERY GIFT ══ */}
+        <div className="px-4 pb-6">
+          <div className="max-w-lg mx-auto rounded-2xl p-5 text-center" style={{ background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)", border: "1px solid #E8B86D44" }}>
+            <p className="text-3xl mb-2">🎁</p>
+            <p className="text-[#E8B86D] font-black text-lg">هدية مع كل طلب!</p>
+            <p className="text-white/60 text-sm mt-1">كل زبون كيثق فـ Storecoma كيستاهل هدية</p>
+          </div>
+        </div>
 
         {/* ══ WHY US COMPARISON ══ */}
         <section className="max-w-lg mx-auto px-4 pb-10">
@@ -294,7 +343,6 @@ export default function CpaPage() {
             <h2 className="text-3xl font-black text-gray-900 leading-tight">علاش الزبناء كيختارو Storecoma؟</h2>
           </div>
 
-          {/* Column headers */}
           <div className="grid grid-cols-2 mb-2 px-1">
             <p className="text-center text-xs font-black text-gray-400">البائعين الآخرين ❌</p>
             <p className="text-center text-xs font-black text-[#E8B86D]">Storecoma ✅</p>
@@ -332,7 +380,7 @@ export default function CpaPage() {
         <TrustBadges />
 
         {/* ══ WHATSAPP CTA ══ */}
-        <section className="max-w-lg mx-auto px-4 pb-24">
+        {/* <section className="max-w-lg mx-auto px-4 pb-24">
           <div className="bg-white border border-gray-200 rounded-3xl p-6 text-center space-y-4 shadow-sm">
             <p className="text-gray-900 font-black text-xl">عندك سؤال؟ تواصل معنا مباشرة</p>
             <p className="text-gray-400 text-sm">فريقنا مساند ليك على واتساب — رد سريع</p>
@@ -349,12 +397,12 @@ export default function CpaPage() {
               تواصل معنا على واتساب
             </a>
           </div>
-        </section>
+        </section> */}
 
       </div>
 
       {/* ══ STICKY BOTTOM BAR ══ */}
-      {!formVisible && (
+      {formPassed && (
         <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-t border-gray-200 px-4 py-3">
           <button
             onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
