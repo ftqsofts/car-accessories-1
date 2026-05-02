@@ -240,33 +240,54 @@ export default function CpaPage() {
       <div className="bg-white">
 
         {/* ══ PAIN SECTION ══ */}
-        <div className="px-4 pt-8 pb-6">
-  <div className="text-center mb-6">
+<div className="px-4 pt-8 pb-8 bg-gray-50">
+  <div className="text-center mb-8">
     <h2 className="text-3xl font-black text-gray-900 leading-tight">
-      <span className="text-red-600">واش حتى نتا</span> كتعيش هاد المشاكل؟
+      <span className="text-red-600">واش حتى نتا</span> كتعيش هاد المشاكل فالسياقة؟
     </h2>
+    <p className="mt-3 text-gray-600 font-medium text-lg">
+      أغلب السائقين كيعانيو من هاد الروينة كل نهار...
+    </p>
   </div>
 
-  <div className="flex flex-col gap-4">
+  <div className="flex flex-col gap-5">
 
-    {/* Problem 1 */}
-    <div className="bg-white rounded-2xl p-5 shadow-sm border-l-4 border-red-500">
-      <p className="text-xl font-black text-gray-900">
-        📱 تيليفونك كيطّيح… وماكتشوف والو فالسياقة
+    {/* Problem 1: Phone Mount */}
+    <div className="bg-white rounded-2xl p-5 shadow-sm border-r-4 border-red-600 flex flex-col justify-center">
+      <div className="flex items-center gap-3 mb-2">
+        <span className="text-2xl">📱</span>
+        <h3 className="text-xl font-black text-gray-900">
+          التيليفون كيطيح فكل دودان؟
+        </h3>
+      </div>
+      <p className="text-gray-600 text-sm font-medium leading-relaxed pr-9">
+        كتفقد التركيز، كتمشي ليك الطريق فالـ GPS، وكتقدر تسبب فحادثة خايبة غير حيت بغيتي تشد التيليفون بيدك ونت صايگ.
       </p>
     </div>
 
-    {/* Problem 2 */}
-    <div className="bg-white rounded-2xl p-5 shadow-sm border-l-4 border-red-500">
-      <p className="text-xl font-black text-gray-900">
-        🔌 الكابليات معوجين… وكل مرة خاصك تبدل الشارجوج
+    {/* Problem 2: Charger */}
+    <div className="bg-white rounded-2xl p-5 shadow-sm border-r-4 border-red-600 flex flex-col justify-center">
+      <div className="flex items-center gap-3 mb-2">
+        <span className="text-2xl">🔌</span>
+        <h3 className="text-xl font-black text-gray-900">
+          روينة الكابليات وشارج ثقيل كيمرض؟
+        </h3>
+      </div>
+      <p className="text-gray-600 text-sm font-medium leading-relaxed pr-9">
+        التيلفون كيطفى ليك وسط الطريق فاش كتكون محتاجو، والخييوط مخبلين ومخسرين الديكور دطوموبيلتك ومبرزطينك فالسياقة.
       </p>
     </div>
 
-    {/* Problem 3 */}
-    <div className="bg-white rounded-2xl p-5 shadow-sm border-l-4 border-red-500">
-      <p className="text-xl font-black text-gray-900">
-        🚗 الطوموبيل عامرة غبرة… وكتحشم تركب شي حد
+    {/* Problem 3: Vacuum */}
+    <div className="bg-white rounded-2xl p-5 shadow-sm border-r-4 border-red-600 flex flex-col justify-center">
+      <div className="flex items-center gap-3 mb-2">
+        <span className="text-2xl">🚗</span>
+        <h3 className="text-xl font-black text-gray-900">
+          الغبرة والفرتيت قتلو ليك الصالون؟
+        </h3>
+      </div>
+      <p className="text-gray-600 text-sm font-medium leading-relaxed pr-9">
+        كتحشم تركب معاك شي حد، والوسخ كيتراكم فالبلايص اللي صعيب توصل ليهم، وهادشي كيطيح من قيمة طوموبيلتك نهار تبغي تبيع!
       </p>
     </div>
 
