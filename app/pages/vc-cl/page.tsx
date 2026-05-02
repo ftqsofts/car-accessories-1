@@ -200,28 +200,28 @@ export default function VcClPage() {
               <p className="text-white/70 font-bold text-sm mt-1">توصيل مجاني + الدفع عند الاستلام ✅</p>
             </div>
             <div className="px-5 pb-8 pt-6" style={{ background: "rgba(0,0,0,0.6)" }}>
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5 py-8">
                 <input type="text" name="website" tabIndex={-1} autoComplete="off" style={{ display: "none" }} onChange={(e) => setForm({ ...form, _hp: e.target.value })} />
                 <div>
                   <label className="block text-sm text-white/70 mb-2 font-black">الاسم الكامل <span className="font-normal text-white/30">(اختياري)</span></label>
                   <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    placeholder="كتب اسمك هنا..."
-                    className="w-full rounded-xl px-4 py-4 text-white text-base placeholder-white/30 outline-none transition-colors"
-                    style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }} />
+                    placeholder="كتبي اسمك هنا..."
+                    className="w-full rounded-xl px-4 py-4 text-white text-base placeholder-white/50 outline-none transition-colors focus:border-blue-400"
+                    style={{ background: "rgba(255,255,255,0.1)", border: "2px solid rgba(255,255,255,0.35)" }} />
                 </div>
                 <div>
                   <label className="block text-sm text-white/70 mb-2 font-black">المدينة <span className="font-normal text-white/30">(اختياري)</span></label>
                   <input type="text" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })}
                     placeholder="مثلاً: كازا، الرباط..."
-                    className="w-full rounded-xl px-4 py-4 text-white text-base placeholder-white/30 outline-none transition-colors"
-                    style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }} />
+                    className="w-full rounded-xl px-4 py-4 text-white text-base placeholder-white/50 outline-none transition-colors focus:border-blue-400"
+                    style={{ background: "rgba(255,255,255,0.1)", border: "2px solid rgba(255,255,255,0.35)" }} />
                 </div>
                 <div>
                   <label className="block text-sm text-white/70 mb-2 font-black">رقم التيليفون <span className="text-red-400">*</span></label>
                   <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
                     placeholder="06XXXXXXXX"
-                    className="w-full rounded-xl px-4 py-4 text-white text-base placeholder-white/30 outline-none transition-colors"
-                    style={{ background: "rgba(255,255,255,0.06)", border: errors.phone ? "1px solid #f87171" : "1px solid rgba(255,255,255,0.12)" }} />
+                    className="w-full rounded-xl px-4 py-4 text-white text-base placeholder-white/50 outline-none transition-colors focus:border-blue-400"
+                    style={{ background: "rgba(255,255,255,0.1)", border: errors.phone ? "2px solid #f87171" : "2px solid rgba(255,255,255,0.35)" }} />
                   {errors.phone && <p className="text-red-400 text-sm mt-1 font-bold">{errors.phone}</p>}
                 </div>
                 <button
@@ -289,6 +289,11 @@ export default function VcClPage() {
           🚚 توصيل مجاني لجميع مدن المغرب
         </div>
         <p className="text-white/30 text-xs">© 2025 Storecoma — جميع الحقوق محفوظة</p>
+
+        {/* Logo */}
+        <div className="relative z-10 pb-2 mx-auto mt-4 w-max text-center">
+            <Image src="/storecoma-logo.webp" alt="storecoma" width={90} height={90} className="object-contain" priority />
+        </div>
       </footer>
 
       {/* ══ STICKY BUTTON ══ */}
