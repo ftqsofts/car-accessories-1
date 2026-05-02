@@ -176,36 +176,37 @@ export default function CpaPage() {
       <section ref={formRef} className="bg-white px-4 pt-6 pb-8" id="order-form">
         <div className="max-w-lg mx-auto">
 
-<div className="bg-white border-2 border-gray-200 rounded-3xl overflow-hidden shadow-lg">
+<div className="bg-white rounded-3xl overflow-hidden shadow-lg" style={{ border: "2.5px dashed #E8B86D" }}>
 
             {/* Form header */}
             <div className="px-5 py-5 text-center" style={{ background: "#030712" }}>
               <p className="text-[#E8B86D] font-black text-xl" style={{ animation: "pulse 1.5s ease-in-out infinite" }}>للطلب ادخل معلوماتك اسفله 👇</p>
+              <p className="text-white font-bold text-base mt-2">باك بجودة مزيانة، ومعاه ضمان شهر كامل باش تجربو ✔️</p>
             </div>
 
-            <div className="px-5 pb-6 pt-4">
-              <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="px-5 pb-8 pt-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <input type="text" name="website" tabIndex={-1} autoComplete="off" style={{ display: "none" }} onChange={(e) => setForm({ ...form, _hp: e.target.value })} />
 
                 <div>
                   <label className="block text-sm text-gray-700 mb-2 font-black">الاسم <span className="font-normal text-gray-400">(اختياري)</span></label>
                   <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
                     placeholder="كتب اسمك هنا..."
-                    className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3.5 text-gray-900 text-base placeholder-gray-400 outline-none focus:border-[#E8B86D] transition-colors" />
+                    className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-4 text-gray-900 text-base placeholder-gray-400 outline-none focus:border-[#E8B86D] transition-colors" />
                 </div>
 
                 <div>
                   <label className="block text-sm text-gray-700 mb-2 font-black">المدينة <span className="font-normal text-gray-400">(اختياري)</span></label>
                   <input type="text" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })}
                     placeholder="مثلاً: كازا، الرباط..."
-                    className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3.5 text-gray-900 text-base placeholder-gray-400 outline-none focus:border-[#E8B86D] transition-colors" />
+                    className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-4 text-gray-900 text-base placeholder-gray-400 outline-none focus:border-[#E8B86D] transition-colors" />
                 </div>
 
                 <div>
                   <label className="block text-sm text-gray-700 mb-2 font-black">رقم التيليفون <span className="text-red-500">*</span></label>
                   <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
                     placeholder="06XXXXXXXX"
-                    className={`w-full bg-gray-50 border-2 rounded-xl px-4 py-3.5 text-gray-900 text-base placeholder-gray-400 outline-none transition-colors ${
+                    className={`w-full bg-gray-50 border-2 rounded-xl px-4 py-4 text-gray-900 text-base placeholder-gray-400 outline-none transition-colors ${
                       errors.phone ? "border-red-400" : "border-gray-200 focus:border-[#E8B86D]"
                     }`} />
                   {errors.phone && <p className="text-red-500 text-sm mt-1 font-bold">{errors.phone}</p>}
@@ -403,12 +404,14 @@ export default function CpaPage() {
 
       {/* ══ STICKY BOTTOM BAR ══ */}
       {formPassed && (
-        <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-t border-gray-200 px-4 py-3">
+        <div className="fixed bottom-4 left-4 right-4 z-40">
+          <style>{`@keyframes btnBounce { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }`}</style>
           <button
             onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-            className="w-full bg-[#E8B86D] text-black font-black text-base py-4 rounded-2xl active:scale-95 transition-all shadow-xl shadow-[#E8B86D]/30"
+            className="w-full bg-[#E8B86D] text-black font-black text-base py-4 rounded-2xl active:scale-95 shadow-xl shadow-[#E8B86D]/40"
+            style={{ animation: "btnBounce 1.2s ease-in-out infinite" }}
           >
-            🔥 طلب دابا وخلص عند الاستلام — {PACK_PRICE} درهم
+            🔥 طلب دابا وخلص عند الاستلام
           </button>
         </div>
       )}
