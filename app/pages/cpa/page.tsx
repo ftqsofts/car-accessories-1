@@ -133,30 +133,34 @@ export default function CpaPage() {
         </div>
       </section>
 
-      {/* ══ PACK CONTENTS + PRICE ══ */}
+      {/* ══ PACK CONTENTS — full screen dark ══ */}
+      <div style={{ backgroundColor: "#030712", minHeight: "100vh" }} className="px-4 py-10 flex flex-col justify-center">
+        <p className="text-[#E8B86D] text-xs font-black text-center mb-6 tracking-widest uppercase">شنو كاين فالباك؟</p>
+        <p className="text-white font-bold text-base text-center my-2">فقط عند Storecoma — باك بجودة مزيانة، ومعاه ضمان شهر كامل باش تجربو ✔️</p>
+        <div className="flex flex-col gap-5 max-w-lg mx-auto w-full">
+          {packProducts.map((p, i) => (
+            <div key={p.id} className="rounded-3xl overflow-hidden" style={{ border: "1px solid rgba(232,184,109,0.2)", background: "rgba(255,255,255,0.04)" }}>
+              <div className="relative w-full" style={{ height: 300 }}>
+                <Image src={p.image} alt={p.nameDarija} fill className="object-cover" />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(3,7,18,0.85) 0%, transparent 60%)" }} />
+                <div className="absolute bottom-0 right-0 left-0 px-4 pb-4">
+                  <div className="flex items-center gap-2">
+                    <span className="w-6 h-6 rounded-full bg-[#E8B86D] flex items-center justify-center shrink-0">
+                      <span className="text-black font-black text-xs">{i + 1}</span>
+                    </span>
+                    <p className="text-white font-black text-lg leading-tight">{p.nameDarija}</p>
+                  </div>
+                  <p className="text-[#E8B86D] text-sm mt-1 font-bold">{p.tagline}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ══ PRICE STRIP ══ */}
       <div className="bg-white px-4 pt-6 pb-2">
         <div className="max-w-lg mx-auto">
-          {/* What's in the pack */}
-          <p className="text-gray-500 text-xs font-bold text-center mb-3 tracking-wide">شنو كاين فالباك؟</p>
-          <div className="flex flex-col gap-2 mb-5">
-            {packProducts.map((p, i) => (
-              <div key={p.id} className="flex items-center gap-3 px-4 py-3 rounded-2xl" style={{ background: "#f9fafb", border: "1px solid #f3f4f6" }}>
-                <div className="w-7 h-7 rounded-full bg-[#E8B86D] flex items-center justify-center shrink-0">
-                  <span className="text-black font-black text-xs">{i + 1}</span>
-                </div>
-                <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 bg-gray-100">
-                  <Image src={p.image} alt={p.nameDarija} fill className="object-cover" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-gray-900 font-black text-sm leading-tight">{p.nameDarija}</p>
-                  <p className="text-gray-400 text-xs mt-0.5 truncate">{p.tagline}</p>
-                </div>
-                <Check className="w-4 h-4 text-[#E8B86D] shrink-0" strokeWidth={3} />
-              </div>
-            ))}
-          </div>
-
-          {/* Price strip */}
           <div className="rounded-2xl overflow-hidden shadow-xl mb-2" style={{ background: "#E8B86D" }}>
             <div className="flex items-center justify-between px-5 py-4">
               <div>
@@ -187,7 +191,7 @@ export default function CpaPage() {
             {/* Form header */}
             <div className="px-5 py-5 text-center" style={{ background: "#030712" }}>
               <p className="text-[#E8B86D] font-black text-xl" style={{ animation: "pulse 1.5s ease-in-out infinite" }}>للطلب ادخل معلوماتك اسفله 👇</p>
-              <p className="text-white font-bold text-base mt-2">فقط عند Storecoma — باك بجودة مزيانة، ومعاه ضمان شهر كامل باش تجربو ✔️</p>
+              <p className="text-white font-bold text-sm mt-2">فقط عند Storecoma — باك بجودة مزيانة، ومعاه ضمان شهر كامل باش تجربو ✔️</p>
             </div>
 
             <div className="px-5 pb-8 pt-6">
