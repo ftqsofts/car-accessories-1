@@ -54,7 +54,7 @@ export const products: Product[] = [
   {
     id: "176TSC",
     sku: "176TSC",
-    nameDarija: "اسبيراتور سيارة 4 فـ 1",
+    nameDarija: "اسبيراتور 4 فـ 1",
     price: 55,
     descriptionDarija:
       "هنّي راسك من الغبرة! مكنسة قوية وعملية كتجبد كاع الوسخ من القنات الصعاب. خفيفة، ساهلة، وديما واجدة تنقي طوموبيلتك فدقيقة بلا ما تمشي للافاج.",
@@ -70,7 +70,7 @@ export const products: Product[] = [
     categoryDarija: "تنظيف",
     statNumber: "9000",
     statLabel: "باسكال — قوة شفط عالية",
-    tagline: "طوموبيلتك ديما كتشعل",
+    tagline: "9000 باسكال",
     badge: "🔥 الأكثر طلباً",
     microCopy: "كينفعك يومياً بلا صداع",
   },
