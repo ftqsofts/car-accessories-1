@@ -392,7 +392,7 @@ export default function CpbPage() {
         <TrustBadges />
 
         {/* ══ WHATSAPP CTA ══ */}
-        <section className="max-w-lg mx-auto px-4 pb-24">
+        <section className="max-w-lg mx-auto px-4 pb-24 hidden">
           <div className="bg-white border border-gray-200 rounded-3xl p-6 text-center space-y-4 shadow-sm">
             <p className="text-gray-900 font-black text-xl">عندك سؤال؟ تواصل معنا مباشرة</p>
             <p className="text-gray-400 text-sm">فريقنا مساند ليك على واتساب — رد سريع</p>
