@@ -104,35 +104,60 @@ export default function CpaPage() {
         <Image src="/resources/cod-header-banner.webp" alt="توصيل مجاني — الدفع عند الاستلام" width={800} height={60} className="w-auto h-[50px]" priority />
       </div>
 
-      {/* ══ HERO — dark ══ */}
-      <section className="relative flex flex-col items-center px-0 pb-0 overflow-hidden" style={{ backgroundColor: "#030712" }}>
+      {/* ══ HERO — dark, full screen ══ */}
+      <section className="relative flex flex-col items-center justify-between px-0 pb-0 overflow-hidden" style={{ backgroundColor: "#030712", height: "calc(100vh - 50px)" }}>
+        {/* Background cover */}
+        <Image src="/products/car-accessories-cover-3.webp" alt="" fill className="object-cover object-center" priority />
+        <div className="absolute inset-0 bg-gray-950/90" />
+
         {/* Logo */}
         <div className="relative z-10 pt-4 pb-2">
           <Image src="/storecoma-logo.webp" alt="storecoma" width={90} height={90} className="object-contain" priority />
         </div>
 
-        {/* Badge */}
-        <div className="relative z-10 pb-3">
+        {/* Badge + Title */}
+        <div className="relative z-10 flex flex-col items-center text-center px-6 gap-3">
           <span className="bg-red-500 text-white text-sm font-black px-5 py-2 rounded-full">
             🔥 عرض الصيف المحدود!
           </span>
-        </div>
-
-        {/* Title */}
-        <div className="relative z-10 text-center px-6 pb-4">
           <h1 className="hero-title glow-title font-black leading-tight w-full" style={{ fontSize: "clamp(2.4rem, 11vw, 4rem)" }}>
             العناية الحقيقية لطوموبيلتك
           </h1>
-          <p className="text-white/80 font-bold text-lg mt-2">3 منتجات غادي توفر عليك الوقت، الجهد، والمصاريف</p>
+          <p className="text-white/80 font-bold text-lg">3 منتجات غادي توفر عليك الوقت، الجهد، والمصاريف</p>
         </div>
 
-        {/* Pack image — full width, no gap */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/products/pack-a-10.webp" alt="باك إكسسوارات السيارة" width={800} height={600} className="w-full h-auto z-10 relative" style={{ display: "block" }} fetchPriority="high" decoding="sync" />
+        {/* Pack image — bottom */}
+        <div className="relative mt-12 z-10 w-full" style={{ flex: 1, minHeight: 0, position: "relative" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/products/pack-a-10.webp" alt="باك إكسسوارات السيارة" fetchPriority="high" decoding="sync" style={{ position: "absolute", inset: 0, width: "100%", objectFit: "cover", objectPosition: "center top" }} />
+        </div>
+      </section>
 
-        {/* Price strip — overlapping bottom of image */}
-        <div className="relative z-20 w-full px-4 -mt-6 pb-0">
-          <div className="rounded-2xl overflow-hidden shadow-xl" style={{ background: "#E8B86D" }}>
+      {/* ══ PACK CONTENTS + PRICE ══ */}
+      <div className="bg-white px-4 pt-6 pb-2">
+        <div className="max-w-lg mx-auto">
+          {/* What's in the pack */}
+          <p className="text-gray-500 text-xs font-bold text-center mb-3 tracking-wide">شنو كاين فالباك؟</p>
+          <div className="flex flex-col gap-2 mb-5">
+            {packProducts.map((p, i) => (
+              <div key={p.id} className="flex items-center gap-3 px-4 py-3 rounded-2xl" style={{ background: "#f9fafb", border: "1px solid #f3f4f6" }}>
+                <div className="w-7 h-7 rounded-full bg-[#E8B86D] flex items-center justify-center shrink-0">
+                  <span className="text-black font-black text-xs">{i + 1}</span>
+                </div>
+                <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 bg-gray-100">
+                  <Image src={p.image} alt={p.nameDarija} fill className="object-cover" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-gray-900 font-black text-sm leading-tight">{p.nameDarija}</p>
+                  <p className="text-gray-400 text-xs mt-0.5 truncate">{p.tagline}</p>
+                </div>
+                <Check className="w-4 h-4 text-[#E8B86D] shrink-0" strokeWidth={3} />
+              </div>
+            ))}
+          </div>
+
+          {/* Price strip */}
+          <div className="rounded-2xl overflow-hidden shadow-xl mb-2" style={{ background: "#E8B86D" }}>
             <div className="flex items-center justify-between px-5 py-4">
               <div>
                 <p className="text-black/60 text-xs font-bold mb-0.5">السعر الأصلي</p>
@@ -148,32 +173,10 @@ export default function CpaPage() {
             </div>
           </div>
         </div>
-
-        {/* What's in the pack */}
-        <div className="relative z-10 w-full px-4 pt-5 pb-6">
-          <p className="text-white/50 text-xs font-bold text-center mb-3 tracking-wide">شنو كاين فالباك؟</p>
-          <div className="flex flex-col gap-2">
-            {packProducts.map((p, i) => (
-              <div key={p.id} className="flex items-center gap-3 px-4 py-3 rounded-2xl" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)" }}>
-                <div className="w-7 h-7 rounded-full bg-[#E8B86D] flex items-center justify-center shrink-0">
-                  <span className="text-black font-black text-xs">{i + 1}</span>
-                </div>
-                <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 bg-white/10">
-                  <Image src={p.image} alt={p.nameDarija} fill className="object-cover" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-white font-black text-sm leading-tight">{p.nameDarija}</p>
-                  <p className="text-white/50 text-xs mt-0.5 truncate">{p.tagline}</p>
-                </div>
-                <Check className="w-4 h-4 text-[#E8B86D] shrink-0" strokeWidth={3} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      </div>
 
       {/* ══ DIRECT ORDER FORM ══ */}
-      <section ref={formRef} className="bg-white px-4 pt-6 pb-8" id="order-form">
+      <section ref={formRef} className="bg-white px-4 pt-4 pb-8" id="order-form">
         <div className="max-w-lg mx-auto">
 
           {/* Urgency */}
