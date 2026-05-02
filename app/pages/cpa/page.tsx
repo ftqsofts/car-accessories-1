@@ -240,7 +240,7 @@ export default function CpaPage() {
       <div className="bg-white">
 
         {/* ══ PAIN SECTION ══ */}
-<div className="px-4 pt-8 pb-8 bg-gray-50">
+<div className="px-4 pt-8 pb-8">
   <div className="text-center mb-8">
     <h2 className="text-3xl font-black text-gray-900 leading-tight">
       <span className="text-red-600">واش حتى نتا</span> كتعيش هاد المشاكل فالسياقة؟
@@ -253,7 +253,7 @@ export default function CpaPage() {
   <div className="flex flex-col gap-5">
 
     {/* Problem 1: Phone Mount */}
-    <div className="bg-white rounded-2xl p-5 shadow-sm border-r-4 border-red-600 flex flex-col justify-center">
+    <div className="bg-gray-100 rounded-2xl p-5 shadow-sm border-r-4 border-red-600 flex flex-col justify-center">
       <div className="flex items-center gap-3 mb-2">
         <span className="text-2xl">📱</span>
         <h3 className="text-xl font-black text-gray-900">
@@ -266,7 +266,7 @@ export default function CpaPage() {
     </div>
 
     {/* Problem 2: Charger */}
-    <div className="bg-white rounded-2xl p-5 shadow-sm border-r-4 border-red-600 flex flex-col justify-center">
+    <div className="bg-gray-100 rounded-2xl p-5 shadow-sm border-r-4 border-red-600 flex flex-col justify-center">
       <div className="flex items-center gap-3 mb-2">
         <span className="text-2xl">🔌</span>
         <h3 className="text-xl font-black text-gray-900">
@@ -279,7 +279,7 @@ export default function CpaPage() {
     </div>
 
     {/* Problem 3: Vacuum */}
-    <div className="bg-white rounded-2xl p-5 shadow-sm border-r-4 border-red-600 flex flex-col justify-center">
+    <div className="bg-gray-100 rounded-2xl p-5 shadow-sm border-r-4 border-red-600 flex flex-col justify-center">
       <div className="flex items-center gap-3 mb-2">
         <span className="text-2xl">🚗</span>
         <h3 className="text-xl font-black text-gray-900">
