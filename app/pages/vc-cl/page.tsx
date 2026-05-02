@@ -284,7 +284,7 @@ export default function VcClPage() {
       </div>
 
       {/* ══ FOOTER ══ */}
-      <footer className="px-5 py-8 text-center" style={{ backgroundColor: "#030712", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+      <footer className="px-5 py-8 mb-18 text-center" style={{ backgroundColor: "#030712", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
         <div className="inline-flex items-center gap-2 bg-blue-600/10 text-blue-400 font-black text-sm px-4 py-2 rounded-full mb-4" style={{ border: "1px solid rgba(59,130,246,0.3)" }}>
           🚚 توصيل مجاني لجميع مدن المغرب
         </div>
