@@ -176,7 +176,7 @@ export default function CpaPage() {
       <section ref={formRef} className="bg-white px-4 pt-6 pb-8" id="order-form">
         <div className="max-w-lg mx-auto">
 
-<div className="bg-white rounded-3xl overflow-hidden shadow-lg" style={{ border: "2.5px dashed #E8B86D" }}>
+<div className="bg-white rounded-3xl overflow-hidden shadow-lg" style={{ border: "3.5px dashed #E8B86D" }}>
 
             {/* Form header */}
             <div className="px-5 py-5 text-center" style={{ background: "#030712" }}>
@@ -316,7 +316,7 @@ export default function CpaPage() {
             onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
             className="w-full py-5 rounded-2xl font-black text-lg transition-all duration-200 active:scale-95 bg-[#E8B86D] text-black shadow-xl shadow-[#E8B86D]/30 max-w-lg mx-auto block"
           >
-            🛒 اضغط هنا للطلب — {PACK_PRICE} درهم
+            🛒 اضغط هنا للطلب
           </button>
         </div>
 
@@ -329,7 +329,7 @@ export default function CpaPage() {
         </div>
 
         {/* ══ MYSTERY GIFT ══ */}
-        <div className="px-4 pb-6">
+        <div className="px-4 pb-6 hidden">
           <div className="max-w-lg mx-auto rounded-2xl p-5 text-center" style={{ background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)", border: "1px solid #E8B86D44" }}>
             <p className="text-3xl mb-2">🎁</p>
             <p className="text-[#E8B86D] font-black text-lg">هدية مع كل طلب!</p>
@@ -378,6 +378,16 @@ export default function CpaPage() {
           ))}
         </section>
 
+        {/* ══ SECOND CTA ══ */}
+        <div className="px-4 pb-6">
+          <button
+            onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+            className="w-full py-5 rounded-2xl font-black text-lg transition-all duration-200 active:scale-95 bg-[#E8B86D] text-black shadow-xl shadow-[#E8B86D]/30 max-w-lg mx-auto block"
+          >
+            🛒 اضغط هنا للطلب
+          </button>
+        </div>
+
         <TrustBadges />
 
         {/* ══ WHATSAPP CTA ══ */}
@@ -408,7 +418,7 @@ export default function CpaPage() {
           <style>{`@keyframes btnBounce { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }`}</style>
           <button
             onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-            className="w-full bg-[#E8B86D] text-black font-black text-base py-4 rounded-2xl active:scale-95 shadow-xl shadow-[#E8B86D]/40"
+            className="w-full bg-[#E8B86D] text-black font-black text-base py-4 rounded-2xl active:scale-95 shadow-sm shadow-[#E8B86D]/40"
             style={{ animation: "btnBounce 1.2s ease-in-out infinite" }}
           >
             🔥 طلب دابا وخلص عند الاستلام
