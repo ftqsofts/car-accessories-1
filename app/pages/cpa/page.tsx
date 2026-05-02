@@ -176,7 +176,10 @@ export default function CpaPage() {
       <section ref={formRef} className="bg-white px-4 pt-6 pb-8" id="order-form">
         <div className="max-w-lg mx-auto">
 
-<div className="bg-white rounded-3xl overflow-hidden shadow-lg" style={{ border: "3.5px dashed #E8B86D" }}>
+          {/* Urgency */}
+          <p className="text-center text-red-600 font-black text-sm mb-3">⏳ الكمية محدودة — اطلب دابا </p>
+
+          <div className="bg-white rounded-3xl overflow-hidden shadow-lg" style={{ border: "3.5px dashed #E8B86D" }}>
 
             {/* Form header */}
             <div className="px-5 py-5 text-center" style={{ background: "#030712" }}>
@@ -320,13 +323,6 @@ export default function CpaPage() {
           </button>
         </div>
 
-        {/* ══ URGENCY ══ */}
-        <div className="px-4 pb-6">
-          <div className="max-w-lg mx-auto rounded-2xl p-4 text-center bg-red-100">
-            <p className="text-red-600 font-black text-lg">⏳ هاد العرض من Storecoma محدود جدا</p>
-            <p className="text-red-500 text-sm font-bold mt-1">نظرا للسطوك قليل — لا تفوّت الفرصة</p>
-          </div>
-        </div>
 
         {/* ══ MYSTERY GIFT ══ */}
         <div className="px-4 pb-6 hidden">
