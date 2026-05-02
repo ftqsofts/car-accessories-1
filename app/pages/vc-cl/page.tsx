@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "176TSC"
 const PRICE_1 = 175
-const PRICE_2 = 270
+const PRICE_2 = 275
 
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
 
@@ -185,7 +185,7 @@ export default function VcClPage() {
                 boxShadow: qty === 2 ? "0 0 20px rgba(59,130,246,0.2)" : "none",
               }}
             >
-              <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-red-500 text-white text-[10px] font-black px-2 py-0.5 rounded-full whitespace-nowrap">وفري 80 درهم</span>
+              <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-red-500 text-white text-[10px] font-black px-2 py-0.5 rounded-full whitespace-nowrap">وفري 75 درهم</span>
               <p className="text-white font-black text-base">🛒 محتاجة جوج؟</p>
               <p className="text-white/40 text-[11px] mt-1">وحدة للدار + وحدة للطوموبيل</p>
               <p className="text-blue-400 font-black text-2xl mt-1">{PRICE_2} درهم</p>
@@ -193,7 +193,7 @@ export default function VcClPage() {
             </button>
           </div>
 
-          <p className="text-center text-red-400 font-black text-sm mb-3">⏳ الكمية محدودة — اطلبي دابا</p>
+          <p className="text-center text-red-400 font-black text-sm mb-3">⏳ الكمية محدودة و العرض سينتهي خلال ساعات قليلة</p>
           <div className="rounded-3xl overflow-hidden" style={{ border: "2.5px dashed rgba(59,130,246,0.6)", boxShadow: "0 0 40px rgba(59,130,246,0.1)" }}>
             <div className="px-5 py-5 text-center" style={{ background: "rgba(59,130,246,0.1)", borderBottom: "1px solid rgba(59,130,246,0.2)" }}>
               <p className="text-blue-300 font-black text-xl" style={{ animation: "btnPulse 1.5s ease-in-out infinite" }}>للطلب ادخلي معلوماتك اسفله 👇</p>
@@ -238,7 +238,7 @@ export default function VcClPage() {
                       </svg>
                       جاري إرسال طلبيتك...
                     </span>
-                  ) : `اطلبي دابا — ${price} درهم 🛒`}
+                  ) : `طلبيه دابا — ${price} درهم `}
                 </button>
               </form>
             </div>
@@ -299,7 +299,7 @@ export default function VcClPage() {
             className="w-full text-white font-black text-base py-4 rounded-2xl active:scale-95"
             style={{ background: "linear-gradient(135deg, #2563eb, #1d4ed8)", boxShadow: "0 0 30px rgba(59,130,246,0.5)", animation: "btnBounce 1.2s ease-in-out infinite" }}
           >
-            🔥 اطلبي دابا — الدفع عند الاستلام
+            🔥 طلبيه دابا — الدفع عند الاستلام
           </button>
         </div>
       )}
