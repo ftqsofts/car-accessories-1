@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next"
-import { Inter } from "next/font/google"
+import { Cairo, Inter } from "next/font/google"
 import Script from "next/script"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" })
+const cairo = Cairo({ subsets: ["arabic"], weight: ["400", "700", "900"], variable: "--font-cairo", display: "swap" })
 
 export const metadata: Metadata = {
   title: "كار باك — أحسن إكسسوارات طوموبيل بالمغرب",
@@ -19,7 +20,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ar" dir="rtl" className={inter.variable}>
+    <html lang="ar" dir="rtl" className={`${inter.variable} ${cairo.variable}`}>
       <body className="antialiased bg-gray-950">
         {children}
         <Script id="ms-clarity" strategy="afterInteractive">{`

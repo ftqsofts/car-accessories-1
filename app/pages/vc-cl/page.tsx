@@ -52,9 +52,8 @@ export default function VcClPage() {
   }
 
   return (
-    <div className="min-h-screen text-gray-900" dir="rtl" style={{ backgroundColor: "#f8fafc", fontFamily: "Cairo, sans-serif" }}>
+    <div className="min-h-screen text-gray-900" dir="rtl" style={{ backgroundColor: "#f8fafc", fontFamily: "var(--font-cairo), Cairo, sans-serif" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
         @keyframes btnPulse { 0%,100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,99,235,0.4); } 50% { transform: scale(1.03); box-shadow: 0 0 0 12px rgba(37,99,235,0); } }
         @keyframes btnBounce { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }
         .btn-pulse { animation: btnPulse 2s ease-in-out infinite; }
@@ -80,8 +79,8 @@ export default function VcClPage() {
         <h1 className="font-black leading-tight mb-4 text-white" style={{ fontSize: "clamp(2rem, 10vw, 3rem)" }}>
           أقوى أسبيراتور محمولة 4 في 1
         </h1>
-        <p className="text-white/70 text-lg font-bold mb-4 leading-relaxed px-5">
-          نقي دارك وطوموبيلتك في دقائق وبلا مجهود — بقوة شفط خيالية كتوصل لـ <span className="text-blue-400 font-black">9000PA</span>
+        <p className="text-white/80 text-lg md:text-xl font-bold mb-6 leading-relaxed px-4">
+        نساي دوك الماركات العيانة اللي دغيا كيخسرو! هادي هي <span className="text-white">الجودة و الصح</span> باش تهناي من الغبرة فـ <span className="text-white">سكة السراجم</span> و <span className="text-white">الزربية</span> — بموطور حقيقي وقوة شفط كتوصل لـ <span className="text-blue-400 font-black text-xl">9000PA</span>.
         </p>
 
         {/* Product image */}
@@ -90,6 +89,8 @@ export default function VcClPage() {
             src="/products/vacuum-4in-1-preview.webp"
             alt="لاسبيراتور 4 في 1"
             className="w-full h-auto rounded-3xl relative z-10"
+            width={640}
+            height={640}
             fetchPriority="high"
             decoding="sync"
           />
@@ -99,7 +100,7 @@ export default function VcClPage() {
         <div className="w-full mt-2">
           <p className="text-blue-400 text-xs font-black tracking-widest uppercase text-center mb-1">شنو كاين فيها؟</p>
           <p className="text-white font-black text-xl text-center mb-3" style={{ fontSize: "clamp(1.2rem, 6vw, 1.6rem)" }}>هادا ماشي السبيراتور العادي هاد الموديل راه مجرّب ومعروف بالقوة ديالو</p>
-          <img src="/products/vc-cl-features.webp" alt="" className="w-full h-auto block mb-0" />
+          <img src="/products/vc-cl-features.webp" alt="" className="w-full h-auto block mb-0" width={800} height={800} />
         </div>
 
         
@@ -150,15 +151,6 @@ export default function VcClPage() {
             preload="none"
             style={{ width: "100%", height: 500, objectFit: "cover", objectPosition: "center center", display: "block" }}
           />
-          {/* <video
-            src="/products/cleaner-4-in-1-window.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="none"
-            style={{ width: "100%", height: 400, objectFit: "cover", objectPosition: "center center", display: "block" }}
-          /> */}
         </div>
       </div>
 
@@ -256,11 +248,13 @@ export default function VcClPage() {
         </div>
       </section>
 
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/products/cleaner-4-in-1-preview.webp"
         alt="مكونات اللاسبيراتور 4 في 1"
         className="w-full h-auto mt-12"
+        width={800}
+        height={600}
+        loading="lazy"
       />
 
       {/* ══ REVIEWS ══ */}
@@ -268,7 +262,7 @@ export default function VcClPage() {
         <h2 className="text-gray-900 font-black text-2xl mt-12 text-center mb-5">عملائنا راضون</h2>
         {["/reviews/reviews-1.webp"].map((src, i) => (
           // eslint-disable-next-line @next/next/no-img-element
-          <img key={i} src={src} alt="رأي زبون" className="w-full border border-gray-200 h-auto rounded-2xl shadow-sm" />
+          <img key={i} src={src} alt="رأي زبون" className="w-full border border-gray-200 h-auto rounded-2xl shadow-sm" width={800} height={600} loading="lazy" />
         ))}
       </section>
 
@@ -299,7 +293,7 @@ export default function VcClPage() {
         </div>
         <p className="text-gray-400 text-xs">© 2025 Storecoma — جميع الحقوق محفوظة</p>
         <div className="relative z-10 pb-2 mx-auto mt-4 w-max text-center">
-          <Image src="/storecoma-logo.webp" alt="storecoma" width={90} height={90} className="object-contain" priority />
+          <Image src="/storecoma-logo.webp" alt="storecoma" width={90} height={90} className="object-contain" loading="lazy" />
         </div>
       </footer>
 
