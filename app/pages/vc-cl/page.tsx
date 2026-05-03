@@ -80,7 +80,7 @@ export default function VcClPage() {
         <h1 className="font-black leading-tight mb-4 text-white" style={{ fontSize: "clamp(2rem, 10vw, 3rem)" }}>
           أقوى أسبيراتور محمولة 4 في 1
         </h1>
-        <p className="text-white/70 text-lg font-bold mb-6 leading-relaxed">
+        <p className="text-white/70 text-lg font-bold mb-4 leading-relaxed px-5">
           نقي دارك وطوموبيلتك في دقائق وبلا مجهود — بقوة شفط خيالية كتوصل لـ <span className="text-blue-400 font-black">9000PA</span>
         </p>
 
@@ -101,6 +101,11 @@ export default function VcClPage() {
           <p className="text-white font-black text-xl text-center mb-3" style={{ fontSize: "clamp(1.2rem, 6vw, 1.6rem)" }}>هادا ماشي السبيراتور العادي هاد الموديل راه مجرّب ومعروف بالقوة ديالو</p>
           <img src="/products/vc-cl-features.webp" alt="" className="w-full h-auto block mb-0" />
         </div>
+
+        
+        <p className="text-white/80 text-2xl font-bold mb-6 leading-relaxed px-5">
+          بلا مضيعي <span style={{ background: "linear-gradient(90deg, #ef4444, #f97316)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }} className="font-black">الوقت والفلوس فالتنقية</span> بلا نتيجة. هاد المكنسة القوية كتعاونكي تنقّي بسهولة
+        </p>
 
       </section>
 
