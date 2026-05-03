@@ -59,20 +59,81 @@ export default function VcClPage() {
         .btn-pulse { animation: btnPulse 2s ease-in-out infinite; }
       `}</style>
 
-
-      {/* ══ HERO — LP image ══ */}
-      <div style={{ backgroundColor: "#000000", lineHeight: 0 }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/products/vacuum-4in-1-lp.webp"
-          alt="أقوى أسبيراتور محمولة 4 في 1"
-          className="w-full h-auto block"
-          width={800}
-          height={2400}
-          fetchPriority="high"
-          decoding="sync"
-        />
+      {/* ══ COD BANNER — top of page ══ */}
+      <div className="w-full overflow-hidden" style={{ lineHeight: 0 }}>
+        <Image src="/resources/cod-header-banner.webp" alt="توصيل مجاني — الدفع عند الاستلام" width={800} height={60} className="w-auto h-[45px]" priority />
       </div>
+
+      {/* ══ HERO — dark ══ */}
+      <section className="relative flex flex-col items-center text-center overflow-hidden" style={{ paddingTop: "2.5rem", paddingBottom: "0", backgroundColor: "#000000" }}>
+        {/* Glow bg */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[400px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)" }} />
+
+        {/* Logo */}
+        <div className="relative z-10 pb-2">
+          <Image src="/storecoma-logo.webp" alt="storecoma" width={90} height={90} className="object-contain" priority />
+        </div>
+
+        <span className="bg-blue-600 text-white text-xs font-black px-4 py-1.5 rounded-full mb-4">🔥 الأكثر طلباً في المغرب</span>
+
+        <h1 className="font-black leading-tight mb-4 text-white" style={{ fontSize: "clamp(2rem, 10vw, 3rem)" }}>
+          أقوى أسبيراتور محمولة 4 في 1
+        </h1>
+        <p className="text-white/80 text-lg md:text-xl font-bold mb-6 leading-relaxed px-4">
+        نساي دوك الماركات العيانة اللي دغيا كيخسرو! هادي هي <span className="text-white">الجودة و الصح</span> باش تهناي من الغبرة فـ <span className="text-white">سكة السراجم</span> و <span className="text-white">الزربية</span> — بموطور حقيقي وقوة شفط كتوصل لـ <span className="text-blue-400 font-black text-xl">9000PA</span>.
+        </p>
+
+        {/* Product image */}
+        <div className="relative w-full max-w-sm mx-auto mb-8">
+          <img
+            src="/products/0b8dc538-9cfa-4fac-82a7-2f1a4fcc9016.webp"
+            alt="لاسبيراتور 4 في 1"
+            className="w-full h-auto rounded-3xl relative z-10"
+            width={640}
+            height={640}
+            fetchPriority="high"
+            decoding="sync"
+          />
+        </div>
+
+        {/* In-use real photos — dark */}
+        <div className="w-full px-4 mb-6">
+          <p className="text-blue-400 text-xs font-black tracking-widest uppercase text-center mb-1">شوفيه فالواقع</p>
+          <p className="text-white font-black text-center mb-4" style={{ fontSize: "clamp(1.1rem, 5vw, 1.4rem)" }}>يستعمل فكل بلاصة</p>
+          <div className="flex flex-col gap-12">
+            {[
+              { src: "/products/Sb22bf7dacb1b4a36b82a3abf404bd2d3V.avif", title: "الكنابي والمقاعد", sub: "شفط الغبرة والشعر بعمق بلا مجهود — رؤوس مخصصة لكل بلاصة" },
+              { src: "/products/S25c65973ff9d46ebb5d8c3d96d2e1d8bI.avif", title: "النوافذ، وشعر الحيوانات", sub: "4 روس مختلفة — كل واحدة لبلاصة وسطح معين" },
+              { src: "/products/S4e45fc67ca5245de902fd57366a5d0dci.avif", title: "الطوموبيل من الداخل", sub: "نظافة كاملة للمقاعد والأرضية والزوايا الضيقة في دقائق" },
+            ].map((item, i) => {
+              const imageLeft = i % 2 === 0
+              return (
+                <div key={i} className={`flex items-center gap-4 ${imageLeft ? "flex-row" : "flex-row-reverse"}`}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={item.src} alt={item.title} className="shrink-0 rounded-2xl object-cover" width={150} height={150} loading="lazy" style={{ width: 160, height: 160, border: "1px solid rgba(255,255,255,0.1)" }} />
+                  <div className={`flex-1 ${imageLeft ? "text-right" : "text-left"}`}>
+                    <p className="text-white font-black text-base leading-snug mb-2">{item.title}</p>
+                    <p className="text-white/50 text-sm leading-relaxed">{item.sub}</p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* Breakdown image with title */}
+        <div className="w-full mt-12">
+          <p className="text-blue-400 text-xs font-black tracking-widest uppercase text-center mb-1">شنو كاين فيها؟</p>
+          <p className="text-white font-black text-xl text-center mb-3" style={{ fontSize: "clamp(1.2rem, 6vw, 1.6rem)" }}>هادا ماشي السبيراتور العادي هاد الموديل راه مجرّب ومعروف بالقوة ديالو</p>
+          <img src="/products/vacuum-4in-1-preview-2.webp" alt="" className="w-full h-auto block mb-0" width={800} height={800} />
+        </div>
+
+        
+        <p className="text-white/80 text-2xl font-bold mb-6 leading-relaxed px-5">
+          بلا مضيعي <span style={{ background: "linear-gradient(90deg, #ef4444, #f97316)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }} className="font-black">الوقت والفلوس فالتنقية</span> بلا نتيجة. هاد المكنسة القوية كتعاونكي تنقّي بسهولة
+        </p>
+
+      </section>
 
       {/* ── Wave edge: dark → light ── */}
       <div style={{ lineHeight: 0, marginTop: "-2px", backgroundColor: "#000000" }}>
