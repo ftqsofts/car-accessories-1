@@ -86,7 +86,7 @@ export default function VcClPage() {
         {/* Product image */}
         <div className="relative w-full max-w-sm mx-auto mb-8">
           <img
-            src="/products/vacuum-4in-1-preview.webp"
+            src="/products/0b8dc538-9cfa-4fac-82a7-2f1a4fcc9016.png"
             alt="لاسبيراتور 4 في 1"
             className="w-full h-auto rounded-3xl relative z-10"
             width={640}
@@ -96,11 +96,36 @@ export default function VcClPage() {
           />
         </div>
 
+        {/* In-use real photos — dark */}
+        <div className="w-full px-4 mb-6">
+          <p className="text-blue-400 text-xs font-black tracking-widest uppercase text-center mb-1">شوفيه فالواقع</p>
+          <p className="text-white font-black text-center mb-4" style={{ fontSize: "clamp(1.1rem, 5vw, 1.4rem)" }}>يستعمل فكل بلاصة</p>
+          <div className="flex flex-col gap-8">
+            {[
+              { src: "/products/Sb22bf7dacb1b4a36b82a3abf404bd2d3V.avif", title: "الكنابي والمقاعد", sub: "شفط الغبرة والشعر بعمق بلا مجهود — راسها مخصصة لكل سطح" },
+              { src: "/products/S25c65973ff9d46ebb5d8c3d96d2e1d8bI.avif", title: "اللابيبتوب، النوافذ، وشعر الحيوانات", sub: "4 روس مختلفة — كل واحدة لبلاصة وسطح معين" },
+              { src: "/products/S4e45fc67ca5245de902fd57366a5d0dci.avif", title: "الطوموبيل من الداخل", sub: "نظافة كاملة للمقاعد والأرضية والزوايا الضيقة في دقائق" },
+            ].map((item, i) => {
+              const imageLeft = i % 2 === 0
+              return (
+                <div key={i} className={`flex items-center gap-4 ${imageLeft ? "flex-row" : "flex-row-reverse"}`}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={item.src} alt={item.title} className="shrink-0 rounded-2xl object-cover" width={150} height={150} loading="lazy" style={{ width: 150, height: 150, border: "1px solid rgba(255,255,255,0.1)" }} />
+                  <div className={`flex-1 ${imageLeft ? "text-right" : "text-left"}`}>
+                    <p className="text-white font-black text-base leading-snug mb-2">{item.title}</p>
+                    <p className="text-white/50 text-sm leading-relaxed">{item.sub}</p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
         {/* Breakdown image with title */}
         <div className="w-full mt-2">
           <p className="text-blue-400 text-xs font-black tracking-widest uppercase text-center mb-1">شنو كاين فيها؟</p>
           <p className="text-white font-black text-xl text-center mb-3" style={{ fontSize: "clamp(1.2rem, 6vw, 1.6rem)" }}>هادا ماشي السبيراتور العادي هاد الموديل راه مجرّب ومعروف بالقوة ديالو</p>
-          <img src="/products/vc-cl-features.webp" alt="" className="w-full h-auto block mb-0" width={800} height={800} />
+          <img src="/products/ChatGPT Image May 3, 2026, 12_44_20 PM.png" alt="" className="w-full h-auto block mb-0" width={800} height={800} />
         </div>
 
         
@@ -118,28 +143,7 @@ export default function VcClPage() {
       </div>
 
       {/* ══ IN USE GALLERY — light ══ */}
-      <div className="px-5 py-8 mt-[-2px]" style={{ backgroundColor: "#f1f5f9" }}>
-        <p className="text-blue-600 text-xs font-black tracking-widest uppercase text-center mb-1">شوفيه فالواقع</p>
-        <p className="text-gray-900 font-black text-center mb-5" style={{ fontSize: "clamp(1.2rem, 6vw, 1.6rem)" }}>يستعمل فكل بلاصة</p>
-        <div className="max-w-lg mx-auto grid grid-cols-2 hidden gap-3">
-          <div className="rounded-2xl overflow-hidden aspect-square bg-gray-200 flex flex-col items-center justify-center" style={{ border: "1px solid #e2e8f0" }}>
-            <span className="text-4xl">🏠</span>
-            <p className="text-gray-400 text-xs mt-2 font-bold">صورة الدار</p>
-          </div>
-          <div className="rounded-2xl overflow-hidden aspect-square bg-gray-200 flex flex-col items-center justify-center" style={{ border: "1px solid #e2e8f0" }}>
-            <span className="text-4xl">🚗</span>
-            <p className="text-gray-400 text-xs mt-2 font-bold">صورة الطوموبيل</p>
-          </div>
-          <div className="rounded-2xl overflow-hidden aspect-square bg-gray-200 flex flex-col items-center justify-center" style={{ border: "1px solid #e2e8f0" }}>
-            <span className="text-4xl">🪣</span>
-            <p className="text-gray-400 text-xs mt-2 font-bold">صورة الزربية</p>
-          </div>
-          <div className="rounded-2xl overflow-hidden aspect-square bg-gray-200 flex flex-col items-center justify-center" style={{ border: "1px solid #e2e8f0" }}>
-            <span className="text-4xl">🛋️</span>
-            <p className="text-gray-400 text-xs mt-2 font-bold">صورة الكنابي</p>
-          </div>
-        </div>
-
+      <div className="px-2 py-8 mt-[-2px]" style={{ backgroundColor: "#f1f5f9" }}>
         {/* Video in use */}
         <div className="max-w-lg mx-auto mt-4 rounded-2xl overflow-hidden" style={{ border: "1px solid #e2e8f0", boxShadow: "0 4px 16px rgba(0,0,0,0.08)" }}>
           <video
