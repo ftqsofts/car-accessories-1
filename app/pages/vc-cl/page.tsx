@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "176TSC"
-const PRICE_1 = 175
-const PRICE_2 = 275
+const PRICE_1 = 165
+const PRICE_2 = 250
 
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
 
@@ -190,7 +190,7 @@ export default function VcClPage() {
                 boxShadow: qty === 2 ? "0 0 0 4px rgba(37,99,235,0.1)" : "none",
               }}
             >
-              <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-red-500 text-white text-[10px] font-black px-2 py-0.5 rounded-full whitespace-nowrap">وفري 75 درهم</span>
+              <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-red-500 text-white text-[10px] font-black px-2 py-0.5 rounded-full whitespace-nowrap">وفري 80 درهم</span>
               <p className="text-gray-900 font-black text-base">🛒 محتاجة جوج؟</p>
               <p className="text-gray-500 text-[11px] mt-1">وحدة للدار + وحدة للطوموبيل</p>
               <p className="text-blue-600 font-black text-2xl mt-1">{PRICE_2} درهم</p>
