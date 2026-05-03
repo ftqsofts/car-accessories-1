@@ -118,7 +118,7 @@ export default function VcClPage() {
       </div>
 
       {/* ══ IN USE GALLERY — light ══ */}
-      <div className="px-5 pt-2 pb-8" style={{ backgroundColor: "#f1f5f9" }}>
+      <div className="px-5 py-8 mt-[-2px]" style={{ backgroundColor: "#f1f5f9" }}>
         <p className="text-blue-600 text-xs font-black tracking-widest uppercase text-center mb-1">شوفيه فالواقع</p>
         <p className="text-gray-900 font-black text-center mb-5" style={{ fontSize: "clamp(1.2rem, 6vw, 1.6rem)" }}>يستعمل فكل بلاصة</p>
         <div className="max-w-lg mx-auto grid grid-cols-2 hidden gap-3">
