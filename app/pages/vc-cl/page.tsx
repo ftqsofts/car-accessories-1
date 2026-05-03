@@ -86,7 +86,7 @@ export default function VcClPage() {
         {/* Product image */}
         <div className="relative w-full max-w-sm mx-auto mb-8">
           <img
-            src="/products/0b8dc538-9cfa-4fac-82a7-2f1a4fcc9016.png"
+            src="/products/0b8dc538-9cfa-4fac-82a7-2f1a4fcc9016.webp"
             alt="لاسبيراتور 4 في 1"
             className="w-full h-auto rounded-3xl relative z-10"
             width={640}
@@ -125,7 +125,7 @@ export default function VcClPage() {
         <div className="w-full mt-2">
           <p className="text-blue-400 text-xs font-black tracking-widest uppercase text-center mb-1">شنو كاين فيها؟</p>
           <p className="text-white font-black text-xl text-center mb-3" style={{ fontSize: "clamp(1.2rem, 6vw, 1.6rem)" }}>هادا ماشي السبيراتور العادي هاد الموديل راه مجرّب ومعروف بالقوة ديالو</p>
-          <img src="/products/ChatGPT Image May 3, 2026, 12_44_20 PM.png" alt="" className="w-full h-auto block mb-0" width={800} height={800} />
+          <img src="/products/vacuum-4in-1-preview-2.webp" alt="" className="w-full h-auto block mb-0" width={800} height={800} />
         </div>
 
         
@@ -202,7 +202,7 @@ export default function VcClPage() {
           <p className="text-center text-red-500 font-black text-sm mb-3">⏳ الكمية محدودة و العرض سينتهي خلال ساعات قليلة</p>
           <div className="rounded-3xl overflow-hidden" style={{ border: "2.5px dashed #2563eb", boxShadow: "0 4px 24px rgba(37,99,235,0.12)" }}>
             <div className="px-5 py-5 text-center" style={{ background: "#eff6ff", borderBottom: "1px solid #bfdbfe" }}>
-              <p className="text-blue-700 font-black text-xl" style={{ animation: "btnPulse 1.5s ease-in-out infinite" }}>للطلب ادخلي معلوماتك اسفله 👇</p>
+              <p className="text-blue-700 font-black text-xl">للطلب ادخلي معلوماتك اسفله 👇</p>
               <p className="text-gray-600 font-bold text-sm mt-1">توصيل مجاني + الدفع عند الاستلام ✅</p>
             </div>
             <div className="px-5 pb-8 pt-6" style={{ background: "#ffffff" }}>
@@ -234,7 +234,7 @@ export default function VcClPage() {
                   type="submit"
                   disabled={loading}
                   className="w-full py-5 rounded-2xl font-black text-lg text-white transition-all duration-200 active:scale-95"
-                  style={{ background: "linear-gradient(135deg, #2563eb, #1d4ed8)", boxShadow: "0 4px 20px rgba(37,99,235,0.4)" }}
+                  style={{ background: "linear-gradient(135deg, #2563eb, #1d4ed8)", boxShadow: "0 4px 20px rgba(37,99,235,0.4)", animation: loading ? "none" : "btnPulse 1.5s ease-in-out infinite" }}
                 >
                   {loading ? (
                     <span className="flex items-center justify-center gap-2">
