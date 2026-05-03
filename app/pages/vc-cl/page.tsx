@@ -61,7 +61,7 @@ export default function VcClPage() {
 
 
       {/* ══ HERO — LP image ══ */}
-      <div style={{ backgroundColor: "#000000", lineHeight: 0 }}>
+      <div style={{ backgroundColor: "#0b0b0b", lineHeight: 0 }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/products/vacuum-4in-1-lp.webp"
@@ -75,7 +75,7 @@ export default function VcClPage() {
       </div>
 
       {/* ── Wave edge: dark → light ── */}
-      <div style={{ lineHeight: 0, marginTop: "-2px", backgroundColor: "#000000" }}>
+      <div style={{ lineHeight: 0, marginTop: "-2px", backgroundColor: "#0b0b0b" }}>
         <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: 70 }}>
           <path d="M0,0 C360,80 1080,80 1440,0 L1440,80 L0,80 Z" fill="#f1f5f9" />
         </svg>
