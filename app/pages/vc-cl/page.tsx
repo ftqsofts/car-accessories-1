@@ -122,7 +122,7 @@ export default function VcClPage() {
         </div>
 
         {/* Breakdown image with title */}
-        <div className="w-full mt-2">
+        <div className="w-full mt-12">
           <p className="text-blue-400 text-xs font-black tracking-widest uppercase text-center mb-1">شنو كاين فيها؟</p>
           <p className="text-white font-black text-xl text-center mb-3" style={{ fontSize: "clamp(1.2rem, 6vw, 1.6rem)" }}>هادا ماشي السبيراتور العادي هاد الموديل راه مجرّب ومعروف بالقوة ديالو</p>
           <img src="/products/vacuum-4in-1-preview-2.webp" alt="" className="w-full h-auto block mb-0" width={800} height={800} />
