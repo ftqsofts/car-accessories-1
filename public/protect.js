@@ -21,21 +21,6 @@
   style.innerHTML = "* { user-select: none !important; -webkit-user-select: none !important; } img { pointer-events: none !important; -webkit-user-drag: none !important; }";
   document.head.appendChild(style);
 
-  // ── Debugger trap — freezes Sources panel ──
-  function debuggerTrap() {
-    setInterval(function () {
-      (function () { debugger; })();
-    }, 50);
-  }
-  debuggerTrap();
-
-  // ── Console flood — clears and warns repeatedly ──
-  setInterval(function () {
-    console.clear();
-    console.log("%c⚠️ Stop!", "color:red;font-size:40px;font-weight:bold;");
-    console.log("%cهذه الصفحة محمية. لا يُسمح بفحص الكود.", "color:red;font-size:16px;");
-  }, 1000);
-
   // ── Load disable-devtool and init after it's ready ──
   var warningHTML = '<div style="display:flex;height:100vh;align-items:center;justify-content:center;text-align:center;font-family:sans-serif;background:#fff"><div><h1 style="color:red;margin-bottom:12px">⚠️ غير مسموح</h1><p style="margin-bottom:8px">Developer Tools غير مسموح بها على هذه الصفحة.</p><p>أغلق Developer Tools و <a href="" onclick="location.reload();return false;">حدّث الصفحة</a></p></div></div>';
 

@@ -12,7 +12,8 @@
       "PowerShell(Get-Item \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\pack-a-10.webp\", \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\resources\\\\cod-header-banner.webp\", \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\storecoma-logo.png\" | Select-Object Name, @{N='KB';E={[math]::Round\\($_.Length/1KB,1\\)}})",
       "PowerShell(Get-ChildItem \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\pack-a-10.webp\", \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\resources\\\\cod-header-banner.webp\", \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\storecoma-logo.png\" | ForEach-Object { \"$\\($_.Name\\): $\\([math]::Round\\($_.Length/1KB, 1\\)\\) KB\" })",
       "Bash(findstr devtools *)",
-      "Bash(copy \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\node_modules\\\\disable-devtool\\\\disable-devtool.min.js\" \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\disable-devtool.min.js\")"
+      "Bash(copy \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\node_modules\\\\disable-devtool\\\\disable-devtool.min.js\" \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\disable-devtool.min.js\")",
+      "WebSearch"
     ]
   }
 }
