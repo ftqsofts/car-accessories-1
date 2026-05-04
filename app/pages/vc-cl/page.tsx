@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "176TSC"
-const PRICE_1 = 165
+const PRICE_1 = 160
 const PRICE_2 = 265
 
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
@@ -101,44 +101,63 @@ export default function VcClPage() {
       <section ref={formRef} className="px-5 py-8" id="order-form" style={{ backgroundColor: "#ffffff" }}>
         <div className="max-w-lg mx-auto">
 
+
+          <h2 className="text-center font-black text-xl mb-3">
+            سبيراتور بجودة مزيانة، ومعاه ضمان شهر كامل باش تجربيه ✔️
+          </h2>
+
+          <p className="text-center text-red-500 font-black text-sm mb-3">⏳ العرض سينتهي خلال ساعات قليلة</p>
+
+          
           {/* ── QTY SELECTOR ── */}
-          <p className="text-center text-gray-900 font-black text-lg mb-3">اختاري الكمية 👇</p>
-          <div className="grid grid-cols-1 gap-3 mb-6">
+          {/* <p className="text-center text-gray-900 font-black text-lg mb-3">اختاري الكمية 👇</p> */}
+          <div className="flex flex-col gap-4 mb-6">
             {/* 1 unit */}
             <button
               type="button"
               onClick={() => setQty(1)}
-              className="rounded-2xl p-4 text-center transition-all active:scale-95"
+              className="relative w-full flex items-center gap-3 px-4 py-5 rounded-xl transition-all active:scale-95"
               style={{
-                border: qty === 1 ? "2px solid #2563eb" : "2px solid #e2e8f0",
-                background: qty === 1 ? "#eff6ff" : "#f8fafc",
-                boxShadow: qty === 1 ? "0 0 0 4px rgba(37,99,235,0.1)" : "none",
+                border: qty === 1 ? "2px solid #1e3a8a" : "2px solid #d1d5db",
+                background: qty === 1 ? "#eff6ff" : "#ffffff",
               }}
             >
-              <p className="text-gray-900 font-black text-base">1️⃣ وحدة</p>
-              <p className="text-blue-600 font-black text-2xl mt-1">{PRICE_1} درهم</p>
-              {qty === 1 && <p className="text-blue-600 text-xs mt-1 font-bold">✓ محدد</p>}
+              {/* Radio dot */}
+              <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ border: qty === 1 ? "2px solid #1e3a8a" : "2px solid #d1d5db" }}>
+                {qty === 1 && <div className="w-2.5 h-2.5 rounded-full bg-blue-900" />}
+              </div>
+              {/* Title */}
+              <span className="flex-1 text-right font-black text-base text-gray-900">أسبيراتور 4 في 1 — وحدة</span>
+              {/* Price */}
+              <span className="shrink-0 font-black text-lg text-gray-900">{PRICE_1} درهم</span>
             </button>
+
             {/* 2 units */}
             <button
               type="button"
               onClick={() => setQty(2)}
-              className="rounded-2xl p-4 text-center transition-all active:scale-95 relative"
+              className="relative w-full flex items-center gap-3 px-4 py-5 rounded-xl transition-all active:scale-95"
               style={{
-                border: qty === 2 ? "2px solid #2563eb" : "2px solid #e2e8f0",
-                background: qty === 2 ? "#eff6ff" : "#f8fafc",
-                boxShadow: qty === 2 ? "0 0 0 4px rgba(37,99,235,0.1)" : "none",
+                border: qty === 2 ? "2px solid #1e3a8a" : "2px solid #d1d5db",
+                background: qty === 2 ? "#eff6ff" : "#ffffff",
               }}
             >
-              <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-red-500 text-white text-[10px] font-black px-2 py-0.5 rounded-full whitespace-nowrap">وفري 65 درهم</span>
-              <p className="text-gray-900 font-black text-base">🛒 محتاجة جوج؟</p>
-              <p className="text-gray-500 text-xs mt-1">وحدة للدار + وحدة للطوموبيل</p>
-              <p className="text-blue-600 font-black text-2xl mt-1">{PRICE_2} درهم</p>
-              {qty === 2 && <p className="text-blue-600 text-xs mt-1 font-bold">✓ محدد</p>}
+              {/* Discount badge */}
+              <span className="absolute -top-3 right-3 text-white text-xs font-black px-2 py-0.5 rounded" style={{ background: "#0f172a" }}>وفري 60 درهم</span>
+              {/* Radio dot */}
+              <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ border: qty === 2 ? "2px solid #1e3a8a" : "2px solid #d1d5db" }}>
+                {qty === 2 && <div className="w-2.5 h-2.5 rounded-full bg-blue-900" />}
+              </div>
+              {/* Title + sub */}
+              <div className="flex-1 text-right">
+                <p className="font-black text-base text-gray-900">اثنان بسعر خاص</p>
+                <p className="text-gray-400 text-xs mt-0.5">وحدة للدار + وحدة للطوموبيل</p>
+              </div>
+              {/* Price */}
+              <span className="shrink-0 font-black text-lg text-gray-900">{PRICE_2} درهم</span>
             </button>
           </div>
 
-          <p className="text-center text-red-500 font-black text-sm mb-3">⏳ الكمية محدودة و العرض سينتهي خلال ساعات قليلة</p>
           <div className="rounded-3xl overflow-hidden" style={{ border: "2.5px dashed #2563eb", boxShadow: "0 4px 24px rgba(37,99,235,0.12)" }}>
             <div className="px-5 py-5 text-center" style={{ background: "#eff6ff", borderBottom: "1px solid #bfdbfe" }}>
               <p className="text-blue-700 font-black text-xl">للطلب ادخلي معلوماتك اسفله 👇</p>
@@ -148,26 +167,41 @@ export default function VcClPage() {
               <form onSubmit={handleSubmit} className="space-y-5 py-4">
                 <input type="text" name="website" tabIndex={-1} autoComplete="off" style={{ display: "none" }} onChange={(e) => setForm({ ...form, _hp: e.target.value })} />
                 <div>
-                  <label className="block text-sm text-gray-700 mb-2 font-black">الاسم الكامل <span className="font-normal text-gray-400">(اختياري)</span></label>
-                  <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    placeholder="كتبي اسمك هنا..."
-                    className="w-full rounded-xl px-4 py-4 text-gray-900 text-base outline-none transition-colors focus:border-blue-500"
-                    style={{ background: "#f8fafc", border: "2px solid #cbd5e1" }} />
+                  <label className="block text-sm text-gray-700 mb-1.5 font-black text-right">الاسم الكامل <span className="font-normal text-gray-400">(اختياري)</span></label>
+                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: "2px solid #cbd5e1", background: "#ffffff" }}>
+                    <span className="px-3 font-black flex items-center justify-center self-stretch" style={{ background: "#f1f5f9", borderLeft: "2px solid #e2e8f0" }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.029 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664h10z"/></svg>
+                    </span>
+                    <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      placeholder="الاسم الكامل"
+                      className="flex-1 px-4 py-4 text-gray-900 text-base outline-none bg-transparent text-right"
+                    />
+                  </div>
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-700 mb-2 font-black">المدينة <span className="font-normal text-gray-400">(اختياري)</span></label>
-                  <input type="text" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })}
-                    placeholder="مثلاً: كازا، الرباط..."
-                    className="w-full rounded-xl px-4 py-4 text-gray-900 text-base outline-none transition-colors focus:border-blue-500"
-                    style={{ background: "#f8fafc", border: "2px solid #cbd5e1" }} />
+                  <label className="block text-sm text-gray-700 mb-1.5 font-black text-right">المدينة <span className="font-normal text-gray-400">(اختياري)</span></label>
+                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: "2px solid #cbd5e1", background: "#ffffff" }}>
+                    <span className="px-3 font-black flex items-center justify-center self-stretch" style={{ background: "#f1f5f9", borderLeft: "2px solid #e2e8f0" }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                    </span>
+                    <input type="text" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })}
+                      placeholder="مثلاً: كازا، الرباط..."
+                      className="flex-1 px-4 py-4 text-gray-900 text-base outline-none bg-transparent text-right"
+                    />
+                  </div>
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-700 mb-2 font-black">رقم التيليفون <span className="text-red-500">*</span></label>
-                  <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    placeholder="06XXXXXXXX"
-                    className="w-full rounded-xl px-4 py-4 text-gray-900 text-base outline-none transition-colors focus:border-blue-500"
-                    style={{ background: "#f8fafc", border: errors.phone ? "2px solid #ef4444" : "2px solid #cbd5e1" }} />
-                  {errors.phone && <p className="text-red-500 text-sm mt-1 font-bold">{errors.phone}</p>}
+                  <label className="block text-sm text-gray-700 mb-1.5 font-black text-right">رقم التيليفون <span className="text-red-500">*</span></label>
+                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: errors.phone ? "2px solid #ef4444" : "2px solid #cbd5e1", background: "#ffffff" }}>
+                    <span className="px-3 font-black flex items-center justify-center self-stretch" style={{ background: "#f1f5f9", borderLeft: "2px solid #e2e8f0" }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z"/></svg>
+                    </span>
+                    <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      placeholder="06XXXXXXXX"
+                      className="flex-1 px-4 py-4 text-gray-900 text-base outline-none bg-transparent text-right"
+                    />
+                  </div>
+                  {errors.phone && <p className="text-red-500 text-sm mt-1 font-bold text-right">{errors.phone}</p>}
                 </div>
                 <button
                   type="submit"
