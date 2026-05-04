@@ -36,37 +36,17 @@
     console.log("%cهذه الصفحة محمية. لا يُسمح بفحص الكود.", "color:red;font-size:16px;");
   }, 1000);
 
-  // ── Devtools detection (event-based via devtools-detect logic) ──
-  var warningHTML = '<div style="display:flex;height:100vh;align-items:center;justify-content:center;text-align:center;font-family:sans-serif;background:#fff"><div><h1 style="color:red;margin-bottom:12px">⚠️ غير مسموح</h1><p style="margin-bottom:8px">Developer Tools غير مسموح بها على هذه الصفحة.</p><p>أغلق Developer Tools و <a href="">حدّث الصفحة</a></p></div></div>';
+  // ── Load disable-devtool and init after it's ready ──
+  var warningHTML = '<div style="display:flex;height:100vh;align-items:center;justify-content:center;text-align:center;font-family:sans-serif;background:#fff"><div><h1 style="color:red;margin-bottom:12px">⚠️ غير مسموح</h1><p style="margin-bottom:8px">Developer Tools غير مسموح بها على هذه الصفحة.</p><p>أغلق Developer Tools و <a href="" onclick="location.reload();return false;">حدّث الصفحة</a></p></div></div>';
 
-  var devtools = { isOpen: false, orientation: undefined };
-  var threshold = 170;
-
-  function emitEvent(isOpen, orientation) {
-    window.dispatchEvent(new CustomEvent("devtoolschange", { detail: { isOpen: isOpen, orientation: orientation } }));
-  }
-
-  function checkDevTools() {
-    var widthThreshold = window.outerWidth - window.innerWidth > threshold;
-    var heightThreshold = window.outerHeight - window.innerHeight > threshold;
-    var orientation = widthThreshold ? "vertical" : "horizontal";
-
-    if (!(heightThreshold && widthThreshold) && (widthThreshold || heightThreshold)) {
-      if (!devtools.isOpen || devtools.orientation !== orientation) emitEvent(true, orientation);
-      devtools.isOpen = true;
-      devtools.orientation = orientation;
-    } else {
-      if (devtools.isOpen) emitEvent(false, undefined);
-      devtools.isOpen = false;
-      devtools.orientation = undefined;
-    }
-  }
-
-  setInterval(checkDevTools, 500);
-
-  window.addEventListener("devtoolschange", function (e) {
-    if (e.detail.isOpen) {
-      document.body.innerHTML = warningHTML;
-    }
-  });
+  var s = document.createElement("script");
+  s.src = "/disable-devtool.min.js";
+  s.onload = function () {
+    DisableDevtool({
+      ondevtoolopen: function () {
+        document.body.innerHTML = warningHTML;
+      }
+    });
+  };
+  document.head.appendChild(s);
 })();
