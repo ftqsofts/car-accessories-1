@@ -10,7 +10,9 @@
       "PowerShell($content = Get-Content 'C:\\\\Users\\\\LEGION\\\\.claude\\\\projects\\\\c--laragon-www-Ecom-car-accessories-pack\\\\4c277fd4-866d-443a-8888-7b9af37a6577.jsonl' -Raw -Encoding UTF8; $idx = $content.IndexOf\\('product-page'\\); if \\($idx -ge 0\\) { $content.Substring\\([Math]::Max\\(0,$idx-100\\), [Math]::Min\\(10000, $content.Length - $idx\\)\\) } else { 'not found' })",
       "WebFetch(domain:elazzouzi.art)",
       "PowerShell(Get-Item \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\pack-a-10.webp\", \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\resources\\\\cod-header-banner.webp\", \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\storecoma-logo.png\" | Select-Object Name, @{N='KB';E={[math]::Round\\($_.Length/1KB,1\\)}})",
-      "PowerShell(Get-ChildItem \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\pack-a-10.webp\", \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\resources\\\\cod-header-banner.webp\", \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\storecoma-logo.png\" | ForEach-Object { \"$\\($_.Name\\): $\\([math]::Round\\($_.Length/1KB, 1\\)\\) KB\" })"
+      "PowerShell(Get-ChildItem \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\pack-a-10.webp\", \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\resources\\\\cod-header-banner.webp\", \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\storecoma-logo.png\" | ForEach-Object { \"$\\($_.Name\\): $\\([math]::Round\\($_.Length/1KB, 1\\)\\) KB\" })",
+      "Bash(findstr devtools *)",
+      "Bash(copy \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\node_modules\\\\disable-devtool\\\\disable-devtool.min.js\" \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\disable-devtool.min.js\")"
     ]
   }
 }
