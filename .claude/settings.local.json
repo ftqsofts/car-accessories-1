@@ -13,7 +13,28 @@
       "PowerShell(Get-ChildItem \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\pack-a-10.webp\", \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\resources\\\\cod-header-banner.webp\", \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\storecoma-logo.png\" | ForEach-Object { \"$\\($_.Name\\): $\\([math]::Round\\($_.Length/1KB, 1\\)\\) KB\" })",
       "Bash(findstr devtools *)",
       "Bash(copy \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\node_modules\\\\disable-devtool\\\\disable-devtool.min.js\" \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\disable-devtool.min.js\")",
-      "WebSearch"
+      "WebSearch",
+      "WebFetch(domain:egro.ma)",
+      "Bash(curl -s \"https://egro.ma/products.json?limit=2&page=1\")",
+      "Bash(mkdir \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\app\\\\pages\\\\products-list\" 2>nul; echo done)",
+      "Bash(ls \"C:\\\\Users\\\\LEGION\\\\Documents\\\\Ecom\")",
+      "Read(//c/Users/LEGION/Documents/Ecom/**)",
+      "Bash(npx --yes serve . -p 5500)",
+      "Bash(python sync_products.py)",
+      "Bash(dir \"C:\\\\Users\\\\LEGION\\\\Documents\\\\Ecom\\\\products.json\")",
+      "Bash(mkdir \"C:\\\\laragon\\\\www\\\\egro-products-list\")",
+      "Bash(copy \"C:\\\\Users\\\\LEGION\\\\Documents\\\\Ecom\\\\products.json\" \"C:\\\\laragon\\\\www\\\\egro-products-list\\\\products.json\")",
+      "Bash(copy \"C:\\\\Users\\\\LEGION\\\\Documents\\\\Ecom\\\\sync_products.py\" \"C:\\\\laragon\\\\www\\\\egro-products-list\\\\sync_products.py\")",
+      "Bash(python -c ' *)",
+      "Bash(Get-ChildItem -Recurse \"C:\\\\laragon\\\\www\\\\Supplia\\\\app\\\\scripts\" -File)",
+      "Bash(Select-Object FullName)",
+      "Bash(Sort-Object FullName)",
+      "Bash(curl -s \"http://egro-products-list.test/api.php?vendors=1\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('vendors count:', len\\(d.get\\('vendors',[]\\)\\)\\);print\\('first 3:', d.get\\('vendors',[]\\)[:3]\\)\")"
+    ],
+    "additionalDirectories": [
+      "C:\\laragon\\www\\Ecom\\car-accessories-pack",
+      "C:\\laragon\\www"
     ]
   }
 }

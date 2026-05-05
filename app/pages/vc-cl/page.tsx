@@ -143,7 +143,7 @@ export default function VcClPage() {
               }}
             >
               {/* Discount badge */}
-              <span className="absolute -top-3 right-3 text-white text-xs font-black px-2 py-0.5 rounded" style={{ background: "#0f172a" }}>وفري 60 درهم</span>
+              <span className="absolute -top-3 right-3 text-white text-xs font-black px-2 py-1 rounded" style={{ background: "#0f172a" }}>وفري 60 درهم</span>
               {/* Radio dot */}
               <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ border: qty === 2 ? "2px solid #1e3a8a" : "2px solid #d1d5db" }}>
                 {qty === 2 && <div className="w-2.5 h-2.5 rounded-full bg-blue-900" />}
@@ -225,14 +225,19 @@ export default function VcClPage() {
         </div>
       </section>
 
-      <img
-        src="/products/cleaner-4-in-1-preview.webp"
-        alt="مكونات اللاسبيراتور 4 في 1"
-        className="w-full h-auto mt-12"
-        width={800}
-        height={600}
-        loading="lazy"
-      />
+      <div style={{ backgroundColor: "#f8fafc" }} className="px-1 pt-10 pb-6">
+        <p className="text-blue-600 text-xs font-black tracking-widest uppercase text-center mb-1">شنو كاين فالعلبة؟</p>
+        <p className="text-gray-900 font-black text-center mb-4" style={{ fontSize: "clamp(1.1rem, 5vw, 1.4rem)" }}>كل شي اللي محتاجاه كاين</p>
+        <img
+          src="/products/cleaner-4-in-1-package.jpg"
+          alt="محتويات علبة الأسبيراتور 4 في 1"
+          className="w-full h-auto rounded-2xl"
+          width={800}
+          height={600}
+          loading="lazy"
+          style={{ border: "1px solid #e2e8f0" }}
+        />
+      </div>
 
       {/* ══ REVIEWS ══ */}
       <section className="max-w-lg mx-auto px-4 pb-6" style={{ backgroundColor: "#f8fafc" }}>
