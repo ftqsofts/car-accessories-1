@@ -97,6 +97,22 @@ export default function VcClPage() {
         </div>
       </div>
 
+
+      <div className="px-2 py-8 mt-[-2px]" style={{ backgroundColor: "#f1f5f9" }}>
+        {/* Video in use */}
+        <div className="max-w-lg mx-auto mt-4 rounded-2xl overflow-hidden" style={{ border: "1px solid #e2e8f0", boxShadow: "0 4px 16px rgba(0,0,0,0.08)" }}>
+          <video
+            src="/products/iboga.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="none"
+            style={{ width: "100%", height: 500, objectFit: "cover", objectPosition: "center center", display: "block" }}
+          />
+        </div>
+      </div>
+
       {/* ══ ORDER FORM ══ */}
       <section ref={formRef} className="px-5 py-8" id="order-form" style={{ backgroundColor: "#ffffff" }}>
         <div className="max-w-lg mx-auto">
