@@ -1,6 +1,18 @@
 import { NextRequest, NextResponse } from "next/server"
+import { appendFileSync, mkdirSync } from "fs"
+import { join } from "path"
 
 const SHEETDB_URL = "https://sheetdb.io/api/v1/qcu9zy4i090fj"
+const ORDERS_FILE = join(process.cwd(), "data", "orders.jsonl")
+
+function saveOrderLocally(order: Record<string, unknown>) {
+  try {
+    mkdirSync(join(process.cwd(), "data"), { recursive: true })
+    appendFileSync(ORDERS_FILE, JSON.stringify(order) + "\n", "utf8")
+  } catch (err) {
+    console.error("[order] local save error:", err)
+  }
+}
 
 // In-memory IP rate limit — max 3 orders per IP
 const ipCount = new Map<string, number>()
@@ -25,25 +37,30 @@ export async function POST(req: NextRequest) {
 
   const now = new Date().toLocaleString("fr-MA", { timeZone: "Africa/Casablanca" })
 
+  const order = {
+    date_order: now,
+    full_name: name ?? "",
+    phone: phone.trim(),
+    address: city ?? "",
+    sku: skus,
+    qte: qty,
+    price: total,
+  }
+
+  saveOrderLocally(order)
+
   try {
-    await fetch(SHEETDB_URL, {
+    const res = await fetch(SHEETDB_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        data: [{
-          date_order: now,
-          full_name: name ?? "",
-          phone: phone.trim(),
-          address: city ?? "",
-          sku: skus,
-          qte: qty,
-          price: total,
-          note: "",
-          delivery_note: "",
-        }]
+        data: [{ ...order, note: "", delivery_note: "" }]
       }),
     })
+    const body = await res.text()
+    saveOrderLocally({ _sheetdb_status: res.status, _sheetdb_response: body, _for_phone: phone.trim() })
   } catch (err) {
+    saveOrderLocally({ _sheetdb_error: String(err), _for_phone: phone.trim() })
     console.error("[order] SheetDB error:", err)
   }
 

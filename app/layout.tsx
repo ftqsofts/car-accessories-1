@@ -21,7 +21,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ar" dir="rtl" className={`${inter.variable} ${cairo.variable}`}>
-      <body className="antialiased bg-gray-950">
+      <body className="antialiased ">
         {children}
         {/* <Script src="/protect.js" strategy="afterInteractive" /> */}
         <Script id="ms-clarity" strategy="afterInteractive">{`
