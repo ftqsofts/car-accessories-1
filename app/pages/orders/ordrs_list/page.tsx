@@ -70,7 +70,7 @@ export default function OrdersListPage() {
                   <span className={isError ? "text-red-400" : isOk ? "text-green-400" : "text-gray-400"}>
                     {isError ? "❌ فشل SheetDB" : isOk ? "✅ وصل SheetDB" : "⏳ بدون رد"}
                   </span>
-                  {s?._sheetdb_status && <span className="text-gray-400">HTTP {String(s._sheetdb_status)}</span>}
+                  {s?._sheetdb_status != null && <span className="text-gray-400">HTTP {String(s._sheetdb_status)}</span>}
                   <span className="mr-auto text-gray-500">{String(o.date_order ?? "")}</span>
                 </div>
 
