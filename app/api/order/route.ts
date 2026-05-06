@@ -1,18 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
-import { appendFileSync, mkdirSync } from "fs"
-import { join } from "path"
 
-const SHEETDB_URL = "https://sheetdb.io/api/v1/qcu9zy4i090fj"
-const ORDERS_FILE = join(process.cwd(), "data", "orders.jsonl")
-
-function saveOrderLocally(order: Record<string, unknown>) {
-  try {
-    mkdirSync(join(process.cwd(), "data"), { recursive: true })
-    appendFileSync(ORDERS_FILE, JSON.stringify(order) + "\n", "utf8")
-  } catch (err) {
-    console.error("[order] local save error:", err)
-  }
-}
+const SHEETDB_URL  = "https://sheetdb.io/api/v1/qcu9zy4i090fj"
+const SUPABASE_URL = "https://rrtuzqjbgxouwzserwjp.supabase.co/rest/v1/orders"
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJydHV6cWpiZ3hvdXd6c2Vyd2pwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwOTc3MjUsImV4cCI6MjA5MzY3MzcyNX0.P2U5ruvLYFbKfv10s27lFT0afhVdrnMRBTFmkWNn7G8"
 
 // In-memory IP rate limit — max 3 orders per IP
 const ipCount = new Map<string, number>()
@@ -47,22 +37,26 @@ export async function POST(req: NextRequest) {
     price: total,
   }
 
-  saveOrderLocally(order)
+  // ── Save to Supabase (primary backup) ──
+  fetch(SUPABASE_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "apikey": SUPABASE_KEY,
+      "Authorization": `Bearer ${SUPABASE_KEY}`,
+      "Prefer": "return=minimal",
+    },
+    body: JSON.stringify(order),
+  }).catch((err) => console.error("[order] Supabase error:", err))
 
-  try {
-    const res = await fetch(SHEETDB_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        data: [{ ...order, note: "", delivery_note: "" }]
-      }),
-    })
-    const body = await res.text()
-    saveOrderLocally({ _sheetdb_status: res.status, _sheetdb_response: body, _for_phone: phone.trim() })
-  } catch (err) {
-    saveOrderLocally({ _sheetdb_error: String(err), _for_phone: phone.trim() })
-    console.error("[order] SheetDB error:", err)
-  }
+  // ── Also send to SheetDB ──
+  fetch(SHEETDB_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      data: [{ ...order, note: "", delivery_note: "" }]
+    }),
+  }).catch((err) => console.error("[order] SheetDB error:", err))
 
   return NextResponse.json({ ok: true })
 }
