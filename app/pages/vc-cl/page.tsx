@@ -133,7 +133,7 @@ export default function VcClPage() {
             <button
               type="button"
               onClick={() => setQty(1)}
-              className="relative w-full flex items-center gap-3 px-4 py-5 rounded-xl transition-all active:scale-95"
+              className="relative w-full flex items-center gap-3 px-4 py-5 rounded-xl transition-all shadow-md active:scale-95"
               style={{
                 border: qty === 1 ? "2px solid #1e3a8a" : "2px solid #d1d5db",
                 background: qty === 1 ? "#eff6ff" : "#ffffff",
@@ -153,7 +153,7 @@ export default function VcClPage() {
             <button
               type="button"
               onClick={() => setQty(2)}
-              className="relative w-full flex items-center gap-3 px-4 py-5 rounded-xl transition-all active:scale-95"
+              className="relative w-full flex items-center gap-3 px-4 py-5 rounded-xl transition-all shadow-md active:scale-95"
               style={{
                 border: qty === 2 ? "2px solid #1e3a8a" : "2px solid #d1d5db",
                 background: qty === 2 ? "#eff6ff" : "#ffffff",
@@ -176,7 +176,7 @@ export default function VcClPage() {
           </div>
 
           <div className="rounded-3xl overflow-hidden" style={{ border: "2.5px dashed #2563eb", boxShadow: "0 4px 24px rgba(37,99,235,0.12)" }}>
-            <div className="px-5 py-5 text-center" style={{ background: "#eff6ff", borderBottom: "1px solid #bfdbfe" }}>
+            <div className="px-5 py-2 text-center" style={{ background: "#eff6ff", borderBottom: "1px solid #bfdbfe" }}>
               <p className="text-blue-700 font-black text-lg">للطلب ادخلي معلوماتك اسفله 👇</p>
               <p className="text-gray-600 font-bold text-sm mt-1">توصيل مجاني + الدفع عند الاستلام ✅</p>
             </div>
@@ -185,8 +185,8 @@ export default function VcClPage() {
                 <input type="text" name="website" tabIndex={-1} autoComplete="off" style={{ display: "none" }} onChange={(e) => setForm({ ...form, _hp: e.target.value })} />
                 <div>
                   <label className="block text-sm text-gray-700 mb-1.5 font-black text-right">الاسم الكامل <span className="font-normal text-gray-400">(اختياري)</span></label>
-                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: "2px solid #252525", background: "#ffffff" }}>
-                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: "#e2e8f0", borderLeft: "2px solid #252525" }}>
+                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: "2px solid #2563eb", background: "#ffffff" }}>
+                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: "#e2e8f0", borderLeft: "2px solid #2563eb" }}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#252525" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.029 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664h10z"/></svg>
                     </span>
                     <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -197,8 +197,8 @@ export default function VcClPage() {
                 </div>
                 <div>
                   <label className="block text-sm text-gray-700 mb-1.5 font-black text-right">المدينة <span className="font-normal text-gray-400">(اختياري)</span></label>
-                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: "2px solid #252525", background: "#ffffff" }}>
-                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: "#e2e8f0", borderLeft: "2px solid #252525" }}>
+                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: "2px solid #2563eb", background: "#ffffff" }}>
+                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: "#e2e8f0", borderLeft: "2px solid #2563eb" }}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#252525" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
                     </span>
                     <input type="text" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })}
@@ -209,8 +209,8 @@ export default function VcClPage() {
                 </div>
                 <div>
                   <label className="block text-sm text-gray-700 mb-1.5 font-black text-right">رقم التيليفون <span className="text-red-500">*</span></label>
-                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: errors.phone ? "2px solid #ef4444" : "2px solid #252525", background: "#ffffff" }}>
-                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: errors.phone ? "#fee2e2" : "#e2e8f0", borderLeft: errors.phone ? "2px solid #fca5a5" : "2px solid #252525" }}>
+                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: errors.phone ? "2px solid #ef4444" : "2px solid #2563eb", background: "#ffffff" }}>
+                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: errors.phone ? "#fee2e2" : "#e2e8f0", borderLeft: errors.phone ? "2px solid #fca5a5" : "2px solid #2563eb" }}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill={errors.phone ? "#ef4444" : "#252525"} viewBox="0 0 16 16"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z"/></svg>
                     </span>
                     <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
