@@ -225,7 +225,7 @@ export default function VcClPage() {
         </div>
       </section>
 
-      <div style={{ backgroundColor: "#f8fafc" }} className="px-1 pt-10 pb-6">
+      <div style={{ backgroundColor: "#f8fafc" }} className="px-1 pt-10 pb-6 hidden">
         <p className="text-blue-600 text-xs font-black tracking-widest uppercase text-center mb-1">شنو كاين فالعلبة؟</p>
         <p className="text-gray-900 font-black text-center mb-4" style={{ fontSize: "clamp(1.1rem, 5vw, 1.4rem)" }}>كل شي اللي محتاجاه كاين</p>
         <img
@@ -240,7 +240,7 @@ export default function VcClPage() {
       </div>
 
       {/* ══ REVIEWS ══ */}
-      <section className="max-w-lg mx-auto px-4 pb-6" style={{ backgroundColor: "#f8fafc" }}>
+      <section className="max-w-lg mx-auto px-4 pb-6 hidden" style={{ backgroundColor: "#f8fafc" }}>
         <h2 className="text-gray-900 font-black text-2xl mt-12 text-center mb-5">عملائنا راضون</h2>
         {["/reviews/reviews-1.webp"].map((src, i) => (
           // eslint-disable-next-line @next/next/no-img-element
