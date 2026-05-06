@@ -177,7 +177,7 @@ export default function VcClPage() {
 
           <div className="rounded-3xl overflow-hidden" style={{ border: "2.5px dashed #2563eb", boxShadow: "0 4px 24px rgba(37,99,235,0.12)" }}>
             <div className="px-5 py-5 text-center" style={{ background: "#eff6ff", borderBottom: "1px solid #bfdbfe" }}>
-              <p className="text-blue-700 font-black text-xl">للطلب ادخلي معلوماتك اسفله 👇</p>
+              <p className="text-blue-700 font-black text-lg">للطلب ادخلي معلوماتك اسفله 👇</p>
               <p className="text-gray-600 font-bold text-sm mt-1">توصيل مجاني + الدفع عند الاستلام ✅</p>
             </div>
             <div className="px-5 pb-8 pt-6" style={{ background: "#ffffff" }}>
