@@ -531,7 +531,7 @@ export default function Page() {
             <p className="text-white font-black text-xl">عندك سؤال؟ تواصل معنا مباشرة</p>
             <p className="text-white/50 text-sm">فريقنا مساند ليك على واتساب — رد سريع</p>
             <a
-              href="https://wa.me/212715307498?text=Salam"
+              href="https://wa.me/212728214523?text=Salam"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-3 w-full py-4 rounded-2xl font-black text-lg text-white active:scale-95 transition-all shadow-lg"
