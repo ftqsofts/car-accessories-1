@@ -121,7 +121,7 @@ export default function VcClPage() {
 
 
           <h2 className="text-center font-black text-xl mb-3">
-            سبيراتور بجودة مزيانة، ومعاه ضمان شهر كامل باش تجربيه ✔️
+            سبيراتور بجودة مزيانة، ومعاه ضمان شهر كامل ✔️
           </h2>
 
           <p className="text-center text-red-500 font-black text-sm mb-12">⏳ العرض سينتهي خلال ساعات قليلة</p>
@@ -178,7 +178,7 @@ export default function VcClPage() {
 
           <div className="rounded-3xl overflow-hidden" style={{ border: "2.5px dashed #2563eb", boxShadow: "0 4px 24px rgba(37,99,235,0.12)" }}>
             <div className="px-5 py-2 text-center" style={{ background: "#eff6ff", borderBottom: "1px solid #bfdbfe" }}>
-              <p className="text-blue-700 font-black text-lg">للطلب ادخلي معلوماتك اسفله 👇</p>
+              <p className="text-blue-700 font-black text-lg">للطلب ادخل معلوماتك اسفله 👇</p>
               <p className="text-gray-600 font-bold text-sm mt-1">توصيل مجاني + الدفع عند الاستلام ✅</p>
             </div>
             <div className="px-5 pb-8 pt-6" style={{ background: "#ffffff" }}>
@@ -235,7 +235,7 @@ export default function VcClPage() {
                       </svg>
                       جاري إرسال طلبيتك...
                     </span>
-                  ) : `طلبيه دابا — ${price} درهم `}
+                  ) : `اطلب الان — ${price} درهم `}
                 </button>
               </form>
             </div>
@@ -327,7 +327,7 @@ export default function VcClPage() {
             className="w-full text-white font-black text-base py-4 rounded-2xl active:scale-95"
             style={{ background: "linear-gradient(135deg, #2563eb, #1d4ed8)", boxShadow: "0 4px 24px rgba(37,99,235,0.5)", animation: "btnBounce 1.2s ease-in-out infinite" }}
           >
-            🔥 طلبيه دابا — الدفع عند الاستلام
+            🔥  اطلب الان — الدفع عند الاستلام
           </button>
         </div>
       )}
