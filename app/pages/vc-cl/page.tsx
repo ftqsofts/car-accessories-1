@@ -181,41 +181,41 @@ export default function VcClPage() {
               <p className="text-gray-600 font-bold text-sm mt-1">توصيل مجاني + الدفع عند الاستلام ✅</p>
             </div>
             <div className="px-5 pb-8 pt-6" style={{ background: "#ffffff" }}>
-              <form onSubmit={handleSubmit} className="space-y-5 py-4">
+              <form onSubmit={handleSubmit} className="space-y-4 ">
                 <input type="text" name="website" tabIndex={-1} autoComplete="off" style={{ display: "none" }} onChange={(e) => setForm({ ...form, _hp: e.target.value })} />
                 <div>
                   <label className="block text-sm text-gray-700 mb-1.5 font-black text-right">الاسم الكامل <span className="font-normal text-gray-400">(اختياري)</span></label>
-                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: "2px solid #94a3b8", background: "#ffffff" }}>
-                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: "#e2e8f0", borderLeft: "2px solid #94a3b8" }}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#475569" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.029 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664h10z"/></svg>
+                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: "2px solid #252525", background: "#ffffff" }}>
+                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: "#e2e8f0", borderLeft: "2px solid #252525" }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#252525" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.029 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664h10z"/></svg>
                     </span>
                     <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
                       placeholder="الاسم الكامل"
-                      className="flex-1 px-4 py-4 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400"
+                      className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400"
                     />
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm text-gray-700 mb-1.5 font-black text-right">المدينة <span className="font-normal text-gray-400">(اختياري)</span></label>
-                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: "2px solid #94a3b8", background: "#ffffff" }}>
-                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: "#e2e8f0", borderLeft: "2px solid #94a3b8" }}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#475569" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: "2px solid #252525", background: "#ffffff" }}>
+                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: "#e2e8f0", borderLeft: "2px solid #252525" }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#252525" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
                     </span>
                     <input type="text" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })}
                       placeholder="مثلاً: كازا، الرباط..."
-                      className="flex-1 px-4 py-4 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400"
+                      className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400"
                     />
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm text-gray-700 mb-1.5 font-black text-right">رقم التيليفون <span className="text-red-500">*</span></label>
-                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: errors.phone ? "2px solid #ef4444" : "2px solid #94a3b8", background: "#ffffff" }}>
-                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: errors.phone ? "#fee2e2" : "#e2e8f0", borderLeft: errors.phone ? "2px solid #fca5a5" : "2px solid #94a3b8" }}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill={errors.phone ? "#ef4444" : "#475569"} viewBox="0 0 16 16"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z"/></svg>
+                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: errors.phone ? "2px solid #ef4444" : "2px solid #252525", background: "#ffffff" }}>
+                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: errors.phone ? "#fee2e2" : "#e2e8f0", borderLeft: errors.phone ? "2px solid #fca5a5" : "2px solid #252525" }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill={errors.phone ? "#ef4444" : "#252525"} viewBox="0 0 16 16"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z"/></svg>
                     </span>
                     <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
                       placeholder="06XXXXXXXX"
-                      className="flex-1 px-4 py-4 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400"
+                      className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400"
                     />
                   </div>
                   {errors.phone && <p className="text-red-500 text-sm mt-1 font-bold text-right">{errors.phone}</p>}
