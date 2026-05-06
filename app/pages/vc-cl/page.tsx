@@ -64,7 +64,7 @@ export default function VcClPage() {
       <div style={{ backgroundColor: "#0b0b0b", lineHeight: 0 }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/products/vacuum-4in-1-lp-2.webp"
+          src="/products/vacuum-4in-1-lp-3.webp"
           alt="أقوى أسبيراتور محمولة 4 في 1"
           className="w-full h-auto block"
           width={800}
