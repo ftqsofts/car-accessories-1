@@ -71,6 +71,7 @@ export default function VcClPage() {
           height={2400}
           fetchPriority="high"
           decoding="sync"
+          onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
         />
       </div>
 
