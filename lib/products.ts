@@ -65,7 +65,7 @@ export const products: Product[] = [
       "صغيرة وخفيفة — ماتاخدش بلاصة فالكوفر",
       "تنظيف سريع بلا مجهود",
     ],
-    image: "/products/cleaner-4-in-1_v2.jpg",
+    image: "/products/cleaner-4-in-1-package.jpg",
     videoUrl: "/products/vacuum-4in-1.mp4",
     categoryDarija: "تنظيف",
     statNumber: "9000",
