@@ -23,7 +23,8 @@ export default function VcClPage() {
   useEffect(() => {
     const check = () => {
       if (!formRef.current) return
-      setFormPassed(formRef.current.getBoundingClientRect().bottom < 0)
+      const rect = formRef.current.getBoundingClientRect()
+      setFormPassed(rect.bottom < 0 || rect.top > window.innerHeight)
     }
     window.addEventListener("scroll", check, { passive: true })
     return () => window.removeEventListener("scroll", check)
