@@ -9,6 +9,7 @@ const PRICE_1 = 145
 const PRICE_2 = 240
 const SAVING = PRICE_1 * 2 - PRICE_2
 
+
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
 
 export default function VcClPage() {
@@ -20,6 +21,34 @@ export default function VcClPage() {
   const [qty, setQty] = useState(1)
   const formRef = useRef<HTMLElement>(null)
   const price = qty === 2 ? PRICE_2 : PRICE_1
+  const draftId = useRef<number | null>(null)
+  const draftTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const saveDraft = (f: OrderForm, q: number, p: number) => {
+    if (!f.phone.trim() || f.phone.trim().length < 8) return
+    if (draftTimer.current) clearTimeout(draftTimer.current)
+    draftTimer.current = setTimeout(async () => {
+      const res = await fetch("/api/draft", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: draftId.current, phone: f.phone.trim(), full_name: f.name, address: f.city, sku: PRODUCT_SKU, qte: q, price: p }),
+      }).catch(() => null)
+      if (res?.ok) {
+        const data = await res.json().catch(() => null)
+        if (data?.id) draftId.current = data.id
+      }
+    }, 1500)
+  }
+
+  const deleteDraft = () => {
+    if (!draftId.current) return
+    fetch("/api/draft", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: draftId.current }),
+    }).catch(() => null)
+    draftId.current = null
+  }
 
   useEffect(() => {
     const check = () => {
@@ -44,6 +73,7 @@ export default function VcClPage() {
     if (!validate()) return
     if (form._hp) return
     setLoading(true)
+    deleteDraft()
     fetch("/api/order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -175,7 +205,7 @@ export default function VcClPage() {
                     <span className="px-3 flex items-center justify-center self-stretch" style={{ background: "#e2e8f0", borderLeft: "2px solid #2563eb" }}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#252525" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.029 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664h10z"/></svg>
                     </span>
-                    <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    <input type="text" value={form.name} onChange={(e) => { const f = { ...form, name: e.target.value }; setForm(f); saveDraft(f, qty, price) }}
                       placeholder="الاسم الكامل"
                       className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400"
                     />
@@ -187,7 +217,7 @@ export default function VcClPage() {
                     <span className="px-3 flex items-center justify-center self-stretch" style={{ background: "#e2e8f0", borderLeft: "2px solid #2563eb" }}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#252525" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
                     </span>
-                    <input type="text" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })}
+                    <input type="text" value={form.city} onChange={(e) => { const f = { ...form, city: e.target.value }; setForm(f); saveDraft(f, qty, price) }}
                       placeholder="مثلاً: كازا، الرباط..."
                       className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400"
                     />
@@ -199,7 +229,7 @@ export default function VcClPage() {
                     <span className="px-3 flex items-center justify-center self-stretch" style={{ background: errors.phone ? "#fee2e2" : "#e2e8f0", borderLeft: errors.phone ? "2px solid #fca5a5" : "2px solid #2563eb" }}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill={errors.phone ? "#ef4444" : "#252525"} viewBox="0 0 16 16"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z"/></svg>
                     </span>
-                    <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                    <input type="tel" value={form.phone} onChange={(e) => { const f = { ...form, phone: e.target.value }; setForm(f); saveDraft(f, qty, price) }}
                       placeholder="06XXXXXXXX"
                       className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400"
                     />
@@ -292,7 +322,7 @@ export default function VcClPage() {
                     <span className="px-3 flex items-center justify-center self-stretch" style={{ background: "#e2e8f0", borderLeft: "2px solid #2563eb" }}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#252525" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.029 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664h10z"/></svg>
                     </span>
-                    <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="الاسم الكامل" className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400" />
+                    <input type="text" value={form.name} onChange={(e) => { const f = { ...form, name: e.target.value }; setForm(f); saveDraft(f, qty, price) }} placeholder="الاسم الكامل" className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400" />
                   </div>
                 </div>
                 <div>
@@ -301,7 +331,7 @@ export default function VcClPage() {
                     <span className="px-3 flex items-center justify-center self-stretch" style={{ background: "#e2e8f0", borderLeft: "2px solid #2563eb" }}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#252525" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
                     </span>
-                    <input type="text" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })} placeholder="مثلاً: كازا، الرباط..." className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400" />
+                    <input type="text" value={form.city} onChange={(e) => { const f = { ...form, city: e.target.value }; setForm(f); saveDraft(f, qty, price) }} placeholder="مثلاً: كازا، الرباط..." className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400" />
                   </div>
                 </div>
                 <div>
@@ -310,7 +340,7 @@ export default function VcClPage() {
                     <span className="px-3 flex items-center justify-center self-stretch" style={{ background: errors.phone ? "#fee2e2" : "#e2e8f0", borderLeft: errors.phone ? "2px solid #fca5a5" : "2px solid #2563eb" }}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill={errors.phone ? "#ef4444" : "#252525"} viewBox="0 0 16 16"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z"/></svg>
                     </span>
-                    <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="06XXXXXXXX" className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400" />
+                    <input type="tel" value={form.phone} onChange={(e) => { const f = { ...form, phone: e.target.value }; setForm(f); saveDraft(f, qty, price) }} placeholder="06XXXXXXXX" className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400" />
                   </div>
                   {errors.phone && <p className="text-red-500 text-sm mt-1 font-bold text-right">{errors.phone}</p>}
                 </div>
