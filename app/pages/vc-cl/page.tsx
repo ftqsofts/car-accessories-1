@@ -61,12 +61,12 @@ export default function VcClPage() {
       `}</style>
 
 
-      {/* ══ HERO — LP image ══ */}
-      <div style={{ backgroundColor: "#0b0b0b", lineHeight: 0 }}>
+      {/* ══ HERO — image 1 ══ */}
+      <div style={{ backgroundColor: "#0b0b0b", lineHeight: 0, position: "relative" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/products/vacuum-4in-1-lp-3.webp"
-          alt="أقوى أسبيراتور محمولة 4 في 1"
+          src="/products/1.webp"
+          alt="مكنسة كهربائية 6 في 1"
           className="w-full h-auto block"
           width={800}
           height={2400}
@@ -74,19 +74,12 @@ export default function VcClPage() {
           decoding="sync"
           onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
         />
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 120, background: "linear-gradient(to bottom, transparent, #0b0b0b)" }} />
       </div>
 
-      {/* ── Wave edge: dark → light ── */}
-      <div style={{ lineHeight: 0, marginTop: "-2px", backgroundColor: "#0b0b0b" }}>
-        <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: 70 }}>
-          <path d="M0,0 C360,80 1080,80 1440,0 L1440,80 L0,80 Z" fill="#f1f5f9" />
-        </svg>
-      </div>
-
-      {/* ══ IN USE GALLERY — light ══ */}
-      <div className="px-2 py-8 mt-[-2px]" style={{ backgroundColor: "#f1f5f9" }}>
-        {/* Video in use */}
-        <div className="max-w-lg mx-auto mt-4 rounded-2xl overflow-hidden" style={{ border: "1px solid #e2e8f0", boxShadow: "0 4px 16px rgba(0,0,0,0.08)" }}>
+      {/* ══ VIDEO SECTION — black bg, seamless with hero ══ */}
+      <div style={{ backgroundColor: "#0b0b0b", lineHeight: 0, marginTop: "-5px" }} className="px-4 pb-8 pt-2">
+        <div className="max-w-lg mx-auto rounded-2xl overflow-hidden">
           <video
             src="/products/cleaner-4-in-1-window-2.mp4"
             autoPlay
@@ -99,24 +92,15 @@ export default function VcClPage() {
         </div>
       </div>
 
-
-      <div className="px-2 py-8 mt-[-2px]" style={{ backgroundColor: "#f1f5f9" }}>
-        {/* Video in use */}
-        <div className="max-w-lg mx-auto mt-4 rounded-2xl overflow-hidden" style={{ border: "1px solid #e2e8f0", boxShadow: "0 4px 16px rgba(0,0,0,0.08)" }}>
-          <video
-            src="/products/iboga.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="none"
-            style={{ width: "100%", height: 500, objectFit: "cover", objectPosition: "center center", display: "block" }}
-          />
-        </div>
+      {/* ── Wave: black → white ── */}
+      <div style={{ lineHeight: 0, backgroundColor: "#0b0b0b", marginTop: "-1px", marginBottom: "-1px" }}>
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: 60 }}>
+          <path d="M0,0 C360,80 1080,80 1440,0 L1440,80 L0,80 Z" fill="#ffffff" />
+        </svg>
       </div>
 
-      {/* ══ ORDER FORM ══ */}
-      <section ref={formRef} className="px-5 py-8" id="order-form" style={{ backgroundColor: "#ffffff" }}>
+      {/* ══ ORDER FORM 1 ══ */}
+      <section ref={formRef} className="px-5 mb-12 py-8" id="order-form" style={{ backgroundColor: "#ffffff" }}>
         <div className="max-w-lg mx-auto">
 
 
@@ -176,7 +160,7 @@ export default function VcClPage() {
             </button>
           </div>
 
-          <div className="rounded-3xl overflow-hidden" style={{ border: "2.5px dashed #2563eb", boxShadow: "0 4px 24px rgba(37,99,235,0.12)" }}>
+          <div className="rounded-3xl overflow-hidden" style={{ border: ".5px dashed #2563eb", boxShadow: "0 4px 24px rgba(37,99,235,0.12)" }}>
             <div className="px-5 py-2 text-center" style={{ background: "#eff6ff", borderBottom: "1px solid #bfdbfe" }}>
               <p className="text-blue-700 font-black text-lg">للطلب ادخل معلوماتك اسفله 👇</p>
               <p className="text-gray-600 font-bold text-sm mt-1">توصيل مجاني + الدفع عند الاستلام ✅</p>
@@ -236,6 +220,101 @@ export default function VcClPage() {
                       جاري إرسال طلبيتك...
                     </span>
                   ) : `اطلب الان — ${price} درهم `}
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Wave: white → black ── */}
+      <div style={{ lineHeight: 0, backgroundColor: "#0b0b0b", marginTop: "0px", marginBottom: "-1px" }}>
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: 60 }}>
+          <path d="M0,0 C360,80 1080,80 1440,0 L1440,0 L0,0 Z" fill="#ffffff" />
+        </svg>
+      </div>
+
+      {/* ══ IMAGE 2 — dark ══ */}
+      <div style={{ backgroundColor: "#0b0b0b", lineHeight: 0, position: "relative" }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/products/2.webp"
+          alt="قوية الشفط — مكنسة 6 في 1"
+          className="w-full h-auto block"
+          width={800}
+          height={2400}
+          loading="lazy"
+          onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+        />
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 120, background: "linear-gradient(to bottom, transparent, #0b0b0b)" }} />
+      </div>
+
+      {/* ── Wave: black → white ── */}
+      <div style={{ lineHeight: 0, backgroundColor: "#0b0b0b", marginTop: "-1px", marginBottom: "-1px" }}>
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: 60 }}>
+          <path d="M0,0 C360,80 1080,80 1440,0 L1440,80 L0,80 Z" fill="#ffffff" />
+        </svg>
+      </div>
+
+      {/* ══ ORDER FORM 2 ══ */}
+      <section className="px-5 py-8" style={{ backgroundColor: "#ffffff" }}>
+        <div className="max-w-lg mx-auto">
+          <h2 className="text-center font-black text-xl mb-3">اطلب الآن وتوصلك خلال 24 ساعة ✔️</h2>
+          <p className="text-center text-red-500 font-black text-sm mb-6">⏳ العرض سينتهي خلال ساعات قليلة</p>
+          <div className="flex flex-col gap-4 mb-2">
+            <button type="button" onClick={() => setQty(1)} className="relative w-full flex items-center gap-3 px-4 py-5 rounded-xl transition-all shadow-md active:scale-95" style={{ border: qty === 1 ? "2px solid #1e3a8a" : "2px solid #d1d5db", background: qty === 1 ? "#eff6ff" : "#ffffff" }}>
+              <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ border: qty === 1 ? "2px solid #1e3a8a" : "2px solid #d1d5db" }}>{qty === 1 && <div className="w-2.5 h-2.5 rounded-full bg-blue-900" />}</div>
+              <span className="flex-1 text-right font-black text-base text-gray-900">مكنسة 6 في 1 — وحدة</span>
+              <span className="shrink-0 font-black text-lg text-gray-900">{PRICE_1} درهم</span>
+            </button>
+            <button type="button" onClick={() => setQty(2)} className="relative w-full flex items-center gap-3 px-4 py-5 rounded-xl transition-all shadow-md active:scale-95" style={{ border: qty === 2 ? "2px solid #1e3a8a" : "2px solid #d1d5db", background: qty === 2 ? "#eff6ff" : "#ffffff" }}>
+              <span className="absolute -top-3 right-3 text-white text-xs font-black px-2 py-1 rounded" style={{ background: "#0f172a" }}>وفري 60 درهم</span>
+              <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ border: qty === 2 ? "2px solid #1e3a8a" : "2px solid #d1d5db" }}>{qty === 2 && <div className="w-2.5 h-2.5 rounded-full bg-blue-900" />}</div>
+              <div className="flex-1 text-right">
+                <p className="font-black text-base text-gray-900">اثنان بسعر خاص</p>
+                <p className="text-gray-400 text-xs mt-0.5">وحدة للدار + وحدة للطوموبيل</p>
+              </div>
+              <span className="shrink-0 font-black text-lg text-gray-900">{PRICE_2} درهم</span>
+            </button>
+          </div>
+          <div className="rounded-3xl overflow-hidden" style={{ border: "0.5px dashed #2563eb", boxShadow: "0 4px 24px rgba(37,99,235,0.12)" }}>
+            <div className="px-5 py-2 text-center" style={{ background: "#eff6ff", borderBottom: "1px solid #bfdbfe" }}>
+              <p className="text-blue-700 font-black text-lg">للطلب ادخل معلوماتك اسفله 👇</p>
+              <p className="text-gray-600 font-bold text-sm mt-1">توصيل مجاني + الدفع عند الاستلام ✅</p>
+            </div>
+            <div className="px-5 pb-8 pt-6" style={{ background: "#ffffff" }}>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <input type="text" name="website" tabIndex={-1} autoComplete="off" style={{ display: "none" }} onChange={(e) => setForm({ ...form, _hp: e.target.value })} />
+                <div>
+                  <label className="block text-sm text-gray-700 mb-1.5 font-black text-right">الاسم الكامل <span className="font-normal text-gray-400">(اختياري)</span></label>
+                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: "2px solid #2563eb", background: "#ffffff" }}>
+                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: "#e2e8f0", borderLeft: "2px solid #2563eb" }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#252525" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.029 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664h10z"/></svg>
+                    </span>
+                    <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="الاسم الكامل" className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm text-gray-700 mb-1.5 font-black text-right">المدينة <span className="font-normal text-gray-400">(اختياري)</span></label>
+                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: "2px solid #2563eb", background: "#ffffff" }}>
+                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: "#e2e8f0", borderLeft: "2px solid #2563eb" }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#252525" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                    </span>
+                    <input type="text" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })} placeholder="مثلاً: كازا، الرباط..." className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm text-gray-700 mb-1.5 font-black text-right">رقم التيليفون <span className="text-red-500">*</span></label>
+                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: errors.phone ? "2px solid #ef4444" : "2px solid #2563eb", background: "#ffffff" }}>
+                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: errors.phone ? "#fee2e2" : "#e2e8f0", borderLeft: errors.phone ? "2px solid #fca5a5" : "2px solid #2563eb" }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill={errors.phone ? "#ef4444" : "#252525"} viewBox="0 0 16 16"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z"/></svg>
+                    </span>
+                    <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="06XXXXXXXX" className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400" />
+                  </div>
+                  {errors.phone && <p className="text-red-500 text-sm mt-1 font-bold text-right">{errors.phone}</p>}
+                </div>
+                <button type="submit" disabled={loading} className="w-full py-5 rounded-2xl font-black text-lg text-white transition-all duration-200 active:scale-95" style={{ background: "linear-gradient(135deg, #2563eb, #1d4ed8)", boxShadow: "0 4px 20px rgba(37,99,235,0.4)", animation: loading ? "none" : "btnPulse 1.5s ease-in-out infinite" }}>
+                  {loading ? (<span className="flex items-center justify-center gap-2"><svg className="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" /></svg>جاري إرسال طلبيتك...</span>) : `اطلب الان — ${price} درهم`}
                 </button>
               </form>
             </div>
