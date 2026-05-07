@@ -145,7 +145,7 @@ export default function VcClPage() {
               }}
             >
               {/* Discount badge */}
-              <span className="absolute -top-3 right-3 text-white text-xs font-black px-2 py-1 rounded" style={{ background: "#0f172a" }}>وفري 65 درهم</span>
+              <span className="absolute -top-3 right-3 text-white text-xs font-black px-2 py-1.5 rounded" style={{ background: "#0f172a" }}>وفر 65 درهم</span>
               {/* Radio dot */}
               <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ border: qty === 2 ? "2px solid #1e3a8a" : "2px solid #d1d5db" }}>
                 {qty === 2 && <div className="w-2.5 h-2.5 rounded-full bg-blue-900" />}
