@@ -5,8 +5,9 @@ import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "176TSC"
-const PRICE_1 = 165
-const PRICE_2 = 265
+const PRICE_1 = 145
+const PRICE_2 = 240
+const SAVING = PRICE_1 * 2 - PRICE_2
 
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
 
@@ -145,7 +146,7 @@ export default function VcClPage() {
               }}
             >
               {/* Discount badge */}
-              <span className="absolute -top-3 right-3 text-white text-xs font-black px-2 py-1.5 rounded" style={{ background: "#0f172a" }}>وفر 65 درهم</span>
+              <span className="absolute -top-3 right-3 text-white text-xs font-black px-2 py-1.5 rounded" style={{ background: "#0f172a" }}>وفر {SAVING} درهم</span>
               {/* Radio dot */}
               <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ border: qty === 2 ? "2px solid #1e3a8a" : "2px solid #d1d5db" }}>
                 {qty === 2 && <div className="w-2.5 h-2.5 rounded-full bg-blue-900" />}
@@ -219,7 +220,7 @@ export default function VcClPage() {
                       </svg>
                       جاري إرسال طلبيتك...
                     </span>
-                  ) : `اطلب الان — ${price} درهم `}
+                  ) : `اطلب الان — عرض محدود`}
                 </button>
               </form>
             </div>
@@ -268,7 +269,7 @@ export default function VcClPage() {
               <span className="shrink-0 font-black text-lg text-gray-900">{PRICE_1} درهم</span>
             </button>
             <button type="button" onClick={() => setQty(2)} className="relative w-full flex items-center gap-3 px-4 py-5 rounded-xl transition-all shadow-md active:scale-95" style={{ border: qty === 2 ? "2px solid #1e3a8a" : "2px solid #d1d5db", background: qty === 2 ? "#eff6ff" : "#ffffff" }}>
-              <span className="absolute -top-3 right-3 text-white text-xs font-black px-2 py-1 rounded" style={{ background: "#0f172a" }}>وفري 60 درهم</span>
+              <span className="absolute -top-3 right-3 text-white text-xs font-black px-2 py-1 rounded" style={{ background: "#0f172a" }}>وفر {SAVING} درهم</span>
               <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ border: qty === 2 ? "2px solid #1e3a8a" : "2px solid #d1d5db" }}>{qty === 2 && <div className="w-2.5 h-2.5 rounded-full bg-blue-900" />}</div>
               <div className="flex-1 text-right">
                 <p className="font-black text-base text-gray-900">اثنان بسعر خاص</p>
@@ -314,7 +315,7 @@ export default function VcClPage() {
                   {errors.phone && <p className="text-red-500 text-sm mt-1 font-bold text-right">{errors.phone}</p>}
                 </div>
                 <button type="submit" disabled={loading} className="w-full py-5 rounded-2xl font-black text-lg text-white transition-all duration-200 active:scale-95" style={{ background: "linear-gradient(135deg, #2563eb, #1d4ed8)", boxShadow: "0 4px 20px rgba(37,99,235,0.4)", animation: loading ? "none" : "btnPulse 1.5s ease-in-out infinite" }}>
-                  {loading ? (<span className="flex items-center justify-center gap-2"><svg className="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" /></svg>جاري إرسال طلبيتك...</span>) : `اطلب الان — ${price} درهم`}
+                  {loading ? (<span className="flex items-center justify-center gap-2"><svg className="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" /></svg>جاري إرسال طلبيتك...</span>) : `اطلب الان — عرض محدود`}
                 </button>
               </form>
             </div>
