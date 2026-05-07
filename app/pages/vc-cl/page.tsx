@@ -82,7 +82,7 @@ export default function VcClPage() {
       <div style={{ backgroundColor: "#0b0b0b", lineHeight: 0, marginTop: "-5px" }} className="px-4 pb-8 pt-2">
         <div className="max-w-lg mx-auto rounded-2xl overflow-hidden">
           <video
-            src="/products/cleaner-4-in-1-window-2.mp4"
+            src="/products/cleaner-4-in-1-car.mp4"
             autoPlay
             muted
             loop
