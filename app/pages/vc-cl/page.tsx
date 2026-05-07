@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "176TSC"
-const PRICE_1 = 160
+const PRICE_1 = 165
 const PRICE_2 = 265
 
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
@@ -145,7 +145,7 @@ export default function VcClPage() {
               }}
             >
               {/* Discount badge */}
-              <span className="absolute -top-3 right-3 text-white text-xs font-black px-2 py-1 rounded" style={{ background: "#0f172a" }}>وفري 60 درهم</span>
+              <span className="absolute -top-3 right-3 text-white text-xs font-black px-2 py-1 rounded" style={{ background: "#0f172a" }}>وفري 65 درهم</span>
               {/* Radio dot */}
               <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ border: qty === 2 ? "2px solid #1e3a8a" : "2px solid #d1d5db" }}>
                 {qty === 2 && <div className="w-2.5 h-2.5 rounded-full bg-blue-900" />}
