@@ -33,7 +33,9 @@
       "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('vendors count:', len\\(d.get\\('vendors',[]\\)\\)\\);print\\('first 3:', d.get\\('vendors',[]\\)[:3]\\)\")",
       "Bash(mkdir \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\app\\\\api\\\\orders\")",
       "Bash(mkdir \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\app\\\\pages\\\\orders\")",
-      "PowerShell(Get-ChildItem \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\" | Sort-Object Length -Descending | Select-Object Name, @{N='Size_KB';E={[math]::Round\\($_.Length/1KB,1\\)}} | Format-Table -AutoSize)"
+      "PowerShell(Get-ChildItem \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\" | Sort-Object Length -Descending | Select-Object Name, @{N='Size_KB';E={[math]::Round\\($_.Length/1KB,1\\)}} | Format-Table -AutoSize)",
+      "PowerShell(Get-ChildItem \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\" -Include \"1-3.webp\",\"2-2.webp\",\"cleaner-4-in-1-package.jpg\" -Recurse | Select-Object Name, @{N='KB';E={[math]::Round\\($_.Length/1KB,1\\)}})",
+      "PowerShell(Get-Item \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\1-3.webp\",\"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\2-2.webp\",\"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\cleaner-4-in-1-package.jpg\",\"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\reviews\\\\reviews-1.webp\" | Select-Object Name, @{N='KB';E={[math]::Round\\($_.Length/1KB,1\\)}})"
     ],
     "additionalDirectories": [
       "C:\\laragon\\www\\Ecom\\car-accessories-pack",

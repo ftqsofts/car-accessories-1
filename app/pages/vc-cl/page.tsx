@@ -23,6 +23,7 @@ export default function VcClPage() {
   const price = qty === 2 ? PRICE_2 : PRICE_1
   const draftId = useRef<number | null>(null)
   const draftTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const video2Ref = useRef<HTMLVideoElement>(null)
 
   const saveDraft = (f: OrderForm, q: number, p: number) => {
     if (!f.phone.trim() || f.phone.trim().length < 8) return
@@ -58,6 +59,21 @@ export default function VcClPage() {
     }
     window.addEventListener("scroll", check, { passive: true })
     return () => window.removeEventListener("scroll", check)
+  }, [])
+
+  // Lazy-load second video only when scrolled into view
+  useEffect(() => {
+    const el = video2Ref.current
+    if (!el) return
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        el.src = "/products/cleaner-4-in-1-inboxing-2.mp4"
+        el.load()
+        obs.disconnect()
+      }
+    }, { rootMargin: "200px" })
+    obs.observe(el)
+    return () => obs.disconnect()
   }, [])
 
   const validate = () => {
@@ -110,7 +126,7 @@ export default function VcClPage() {
 
       {/* ══ VIDEO SECTION — black bg, seamless with hero ══ */}
       <div style={{ backgroundColor: "#0b0b0b", lineHeight: 0, marginTop: "-5px" }} className="px-4 pb-8 pt-2">
-        <div className="max-w-lg mx-auto rounded-2xl overflow-hidden">
+        <div className="max-w-lg mx-auto rounded-2xl border-2 border-gray-500 overflow-hidden">
           <video
             src="/products/cleaner-4-in-1-car.mp4"
             autoPlay
@@ -118,7 +134,7 @@ export default function VcClPage() {
             loop
             playsInline
             preload="none"
-            poster="/products/1-3.webp"
+            poster=""
             style={{ width: "100%", height: 500, objectFit: "cover", objectPosition: "center center", display: "block" }}
           />
         </div>
@@ -354,31 +370,17 @@ export default function VcClPage() {
         </div>
       </section>
 
-      <div style={{ backgroundColor: "#f8fafc" }} className="px-1 pt-10 pb-6">
-        {/* <p className="text-blue-600 text-xs font-black tracking-widest uppercase text-center mb-1">شنو كاين فالعلبة؟</p> */}
-        <p className="text-gray-900 font-black text-center mb-4" style={{ fontSize: "clamp(1.1rem, 5vw, 1.4rem)" }}>شنو كاين فالعلبة</p>
-        <img
-          src="/products/cleaner-4-in-1-package.jpg"
-          alt="محتويات علبة الأسبيراتور 4 في 1"
-          className="w-full h-auto rounded-2xl"
-          width={800}
-          height={600}
-          loading="lazy"
-          style={{ border: "1px solid #e2e8f0" }}
-        />
-      </div>
-
 
       <div className="px-4 pb-8 pt-2">
         <div className="max-w-lg mx-auto rounded-2xl overflow-hidden">
           <video
-            src="/products/cleaner-4-in-1-inboxing-2.mp4"
+            ref={video2Ref}
             autoPlay
             muted
             loop
             playsInline
             preload="none"
-            poster="/products/cleaner-4-in-1-package.jpg"
+            poster=""
             style={{ width: "100%", height: 500, objectFit: "cover", objectPosition: "center center", display: "block" }}
           />
         </div>
