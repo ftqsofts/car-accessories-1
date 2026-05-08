@@ -96,7 +96,7 @@ export default function VcClPage() {
       <div style={{ backgroundColor: "#0b0b0b", lineHeight: 0, position: "relative" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/products/1-1.webp"
+          src="/products/1-3.webp"
           alt="مكنسة كهربائية 6 في 1"
           className="w-full h-auto block"
           width={800}
