@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "176TSC"
 const PRICE_1 = 145
-const PRICE_2 = 240
+const PRICE_2 = 250
 const SAVING = PRICE_1 * 2 - PRICE_2
 
 
@@ -102,7 +102,7 @@ export default function VcClPage() {
           width={800}
           height={2400}
           fetchPriority="high"
-          decoding="sync"
+          decoding="async"
           onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
         />
         <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 120, background: "linear-gradient(to bottom, transparent, #0b0b0b)" }} />
@@ -118,6 +118,7 @@ export default function VcClPage() {
             loop
             playsInline
             preload="none"
+            poster="/products/1-3.webp"
             style={{ width: "100%", height: 500, objectFit: "cover", objectPosition: "center center", display: "block" }}
           />
         </div>
@@ -191,7 +192,7 @@ export default function VcClPage() {
             </button>
           </div>
 
-          <div className="rounded-3xl overflow-hidden" style={{ border: ".5px dashed #2563eb", boxShadow: "0 4px 24px rgba(37,99,235,0.12)" }}>
+          <div className="rounded-3xl overflow-hidden" style={{ border: "1px dashed #2563eb", boxShadow: "0 4px 24px rgba(37,99,235,0.12)" }}>
             <div className="px-5 py-2 text-center" style={{ background: "#eff6ff", borderBottom: "1px solid #bfdbfe" }}>
               <p className="text-blue-700 font-black text-lg">للطلب ادخل معلوماتك اسفله 👇</p>
               <p className="text-gray-600 font-bold text-sm mt-1">توصيل مجاني + الدفع عند الاستلام ✅</p>
@@ -308,7 +309,7 @@ export default function VcClPage() {
               <span className="shrink-0 font-black text-lg text-gray-900">{PRICE_2} درهم</span>
             </button>
           </div>
-          <div className="rounded-3xl overflow-hidden" style={{ border: "0.5px dashed #2563eb", boxShadow: "0 4px 24px rgba(37,99,235,0.12)" }}>
+          <div className="rounded-3xl overflow-hidden" style={{ border: "1px dashed #2563eb", boxShadow: "0 4px 24px rgba(37,99,235,0.12)" }}>
             <div className="px-5 py-2 text-center" style={{ background: "#eff6ff", borderBottom: "1px solid #bfdbfe" }}>
               <p className="text-blue-700 font-black text-lg">للطلب ادخل معلوماتك اسفله 👇</p>
               <p className="text-gray-600 font-bold text-sm mt-1">توصيل مجاني + الدفع عند الاستلام ✅</p>
@@ -377,6 +378,7 @@ export default function VcClPage() {
             loop
             playsInline
             preload="none"
+            poster="/products/cleaner-4-in-1-package.jpg"
             style={{ width: "100%", height: 500, objectFit: "cover", objectPosition: "center center", display: "block" }}
           />
         </div>
