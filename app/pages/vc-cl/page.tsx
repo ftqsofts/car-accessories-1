@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "176TSC"
-const PRICE_1 = 145
+const PRICE_1 = 155
 const PRICE_2 = 250
 const SAVING = PRICE_1 * 2 - PRICE_2
 
@@ -276,14 +276,14 @@ export default function VcClPage() {
       </section>
 
       {/* ── Wave: white → black ── */}
-      <div style={{ lineHeight: 0, backgroundColor: "#0b0b0b", marginTop: "0px", marginBottom: "-1px" }}>
+      <div className="hidden" style={{ lineHeight: 0, backgroundColor: "#0b0b0b", marginTop: "0px", marginBottom: "-1px" }}>
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: 60 }}>
           <path d="M0,0 C360,80 1080,80 1440,0 L1440,0 L0,0 Z" fill="#ffffff" />
         </svg>
       </div>
 
       {/* ══ IMAGE 2 — dark ══ */}
-      <div style={{ backgroundColor: "#0b0b0b", lineHeight: 0, position: "relative" }}>
+      <div className="hidden" style={{ backgroundColor: "#0b0b0b", lineHeight: 0, position: "relative" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/products/2-2.webp"
@@ -298,14 +298,14 @@ export default function VcClPage() {
       </div>
 
       {/* ── Wave: black → white ── */}
-      <div style={{ lineHeight: 0, backgroundColor: "#0b0b0b", marginTop: "-1px", marginBottom: "-1px" }}>
+      <div className="hidden" style={{ lineHeight: 0, backgroundColor: "#0b0b0b", marginTop: "-1px", marginBottom: "-1px" }}>
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: 60 }}>
           <path d="M0,0 C360,80 1080,80 1440,0 L1440,80 L0,80 Z" fill="#ffffff" />
         </svg>
       </div>
 
       {/* ══ ORDER FORM 2 ══ */}
-      <section className="px-5 py-8" style={{ backgroundColor: "#ffffff" }}>
+      <section className="px-5 py-8 hidden" style={{ backgroundColor: "#ffffff" }}>
         <div className="max-w-lg mx-auto">
           <h2 className="text-center font-black text-xl mb-3">اطلب الآن وتوصلك خلال 24 ساعة ✔️</h2>
           <p className="text-center text-red-500 font-black text-sm mb-6">⏳ العرض سينتهي خلال ساعات قليلة</p>
