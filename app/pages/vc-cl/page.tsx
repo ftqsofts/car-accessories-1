@@ -160,7 +160,7 @@ export default function VcClPage() {
                 {qty === 1 && <div className="w-2.5 h-2.5 rounded-full bg-blue-900" />}
               </div>
               {/* Title */}
-              <span className="flex-1 text-right font-black text-base text-gray-900">أسبيراتور 4 في 1 — وحدة</span>
+              <span className="flex-1 text-right font-black text-base text-gray-900">أسبيراتور 6 في 1 — وحدة</span>
               {/* Price */}
               <span className="shrink-0 font-black text-lg text-gray-900">{PRICE_1} درهم</span>
             </button>
@@ -365,6 +365,21 @@ export default function VcClPage() {
           loading="lazy"
           style={{ border: "1px solid #e2e8f0" }}
         />
+      </div>
+
+
+      <div className="px-4 pb-8 pt-2">
+        <div className="max-w-lg mx-auto rounded-2xl overflow-hidden">
+          <video
+            src="/products/cleaner-4-in-1-inboxing-2.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="none"
+            style={{ width: "100%", height: 500, objectFit: "cover", objectPosition: "center center", display: "block" }}
+          />
+        </div>
       </div>
 
       {/* ══ REVIEWS ══ */}
