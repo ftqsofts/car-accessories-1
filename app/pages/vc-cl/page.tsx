@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "176TSC"
-const PRICE_1 = 155
+const PRICE_1 = 145
 const PRICE_2 = 250
 const SAVING = PRICE_1 * 2 - PRICE_2
 
