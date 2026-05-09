@@ -17,7 +17,7 @@ const PRODUCTS = [
     video: "/products/pack-4/sun-protection.mp4",
     poster: "/products/pack-4/S4abf82e96bc94d458eb54090d4d618f2n.webp",
     title: "مظلات شمس مغناطيسية",
-    desc: "وليداتك مرتاحين من الصهد — 4 قطع تحمي النوافذ، الطوموبيل تبقى باردة ومسترية طول الطريق.",
+    desc: "وليداتك مرتاحين من الصهد — 4 ديال المظلات مغناطيسية كيحميوك من صهد الشمش وكيحافظوا على الخصوصية ديالك داخل السيارة.",
   },
   {
     video: "/products/pack-4/vacuum-cleaner.mp4",
@@ -35,7 +35,7 @@ const PRODUCTS = [
     video: "/products/pack-4/air-perfume.mp4",
     poster: "/products/pack-4/Saeead601199a4000bf7aeb6bf224e325m.webp",
     title: "معطر الجو Catpai",
-    desc: "انتعاش كيدوم — ريحة الطوموبيل دايما زوينة، حتى يلا طال السفر كتحس بالراحة والنقاوة.",
+    desc: "انتعاش كيدوم — ريحة الطوموبيل دايما زوينة، كتدوم لأسابيع، باش أي واحد ركب معاك يحس بالفرق..",
   },
 ]
 
@@ -224,7 +224,7 @@ export default function Pck4Page() {
       {/* ══ PRODUCTS ══ */}
       <div className="px-4 py-6 bg-gray-50">
         <h2 className="text-gray-900 font-black text-2xl text-center mb-2">شنو كاين فالباك؟</h2>
-        <p className="text-center text-gray-500 text-sm mb-8">علاش هاد الباك هو الصديق ديال عائلتك فالطريق ❤️</p>
+        <p className="text-center text-gray-500 text-sm mb-8">علاش هاد الباك هو الصديق ديالك فالطريق ❤️</p>
         <div className="flex flex-col gap-12 max-w-lg mx-auto">
           {PRODUCTS.map((p, i) => (
             <div key={i}>
