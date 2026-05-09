@@ -242,10 +242,10 @@ export default function Pck4Page() {
         {orderForm}
       </section>
 
-      <div className="h-2 bg-gray-50" />
+      <div className="h-2" />
 
       {/* ══ PRODUCTS ══ */}
-      <div className="px-4 py-6 bg-gray-50">
+      <div className="px-4 py-6">
         <h2 className="text-gray-900 font-black text-2xl text-center mb-2">شنو كاين فالباك؟</h2>
         <p className="text-center text-gray-500 text-sm mb-8">علاش هاد الباك هو الصديق ديالك فالطريق ❤️</p>
         <div className="flex flex-col gap-12 max-w-lg mx-auto">
@@ -262,10 +262,10 @@ export default function Pck4Page() {
         </div>
       </div>
 
-      <div className="h-2 bg-gray-50" />
+      <div className="h-2" />
 
       {/* ══ TRUST BADGES ══ */}
-      <div className="max-w-lg mx-auto px-4 py-6 bg-gray-50">
+      <div className="max-w-lg mx-auto px-4 py-6">
         <h2 className="text-gray-900 font-black text-2xl text-center mb-5">الضمانات والاسترجاع</h2>
         <div className="flex flex-col gap-3">
           {[
@@ -284,7 +284,7 @@ export default function Pck4Page() {
         </div>
       </div>
 
-      <div className="h-2 bg-gray-50" />
+      <div className="h-2" />
 
       {/* ══ WHATSAPP ══ */}
       <section className="max-w-lg mx-auto px-4 py-6">
@@ -303,7 +303,7 @@ export default function Pck4Page() {
       </section>
 
       {/* ══ FOOTER ══ */}
-      <footer className="px-5 py-8 mb-20 text-center" style={{ backgroundColor: "#f8fafc", borderTop: "1px solid #e5e7eb" }}>
+      <footer className="px-5 py-8 mb-20 text-center" style={{ borderTop: "1px solid #e5e7eb" }}>
         <div className="inline-flex items-center gap-2 font-black text-sm px-4 py-2 rounded-full mb-4" style={{ background: "#fdf8ee", border: `1px solid ${GOLD}`, color: "#92712a" }}>
           🚚 توصيل مجاني لجميع مدن المغرب
         </div>
