@@ -17,19 +17,19 @@ const PRODUCTS = [
     video: "/products/pack-4/sun-protection.mp4",
     poster: "/products/pack-4/S4abf82e96bc94d458eb54090d4d618f2n.webp",
     title: "مظلات شمس مغناطيسية",
-    desc: "وليداتك مرتاحين من الصهد — 4 ديال المظلات مغناطيسية كيحميوك من صهد الشمش وكيحافظوا على الخصوصية ديالك داخل السيارة.",
+    desc: "وليداتك مرتاحين من الشمس — 4 ديال المظلات مغناطيسية كيحجب 90\% وكيحافظوا على الخصوصية ديالك داخل السيارة.",
   },
   {
     video: "/products/pack-4/vacuum-cleaner.mp4",
     poster: "/products/pack-4/S1b07353b841c47ed9a1667a156304b83e.webp",
     title: "مكنسة لاسلكية قوية",
-    desc: "السفر فيه الماكلة والفرتيت — مع المكنسة غتجمع الروينة فثواني وتخلي الجلسة نقية لوليداتك.",
+    desc: "مكنسة قوية بقدرة شفط 6000Pa كافية باش تجمع الروينة فثواني وتخلي الجلسة نقية لوليداتك.",
   },
   {
     video: "/products/pack-4/phone-holder.mp4",
     poster: "/products/pack-4/S41925ed38ddc460e980f7c9f7e35e6010.webp",
     title: "حامل الهاتف الاحترافي",
-    desc: "سوق وأنت مرتاح وبالك هاني — GPS بكل أمان بلا ما تشغل يدك، باش توصل عائلتك بخير.",
+    desc: "سوق وأنت مرتاح وبالك هاني — سيبور احترافي بمغناطيس N52 قوي وتصميم كيدور 360° وقابل للطي، كيضمن ثبات التيليفون وخا فالدودان.",
   },
   {
     video: "/products/pack-4/air-perfume.mp4",
@@ -58,7 +58,7 @@ function LazyVideo({ src, poster }: { src: string; poster: string }) {
   return (
     <video ref={ref} poster={poster} autoPlay muted loop playsInline preload="none"
       className="w-full bg-white"
-      style={{ height: "380px", objectFit: "cover" }}
+      style={{ height: "420px", objectFit: "cover" }}
       onLoadedData={e => { (e.target as HTMLVideoElement).playbackRate = 1.3 }}
     />
   )
@@ -253,7 +253,7 @@ export default function Pck4Page() {
             <div key={i}>
                 
               <h3 className="font-black text-xl text-gray-900 text-right mb-2">{p.title}</h3>
-              <p className="text-gray-500 text-base text-right leading-relaxed">{p.desc}</p>
+              <p className="text-gray-700 text-base text-right leading-loose font-bold">{p.desc}</p>
               <div className="rounded-2xl overflow-hidden mb-4">
                 <LazyVideo src={p.video} poster={p.poster} />
               </div>
