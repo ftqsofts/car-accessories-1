@@ -8,6 +8,7 @@ const PRODUCT_SKU = "176TSC"
 const PRICE_1 = 145
 const PRICE_2 = 250
 const SAVING = PRICE_1 * 2 - PRICE_2
+const OLD_PRICE = 195
 
 
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
@@ -26,7 +27,7 @@ export default function VcClPage() {
   const video2Ref = useRef<HTMLVideoElement>(null)
 
   const saveDraft = (f: OrderForm, q: number, p: number) => {
-    if (!f.phone.trim() || f.phone.trim().length < 8) return
+    if (!f.phone.trim() || f.phone.trim().length < 10) return
     if (draftTimer.current) clearTimeout(draftTimer.current)
     draftTimer.current = setTimeout(async () => {
       const res = await fetch("/api/draft", {
@@ -102,7 +103,7 @@ export default function VcClPage() {
   return (
     <div className="min-h-screen text-gray-900" dir="rtl" style={{ backgroundColor: "#f8fafc", fontFamily: "var(--font-cairo), Cairo, sans-serif" }}>
       <style>{`
-        @keyframes btnPulse { 0%,100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,99,235,0.4); } 50% { transform: scale(1.03); box-shadow: 0 0 0 12px rgba(37,99,235,0); } }
+        @keyframes btnPulse { 0%,100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(232,184,109,0.5); } 50% { transform: scale(1.03); box-shadow: 0 0 0 14px rgba(232,184,109,0); } }
         @keyframes btnBounce { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }
         .btn-pulse { animation: btnPulse 2s ease-in-out infinite; }
       `}</style>
@@ -156,7 +157,24 @@ export default function VcClPage() {
             سبيراتور بجودة مزيانة، ومعاه ضمان شهر كامل ✔️
           </h2>
 
-          <p className="text-center text-red-500 font-black text-sm mb-12">⏳ العرض سينتهي خلال ساعات قليلة</p>
+          <p className="text-center text-red-500 font-black text-sm mb-6">⏳ العرض سينتهي خلال ساعات قليلة</p>
+
+          {/* ── PRICE CARD ── */}
+          <div className="rounded-2xl overflow-hidden shadow-xl mb-6" style={{ background: "#E8B86D" }}>
+            <div className="flex items-center justify-between px-5 py-4">
+              <div>
+                <p className="text-black/60 text-xs font-bold mb-0.5">السعر الأصلي</p>
+                <p className="text-black/40 text-xl font-black line-through">{OLD_PRICE} درهم</p>
+              </div>
+              <div className="bg-red-500 text-white text-sm font-black px-3 py-1.5 rounded-full">
+                -{Math.round((1 - PRICE_1 / OLD_PRICE) * 100)}%
+              </div>
+              <div className="text-right">
+                <p className="text-black/60 text-xs font-bold mb-0.5">تدفع فقط</p>
+                <p className="text-black font-black" style={{ fontSize: "clamp(2rem, 9vw, 3rem)", lineHeight: 1 }}>{PRICE_1} درهم</p>
+              </div>
+            </div>
+          </div>
 
           
           {/* ── QTY SELECTOR ── */}
@@ -168,13 +186,13 @@ export default function VcClPage() {
               onClick={() => setQty(1)}
               className="relative w-full flex items-center gap-3 px-4 py-5 rounded-xl transition-all shadow-md active:scale-95"
               style={{
-                border: qty === 1 ? "2px solid #1e3a8a" : "2px solid #d1d5db",
-                background: qty === 1 ? "#eff6ff" : "#ffffff",
+                border: qty === 1 ? "2px solid #E8B86D" : "2px solid #d1d5db",
+                background: qty === 1 ? "#fdf8ee" : "#ffffff",
               }}
             >
               {/* Radio dot */}
-              <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ border: qty === 1 ? "2px solid #1e3a8a" : "2px solid #d1d5db" }}>
-                {qty === 1 && <div className="w-2.5 h-2.5 rounded-full bg-blue-900" />}
+              <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ border: qty === 1 ? "2px solid #E8B86D" : "2px solid #d1d5db" }}>
+                {qty === 1 && <div className="w-2.5 h-2.5 rounded-full" style={{ background: "#E8B86D" }} />}
               </div>
               {/* Title */}
               <span className="flex-1 text-right font-black text-base text-gray-900">أسبيراتور 6 في 1 — وحدة</span>
@@ -188,15 +206,15 @@ export default function VcClPage() {
               onClick={() => setQty(2)}
               className="relative w-full flex items-center gap-3 px-4 py-5 rounded-xl transition-all shadow-md active:scale-95"
               style={{
-                border: qty === 2 ? "2px solid #1e3a8a" : "2px solid #d1d5db",
-                background: qty === 2 ? "#eff6ff" : "#ffffff",
+                border: qty === 2 ? "2px solid #E8B86D" : "2px solid #d1d5db",
+                background: qty === 2 ? "#fdf8ee" : "#ffffff",
               }}
             >
               {/* Discount badge */}
-              <span className="absolute -top-3 right-3 text-white text-xs font-black px-2 py-1.5 rounded" style={{ background: "#0f172a" }}>وفر {SAVING} درهم</span>
+              <span className="absolute -top-3 right-3 text-black text-xs font-black px-2 py-1.5 rounded" style={{ background: "#E8B86D" }}>وفر {SAVING} درهم</span>
               {/* Radio dot */}
-              <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ border: qty === 2 ? "2px solid #1e3a8a" : "2px solid #d1d5db" }}>
-                {qty === 2 && <div className="w-2.5 h-2.5 rounded-full bg-blue-900" />}
+              <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ border: qty === 2 ? "2px solid #E8B86D" : "2px solid #d1d5db" }}>
+                {qty === 2 && <div className="w-2.5 h-2.5 rounded-full" style={{ background: "#E8B86D" }} />}
               </div>
               {/* Title + sub */}
               <div className="flex-1 text-right">
@@ -208,56 +226,49 @@ export default function VcClPage() {
             </button>
           </div>
 
-          <div className="rounded-3xl overflow-hidden" style={{ border: "1px dashed #2563eb", boxShadow: "0 4px 24px rgba(37,99,235,0.12)" }}>
-            <div className="px-5 py-2 text-center" style={{ background: "#eff6ff", borderBottom: "1px solid #bfdbfe" }}>
-              <p className="text-blue-700 font-black text-lg">للطلب ادخل معلوماتك اسفله 👇</p>
-              <p className="text-gray-600 font-bold text-sm mt-1">توصيل مجاني + الدفع عند الاستلام ✅</p>
+          <div className="rounded-3xl overflow-hidden" style={{ border: "3.5px dashed #E8B86D", boxShadow: "0 4px 24px rgba(232,184,109,0.15)" }}>
+            <div className="px-5 py-3 text-center" style={{ background: "#030712" }}>
+              <p className="font-black text-lg" style={{ color: "#E8B86D", animation: "pulse 1.5s ease-in-out infinite" }}>للطلب ادخل معلوماتك اسفله 👇</p>
+              <p className="text-white/60 font-bold text-sm mt-1">توصيل مجاني + الدفع عند الاستلام ✅</p>
             </div>
             <div className="px-5 pb-8 pt-6" style={{ background: "#ffffff" }}>
               <form onSubmit={handleSubmit} className="space-y-4 ">
                 <input type="text" name="website" tabIndex={-1} autoComplete="off" style={{ display: "none" }} onChange={(e) => setForm({ ...form, _hp: e.target.value })} />
                 <div>
                   <label className="block text-sm text-gray-700 mb-1.5 font-black text-right">الاسم الكامل <span className="font-normal text-gray-400">(اختياري)</span></label>
-                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: "2px solid #b5c1da", background: "#ffffff" }}>
-                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: "#b9c9dd", borderLeft: "2px solid #b5c1da" }}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#252525" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.029 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664h10z"/></svg>
-                    </span>
-                    <input type="text" value={form.name} onChange={(e) => { const f = { ...form, name: e.target.value }; setForm(f); saveDraft(f, qty, price) }}
-                      placeholder="الاسم الكامل"
-                      className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400"
-                    />
-                  </div>
+                  <input type="text" value={form.name} onChange={(e) => { const f = { ...form, name: e.target.value }; setForm(f); saveDraft(f, qty, price) }}
+                    placeholder="الاسم الكامل"
+                    className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-4 text-gray-900 text-base placeholder-gray-400 outline-none text-right transition-colors"
+                    style={{ borderColor: undefined }}
+                    onFocus={e => e.target.style.borderColor = "#E8B86D"}
+                    onBlur={e => e.target.style.borderColor = "#e5e7eb"}
+                  />
                 </div>
                 <div>
                   <label className="block text-sm text-gray-700 mb-1.5 font-black text-right">المدينة <span className="font-normal text-gray-400">(اختياري)</span></label>
-                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: "2px solid #b5c1da", background: "#ffffff" }}>
-                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: "#b9c9dd", borderLeft: "2px solid #b5c1da" }}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#252525" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
-                    </span>
-                    <input type="text" value={form.city} onChange={(e) => { const f = { ...form, city: e.target.value }; setForm(f); saveDraft(f, qty, price) }}
-                      placeholder="مثلاً: كازا، الرباط..."
-                      className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400"
-                    />
-                  </div>
+                  <input type="text" value={form.city} onChange={(e) => { const f = { ...form, city: e.target.value }; setForm(f); saveDraft(f, qty, price) }}
+                    placeholder="مثلاً: كازا، الرباط..."
+                    className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-4 text-gray-900 text-base placeholder-gray-400 outline-none text-right transition-colors"
+                    onFocus={e => e.target.style.borderColor = "#E8B86D"}
+                    onBlur={e => e.target.style.borderColor = "#e5e7eb"}
+                  />
                 </div>
                 <div>
                   <label className="block text-sm text-gray-700 mb-1.5 font-black text-right">رقم التيليفون <span className="text-red-500">*</span></label>
-                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: errors.phone ? "2px solid #ef4444" : "2px solid #b5c1da", background: "#ffffff" }}>
-                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: errors.phone ? "#fee2e2" : "#b9c9dd", borderLeft: errors.phone ? "2px solid #fca5a5" : "2px solid #b5c1da" }}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill={errors.phone ? "#ef4444" : "#252525"} viewBox="0 0 16 16"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z"/></svg>
-                    </span>
-                    <input type="tel" value={form.phone} onChange={(e) => { const f = { ...form, phone: e.target.value }; setForm(f); saveDraft(f, qty, price) }}
-                      placeholder="06XXXXXXXX"
-                      className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400"
-                    />
-                  </div>
+                  <input type="tel" value={form.phone} onChange={(e) => { const f = { ...form, phone: e.target.value }; setForm(f); saveDraft(f, qty, price) }}
+                    placeholder="06XXXXXXXX"
+                    className="w-full bg-gray-50 border-2 rounded-xl px-4 py-4 text-gray-900 text-base placeholder-gray-400 outline-none text-right transition-colors"
+                    style={{ borderColor: errors.phone ? "#ef4444" : "#e5e7eb" }}
+                    onFocus={e => { if (!errors.phone) e.target.style.borderColor = "#E8B86D" }}
+                    onBlur={e => { if (!errors.phone) e.target.style.borderColor = "#e5e7eb" }}
+                  />
                   {errors.phone && <p className="text-red-500 text-sm mt-1 font-bold text-right">{errors.phone}</p>}
                 </div>
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-5 rounded-2xl font-black text-lg text-white transition-all duration-200 active:scale-95"
-                  style={{ background: "linear-gradient(135deg, #2563eb, #1d4ed8)", boxShadow: "0 4px 20px rgba(37,99,235,0.4)", animation: loading ? "none" : "btnPulse 1.5s ease-in-out infinite" }}
+                  className="w-full py-5 rounded-2xl font-black text-lg text-black transition-all duration-200 active:scale-95"
+                  style={{ background: "#E8B86D", boxShadow: "0 4px 20px rgba(232,184,109,0.4)", animation: loading ? "none" : "btnPulse 1.5s ease-in-out infinite" }}
                 >
                   {loading ? (
                     <span className="flex items-center justify-center gap-2">
@@ -310,14 +321,14 @@ export default function VcClPage() {
           <h2 className="text-center font-black text-xl mb-3">اطلب الآن وتوصلك خلال 24 ساعة ✔️</h2>
           <p className="text-center text-red-500 font-black text-sm mb-6">⏳ العرض سينتهي خلال ساعات قليلة</p>
           <div className="flex flex-col gap-4 mb-2">
-            <button type="button" onClick={() => setQty(1)} className="relative w-full flex items-center gap-3 px-4 py-5 rounded-xl transition-all shadow-md active:scale-95" style={{ border: qty === 1 ? "2px solid #1e3a8a" : "2px solid #d1d5db", background: qty === 1 ? "#eff6ff" : "#ffffff" }}>
-              <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ border: qty === 1 ? "2px solid #1e3a8a" : "2px solid #d1d5db" }}>{qty === 1 && <div className="w-2.5 h-2.5 rounded-full bg-blue-900" />}</div>
+            <button type="button" onClick={() => setQty(1)} className="relative w-full flex items-center gap-3 px-4 py-5 rounded-xl transition-all shadow-md active:scale-95" style={{ border: qty === 1 ? "2px solid #E8B86D" : "2px solid #d1d5db", background: qty === 1 ? "#fdf8ee" : "#ffffff" }}>
+              <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ border: qty === 1 ? "2px solid #E8B86D" : "2px solid #d1d5db" }}>{qty === 1 && <div className="w-2.5 h-2.5 rounded-full" style={{ background: "#E8B86D" }} />}</div>
               <span className="flex-1 text-right font-black text-base text-gray-900">مكنسة 6 في 1 — وحدة</span>
               <span className="shrink-0 font-black text-lg text-gray-900">{PRICE_1} درهم</span>
             </button>
-            <button type="button" onClick={() => setQty(2)} className="relative w-full flex items-center gap-3 px-4 py-5 rounded-xl transition-all shadow-md active:scale-95" style={{ border: qty === 2 ? "2px solid #1e3a8a" : "2px solid #d1d5db", background: qty === 2 ? "#eff6ff" : "#ffffff" }}>
-              <span className="absolute -top-3 right-3 text-white text-xs font-black px-2 py-1 rounded" style={{ background: "#0f172a" }}>وفر {SAVING} درهم</span>
-              <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ border: qty === 2 ? "2px solid #1e3a8a" : "2px solid #d1d5db" }}>{qty === 2 && <div className="w-2.5 h-2.5 rounded-full bg-blue-900" />}</div>
+            <button type="button" onClick={() => setQty(2)} className="relative w-full flex items-center gap-3 px-4 py-5 rounded-xl transition-all shadow-md active:scale-95" style={{ border: qty === 2 ? "2px solid #E8B86D" : "2px solid #d1d5db", background: qty === 2 ? "#fdf8ee" : "#ffffff" }}>
+              <span className="absolute -top-3 right-3 text-black text-xs font-black px-2 py-1 rounded" style={{ background: "#E8B86D" }}>وفر {SAVING} درهم</span>
+              <div className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ border: qty === 2 ? "2px solid #E8B86D" : "2px solid #d1d5db" }}>{qty === 2 && <div className="w-2.5 h-2.5 rounded-full" style={{ background: "#E8B86D" }} />}</div>
               <div className="flex-1 text-right">
                 <p className="font-black text-base text-gray-900">اثنان بسعر خاص</p>
                 <p className="text-gray-400 text-xs mt-0.5">وحدة للدار + وحدة للطوموبيل</p>
@@ -325,43 +336,28 @@ export default function VcClPage() {
               <span className="shrink-0 font-black text-lg text-gray-900">{PRICE_2} درهم</span>
             </button>
           </div>
-          <div className="rounded-3xl overflow-hidden" style={{ border: "1px dashed #2563eb", boxShadow: "0 4px 24px rgba(37,99,235,0.12)" }}>
-            <div className="px-5 py-2 text-center" style={{ background: "#eff6ff", borderBottom: "1px solid #bfdbfe" }}>
-              <p className="text-blue-700 font-black text-lg">للطلب ادخل معلوماتك اسفله 👇</p>
-              <p className="text-gray-600 font-bold text-sm mt-1">توصيل مجاني + الدفع عند الاستلام ✅</p>
+          <div className="rounded-3xl overflow-hidden" style={{ border: "3.5px dashed #E8B86D", boxShadow: "0 4px 24px rgba(232,184,109,0.15)" }}>
+            <div className="px-5 py-3 text-center" style={{ background: "#030712" }}>
+              <p className="font-black text-lg" style={{ color: "#E8B86D", animation: "pulse 1.5s ease-in-out infinite" }}>للطلب ادخل معلوماتك اسفله 👇</p>
+              <p className="text-white/60 font-bold text-sm mt-1">توصيل مجاني + الدفع عند الاستلام ✅</p>
             </div>
             <div className="px-5 pb-8 pt-6" style={{ background: "#ffffff" }}>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <input type="text" name="website" tabIndex={-1} autoComplete="off" style={{ display: "none" }} onChange={(e) => setForm({ ...form, _hp: e.target.value })} />
                 <div>
                   <label className="block text-sm text-gray-700 mb-1.5 font-black text-right">الاسم الكامل <span className="font-normal text-gray-400">(اختياري)</span></label>
-                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: "2px solid #b5c1da", background: "#ffffff" }}>
-                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: "#b9c9dd", borderLeft: "2px solid #b5c1da" }}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#252525" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.029 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664h10z"/></svg>
-                    </span>
-                    <input type="text" value={form.name} onChange={(e) => { const f = { ...form, name: e.target.value }; setForm(f); saveDraft(f, qty, price) }} placeholder="الاسم الكامل" className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400" />
-                  </div>
+                  <input type="text" value={form.name} onChange={(e) => { const f = { ...form, name: e.target.value }; setForm(f); saveDraft(f, qty, price) }} placeholder="الاسم الكامل" className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-4 text-gray-900 text-base placeholder-gray-400 outline-none text-right transition-colors" onFocus={e => e.target.style.borderColor = "#E8B86D"} onBlur={e => e.target.style.borderColor = "#e5e7eb"} />
                 </div>
                 <div>
                   <label className="block text-sm text-gray-700 mb-1.5 font-black text-right">المدينة <span className="font-normal text-gray-400">(اختياري)</span></label>
-                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: "2px solid #b5c1da", background: "#ffffff" }}>
-                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: "#b9c9dd", borderLeft: "2px solid #b5c1da" }}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#252525" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
-                    </span>
-                    <input type="text" value={form.city} onChange={(e) => { const f = { ...form, city: e.target.value }; setForm(f); saveDraft(f, qty, price) }} placeholder="مثلاً: كازا، الرباط..." className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400" />
-                  </div>
+                  <input type="text" value={form.city} onChange={(e) => { const f = { ...form, city: e.target.value }; setForm(f); saveDraft(f, qty, price) }} placeholder="مثلاً: كازا، الرباط..." className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-4 text-gray-900 text-base placeholder-gray-400 outline-none text-right transition-colors" onFocus={e => e.target.style.borderColor = "#E8B86D"} onBlur={e => e.target.style.borderColor = "#e5e7eb"} />
                 </div>
                 <div>
                   <label className="block text-sm text-gray-700 mb-1.5 font-black text-right">رقم التيليفون <span className="text-red-500">*</span></label>
-                  <div className="flex items-center rounded-xl overflow-hidden" style={{ border: errors.phone ? "2px solid #ef4444" : "2px solid #b5c1da", background: "#ffffff" }}>
-                    <span className="px-3 flex items-center justify-center self-stretch" style={{ background: errors.phone ? "#fee2e2" : "#b9c9dd", borderLeft: errors.phone ? "2px solid #fca5a5" : "2px solid #b5c1da" }}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill={errors.phone ? "#ef4444" : "#252525"} viewBox="0 0 16 16"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z"/></svg>
-                    </span>
-                    <input type="tel" value={form.phone} onChange={(e) => { const f = { ...form, phone: e.target.value }; setForm(f); saveDraft(f, qty, price) }} placeholder="06XXXXXXXX" className="flex-1 px-4 py-3 text-gray-900 text-base outline-none bg-transparent text-right placeholder:text-gray-400" />
-                  </div>
+                  <input type="tel" value={form.phone} onChange={(e) => { const f = { ...form, phone: e.target.value }; setForm(f); saveDraft(f, qty, price) }} placeholder="06XXXXXXXX" className="w-full bg-gray-50 border-2 rounded-xl px-4 py-4 text-gray-900 text-base placeholder-gray-400 outline-none text-right transition-colors" style={{ borderColor: errors.phone ? "#ef4444" : "#e5e7eb" }} onFocus={e => { if (!errors.phone) e.target.style.borderColor = "#E8B86D" }} onBlur={e => { if (!errors.phone) e.target.style.borderColor = "#e5e7eb" }} />
                   {errors.phone && <p className="text-red-500 text-sm mt-1 font-bold text-right">{errors.phone}</p>}
                 </div>
-                <button type="submit" disabled={loading} className="w-full py-5 rounded-2xl font-black text-lg text-white transition-all duration-200 active:scale-95" style={{ background: "linear-gradient(135deg, #2563eb, #1d4ed8)", boxShadow: "0 4px 20px rgba(37,99,235,0.4)", animation: loading ? "none" : "btnPulse 1.5s ease-in-out infinite" }}>
+                <button type="submit" disabled={loading} className="w-full py-5 rounded-2xl font-black text-lg text-black transition-all duration-200 active:scale-95" style={{ background: "#E8B86D", boxShadow: "0 4px 20px rgba(232,184,109,0.4)", animation: loading ? "none" : "btnPulse 1.5s ease-in-out infinite" }}>
                   {loading ? (<span className="flex items-center justify-center gap-2"><svg className="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" /></svg>جاري إرسال طلبيتك...</span>) : `اطلب الان — عرض محدود`}
                 </button>
               </form>
@@ -439,7 +435,7 @@ export default function VcClPage() {
 
       {/* ══ FOOTER ══ */}
       <footer className="px-5 py-8 mb-18 text-center" style={{ backgroundColor: "#f1f5f9", borderTop: "1px solid #b9c9dd" }}>
-        <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-600 font-black text-sm px-4 py-2 rounded-full mb-4" style={{ border: "1px solid #bfdbfe" }}>
+        <div className="inline-flex items-center gap-2 font-black text-sm px-4 py-2 rounded-full mb-4" style={{ background: "#fdf8ee", border: "1px solid #E8B86D", color: "#92712a" }}>
           🚚 توصيل مجاني لجميع مدن المغرب
         </div>
         <p className="text-gray-400 text-xs">© 2025 Storecoma — جميع الحقوق محفوظة</p>
@@ -453,8 +449,8 @@ export default function VcClPage() {
         <div className="fixed bottom-4 left-4 right-4 z-40">
           <button
             onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-            className="w-full text-white font-black text-base py-4 rounded-2xl active:scale-95"
-            style={{ background: "linear-gradient(135deg, #2563eb, #1d4ed8)", boxShadow: "0 4px 24px rgba(37,99,235,0.5)", animation: "btnBounce 1.2s ease-in-out infinite" }}
+            className="w-full text-black font-black text-base py-4 rounded-2xl active:scale-95"
+            style={{ background: "#E8B86D", boxShadow: "0 4px 24px rgba(232,184,109,0.5)", animation: "btnBounce 1.2s ease-in-out infinite" }}
           >
             🔥  اطلب الان — الدفع عند الاستلام
           </button>
