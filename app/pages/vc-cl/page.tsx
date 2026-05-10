@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "176TSC"
-const PRICE_1 = 145
-const PRICE_2 = 250
+const PRICE_1 = 165
+const PRICE_2 = 270
 const SAVING = PRICE_1 * 2 - PRICE_2
 
 
@@ -112,7 +112,7 @@ export default function VcClPage() {
       <div style={{ backgroundColor: "#0b0b0b", lineHeight: 0, position: "relative" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/products/1-3.webp"
+          src="/products/1.webp"
           alt="مكنسة كهربائية 6 في 1"
           className="w-full h-auto block"
           width={800}
@@ -127,16 +127,8 @@ export default function VcClPage() {
       {/* ══ VIDEO SECTION — black bg, seamless with hero ══ */}
       <div style={{ backgroundColor: "#0b0b0b", lineHeight: 0, marginTop: "-5px" }} className="px-4 pb-8 pt-2">
         <div className="max-w-lg mx-auto rounded-2xl border-2 border-gray-500 overflow-hidden">
-          <video
-            src="/products/cleaner-4-in-1-car.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="none"
-            poster=""
-            style={{ width: "100%", height: 500, objectFit: "cover", objectPosition: "center center", display: "block" }}
-          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/products/JpCQxc8s29Q6GGnEv8h6O0EQW0UKFWDeflYQn9sh.gif" alt="شفط الأوساخ" style={{ width: "100%", height: 500, objectFit: "cover", display: "block" }} />
         </div>
       </div>
 
