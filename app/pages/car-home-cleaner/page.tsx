@@ -262,7 +262,7 @@ export default function CarHomeCleanerPage() {
                   viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
               </button>
               {openFaq.has(i) && (
-                <div className="px-4 pb-4 text-gray-600 text-[16px] font-semibold text-right leading-relaxed bg-white border-t border-gray-100">
+                <div className="p-4 text-gray-600 text-[16px] text-right leading-relaxed bg-white border-t border-gray-100">
                   {item.a}
                 </div>
               )}
