@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
+export const runtime = "edge"
 
 // const SHEETDB_URL  = "https://sheetdb.io/api/v1/qcu9zy4i090fj"
 const SUPABASE_URL = "https://rrtuzqjbgxouwzserwjp.supabase.co/rest/v1/orders"
@@ -8,7 +9,7 @@ const SALEURA_URL  = "https://api.saleura.com/v1/webhooks/orders/biz_knfejjdd/UG
 // In-memory IP rate limit — max 3 orders per IP
 const ipCount = new Map<string, number>()
 
-export async function POST(req: NextRequest) {
+export async function POST(req: NextRequest, ctx: { waitUntil?: (p: Promise<unknown>) => void }) {
   const ip =
     req.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
     req.headers.get("x-real-ip") ??
@@ -59,8 +60,8 @@ export async function POST(req: NextRequest) {
   //   }),
   // }).catch((err) => console.error("[order] SheetDB error:", err))
 
-  // ── Send to Saleura ──
-  fetch(SALEURA_URL, {
+  // ── Send to Saleura (fire-and-forget, kept alive by waitUntil) ──
+  const saleuraPromise = fetch(SALEURA_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -75,6 +76,7 @@ export async function POST(req: NextRequest) {
       }),
     }),
   }).catch((err) => console.error("[order] Saleura error:", err))
+  ctx.waitUntil?.(saleuraPromise)
 
   return NextResponse.json({ ok: true })
 }
