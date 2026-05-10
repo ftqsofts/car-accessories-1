@@ -69,7 +69,10 @@ export async function POST(req: NextRequest) {
       address: city ?? "",
       city: city ?? "",
       cod: total,
-      products: [{ sku: skus, quantity: qty ?? 1 }],
+      products: String(skus).split(",").map((entry: string) => {
+        const [sku, q] = entry.trim().split(":")
+        return { sku: sku.trim(), quantity: q ? parseInt(q) : 1 }
+      }),
     }),
   }).catch((err) => console.error("[order] Saleura error:", err))
 
