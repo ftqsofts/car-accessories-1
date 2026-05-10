@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-export const runtime = "edge"
+import { after } from "next/server"
 
 // const SHEETDB_URL  = "https://sheetdb.io/api/v1/qcu9zy4i090fj"
 const SUPABASE_URL = "https://rrtuzqjbgxouwzserwjp.supabase.co/rest/v1/orders"
@@ -9,7 +9,7 @@ const SALEURA_URL  = "https://api.saleura.com/v1/webhooks/orders/biz_knfejjdd/UG
 // In-memory IP rate limit — max 3 orders per IP
 const ipCount = new Map<string, number>()
 
-export async function POST(req: NextRequest, ctx: { waitUntil?: (p: Promise<unknown>) => void }) {
+export async function POST(req: NextRequest) {
   const ip =
     req.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
     req.headers.get("x-real-ip") ??
@@ -60,23 +60,24 @@ export async function POST(req: NextRequest, ctx: { waitUntil?: (p: Promise<unkn
   //   }),
   // }).catch((err) => console.error("[order] SheetDB error:", err))
 
-  // ── Send to Saleura (fire-and-forget, kept alive by waitUntil) ──
-  const saleuraPromise = fetch(SALEURA_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      phone: phone.trim(),
-      recipient: name ?? "",
-      address: city ?? "",
-      city: city ?? "",
-      cod: total,
-      products: String(skus).split(",").map((entry: string) => {
-        const [sku, q] = entry.trim().split(":")
-        return { sku: sku.trim(), quantity: q ? parseInt(q) : 1 }
+  // ── Send to Saleura after response (user doesn't wait) ──
+  after(async () => {
+    await fetch(SALEURA_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        phone: phone.trim(),
+        recipient: name ?? "",
+        address: city ?? "",
+        city: city ?? "",
+        cod: total,
+        products: String(skus).split(",").map((entry: string) => {
+          const [sku, q] = entry.trim().split(":")
+          return { sku: sku.trim(), quantity: q ? parseInt(q) : 1 }
+        }),
       }),
-    }),
-  }).catch((err) => console.error("[order] Saleura error:", err))
-  ctx.waitUntil?.(saleuraPromise)
+    }).catch((err) => console.error("[order] Saleura error:", err))
+  })
 
   return NextResponse.json({ ok: true })
 }
