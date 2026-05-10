@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
-const PRODUCT_SKU = "PCK4"
+const PRODUCT_SKU = "CMM4-CCR-99E,9DX3-WWN-7C8,16ZJX1,CMBC-CCR-6E9"
 const PRICE_1 = 229
 const OLD_PRICE = 499
 const GOLD = "#E8B86D"
