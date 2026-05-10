@@ -192,23 +192,22 @@ export default function Pck4Page() {
 
       {/* ══ DECORATIVE BG ══ */}
       <div aria-hidden="true" style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none", overflow: "hidden" }}>
-        {/* top-right gold cluster */}
-        <div style={{ position: "absolute", top: -60, right: -60, width: 260, height: 260, borderRadius: "50%", background: "radial-gradient(circle, rgba(232,184,109,0.13) 0%, transparent 70%)" }} />
-        <div style={{ position: "absolute", top: 40, right: 40, width: 90, height: 90, borderRadius: "50%", border: "1.5px solid rgba(232,184,109,0.18)" }} />
-        <div style={{ position: "absolute", top: 90, right: 90, width: 40, height: 40, borderRadius: "50%", background: "rgba(232,184,109,0.09)" }} />
-        {/* top-left gray */}
-        <div style={{ position: "absolute", top: 20, left: -40, width: 180, height: 180, borderRadius: "50%", border: "1.5px solid rgba(0,0,0,0.05)" }} />
-        <div style={{ position: "absolute", top: 70, left: 30, width: 60, height: 60, borderRadius: "50%", background: "rgba(0,0,0,0.03)" }} />
-        {/* mid gold dot row */}
-        {[0,1,2,3,4].map(n => (
-          <div key={n} style={{ position: "absolute", top: "38%", left: `${8 + n * 22}%`, width: 5, height: 5, borderRadius: "50%", background: n % 2 === 0 ? "rgba(232,184,109,0.25)" : "rgba(0,0,0,0.07)" }} />
-        ))}
-        {/* bottom-left gold cluster */}
-        <div style={{ position: "absolute", bottom: -80, left: -80, width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(232,184,109,0.10) 0%, transparent 70%)" }} />
-        <div style={{ position: "absolute", bottom: 60, left: 20, width: 80, height: 80, borderRadius: "50%", border: "1.5px solid rgba(232,184,109,0.15)" }} />
-        {/* bottom-right gray ring */}
-        <div style={{ position: "absolute", bottom: 30, right: -30, width: 160, height: 160, borderRadius: "50%", border: "1.5px solid rgba(0,0,0,0.05)" }} />
-        <div style={{ position: "absolute", bottom: 80, right: 50, width: 50, height: 50, borderRadius: "50%", background: "rgba(0,0,0,0.03)" }} />
+        {/* large top-right glow */}
+        <div style={{ position: "absolute", top: -120, right: -120, width: 420, height: 420, borderRadius: "50%", background: "radial-gradient(circle, rgba(232,184,109,0.18) 0%, transparent 65%)" }} />
+        {/* top-right ring */}
+        <div style={{ position: "absolute", top: 60, right: 60, width: 160, height: 160, borderRadius: "50%", border: "1px solid rgba(232,184,109,0.2)", boxShadow: "0 0 40px rgba(232,184,109,0.06) inset" }} />
+        {/* top-left large ring */}
+        <div style={{ position: "absolute", top: -40, left: -80, width: 320, height: 320, borderRadius: "50%", border: "1px solid rgba(232,184,109,0.08)" }} />
+        {/* center-left glow */}
+        <div style={{ position: "absolute", top: "30%", left: -60, width: 240, height: 240, borderRadius: "50%", background: "radial-gradient(circle, rgba(232,184,109,0.07) 0%, transparent 70%)" }} />
+        {/* center-right ring */}
+        <div style={{ position: "absolute", top: "45%", right: -40, width: 200, height: 200, borderRadius: "50%", border: "1px solid rgba(232,184,109,0.1)" }} />
+        {/* bottom-left large glow */}
+        <div style={{ position: "absolute", bottom: -100, left: -100, width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle, rgba(232,184,109,0.14) 0%, transparent 65%)" }} />
+        {/* bottom-left ring */}
+        <div style={{ position: "absolute", bottom: 80, left: 40, width: 130, height: 130, borderRadius: "50%", border: "1px solid rgba(232,184,109,0.18)" }} />
+        {/* bottom-right glow */}
+        <div style={{ position: "absolute", bottom: -60, right: -60, width: 280, height: 280, borderRadius: "50%", background: "radial-gradient(circle, rgba(232,184,109,0.10) 0%, transparent 70%)" }} />
       </div>
 
       <div style={{ position: "relative", zIndex: 1 }}>

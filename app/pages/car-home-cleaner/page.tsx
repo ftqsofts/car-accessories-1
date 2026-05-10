@@ -29,7 +29,7 @@ export default function CarHomeCleanerPage() {
   const [loading, setLoading] = useState(false)
   const [formPassed, setFormPassed] = useState(false)
   const [qty, setQty] = useState(1)
-  const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const [openFaq, setOpenFaq] = useState<Set<number>>(new Set(FAQ.map((_, i) => i)))
   const formRef = useRef<HTMLElement>(null)
   const price = qty === 2 ? PRICE_2 : PRICE_1
   const draftId = useRef<number | null>(null)
@@ -148,7 +148,7 @@ export default function CarHomeCleanerPage() {
               </span>
             <input type="tel" value={form.phone} onChange={(e) => { const f = { ...form, phone: e.target.value }; setForm(f); saveDraft(f, qty, price) }}
               placeholder="رقم الهاتف" dir="rtl"
-              style={{ flex: 1, height: 45, fontSize: 16, padding: "5px 15px", border: `1px solid ${errors.phone ? "#e20000" : "#c0c0c0"}`, borderRadius: "6px 0 0 6px", outline: "none", color: "#212529", background: "#fff" }}
+              style={{ flex: 1, height: 45, fontSize: 18, padding: "5px 15px", border: `1px solid ${errors.phone ? "#e20000" : "#c0c0c0"}`, borderRadius: "6px 0 0 6px", outline: "none", color: "#212529", background: "#fff" }}
             />
           </div>
           {errors.phone && <p style={{ color: "#e20000", fontSize: 14, margin: "4px 0 0", textAlign: "right" }}>{errors.phone}</p>}
@@ -163,7 +163,7 @@ export default function CarHomeCleanerPage() {
               </span>
             <input type="text" value={form.name} onChange={(e) => { const f = { ...form, name: e.target.value }; setForm(f); saveDraft(f, qty, price) }}
               placeholder="الاسم الكامل" dir="rtl"
-              style={{ flex: 1, height: 45, fontSize: 16, padding: "5px 15px", border: "1px solid #c0c0c0", borderRadius: "6px 0 0 6px", outline: "none", color: "#212529", background: "#fff" }}
+              style={{ flex: 1, height: 50, fontSize: 18, padding: "5px 15px", border: "1px solid #c0c0c0", borderRadius: "6px 0 0 6px", outline: "none", color: "#212529", background: "#fff" }}
             />
           </div>
         </div>
@@ -177,7 +177,7 @@ export default function CarHomeCleanerPage() {
               </span>
             <input type="text" value={form.city} onChange={(e) => { const f = { ...form, city: e.target.value }; setForm(f); saveDraft(f, qty, price) }}
               placeholder="المدينة" dir="rtl"
-              style={{ flex: 1, height: 45, fontSize: 16, padding: "5px 15px", border: "1px solid #c0c0c0", borderRadius: "6px 0 0 6px", outline: "none", color: "#212529", background: "#fff" }}
+              style={{ flex: 1, height: 50, fontSize: 18, padding: "5px 15px", border: "1px solid #c0c0c0", borderRadius: "6px 0 0 6px", outline: "none", color: "#212529", background: "#fff" }}
             />
           </div>
         </div>
@@ -221,12 +221,12 @@ export default function CarHomeCleanerPage() {
       />
 
       {/* ══ HEADING ══ */}
-      <div className="px-4 pt-6 pb-2 max-w-lg mx-auto text-center">
+      <div className="px-4 pt-6 pb-2 mt-12 max-w-lg mx-auto text-center">
         <h1 className="font-black text-2xl text-gray-900 leading-snug">
           سبيراتور بجودة مزيانة، ومعاه ضمان شهر كامل باش تجربو ✔️
         </h1>
         <p className="text-green-600 font-black text-sm mt-3">✅ توصيل مجاني — الدفع عند الاستلام</p>
-        <p className="text-red-500 font-black text-sm mt-0.5">⏳ الكمية محدودة — العرض سينتهي قريباً</p>
+        <p className="text-black font-black text-sm mt-0.5">⏳ الكمية محدودة — العرض سينتهي قريباً</p>
       </div>
 
       <div className="h-px mx-4 bg-gray-100 my-4" />
@@ -239,11 +239,11 @@ export default function CarHomeCleanerPage() {
       <div className="h-4" />
 
       {/* ══ REVIEWS ══ */}
-      <div className="px-4 max-w-lg mx-auto">
-        <h2 className="font-black text-2xl text-center text-gray-900 mb-4">عملائنا راضون</h2>
+      <div className="px-1 max-w-lg mx-auto">
+        <h2 className="font-black text-xl text-center text-gray-900 mb-4">عملائنا راضون</h2>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/products/car-home-cleaner-reviews.webp" alt="تقييمات العملاء"
-          className="w-full h-auto rounded-2xl" loading="lazy" width={720} height={2950}
+          className="w-full h-auto rounded-xl" loading="lazy" width={720} height={2950}
         />
       </div>
 
@@ -256,13 +256,13 @@ export default function CarHomeCleanerPage() {
           {FAQ.map((item, i) => (
             <div key={i} className="rounded-2xl overflow-hidden" style={{ border: "1px solid #e5e7eb" }}>
               <button className="w-full flex items-center justify-between px-4 py-4 text-right font-black text-gray-900 bg-white"
-                onClick={() => setOpenFaq(openFaq === i ? null : i)}>
+                onClick={() => setOpenFaq(prev => { const s = new Set(prev); if (s.has(i)) { s.delete(i) } else { s.add(i) } return s })}>
                 <span>{item.q}</span>
-                <svg className="w-4 h-4 shrink-0 transition-transform ml-2" style={{ transform: openFaq === i ? "rotate(180deg)" : "none" }}
+                <svg className="w-4 h-4 shrink-0 transition-transform ml-2" style={{ transform: openFaq.has(i) ? "rotate(180deg)" : "none" }}
                   viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
               </button>
-              {openFaq === i && (
-                <div className="px-4 pb-4 text-gray-600 text-sm text-right leading-relaxed bg-white border-t border-gray-100">
+              {openFaq.has(i) && (
+                <div className="px-4 pb-4 text-gray-600 text-[16px] font-semibold text-right leading-relaxed bg-white border-t border-gray-100">
                   {item.a}
                 </div>
               )}
@@ -296,7 +296,7 @@ export default function CarHomeCleanerPage() {
       <div className="h-4" />
 
       {/* ══ WHATSAPP ══ */}
-      <section className="max-w-lg mx-auto px-4 py-4">
+      <section className="max-w-lg mx-auto px-4 hidden py-4">
         <div className="rounded-3xl p-6 text-center space-y-4" style={{ background: DARK }}>
           <p className="text-white font-black text-xl">عندك سؤال؟ تواصل معنا مباشرة</p>
           <p className="text-white/50 text-sm">فريقنا مساند ليك على واتساب</p>
