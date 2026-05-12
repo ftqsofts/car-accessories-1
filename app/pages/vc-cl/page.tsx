@@ -13,6 +13,7 @@ const SAVING = PRICE_1 * 2 - PRICE_2
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
 
 const IMAGES = [
+  "/products/cleaner-4-in-1-hero.webp",
   "/products/S6a6bce2b49ce4690bb48c2896297d230t.avif",
   "/products/cleaner-4-in-1-package.webp",
   "/products/JpCQxc8s29Q6GGnEv8h6O0EQW0UKFWDeflYQn9sh.gif",
