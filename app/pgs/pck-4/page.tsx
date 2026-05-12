@@ -1,16 +1,14 @@
 "use client"
 
 import Image from "next/image"
-import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
+import OrderForm from "@/components/OrderForm"
 
 const PRODUCT_SKU = "CMM4-CCR-99E,9DX3-WWN-7C8,16ZJX1,CMBC-CCR-6E9"
 const PRICE_1 = 229
 const OLD_PRICE = 499
 const GOLD = "#E8B86D"
 const DARK = "#030712"
-
-type OrderForm = { name: string; city: string; phone: string; _hp?: string }
 
 const PRODUCTS = [
   {
@@ -65,37 +63,8 @@ function LazyVideo({ src, poster }: { src: string; poster: string }) {
 }
 
 export default function Pck4Page() {
-  const router = useRouter()
-  const [form, setForm] = useState<OrderForm>({ name: "", city: "", phone: "" })
-  const [errors, setErrors] = useState<Partial<OrderForm>>({})
-  const [loading, setLoading] = useState(false)
   const [formPassed, setFormPassed] = useState(false)
   const formRef = useRef<HTMLElement>(null)
-  const price = PRICE_1
-  const draftId = useRef<number | null>(null)
-  const draftTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
-
-  const saveDraft = (f: OrderForm, q: number, p: number) => {
-    if (!f.phone.trim() || f.phone.trim().length < 10) return
-    if (draftTimer.current) clearTimeout(draftTimer.current)
-    draftTimer.current = setTimeout(async () => {
-      const res = await fetch("/api/draft", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: draftId.current, phone: f.phone.trim(), full_name: f.name, address: f.city, sku: PRODUCT_SKU, qte: q, price: p }),
-      }).catch(() => null)
-      if (res?.ok) {
-        const data = await res.json().catch(() => null)
-        if (data?.id) draftId.current = data.id
-      }
-    }, 1500)
-  }
-
-  const deleteDraft = () => {
-    if (!draftId.current) return
-    fetch("/api/draft", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: draftId.current }) }).catch(() => null)
-    draftId.current = null
-  }
 
   useEffect(() => {
     const check = () => {
@@ -107,80 +76,6 @@ export default function Pck4Page() {
     check()
     return () => window.removeEventListener("scroll", check)
   }, [])
-
-  const validate = () => {
-    const e: Partial<OrderForm> = {}
-    if (!form.phone.trim()) e.phone = "رقم الهاتف مطلوب"
-    else if (!/^[0-9+\s]{9,15}$/.test(form.phone.trim())) e.phone = "رقم الهاتف غير صحيح"
-    setErrors(e)
-    return Object.keys(e).length === 0
-  }
-
-  const handleSubmit = async (e: React.SyntheticEvent) => {
-    e.preventDefault()
-    if (!validate()) return
-    if (form._hp) return
-    setLoading(true)
-    deleteDraft()
-    fetch("/api/order", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: form.name, phone: form.phone, city: form.city, skus: PRODUCT_SKU, qty: 1, total: price }),
-    }).catch(() => null)
-    const params = new URLSearchParams({ name: form.name, phone: form.phone, city: form.city, skus: PRODUCT_SKU, qty: "1", total: String(price), pack: "pck-4" })
-    router.push(`/thank-you?${params}`)
-  }
-
-  const inputCls = "w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-4 text-gray-900 text-base placeholder-gray-400 outline-none text-right transition-colors"
-  const onFocusGold = (e: React.FocusEvent<HTMLInputElement>) => { e.target.style.borderColor = GOLD }
-  const onBlurGray  = (e: React.FocusEvent<HTMLInputElement>) => { e.target.style.borderColor = "#e5e7eb" }
-
-  const orderForm = (
-    <>
-      <div className="rounded-3xl overflow-hidden" style={{ border: `3.5px dashed ${GOLD}`, boxShadow: "0 4px 24px rgba(232,184,109,0.15)" }}>
-        <div className="px-5 py-3 text-center" style={{ background: DARK }}>
-          <p className="font-black text-lg" style={{ color: GOLD, animation: "pulse 1.5s ease-in-out infinite" }}>للطلب ادخل معلوماتك اسفله 👇</p>
-          <p className="font-bold text-sm mt-1" style={{ color: "rgba(255,255,255,0.6)" }}>توصيل مجاني + الدفع عند الاستلام ✅</p>
-        </div>
-        <div className="px-5 pb-7 pt-5" style={{ background: "#fff" }}>
-          <form onSubmit={handleSubmit} className="space-y-3">
-            <input type="text" name="website" tabIndex={-1} autoComplete="off" style={{ display: "none" }} onChange={(e) => setForm({ ...form, _hp: e.target.value })} />
-            <div>
-              <label className="block text-sm text-gray-700 mb-1 font-black text-right">الاسم الكامل <span className="font-normal text-gray-400">(اختياري)</span></label>
-              <input type="text" value={form.name} onChange={(e) => { const f = { ...form, name: e.target.value }; setForm(f); saveDraft(f, 1, price) }} placeholder="الاسم الكامل" className={inputCls} onFocus={onFocusGold} onBlur={onBlurGray} />
-            </div>
-            <div>
-              <label className="block text-sm text-gray-700 mb-1 font-black text-right">المدينة <span className="font-normal text-gray-400">(اختياري)</span></label>
-              <input type="text" value={form.city} onChange={(e) => { const f = { ...form, city: e.target.value }; setForm(f); saveDraft(f, 1, price) }} placeholder="مثلاً: كازا، الرباط..." className={inputCls} onFocus={onFocusGold} onBlur={onBlurGray} />
-            </div>
-            <div>
-              <label className="block text-sm text-gray-700 mb-1 font-black text-right">رقم التيليفون <span className="text-red-500">*</span></label>
-              <input type="tel" value={form.phone} onChange={(e) => { const f = { ...form, phone: e.target.value }; setForm(f); saveDraft(f, 1, price) }} placeholder="06XXXXXXXX"
-                className="w-full bg-gray-50 border-2 rounded-xl px-4 py-4 text-gray-900 text-base placeholder-gray-400 outline-none text-right transition-colors"
-                style={{ borderColor: errors.phone ? "#ef4444" : "#e5e7eb" }}
-                onFocus={e => { if (!errors.phone) e.target.style.borderColor = GOLD }}
-                onBlur={e => { if (!errors.phone) e.target.style.borderColor = "#e5e7eb" }}
-              />
-              {errors.phone && <p className="text-red-500 text-sm mt-1 font-bold text-right">{errors.phone}</p>}
-            </div>
-            <button type="submit" disabled={loading}
-              className="w-full py-5 rounded-2xl font-black text-lg text-black transition-all duration-200 active:scale-95"
-              style={{ background: GOLD, boxShadow: "0 4px 20px rgba(232,184,109,0.4)", animation: loading ? "none" : "btnPulse 1.5s ease-in-out infinite" }}>
-              {loading ? (
-                <span className="flex items-center justify-center gap-2">
-                  <svg className="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
-                  </svg>
-                  جاري إرسال طلبيتك...
-                </span>
-              ) : "اضغط هنا للطلب"}
-            </button>
-          </form>
-        </div>
-      </div>
-    </>
-  )
 
   return (
     <div className="min-h-screen text-gray-900" dir="rtl" style={{ backgroundColor: "#fff", fontFamily: "var(--font-cairo), Cairo, sans-serif" }}>
@@ -238,7 +133,11 @@ export default function Pck4Page() {
 
       {/* ══ FORM 1 ══ */}
       <section ref={formRef} className="px-4 py-5 max-w-lg mx-auto" id="order-form">
-        {orderForm}
+        <OrderForm
+          sku={PRODUCT_SKU}
+          pack="pck-4"
+          options={[{ q: 1, label: "باك العائلة — 4 إكسسوارات", price: PRICE_1 }]}
+        />
       </section>
 
       <div className="h-2" />
