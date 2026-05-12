@@ -214,7 +214,7 @@ export default function Pck4Page() {
 
       {/* ══ HERO ══ */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/products/pack-4/hero-2.webp" alt="باك العائلة — 4 إكسسوارات للطوموبيل"
+      <img src="/products/pack-4/hero-3.webp" alt="باك العائلة — 4 إكسسوارات للطوموبيل"
         className="w-full h-auto block" width={800} height={800}
         fetchPriority="high" decoding="async" style={{ cursor: "pointer" }}
         onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
