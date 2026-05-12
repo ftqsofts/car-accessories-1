@@ -268,14 +268,14 @@ export default function VcClPage() {
       </div>
 
       {/* ── Wave: white → black ── */}
-      <div className="hidden" style={{ lineHeight: 0, backgroundColor: "#0b0b0b", marginTop: "0px", marginBottom: "-1px" }}>
+      <div className="mt-12" style={{ lineHeight: 0, backgroundColor: "#fff", marginBottom: -2 }}>
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: 60 }}>
-          <path d="M0,0 C360,80 1080,80 1440,0 L1440,0 L0,0 Z" fill="#ffffff" />
+          <path d="M0,0 C360,80 1080,80 1440,0 L1440,80 L0,80 Z" fill="#0b0b0b" />
         </svg>
       </div>
 
       {/* ══ IMAGE 2 — dark ══ */}
-      <div className="hidden" style={{ backgroundColor: "#0b0b0b", lineHeight: 0, position: "relative" }}>
+      <div style={{ backgroundColor: "#0b0b0b", lineHeight: 0, position: "relative" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/products/2-2.webp"
@@ -286,13 +286,12 @@ export default function VcClPage() {
           loading="lazy"
           onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
         />
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 120, background: "linear-gradient(to bottom, transparent, #0b0b0b)" }} />
       </div>
 
       {/* ── Wave: black → white ── */}
-      <div className="hidden" style={{ lineHeight: 0, backgroundColor: "#0b0b0b", marginTop: "-1px", marginBottom: "-1px" }}>
+      <div style={{ lineHeight: 0, backgroundColor: "#0b0b0b" }}>
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: 60 }}>
-          <path d="M0,0 C360,80 1080,80 1440,0 L1440,80 L0,80 Z" fill="#ffffff" />
+          <path d="M0,0 C360,80 1080,80 1440,0 L1440,80 L0,80 Z" fill="#fff" />
         </svg>
       </div>
 
