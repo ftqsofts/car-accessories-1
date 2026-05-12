@@ -296,7 +296,7 @@ export default function CarHomeCleanerPage() {
       <div className="h-4" />
 
       {/* ══ WHATSAPP ══ */}
-      <section className="max-w-lg mx-auto px-4 hidden py-4">
+      <section className="max-w-lg hidden mx-auto px-4 hidden py-4">
         <div className="rounded-3xl p-6 text-center space-y-4" style={{ background: DARK }}>
           <p className="text-white font-black text-xl">عندك سؤال؟ تواصل معنا مباشرة</p>
           <p className="text-white/50 text-sm">فريقنا مساند ليك على واتساب</p>

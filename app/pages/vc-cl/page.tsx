@@ -374,7 +374,7 @@ export default function VcClPage() {
 
       
         {/* ══ WHATSAPP CTA ══ */}
-        <section className="max-w-lg mx-auto px-4 pb-12">
+        <section className="max-w-lg mx-auto hidden px-4 pb-12">
           <div className="bg-gray-900 rounded-3xl p-6 text-center space-y-4">
             <p className="text-white font-black text-xl">عندك سؤال؟ تواصل معنا مباشرة</p>
             <p className="text-white/50 text-sm">فريقنا مساند ليك على واتساب</p>
