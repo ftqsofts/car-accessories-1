@@ -16,7 +16,6 @@ const IMAGES = [
   "/products/cleaner-4-in-1-hero.webp",
   "/products/S6a6bce2b49ce4690bb48c2896297d230t.avif",
   "/products/cleaner-4-in-1-package.webp",
-  "/products/JpCQxc8s29Q6GGnEv8h6O0EQW0UKFWDeflYQn9sh.gif",
 ]
 
 export default function VcClPage() {
@@ -258,6 +257,15 @@ export default function VcClPage() {
             </form>
           </div>
       </section>
+
+      {/* ══ GIF ══ */}
+      <div className="px-4 py-4 max-w-lg mx-auto">
+        <Image src="/products/JpCQxc8s29Q6GGnEv8h6O0EQW0UKFWDeflYQn9sh.gif"
+          alt="شفط الأوساخ" width={800} height={500} loading="lazy"
+          className="w-full h-auto rounded-2xl"
+          unoptimized
+        />
+      </div>
 
       {/* ── Wave: white → black ── */}
       <div className="hidden" style={{ lineHeight: 0, backgroundColor: "#0b0b0b", marginTop: "0px", marginBottom: "-1px" }}>
