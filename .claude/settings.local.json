@@ -36,7 +36,8 @@
       "PowerShell(Get-ChildItem \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\" | Sort-Object Length -Descending | Select-Object Name, @{N='Size_KB';E={[math]::Round\\($_.Length/1KB,1\\)}} | Format-Table -AutoSize)",
       "PowerShell(Get-ChildItem \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\" -Include \"1-3.webp\",\"2-2.webp\",\"cleaner-4-in-1-package.jpg\" -Recurse | Select-Object Name, @{N='KB';E={[math]::Round\\($_.Length/1KB,1\\)}})",
       "PowerShell(Get-Item \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\1-3.webp\",\"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\2-2.webp\",\"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\cleaner-4-in-1-package.jpg\",\"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\reviews\\\\reviews-1.webp\" | Select-Object Name, @{N='KB';E={[math]::Round\\($_.Length/1KB,1\\)}})",
-      "Bash(mkdir \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\app\\\\pgs\\\\vc-cl2\")"
+      "Bash(mkdir \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\app\\\\pgs\\\\vc-cl2\")",
+      "PowerShell(Get-ChildItem \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\\" | Select-Object Name, @{Name=\"SizeKB\";Expression={[math]::Round\\($_.Length/1KB,1\\)}} | Sort-Object SizeKB -Descending | Format-Table -AutoSize)"
     ],
     "additionalDirectories": [
       "C:\\laragon\\www\\Ecom\\car-accessories-pack",

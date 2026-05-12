@@ -258,13 +258,14 @@ export default function VcClPage() {
           </div>
       </section>
 
-      {/* ══ GIF ══ */}
+      {/* ══ GIF → MP4 ══ */}
       <div className="px-4 py-4 max-w-lg mx-auto">
-        <Image src="/products/JpCQxc8s29Q6GGnEv8h6O0EQW0UKFWDeflYQn9sh.gif"
-          alt="شفط الأوساخ" width={800} height={500} loading="lazy"
+        <video autoPlay loop muted playsInline
           className="w-full h-auto rounded-2xl"
-          unoptimized
-        />
+          style={{ display: "block" }}
+        >
+          <source src="/products/ezgif-39ddc8d5e8e1e15e.mp4" type="video/mp4" />
+        </video>
       </div>
 
       {/* ── Wave: white → black ── */}
