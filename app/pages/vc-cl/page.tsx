@@ -12,12 +12,19 @@ const SAVING = PRICE_1 * 2 - PRICE_2
 
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
 
+const IMAGES = [
+  "/products/S6a6bce2b49ce4690bb48c2896297d230t.avif",
+  "/products/cleaner-4-in-1-package.webp",
+  "/products/JpCQxc8s29Q6GGnEv8h6O0EQW0UKFWDeflYQn9sh.gif",
+]
+
 export default function VcClPage() {
   const router = useRouter()
   const [form, setForm] = useState<OrderForm>({ name: "", city: "", phone: "" })
   const [errors, setErrors] = useState<Partial<OrderForm>>({})
   const [loading, setLoading] = useState(false)
   const [formPassed, setFormPassed] = useState(false)
+  const [activeImg, setActiveImg] = useState(0)
   const [qty, setQty] = useState(1)
   const formRef = useRef<HTMLElement>(null)
   const price = qty === 2 ? PRICE_2 : PRICE_1
@@ -108,43 +115,49 @@ export default function VcClPage() {
       `}</style>
 
 
-      {/* ══ HERO — image 1 ══ */}
-      <div style={{ backgroundColor: "#0b0b0b", lineHeight: 0, position: "relative" }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/products/1.webp"
-          alt="مكنسة كهربائية 6 في 1"
-          className="w-full h-auto block"
-          width={800}
-          height={2400}
-          fetchPriority="high"
-          decoding="async"
-          onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-        />
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 120, background: "linear-gradient(to bottom, transparent, #0b0b0b)" }} />
-      </div>
-
-      {/* ══ VIDEO SECTION — black bg, seamless with hero ══ */}
-      <div style={{ backgroundColor: "#0b0b0b", lineHeight: 0, marginTop: "-5px" }} className="px-4 pb-8 pt-2">
-        <div className="max-w-lg mx-auto rounded-2xl border-2 border-gray-500 overflow-hidden">
+      {/* ══ PRODUCT GALLERY ══ */}
+      <div style={{ backgroundColor: "#fff", maxWidth: 520, margin: "0 auto" }}>
+        {/* main image */}
+        <div style={{ position: "relative", backgroundColor: "#f5f5f5", lineHeight: 0 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/products/JpCQxc8s29Q6GGnEv8h6O0EQW0UKFWDeflYQn9sh.gif" alt="شفط الأوساخ" style={{ width: "100%", height: 500, objectFit: "cover", display: "block" }} />
+          <img src={IMAGES[activeImg]} alt="أسبيراتور 6 في 1"
+            fetchPriority="high" decoding="async"
+            style={{ width: "100%", height: 380, objectFit: "cover", display: "block", cursor: "pointer" }}
+            onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+          />
+          {/* image counter */}
+          <span style={{ position: "absolute", bottom: 10, left: 10, background: "rgba(0,0,0,0.5)", color: "#fff", fontSize: 12, fontWeight: 700, padding: "3px 8px", borderRadius: 20 }}>
+            {activeImg + 1} / {IMAGES.length}
+          </span>
+        </div>
+        {/* thumbnails */}
+        <div style={{ display: "flex", gap: 8, padding: "10px 12px", backgroundColor: "#fff", overflowX: "auto" }}>
+          {IMAGES.map((src, i) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img key={i} src={src} alt="" onClick={() => setActiveImg(i)}
+              style={{ width: 72, height: 72, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "pointer",
+                border: activeImg === i ? "2.5px solid #1E3A8A" : "2px solid #e5e7eb" }}
+            />
+          ))}
         </div>
       </div>
 
-      {/* ── Wave: black → white ── */}
-      <div style={{ lineHeight: 0, backgroundColor: "#0b0b0b", marginTop: "-1px", marginBottom: "-1px" }}>
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: 60 }}>
-          <path d="M0,0 C360,80 1080,80 1440,0 L1440,80 L0,80 Z" fill="#ffffff" />
-        </svg>
+      {/* ══ PRODUCT INFO ══ */}
+      <div style={{ backgroundColor: "#fff", padding: "12px 16px 4px", maxWidth: 520, margin: "0 auto" }}>
+        <h1 style={{ fontSize: 18, fontWeight: 900, color: "#111", margin: "0 0 8px", lineHeight: 1.4 }}>أسبيراتور و سوفلور 6 في 1 — للسيارة والدار</h1>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
+          <span style={{ fontSize: 26, fontWeight: 900, color: "#111" }}>{PRICE_1} درهم</span>
+          <span style={{ fontSize: 14, fontWeight: 700, color: "#fff", background: "#e53e3e", borderRadius: 20, padding: "2px 10px" }}>عرض محدود</span>
+        </div>
+        <p style={{ fontSize: 13, fontWeight: 700, color: "#16a34a", margin: "0 0 4px" }}>✅ توصيل مجاني — الدفع عند الاستلام</p>
+        <p style={{ fontSize: 13, fontWeight: 700, color: "#dc2626", margin: 0 }}>⏳ الكمية محدودة — العرض سينتهي قريباً</p>
       </div>
 
-      {/* ══ ORDER FORM 1 ══ */}
-      <section ref={formRef} className="px-5 mb-12 py-8" id="order-form" style={{ backgroundColor: "#ffffff" }}>
-        <div className="max-w-lg mx-auto">
+      <div style={{ height: 1, background: "#e5e7eb", margin: "12px 16px" }} />
 
-
-          <div style={{ background: "#fff", borderRadius: 10, padding: "10px 0 18px", marginTop: 10 }}>
+      {/* ══ ORDER FORM ══ */}
+      <section ref={formRef} className="px-4 pb-12 pt-2" id="order-form" style={{ backgroundColor: "#ffffff", maxWidth: 520, margin: "0 auto" }}>
+          <div style={{ background: "#fff", borderRadius: 10, padding: "10px 0 18px", marginTop: 0 }}>
             {/* qty offers */}
             <div style={{ marginBottom: 16 }}>
               {[
@@ -243,7 +256,6 @@ export default function VcClPage() {
               </button>
             </form>
           </div>
-        </div>
       </section>
 
       {/* ── Wave: white → black ── */}
