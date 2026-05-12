@@ -7,6 +7,8 @@ import { useEffect, useRef, useState } from "react"
 const PRODUCT_SKU = "176TSC"
 const PRICE_1 = 165
 const PRICE_2 = 270
+const OLD_PRICE_1 = 195
+const OLD_PRICE_2 = 390
 const SAVING = PRICE_1 * 2 - PRICE_2
 
 
@@ -146,7 +148,8 @@ export default function VcClPage() {
       <div style={{ backgroundColor: "#fff", padding: "12px 16px 4px", maxWidth: 520, margin: "0 auto" }}>
         <h1 style={{ fontSize: 18, fontWeight: 900, color: "#111", margin: "0 0 8px", lineHeight: 1.4 }}>أسبيراتور و سوفلور 6 في 1 — للسيارة والدار</h1>
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
-          <span style={{ fontSize: 26, fontWeight: 900, color: "#111" }}>{PRICE_1} درهم</span>
+          <span style={{ fontSize: 26, fontWeight: 900, color: "#111" }}>{price} درهم</span>
+          <span style={{ fontSize: 17, fontWeight: 700, color: "#aaa", textDecoration: "line-through" }}>{qty === 2 ? OLD_PRICE_2 : OLD_PRICE_1} درهم</span>
           <span style={{ fontSize: 14, fontWeight: 700, color: "#fff", background: "#e53e3e", borderRadius: 20, padding: "2px 10px" }}>عرض محدود</span>
         </div>
         <p style={{ fontSize: 13, fontWeight: 700, color: "#16a34a", margin: "0 0 4px" }}>✅ توصيل مجاني — الدفع عند الاستلام</p>
@@ -252,7 +255,7 @@ export default function VcClPage() {
                     </svg>
                     جاري إرسال طلبيتك...
                   </span>
-                ) : <><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" viewBox="0 0 16 16" style={{ marginLeft: 10 }}><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg><span style={{ color: "#fff" }}>اطلب الآن</span></>}
+                ) : <><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" viewBox="0 0 16 16" style={{ marginLeft: 10 }}><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg><span style={{ color: "#fff" }}>اطلب الآن — {price} درهم</span></>}
               </button>
             </form>
           </div>
@@ -294,6 +297,20 @@ export default function VcClPage() {
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: 60 }}>
           <path d="M0,0 C360,80 1080,80 1440,0 L1440,80 L0,80 Z" fill="#fff" />
         </svg>
+      </div>
+
+      {/* ══ CTA BUTTON ══ */}
+      <div style={{ backgroundColor: "#fff", padding: "16px 20px 8px", maxWidth: 520, margin: "0 auto" }}>
+        <button
+          type="button"
+          onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+          className="btn-pulse w-full"
+          style={{ background: "#ffd200", borderRadius: 14, padding: "18px 24px", fontWeight: 900, fontSize: 18, color: "#000", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
+          اطلب الآن — توصيل مجاني
+        </button>
+        <p style={{ textAlign: "center", fontSize: 12, color: "#888", marginTop: 8, fontWeight: 600 }}>الدفع عند الاستلام ✅</p>
       </div>
 
       {/* ══ ORDER FORM 2 ══ */}
