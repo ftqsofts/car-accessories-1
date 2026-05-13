@@ -62,8 +62,16 @@ function LazyVideo({ src, poster }: { src: string; poster: string }) {
   )
 }
 
+const IMAGES = [
+  "/products/pack-4/S1e6131bf01d84c6fba66b07516387b6dy.webp",
+  "/products/pack-4/cleaner-3-in-1.jpg",
+  "/products/pack-4/photo_2026-04-14_13-55-21.jpg",
+  "/products/pack-4/S4abf82e96bc94d458eb54090d4d618f2n.webp",
+]
+
 export default function Pck4Page() {
   const [formPassed, setFormPassed] = useState(false)
+  const [activeImg, setActiveImg] = useState(0)
   const formRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -104,11 +112,35 @@ export default function Pck4Page() {
 
       <div style={{ position: "relative", zIndex: 1 }}>
 
+      {/* ══ PRODUCT GALLERY ══ */}
+      <div style={{ backgroundColor: "#fff", maxWidth: 520, margin: "0 auto" }}>
+        <div style={{ position: "relative", backgroundColor: "#f5f5f5", lineHeight: 0 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={IMAGES[activeImg]} alt="باك العائلة"
+            fetchPriority="high" decoding="async"
+            style={{ width: "100%", height: 380, objectFit: "cover", display: "block", cursor: "pointer" }}
+            onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+          />
+          <span style={{ position: "absolute", bottom: 10, left: 10, background: "rgba(0,0,0,0.5)", color: "#fff", fontSize: 12, fontWeight: 700, padding: "3px 8px", borderRadius: 20 }}>
+            {activeImg + 1} / {IMAGES.length}
+          </span>
+        </div>
+        <div style={{ display: "flex", gap: 8, padding: "10px 12px", backgroundColor: "#fff", overflowX: "auto" }}>
+          {IMAGES.map((src, i) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img key={i} src={src} alt="" onClick={() => setActiveImg(i)}
+              style={{ width: 72, height: 72, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "pointer",
+                border: activeImg === i ? "2.5px solid #1E3A8A" : "2px solid #e5e7eb" }}
+            />
+          ))}
+        </div>
+      </div>
+
       {/* ══ HERO ══ */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/products/pack-4/hero-5.webp" alt="باك العائلة — 4 إكسسوارات للطوموبيل"
+      <img src="/products/pack-4/hero-6.webp" alt="باك العائلة — 4 إكسسوارات للطوموبيل"
         className="w-full h-auto block" width={800} height={800}
-        fetchPriority="high" decoding="async" style={{ cursor: "pointer" }}
+        decoding="async" style={{ cursor: "pointer" }}
         onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
       />
 
