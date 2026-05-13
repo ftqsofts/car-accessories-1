@@ -1,4 +1,4 @@
-import { after, NextRequest, NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 
 // const SHEETDB_URL  = "https://sheetdb.io/api/v1/qcu9zy4i090fj"
 const SUPABASE_URL   = "https://rrtuzqjbgxouwzserwjp.supabase.co/rest/v1/orders"
@@ -51,44 +51,27 @@ export async function POST(req: NextRequest) {
     body: JSON.stringify(order),
   }).catch((err) => console.error("[order] Supabase error:", err))
 
-  // ── Also send to SheetDB ──
-  // fetch(SHEETDB_URL, {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify({
-  //     data: [{ ...order, note: "", delivery_note: "" }]
-  //   }),
-  // }).catch((err) => console.error("[order] SheetDB error:", err))
-
-  // ── Send to Saleura after response, then delete draft on success ──
-  after(async () => {
-    const res = await fetch(SALEURA_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        phone: phone.trim(),
-        recipient: name?.trim() || "client",
-        address: city ?? "-",
-        city: city ?? "-",
-        cod: total,
-        products: String(skus).split(",").map((entry: string) => {
-          const [sku, q] = entry.trim().split(":")
-          return { sku: sku.trim(), quantity: q ? parseInt(q) : (qty ?? 1) }
-        }),
+  // ── Send to Saleura, then delete draft on success ──
+  fetch(SALEURA_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      phone: phone.trim(),
+      recipient: name?.trim() || "client",
+      address: city ?? "-",
+      city: city ?? "-",
+      cod: total,
+      products: String(skus).split(",").map((entry: string) => {
+        const [sku, q] = entry.trim().split(":")
+        return { sku: sku.trim(), quantity: q ? parseInt(q) : (qty ?? 1) }
       }),
-    }).catch((err) => { console.error("[order] Saleura error:", err); return null })
-
-    // remove draft if order was sent to Saleura successfully
-    if (res?.ok) {
-      await fetch(`${SUPABASE_DRAFT}?phone=eq.${encodeURIComponent(phone.trim())}`, {
-        method: "DELETE",
-        headers: {
-          "apikey": SUPABASE_KEY,
-          "Authorization": `Bearer ${SUPABASE_KEY}`,
-        },
-      }).catch((err) => console.error("[order] draft cleanup error:", err))
-    }
-  })
+    }),
+  }).then(() => {
+    fetch(`${SUPABASE_DRAFT}?phone=eq.${encodeURIComponent(phone.trim())}`, {
+      method: "DELETE",
+      headers: { "apikey": SUPABASE_KEY, "Authorization": `Bearer ${SUPABASE_KEY}` },
+    }).catch((err) => console.error("[order] draft cleanup error:", err))
+  }).catch((err) => console.error("[order] Saleura error:", err))
 
   return NextResponse.json({ ok: true })
 }

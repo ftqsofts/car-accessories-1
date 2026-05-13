@@ -51,11 +51,6 @@ export default function CarHomeCleanerPage() {
     }, 1500)
   }
 
-  const deleteDraft = () => {
-    if (!draftId.current) return
-    fetch("/api/draft", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: draftId.current }) }).catch(() => null)
-    draftId.current = null
-  }
 
   useEffect(() => {
     const check = () => {
@@ -81,7 +76,6 @@ export default function CarHomeCleanerPage() {
     if (!validate()) return
     if (form._hp) return
     setLoading(true)
-    deleteDraft()
     fetch("/api/order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

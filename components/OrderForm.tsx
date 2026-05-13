@@ -48,12 +48,6 @@ export default function OrderForm({ sku, pack, options, btnLabel = "اطلب ا�
     }, 1500)
   }
 
-  const deleteDraft = () => {
-    if (!draftId.current) return
-    fetch("/api/draft", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: draftId.current }) }).catch(() => null)
-    draftId.current = null
-  }
-
   const validate = () => {
     const e: Partial<OrderForm> = {}
     if (!form.phone.trim()) e.phone = "رقم الهاتف مطلوب"
@@ -67,7 +61,6 @@ export default function OrderForm({ sku, pack, options, btnLabel = "اطلب ا�
     if (!validate()) return
     if (form._hp) return
     setLoading(true)
-    deleteDraft()
     fetch("/api/order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
