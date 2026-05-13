@@ -1,7 +1,8 @@
 import { after, NextRequest, NextResponse } from "next/server"
 
 // const SHEETDB_URL  = "https://sheetdb.io/api/v1/qcu9zy4i090fj"
-const SUPABASE_URL = "https://rrtuzqjbgxouwzserwjp.supabase.co/rest/v1/orders"
+const SUPABASE_URL   = "https://rrtuzqjbgxouwzserwjp.supabase.co/rest/v1/orders"
+const SUPABASE_DRAFT = "https://rrtuzqjbgxouwzserwjp.supabase.co/rest/v1/drafts"
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJydHV6cWpiZ3hvdXd6c2Vyd2pwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwOTc3MjUsImV4cCI6MjA5MzY3MzcyNX0.P2U5ruvLYFbKfv10s27lFT0afhVdrnMRBTFmkWNn7G8"
 const SALEURA_URL  = "https://api.saleura.com/v1/webhooks/orders/biz_knfejjdd/UG9dW1w4a9v7VPilXqzl4ACghmZT5krZS9T4KEQElugH6hXp"
 
@@ -59,9 +60,9 @@ export async function POST(req: NextRequest) {
   //   }),
   // }).catch((err) => console.error("[order] SheetDB error:", err))
 
-  // ── Send to Saleura after response (user doesn't wait) ──
+  // ── Send to Saleura after response, then delete draft on success ──
   after(async () => {
-    await fetch(SALEURA_URL, {
+    const res = await fetch(SALEURA_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -75,7 +76,18 @@ export async function POST(req: NextRequest) {
           return { sku: sku.trim(), quantity: q ? parseInt(q) : (qty ?? 1) }
         }),
       }),
-    }).catch((err) => console.error("[order] Saleura error:", err))
+    }).catch((err) => { console.error("[order] Saleura error:", err); return null })
+
+    // remove draft if order was sent to Saleura successfully
+    if (res?.ok) {
+      await fetch(`${SUPABASE_DRAFT}?phone=eq.${encodeURIComponent(phone.trim())}`, {
+        method: "DELETE",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": `Bearer ${SUPABASE_KEY}`,
+        },
+      }).catch((err) => console.error("[order] draft cleanup error:", err))
+    }
   })
 
   return NextResponse.json({ ok: true })
