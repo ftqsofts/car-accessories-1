@@ -23,6 +23,7 @@ export async function GET(req: NextRequest) {
   if (!res?.ok) {
     return NextResponse.json({ ok: false, error: "failed to fetch drafts" }, { status: 500 })
   }
+  
 
   const drafts: Array<{
     id: number
