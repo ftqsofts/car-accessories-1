@@ -1,8 +1,8 @@
 "use client"
 
+import OrderForm from "@/components/OrderForm"
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
-import OrderForm from "@/components/OrderForm"
 
 const PRODUCT_SKU = "CMM4-CCR-99E,9DX3-WWN-7C8,16ZJX1,CMBC-CCR-6E9"
 const PRICE_1 = 229
@@ -108,8 +108,12 @@ export default function Pck4Page() {
       <div style={{ position: "relative", zIndex: 1 }}>
 
       {/* ══ HERO ══ */}
+      {/* ══ COD BANNER — top of page ══ */}
+      <div className="w-full overflow-hidden" style={{ lineHeight: 0 }}>
+        <Image src="/resources/cod-header-banner.webp" alt="توصيل مجاني — الدفع عند الاستلام" width={800} height={60} className="w-auto h-[45px]" priority />
+      </div>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/products/pack-4/hero-3.webp" alt="باك العائلة — 4 إكسسوارات للطوموبيل"
+      <img src="/products/pack-4/hero-4.webp" alt="باك العائلة — 4 إكسسوارات للطوموبيل"
         className="w-full h-auto block" width={800} height={800}
         fetchPriority="high" decoding="async" style={{ cursor: "pointer" }}
         onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
