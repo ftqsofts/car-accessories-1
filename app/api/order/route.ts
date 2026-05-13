@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
         cod: total,
         products: String(skus).split(",").map((entry: string) => {
           const [sku, q] = entry.trim().split(":")
-          return { sku: sku.trim(), quantity: q ? parseInt(q) : 1 }
+          return { sku: sku.trim(), quantity: q ? parseInt(q) : (qty ?? 1) }
         }),
       }),
     }).catch((err) => console.error("[order] Saleura error:", err))
