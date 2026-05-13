@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
   if (!res?.ok) {
     return NextResponse.json({ ok: false, error: "failed to fetch drafts" }, { status: 500 })
   }
-  
+
 
   const drafts: Array<{
     id: number
@@ -48,9 +48,9 @@ export async function GET(req: NextRequest) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         phone: draft.phone,
-        recipient: draft.full_name ?? "",
-        address: draft.address ?? "",
-        city: draft.address ?? "",
+        recipient: draft.full_name?.trim() || "client",
+        address: draft.address ?? "-",
+        city: draft.address ?? "-",
         cod: draft.price,
         products: String(draft.sku).split(",").map((entry: string) => {
           const [sku, q] = entry.trim().split(":")

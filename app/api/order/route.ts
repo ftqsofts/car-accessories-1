@@ -67,9 +67,9 @@ export async function POST(req: NextRequest) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         phone: phone.trim(),
-        recipient: name ?? "",
-        address: city ?? "",
-        city: city ?? "",
+        recipient: name?.trim() || "client",
+        address: city ?? "-",
+        city: city ?? "-",
         cod: total,
         products: String(skus).split(",").map((entry: string) => {
           const [sku, q] = entry.trim().split(":")
