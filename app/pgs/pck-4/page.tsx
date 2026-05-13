@@ -86,23 +86,20 @@ export default function Pck4Page() {
       `}</style>
 
       {/* ══ DECORATIVE BG ══ */}
-      <div aria-hidden="true" style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none", overflow: "hidden" }}>
-        {/* large top-right glow */}
-        <div style={{ position: "absolute", top: -120, right: -120, width: 420, height: 420, borderRadius: "50%", background: "radial-gradient(circle, rgba(232,184,109,0.18) 0%, transparent 65%)" }} />
-        {/* top-right ring */}
-        <div style={{ position: "absolute", top: 60, right: 60, width: 160, height: 160, borderRadius: "50%", border: "1px solid rgba(232,184,109,0.2)", boxShadow: "0 0 40px rgba(232,184,109,0.06) inset" }} />
-        {/* top-left large ring */}
-        <div style={{ position: "absolute", top: -40, left: -80, width: 320, height: 320, borderRadius: "50%", border: "1px solid rgba(232,184,109,0.08)" }} />
-        {/* center-left glow */}
-        <div style={{ position: "absolute", top: "30%", left: -60, width: 240, height: 240, borderRadius: "50%", background: "radial-gradient(circle, rgba(232,184,109,0.07) 0%, transparent 70%)" }} />
-        {/* center-right ring */}
-        <div style={{ position: "absolute", top: "45%", right: -40, width: 200, height: 200, borderRadius: "50%", border: "1px solid rgba(232,184,109,0.1)" }} />
-        {/* bottom-left large glow */}
-        <div style={{ position: "absolute", bottom: -100, left: -100, width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle, rgba(232,184,109,0.14) 0%, transparent 65%)" }} />
-        {/* bottom-left ring */}
-        <div style={{ position: "absolute", bottom: 80, left: 40, width: 130, height: 130, borderRadius: "50%", border: "1px solid rgba(232,184,109,0.18)" }} />
-        {/* bottom-right glow */}
-        <div style={{ position: "absolute", bottom: -60, right: -60, width: 280, height: 280, borderRadius: "50%", background: "radial-gradient(circle, rgba(232,184,109,0.10) 0%, transparent 70%)" }} />
+      <div aria-hidden="true" style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" }}>
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+              <circle cx="1.5" cy="1.5" r="1.5" fill="rgba(232,184,109,0.18)" />
+            </pattern>
+            <radialGradient id="fade" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="white" stopOpacity="0" />
+              <stop offset="100%" stopColor="white" stopOpacity="1" />
+            </radialGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#dots)" />
+          <rect width="100%" height="100%" fill="url(#fade)" />
+        </svg>
       </div>
 
       <div style={{ position: "relative", zIndex: 1 }}>
