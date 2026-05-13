@@ -1,22 +1,15 @@
 {
-  "crons": [
-    {
-      "path": "/api/cron/flush-1cbc0d6db60bd3a894d934f6da2e9570",
-      "schedule": "0 * * * *"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/products/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/_next/static/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    }
-  ]
+    "headers": [{
+            "source": "/products/(.*)",
+            "headers": [
+                { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+            ]
+        },
+        {
+            "source": "/_next/static/(.*)",
+            "headers": [
+                { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+            ]
+        }
+    ]
 }
