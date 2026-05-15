@@ -41,9 +41,9 @@ function ThankYouContent() {
       <div className="w-full max-w-md">
 
         {/* Logo */}
-        <div className="flex justify-center mb-8">
+        {/* <div className="flex justify-center mb-8">
           <Image src="/storecoma-logo.png" alt="logo" width={120} height={120} className="object-contain" />
-        </div>
+        </div> */}
 
         {/* Success banner */}
         <div className="bg-[#E8B86D] rounded-3xl p-8 text-center mb-5 shadow-xl shadow-[#E8B86D]/30">

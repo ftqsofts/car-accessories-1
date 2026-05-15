@@ -78,8 +78,17 @@ export default function HrShampPage() {
           sku={PRODUCT_SKU}
           pack="hr-shamp"
           options={[
-            { q: 1, label: "شامبو طبيعي — قارورة", price: PRICE_1 },
-            { q: 2, label: "قارورتان بسعر خاص", price: PRICE_2, badge: `وفر ${SAVING} درهم` },
+            {
+              q: 1,
+              label: "قارورة واحدة — تغطية طبيعية للشيب",
+              price: PRICE_1,
+            },
+            {
+              q: 2,
+              label: "عرض قارورتين — الأكثر طلباً",
+              price: PRICE_2,
+              badge: `وفر ${SAVING} درهم`,
+            },
           ]}
         />
       </section>

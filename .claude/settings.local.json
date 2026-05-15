@@ -40,7 +40,8 @@
       "PowerShell(Get-ChildItem \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\\" | Select-Object Name, @{Name=\"SizeKB\";Expression={[math]::Round\\($_.Length/1KB,1\\)}} | Sort-Object SizeKB -Descending | Format-Table -AutoSize)",
       "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(16\\).toString\\('hex'\\)\\)\")",
       "Bash(npx tsc *)",
-      "Bash(mkdir \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\app\\\\pgs\\\\hr-shamp\" 2>/dev/null; echo done)"
+      "Bash(mkdir \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\app\\\\pgs\\\\hr-shamp\" 2>/dev/null; echo done)",
+      "Bash(dir \"C:\\\\laragon\\\\www\\\\Ecom\")"
     ],
     "additionalDirectories": [
       "C:\\laragon\\www\\Ecom\\car-accessories-pack",

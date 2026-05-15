@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swa
 const cairo = Cairo({ subsets: ["arabic"], weight: ["400", "700", "900"], variable: "--font-cairo", display: "swap" })
 
 export const metadata: Metadata = {
-  title: "أحسن إكسسوارات طوموبيل بالمغرب",
+  title: "Ecoma",
   description: "توصيل مجاني لجميع مدن المغرب. الدفع عند الاستلام",
   robots: "noindex",
 }
