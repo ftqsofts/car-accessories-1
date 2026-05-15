@@ -1,7 +1,6 @@
 "use client"
 
 import OrderForm from "@/components/OrderForm"
-import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "HR-SHAMP"
@@ -22,7 +21,7 @@ const LP_IMAGES = [
   "/products/hair-shampoo/lp-2.webp",
   "/products/hair-shampoo/lp-3.webp",
   "/products/hair-shampoo/lp-4.webp",
-  // "/products/hair-shampoo/lp-5.webp",
+  "/products/hair-shampoo/lp-5.webp",
   "/products/hair-shampoo/lp-6.webp",
   "/products/hair-shampoo/lp-7.webp",
   // "/products/hair-shampoo/lp-8.webp",
@@ -147,9 +146,9 @@ export default function HrShampPage() {
           🚚 توصيل مجاني لجميع مدن المغرب
         </div>
         <p className="text-gray-400 text-xs">© 2025 Storecoma — جميع الحقوق محفوظة</p>
-        <div className="mx-auto mt-4 w-max">
+        {/* <div className="mx-auto mt-4 w-max">
           <Image src="/storecoma-logo.webp" alt="storecoma" width={90} height={90} className="object-contain" loading="lazy" />
-        </div>
+        </div> */}
       </footer>
 
       {/* ══ STICKY BUTTON ══ */}
