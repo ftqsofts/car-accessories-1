@@ -39,10 +39,27 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ ok: true, sent: 0, message: "no pending drafts" })
   }
 
+  // Fetch phones that already placed a real order — skip those drafts
+  const ordersRes = await fetch(
+    `${SUPABASE_URL}/orders?select=phone`,
+    { headers: SB_HEADERS }
+  ).catch(() => null)
+  const orders: Array<{ phone: string }> = ordersRes?.ok ? await ordersRes.json() : []
+  const orderedPhones = new Set(orders.map(o => o.phone.trim()))
+
   let sent = 0
   let failed = 0
 
   await Promise.all(drafts.map(async (draft) => {
+    // skip if this phone already has a confirmed order
+    if (orderedPhones.has(draft.phone.trim())) {
+      await fetch(`${SUPABASE_URL}/drafts?id=eq.${draft.id}`, {
+        method: "DELETE",
+        headers: SB_HEADERS,
+      }).catch(() => null)
+      return
+    }
+
     const saleuraRes = await fetch(SALEURA_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
