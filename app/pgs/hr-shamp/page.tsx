@@ -5,8 +5,8 @@ import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "HR-SHAMP"
-const PRICE_1 = 165
-const PRICE_2 = 300
+const PRICE_1 = 120
+const PRICE_2 = 200
 const SAVING = PRICE_1 * 2 - PRICE_2
 
 const FAQ = [
