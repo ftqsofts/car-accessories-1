@@ -85,9 +85,9 @@ export default function HrShampPage() {
       </div>
 
       {/* ══ VIDEO ══ */}
-      <div className="max-w-lg mx-auto bg-white -mt-3" style={{ lineHeight: 0, fontSize: 0 }}>
+      {/* <div className="max-w-lg mx-auto bg-white -mt-3" style={{ lineHeight: 0, fontSize: 0 }}>
         <video ref={videoRef} className="rounded-2xl" autoPlay loop muted playsInline style={{ display: "block", width: "100%", height: "auto" }} />
-      </div>
+      </div> */}
 
       {/* ══ FORM ══ */}
       <section ref={formRef} className="px-4 py-2 my-8 max-w-lg mx-auto" id="order-form">
