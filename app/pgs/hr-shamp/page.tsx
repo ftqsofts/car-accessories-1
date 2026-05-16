@@ -16,13 +16,16 @@ const FAQ = [
   { q: "التوصيل", a: "كنوصلو لجميع مدن المغرب مجانا، والدفع عند الاستلام — ماخصكش تخلص حتى حاجة قبل ما يوصلك المنتج." },
 ]
 
-const LP_IMAGES = [
+const LP_IMAGES_TOP = [
   "/products/hair-shampoo/lp-1-1.webp",
   "/products/hair-shampoo/lp-2.webp",
   "/products/hair-shampoo/lp-3.webp",
   "/products/hair-shampoo/lp-4.webp",
   "/products/hair-shampoo/lp-5.webp",
   "/products/hair-shampoo/lp-6.webp",
+]
+
+const LP_IMAGES_BOTTOM = [
   "/products/hair-shampoo/lp-7.webp",
   // "/products/hair-shampoo/lp-8.webp",
   "/products/hair-shampoo/lp-9.webp",
@@ -32,6 +35,24 @@ export default function HrShampPage() {
   const [formPassed, setFormPassed] = useState(false)
   const [openFaq, setOpenFaq] = useState<Set<number>>(new Set(FAQ.map((_, i) => i)))
   const formRef = useRef<HTMLElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.src = "/products/hair-shampoo/hair-shamp-proof.mp4"
+          video.load()
+          observer.disconnect()
+        }
+      },
+      { rootMargin: "400px" }
+    )
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     const check = () => {
@@ -52,15 +73,15 @@ export default function HrShampPage() {
         .shaked { animation: shake 2s ease infinite; }
       `}</style>
 
-      {/* ══ LP IMAGES ══ */}
+      {/* ══ LP IMAGES TOP (1-6) ══ */}
       <div className="max-w-lg mx-auto" style={{ lineHeight: 0, fontSize: 0 }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={LP_IMAGES[0]} alt="شامبو طبيعي للشعر" width={800} height={800}
+        <img src={LP_IMAGES_TOP[0]} alt="شامبو طبيعي للشعر" width={800} height={800}
           fetchPriority="high" decoding="async"
           style={{ display: "block", width: "100%", height: "auto", margin: 0, padding: 0, cursor: "pointer" }}
           onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
         />
-        {LP_IMAGES.slice(1).map((src, i) => (
+        {LP_IMAGES_TOP.slice(1).map((src: string, i: number) => (
           // eslint-disable-next-line @next/next/no-img-element
           <img key={i} src={src} alt="" width={800} height={800} loading="lazy"
             style={{ display: "block", width: "100%", height: "auto", margin: 0, padding: 0, marginTop: -2, cursor: "pointer" }}
@@ -69,28 +90,46 @@ export default function HrShampPage() {
         ))}
       </div>
 
+      {/* ══ VIDEO ══ */}
+      <div className="max-w-lg mx-auto" style={{ lineHeight: 0, fontSize: 0 }}>
+        <video ref={videoRef} autoPlay loop muted playsInline style={{ display: "block", width: "100%", height: "auto" }} />
+      </div>
+
       <div className="h-4" />
 
       {/* ══ FORM ══ */}
-      <section ref={formRef} className="px-4 py-2 max-w-lg mx-auto" id="order-form">
+      <section ref={formRef} className="px-4 py-2 mb-16 max-w-lg mx-auto" id="order-form">
         <OrderForm
           sku={PRODUCT_SKU}
           pack="hr-shamp"
           options={[
             {
               q: 1,
-              label: "قارورة واحدة — تغطية طبيعية للشيب",
+              label: "واحدة — تغطية طبيعية للشيب",
               price: PRICE_1,
             },
             {
               q: 2,
-              label: "عرض قارورتين — الأكثر طلباً",
+              label: "اثنان بسعر خاص",
               price: PRICE_2,
               badge: `وفر ${SAVING} درهم`,
             },
           ]}
         />
       </section>
+
+      <div className="h-4" />
+
+      {/* ══ LP IMAGES BOTTOM (7+) ══ */}
+      <div className="max-w-lg mx-auto" style={{ lineHeight: 0, fontSize: 0 }}>
+        {LP_IMAGES_BOTTOM.map((src: string, i: number) => (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img key={i} src={src} alt="" width={800} height={800} loading="lazy"
+            style={{ display: "block", width: "100%", height: "auto", margin: 0, padding: 0, marginTop: -2, cursor: "pointer" }}
+            onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+          />
+        ))}
+      </div>
 
       <div className="h-4" />
 
