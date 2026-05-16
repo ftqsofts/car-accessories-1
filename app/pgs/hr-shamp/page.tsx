@@ -132,7 +132,14 @@ export default function HrShampPage() {
         ))}
       </div>
 
-      <div className="h-4" />
+      {/* ══ CTA ══ */}
+      <div className="px-4 max-w-lg mx-auto py-6">
+        <button onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+          className="w-full text-black font-black text-lg py-5 rounded-2xl active:scale-95 shaked"
+          style={{ background: "#ffd200", boxShadow: "0 4px 24px rgba(255,210,0,0.4)" }}>
+          🛒 اطلب الآن — الدفع عند الاستلام
+        </button>
+      </div>
 
       {/* ══ FAQ ══ */}
       <div className="px-4 max-w-lg mx-auto py-4">
