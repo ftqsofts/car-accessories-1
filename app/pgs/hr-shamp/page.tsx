@@ -4,7 +4,7 @@ import OrderForm from "@/components/OrderForm"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "18SGTM"
-const PRICE_1 = 120
+const PRICE_1 = 125
 const PRICE_2 = 200
 const SAVING = PRICE_1 * 2 - PRICE_2
 
@@ -107,13 +107,13 @@ export default function HrShampPage() {
               q: 1,
               label: "شامبو Disaar الأصلي — قارورة واحدة ",
               price: PRICE_1,
-              oldPrice: 200,
+              oldPrice: 160,
             },
             {
               q: 2,
               label: "اثنان بسعر خاص",
               price: PRICE_2,
-              oldPrice: 400,
+              oldPrice: PRICE_1 * 2,
               badge: `وفر ${SAVING} درهم`,
             },
           ]}
