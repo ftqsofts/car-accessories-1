@@ -19,10 +19,10 @@ const FAQ = [
 const LP_IMAGES_TOP = [
   "/products/hair-shampoo/lp-1-2.webp",
   "/products/hair-shampoo/lp-6.webp",
+  "/products/hair-shampoo/lp-5.webp",
   "/products/hair-shampoo/lp-2.webp",
   "/products/hair-shampoo/lp-3.webp",
   "/products/hair-shampoo/lp-4.webp",
-  "/products/hair-shampoo/lp-5.webp",
 ]
 
 const LP_IMAGES_BOTTOM = [
