@@ -31,9 +31,9 @@ function ThankYouContent() {
   const pack = packId ? packs.find(p => p.id === packId) : null
   
   // Get products based on pack or SKUs
-  const orderedProducts = pack 
+  const orderedProducts = pack
     ? pack.productIds.map(id => products.find(p => p.id === id)).filter(Boolean)
-    : skus.split(";").map(id => products.find(p => p.id === id)).filter(Boolean)
+    : skus.split(";").map(id => products.find(p => p.id === id || p.sku === id)).filter(Boolean)
 
 
   return (

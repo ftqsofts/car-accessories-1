@@ -220,6 +220,22 @@ export const products: Product[] = [
     microCopy: "راحة ليك ولولادك فالطريق",
   },
 
+  {
+    id: "hr-shamp",
+    sku: "HR-SHAMP",
+    nameDarija: "شامبو طبيعي للشيب",
+    price: 120,
+    descriptionDarija: "شامبو كيغطي الشيب من أول استعمال",
+    featuresDarija: [],
+    image: "/products/hair-shampoo/disaar-shampoo.webp",
+    categoryDarija: "عناية بالشعر",
+    statNumber: "1",
+    statLabel: "استعمال كافي",
+    tagline: "شعر أسود طبيعي من أول غسلة",
+    badge: "🔥 الأكثر طلباً",
+    microCopy: "نتيجة من أول استعمال",
+  },
+
   // {
   //   id: "exterior-windshield-cover",
   //   sku: "L399-EXT-405",
