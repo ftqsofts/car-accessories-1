@@ -105,13 +105,15 @@ export default function HrShampPage() {
           options={[
             {
               q: 1,
-              label: "واحدة — تغطية طبيعية للشيب",
+              label: "شامبو Disaar الأصلي — قارورة واحدة ",
               price: PRICE_1,
+              oldPrice: 200,
             },
             {
               q: 2,
               label: "اثنان بسعر خاص",
               price: PRICE_2,
+              oldPrice: 400,
               badge: `وفر ${SAVING} درهم`,
             },
           ]}

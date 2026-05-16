@@ -7,6 +7,7 @@ export type QtyOption = {
   q: number
   label: string
   price: number
+  oldPrice?: number
   badge?: string
 }
 
@@ -100,7 +101,10 @@ export default function OrderForm({ sku, pack, options, btnLabel = "اطلب ا�
                 </div>
                 <div style={{ display: "flex", justifyContent: "space-between", flexGrow: 1, alignItems: "center", gap: 4, marginInlineStart: 10 }}>
                   <span style={{ color: "#000", fontSize: 16, fontWeight: 800 }}>{opt.label}</span>
-                  <span style={{ color: "#000", fontSize: 18, fontWeight: 800, whiteSpace: "nowrap" }}>{opt.price} درهم</span>
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
+                    <span style={{ color: "#000", fontSize: 18, fontWeight: 800, whiteSpace: "nowrap" }}>{opt.price} درهم</span>
+                    {opt.oldPrice && <span style={{ color: "#aaa", fontSize: 13, fontWeight: 700, textDecoration: "line-through", whiteSpace: "nowrap" }}>{opt.oldPrice} درهم</span>}
+                  </div>
                 </div>
               </div>
             </div>
