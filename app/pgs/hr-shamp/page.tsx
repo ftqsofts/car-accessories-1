@@ -95,10 +95,11 @@ export default function HrShampPage() {
         <video ref={videoRef} autoPlay loop muted playsInline style={{ display: "block", width: "100%", height: "auto" }} />
       </div>
 
-      <div className="h-4" />
-
       {/* ══ FORM ══ */}
-      <section ref={formRef} className="px-4 py-2 mb-16 max-w-lg mx-auto" id="order-form">
+      <section ref={formRef} className="px-4 py-2 my-16 max-w-lg mx-auto" id="order-form">
+        
+        <p className="text-green-600 font-black text-sm mt-3">✅ توصيل مجاني — الدفع عند الاستلام</p>
+        <p className="text-black font-black text-sm mt-0.5">⏳ الكمية محدودة — العرض سينتهي قريباً</p>
         <OrderForm
           sku={PRODUCT_SKU}
           pack="hr-shamp"
