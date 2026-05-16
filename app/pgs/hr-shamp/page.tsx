@@ -18,6 +18,7 @@ const FAQ = [
 
 const LP_IMAGES_TOP = [
   "/products/hair-shampoo/lp-1-1.webp",
+  "/products/hair-shampoo/lp-6.webp",
   "/products/hair-shampoo/lp-2.webp",
   "/products/hair-shampoo/lp-3.webp",
   "/products/hair-shampoo/lp-4.webp",
@@ -25,10 +26,8 @@ const LP_IMAGES_TOP = [
 ]
 
 const LP_IMAGES_BOTTOM = [
-  "/products/hair-shampoo/lp-6.webp",
-  "/products/hair-shampoo/lp-7.webp",
-  // "/products/hair-shampoo/lp-8.webp",
-  "/products/hair-shampoo/lp-9.webp",
+  "/products/hair-shampoo/social-proof.webp",
+  "/products/hair-shampoo/proof.jpg",
 ]
 
 export default function HrShampPage() {
@@ -67,6 +66,12 @@ export default function HrShampPage() {
 
   return (
     <div className="min-h-screen text-gray-900" dir="rtl" style={{ backgroundColor: "#fff", fontFamily: "var(--font-cairo), Cairo, sans-serif" }}>
+      <style>{`
+        @keyframes btnPulse { 0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,210,0,0.5);} 50%{transform:scale(1.03);box-shadow:0 0 0 14px rgba(255,210,0,0);} }
+        @keyframes shake { 0%,100%{transform:translateX(0)} 10%,30%,50%,70%,90%{transform:translateX(-4px)} 20%,40%,60%,80%{transform:translateX(4px)} }
+        .shaked { animation: shake 2s ease infinite; }
+      `}</style>
+
       {/* ══ LP IMAGES TOP (1-6) ══ */}
       <div className="max-w-lg mx-auto" style={{ lineHeight: 0, fontSize: 0 }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
