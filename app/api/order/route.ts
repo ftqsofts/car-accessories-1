@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
 
   const count = ipCount.get(ip) ?? 0
   if (count >= 3) {
-    // return NextResponse.json({ ok: false, error: "limit" }, { status: 429 })
+    return NextResponse.json({ ok: false, error: "limit" }, { status: 429 })
   }
   ipCount.set(ip, count + 1)
 
