@@ -142,7 +142,7 @@ export const products: Product[] = [
     categoryDarija: "تنظيف",
     statNumber: "6000",
     statLabel: "باسكال — قوة شفط عالية",
-    tagline: "باسكال — قوة شفط عالية 6000",
+    tagline: "6000 باسكال — قوة شفط عالية ",
     badge: "🔥 الأكثر طلباً",
     microCopy: "كينفعك يومياً بلا صداع",
   },
