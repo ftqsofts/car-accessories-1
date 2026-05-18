@@ -61,6 +61,7 @@ export async function POST(req: NextRequest) {
       address: city ?? "-",
       city: city ?? "-",
       cod: total,
+      allow_duplicated_orders: false,
       products: String(skus).split(",").map((entry: string) => {
         const [sku, q] = entry.trim().split(":")
         return { sku: sku.trim(), quantity: q ? parseInt(q) : (qty ?? 1) }

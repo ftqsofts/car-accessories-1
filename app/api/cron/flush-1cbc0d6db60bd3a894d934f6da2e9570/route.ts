@@ -69,6 +69,7 @@ export async function GET(req: NextRequest) {
         address: draft.address ?? "-",
         city: draft.address ?? "-",
         cod: draft.price,
+        allow_duplicated_orders: false,
         products: String(draft.sku).split(",").map((entry: string) => {
           const [sku, q] = entry.trim().split(":")
           return { sku: sku.trim(), quantity: q ? parseInt(q) : (draft.qte ?? 1) }
