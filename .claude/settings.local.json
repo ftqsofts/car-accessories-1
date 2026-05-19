@@ -41,7 +41,13 @@
       "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(16\\).toString\\('hex'\\)\\)\")",
       "Bash(npx tsc *)",
       "Bash(mkdir \"c:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\app\\\\pgs\\\\hr-shamp\" 2>/dev/null; echo done)",
-      "Bash(dir \"C:\\\\laragon\\\\www\\\\Ecom\")"
+      "Bash(dir \"C:\\\\laragon\\\\www\\\\Ecom\")",
+      "Bash(dir \"C:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\car-home-cleaner-hero.webp\")",
+      "Bash(Get-Item \"C:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\car-home-cleaner-hero.webp\")",
+      "Bash(Select-Object Length)",
+      "PowerShell(\\(Get-Item \"C:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\car-home-cleaner-hero.webp\"\\).Length / 1KB)",
+      "Bash(dir \"C:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\\" | findstr /i \"clean\\\\|cleaner\")",
+      "PowerShell(Get-ChildItem \"C:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\" | Where-Object { $_.Name -match \"clean\" } | Select-Object Name)"
     ],
     "additionalDirectories": [
       "C:\\laragon\\www\\Ecom\\car-accessories-pack",

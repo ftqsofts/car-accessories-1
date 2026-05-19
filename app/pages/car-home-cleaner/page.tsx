@@ -8,9 +8,15 @@ import { useEffect, useRef, useState } from "react"
 const PRODUCT_SKU = "16ZJX1"
 const PRICE_1 = 115
 const PRICE_2 = 185
+const OLD_PRICE_1 = 199
 const OLD_PRICE_2 = 230
 const GOLD = "#E8B86D"
 const DARK = "#030712"
+
+const IMAGES = [
+  "/products/Vacuum-cleaner-3-in-1-6.webp",
+  "/products/JpCQxc8s29Q6GGnEv8h6O0EQW0UKFWDeflYQn9sh.gif",
+]
 
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
 
@@ -30,6 +36,7 @@ export default function CarHomeCleanerPage() {
   const [loading, setLoading] = useState(false)
   const [formPassed, setFormPassed] = useState(false)
   const [qty, setQty] = useState(1)
+  const [activeImg, setActiveImg] = useState(0)
   const [openFaq, setOpenFaq] = useState<Set<number>>(new Set(FAQ.map((_, i) => i)))
   const formRef = useRef<HTMLElement>(null)
   const price = qty === 2 ? PRICE_2 : PRICE_1
@@ -207,24 +214,45 @@ export default function CarHomeCleanerPage() {
         details summary::-webkit-details-marker { display: none; }
       `}</style>
 
-      {/* ══ HERO ══ */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/products/car-home-cleaner-hero.webp" alt="سبيراتور 3 في 1 للسيارة والدار"
-        className="w-full h-auto block" width={600} height={4783}
-        fetchPriority="high" decoding="async" style={{ cursor: "pointer" }}
-        onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-      />
+      {/* ══ PRODUCT GALLERY ══ */}
+      <div style={{ backgroundColor: "#fff", maxWidth: 520, margin: "0 auto" }}>
+        <div style={{ position: "relative", backgroundColor: "#f5f5f5", lineHeight: 0 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={IMAGES[activeImg]} alt="مكنسة كهربائية 3 في 1"
+            fetchPriority="high" decoding="async"
+            style={{ width: "100%", height: 380, objectFit: "cover", display: "block", cursor: "pointer" }}
+            onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+          />
+          <span style={{ position: "absolute", bottom: 10, left: 10, background: "rgba(0,0,0,0.5)", color: "#fff", fontSize: 12, fontWeight: 700, padding: "3px 8px", borderRadius: 20 }}>
+            {activeImg + 1} / {IMAGES.length}
+          </span>
+        </div>
+        <div style={{ display: "flex", gap: 8, padding: "10px 12px", backgroundColor: "#fff", overflowX: "auto" }}>
+          {IMAGES.map((src, i) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img key={i} src={src} alt="" onClick={() => setActiveImg(i)}
+              style={{ width: 72, height: 72, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "pointer",
+                border: activeImg === i ? "2.5px solid #1E3A8A" : "2px solid #e5e7eb" }}
+            />
+          ))}
+        </div>
+      </div>
 
       {/* ══ HEADING ══ */}
-      <div className="px-4 pt-6 pb-2 mt-12 max-w-lg mx-auto text-center">
-        <h1 className="font-black text-2xl text-gray-900 leading-snug">
-          سبيراتور بجودة مزيانة، ومعاه ضمان شهر كامل باش تجربو ✔️
-        </h1>
-        <p className="text-green-600 font-black text-sm mt-3">✅ توصيل مجاني — الدفع عند الاستلام</p>
+      <div className="px-4 pt-4 pb-2 max-w-lg mx-auto">
+        <h1 className="font-black text-xl text-gray-900 mb-2 text-right">مكنسة كهربائية 3 في 1 — للسيارة والدار ✔️</h1>
+        <div className="flex items-center gap-3 mb-2">
+          <span className="font-black text-3xl" style={{ color: DARK }}>{qty === 2 ? PRICE_2 : PRICE_1} درهم</span>
+          <span className="text-gray-400 text-lg font-bold line-through">{qty === 2 ? OLD_PRICE_2 : OLD_PRICE_1} درهم</span>
+          <span className="text-white text-xs font-black px-2 py-1 rounded-full bg-red-500">
+            -{Math.round((1 - (qty === 2 ? PRICE_2 : PRICE_1) / (qty === 2 ? OLD_PRICE_2 : OLD_PRICE_1)) * 100)}%
+          </span>
+        </div>
+        <p className="text-green-600 font-black text-sm">✅ توصيل مجاني — الدفع عند الاستلام</p>
         <p className="text-black font-black text-sm mt-0.5">⏳ الكمية محدودة — العرض سينتهي قريباً</p>
       </div>
 
-      <div className="h-px mx-4 bg-gray-100 my-4" />
+      <div className="h-px mx-4 bg-gray-100 my-3" />
 
       {/* ══ FORM ══ */}
       <section ref={formRef} className="px-4 py-2 max-w-lg mx-auto" id="order-form">
@@ -232,6 +260,23 @@ export default function CarHomeCleanerPage() {
       </section>
 
       <div className="h-4" />
+
+      {/* ══ LONG HERO (details) ══ */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/products/car-home-cleaner-hero.webp" alt="سبيراتور 3 في 1 للسيارة والدار"
+        className="w-full h-auto block" width={600} height={4783}
+        loading="lazy" decoding="async" style={{ cursor: "pointer" }}
+        onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+      />
+
+      {/* ══ CTA 1 ══ */}
+      <div className="px-4 max-w-lg mx-auto py-6">
+        <button onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+          className="w-full text-black font-black text-lg py-5 rounded-2xl active:scale-95 shaked"
+          style={{ background: "#ffd200", boxShadow: "0 4px 24px rgba(255,210,0,0.4)" }}>
+          🛒 اطلب الآن — الدفع عند الاستلام
+        </button>
+      </div>
 
       {/* ══ REVIEWS ══ */}
       <div className="px-1 max-w-lg mx-auto">
@@ -241,6 +286,15 @@ export default function CarHomeCleanerPage() {
         <img src="/products/car-home-cleaner-reviews.webp" alt="تقييمات العملاء"
           className="w-full h-auto rounded-xl" loading="lazy" width={720} height={2950}
         />
+      </div>
+
+      {/* ══ CTA 2 ══ */}
+      <div className="px-4 max-w-lg mx-auto py-6">
+        <button onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+          className="w-full text-black font-black text-lg py-5 rounded-2xl active:scale-95 shaked"
+          style={{ background: "#ffd200", boxShadow: "0 4px 24px rgba(255,210,0,0.4)" }}>
+          🛒 اطلب الآن — الدفع عند الاستلام
+        </button>
       </div>
 
       <div className="h-6" />
