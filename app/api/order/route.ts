@@ -52,27 +52,30 @@ export async function POST(req: NextRequest) {
   }).catch((err) => console.error("[order] Supabase error:", err))
 
   // ── Send to Saleura, then delete draft on success ──
-  fetch(SALEURA_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      phone: phone.trim(),
-      recipient: name?.trim() || "client",
-      address: city ?? "-",
-      city: city ?? "-",
-      cod: total,
-      allow_duplicated_orders: false,
-      products: String(skus).split(",").map((entry: string) => {
-        const [sku, q] = entry.trim().split(":")
-        return { sku: sku.trim(), quantity: q ? parseInt(q) : (qty ?? 1) }
+  try {
+    await fetch(SALEURA_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        phone: phone.trim(),
+        recipient: name?.trim() || "client",
+        address: city ?? "-",
+        city: city ?? "-",
+        cod: total,
+        allow_duplicated_orders: false,
+        products: String(skus).split(",").map((entry: string) => {
+          const [sku, q] = entry.trim().split(":")
+          return { sku: sku.trim(), quantity: q ? parseInt(q) : (qty ?? 1) }
+        }),
       }),
-    }),
-  }).then(() => {
+    })
     fetch(`${SUPABASE_DRAFT}?phone=eq.${encodeURIComponent(phone.trim())}`, {
       method: "DELETE",
       headers: { "apikey": SUPABASE_KEY, "Authorization": `Bearer ${SUPABASE_KEY}` },
     }).catch((err) => console.error("[order] draft cleanup error:", err))
-  }).catch((err) => console.error("[order] Saleura error:", err))
+  } catch (err) {
+    console.error("[order] Saleura error:", err)
+  }
 
   return NextResponse.json({ ok: true })
 }
