@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react"
 
-export default function VideoPlayer({ src }: { src: string }) {
+export default function VideoPlayer({ src, poster }: { src: string; poster?: string }) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [playing, setPlaying] = useState(false)
 
@@ -21,7 +21,7 @@ export default function VideoPlayer({ src }: { src: string }) {
 
   return (
     <div className="relative w-full rounded-xl overflow-hidden mb-2" style={{ background: "#000" }} onClick={toggle}>
-      <video ref={videoRef} src={src} playsInline muted style={{ display: "block", width: "100%", height: "auto" }} />
+      <video ref={videoRef} src={src} poster={poster} playsInline muted style={{ display: "block", width: "100%", height: "auto" }} />
       {!playing && (
         <div className="absolute inset-0 flex items-center justify-center" style={{ background: "rgba(0,0,0,0.3)" }}>
           <div style={{

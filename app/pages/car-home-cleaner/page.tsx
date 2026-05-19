@@ -281,7 +281,7 @@ export default function CarHomeCleanerPage() {
       {/* ══ REVIEWS ══ */}
       <div className="px-1 max-w-lg mx-auto">
         <h2 className="font-black text-xl text-center text-gray-900 mb-4">عملائنا راضون</h2>
-        <VideoPlayer src="/products/cleaner-4-in-1-car.mp4" />
+        <VideoPlayer src="/products/cleaner-4-in-1-car.mp4" poster="/products/car-home-cleaner-video-poster.jpg" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/products/car-home-cleaner-reviews.webp" alt="تقييمات العملاء"
           className="w-full h-auto rounded-xl" loading="lazy" width={720} height={2950}
