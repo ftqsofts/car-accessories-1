@@ -39,9 +39,11 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ ok: true, sent: 0, message: "no pending drafts" })
   }
 
-  // Fetch phones that already placed a real order — skip those drafts
+  // fetch only phones that appear in drafts — avoids full orders table scan
+  const draftPhones = drafts.map(d => d.phone.trim())
+  const phonesFilter = draftPhones.map(p => `phone.eq.${encodeURIComponent(p)}`).join(",")
   const ordersRes = await fetch(
-    `${SUPABASE_URL}/orders?select=phone`,
+    `${SUPABASE_URL}/orders?select=phone&or=(${phonesFilter})`,
     { headers: SB_HEADERS }
   ).catch(() => null)
   const orders: Array<{ phone: string }> = ordersRes?.ok ? await ordersRes.json() : []
