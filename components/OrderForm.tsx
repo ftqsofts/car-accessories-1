@@ -9,6 +9,7 @@ export type QtyOption = {
   price: number
   oldPrice?: number
   badge?: string
+  sku?: string
 }
 
 type Props = {
@@ -31,7 +32,9 @@ export default function OrderForm({ sku, pack, options, btnLabel = "اطلب ا�
   const draftId = useRef<number | null>(null)
   const draftTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  const price = options.find(o => o.q === qty)?.price ?? options[0].price
+  const selectedOption = options.find(o => o.q === qty) ?? options[0]
+  const price = selectedOption.price
+  const effectiveSku = selectedOption.sku ?? sku
 
   const saveDraft = (f: OrderForm, q: number, p: number) => {
     if (!f.phone.trim() || f.phone.trim().length < 10) return
@@ -40,7 +43,7 @@ export default function OrderForm({ sku, pack, options, btnLabel = "اطلب ا�
       const res = await fetch("/api/draft", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: draftId.current, phone: f.phone.trim(), full_name: f.name, address: f.city, sku, qte: q, price: p }),
+        body: JSON.stringify({ id: draftId.current, phone: f.phone.trim(), full_name: f.name, address: f.city, sku: effectiveSku, qte: q, price: p }),
       }).catch(() => null)
       if (res?.ok) {
         const data = await res.json().catch(() => null)
@@ -65,9 +68,9 @@ export default function OrderForm({ sku, pack, options, btnLabel = "اطلب ا�
     fetch("/api/order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: form.name, phone: form.phone, city: form.city, skus: sku, qty, total: price }),
+      body: JSON.stringify({ name: form.name, phone: form.phone, city: form.city, skus: effectiveSku, qty, total: price }),
     }).catch(() => null)
-    const params = new URLSearchParams({ name: form.name, phone: form.phone, city: form.city, skus: sku, qty: String(qty), total: String(price), pack })
+    const params = new URLSearchParams({ name: form.name, phone: form.phone, city: form.city, skus: effectiveSku, qty: String(qty), total: String(price), pack })
     router.push(`/thank-you?${params}`)
   }
 

@@ -221,6 +221,38 @@ export const products: Product[] = [
   },
 
   {
+    id: "coffrt-sm",
+    sku: "COFFRT-SM",
+    nameDarija: "خزنة منزلية إلكترونية — الحجم الصغير",
+    price: 299,
+    descriptionDarija: "خزنة فولاذية بقفل رقمي — 23×17×17 سم",
+    featuresDarija: [],
+    image: "/products/coffre-fort/1.webp",
+    categoryDarija: "أمن منزلي",
+    statNumber: "30",
+    statLabel: "يوم ضمان",
+    tagline: "حافظ على أموالك ووثائقك بأمان",
+    badge: "🔒 الأكثر طلباً",
+    microCopy: "قفل رقمي + مفاتيح احتياطية",
+  },
+
+  {
+    id: "coffrt-lg",
+    sku: "COFFRT-LG",
+    nameDarija: "خزنة منزلية إلكترونية — الحجم الكبير",
+    price: 399,
+    descriptionDarija: "خزنة فولاذية بقفل رقمي — 35×25×25 سم",
+    featuresDarija: [],
+    image: "/products/coffre-fort/lg-1.webp",
+    categoryDarija: "أمن منزلي",
+    statNumber: "30",
+    statLabel: "يوم ضمان",
+    tagline: "سعة أكبر للمجوهرات والأشياء الثمينة",
+    badge: "🔒 الأكثر طلباً",
+    microCopy: "قفل رقمي + مفاتيح احتياطية",
+  },
+
+  {
     id: "hr-shamp",
     sku: "18SGTM",
     nameDarija: "شامبو طبيعي للشيب",
