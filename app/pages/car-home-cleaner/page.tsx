@@ -15,7 +15,7 @@ const DARK = "#030712"
 
 const IMAGES = [
   "/products/Vacuum-cleaner-3-in-1-6.webp",
-  "/products/JpCQxc8s29Q6GGnEv8h6O0EQW0UKFWDeflYQn9sh.gif",
+  "/products/cleaner-3-in-1.jpg",
 ]
 
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
@@ -217,23 +217,43 @@ export default function CarHomeCleanerPage() {
       {/* ══ PRODUCT GALLERY ══ */}
       <div style={{ backgroundColor: "#fff", maxWidth: 520, margin: "0 auto" }}>
         <div style={{ position: "relative", backgroundColor: "#f5f5f5", lineHeight: 0 }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={IMAGES[activeImg]} alt="مكنسة كهربائية 3 في 1"
-            fetchPriority="high" decoding="async"
-            style={{ width: "100%", height: 380, objectFit: "cover", display: "block", cursor: "pointer" }}
-            onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-          />
+          {IMAGES[activeImg].endsWith(".mp4") ? (
+            <video src={IMAGES[activeImg]} autoPlay loop muted playsInline
+              style={{ width: "100%", height: 380, objectFit: "cover", display: "block", cursor: "pointer" }}
+              onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+            />
+          ) : (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={IMAGES[activeImg]} alt="مكنسة كهربائية 3 في 1"
+              fetchPriority="high" decoding="async"
+              style={{ width: "100%", height: 380, objectFit: "cover", display: "block", cursor: "pointer" }}
+              onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+            />
+          )}
           <span style={{ position: "absolute", bottom: 10, left: 10, background: "rgba(0,0,0,0.5)", color: "#fff", fontSize: 12, fontWeight: 700, padding: "3px 8px", borderRadius: 20 }}>
             {activeImg + 1} / {IMAGES.length}
           </span>
         </div>
         <div style={{ display: "flex", gap: 8, padding: "10px 12px", backgroundColor: "#fff", overflowX: "auto" }}>
           {IMAGES.map((src, i) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img key={i} src={src} alt="" onClick={() => setActiveImg(i)}
-              style={{ width: 72, height: 72, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "pointer",
-                border: activeImg === i ? "2.5px solid #1E3A8A" : "2px solid #e5e7eb" }}
-            />
+            src.endsWith(".mp4") ? (
+              <div key={i} onClick={() => setActiveImg(i)} style={{
+                width: 72, height: 72, borderRadius: 8, flexShrink: 0, cursor: "pointer", overflow: "hidden", position: "relative",
+                border: activeImg === i ? "2.5px solid #1E3A8A" : "2px solid #e5e7eb",
+                background: "#000", display: "flex", alignItems: "center", justifyContent: "center",
+              }}>
+                <video src={src} muted playsInline style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <svg viewBox="0 0 24 24" style={{ width: 24, height: 24, fill: "#fff", opacity: 0.9 }}><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
+            ) : (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img key={i} src={src} alt="" onClick={() => setActiveImg(i)}
+                style={{ width: 72, height: 72, objectFit: "cover", borderRadius: 8, flexShrink: 0, cursor: "pointer",
+                  border: activeImg === i ? "2.5px solid #1E3A8A" : "2px solid #e5e7eb" }}
+              />
+            )
           ))}
         </div>
       </div>
