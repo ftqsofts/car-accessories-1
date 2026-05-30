@@ -6,22 +6,22 @@ import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "coffrt"
 const PRICE_1 = 295
-const PRICE_2 = 395
+const PRICE_2 = 540
 const GOLD = "#E8B86D"
 
 const IMAGES = [
   "/products/coffre-fort/1.webp",
   "/products/coffre-fort/2.webp",
   "/products/coffre-fort/3.webp",
-  "/products/coffre-fort/lg-1-2.webp",
-  "/products/coffre-fort/lg-2.webp",
+  // "/products/coffre-fort/lg-1-2.webp",
+  // "/products/coffre-fort/lg-2.webp",
 ]
 
 const FAQ = [
   { q: "واش كاين ضمان على الخزنة؟", a: "نعم، كنقدمو ضمان شهر كامل — إذا ماعجبكيش المنتج أو كاين شي مشكل كنرجعو ليك الفلوس بلا أي سؤال." },
   { q: "واش الخزنة متينة ومضمونة؟", a: "نعم، مصنوعة من فولاذ سميك، مزودة بقفل رقمي إلكتروني وقفل احتياطي بالمفاتيح، كتحمي وثائقك وفلوسك ومجوهراتك بأمان تام." },
   { q: "كيفاش كتشتغل؟", a: "سهلة الاستعمال: دير الكود الرقمي اللي بغيتي (من 3 إلى 8 أرقام)، وإذا نسيتي الكود فيها مفاتيح احتياطية. تعمل ببطاريات AAA." },
-  { q: "شنو الفرق بين الحجمين؟", a: "الحجم الصغير (23×17×17 سم) مناسب للوثائق والفلوس. الحجم الكبير (35×25×25 سم) فيه سعة أكبر للمجوهرات والأشياء الثمينة." },
+  { q: "شنو الحجم ديال الخزنة؟", a: "الخزنة بحجم 23×17×17 سم — مناسبة للوثائق والفلوس والمجوهرات، وسهل تخبيها فالدولاب أو تثبتها فالجدار." },
   { q: "التوصيل", a: "كنوصلو لجميع مدن المغرب مجانا، والدفع عند الاستلام — ماخصكش تخلص حتى حاجة قبل ما يوصلك المنتج." },
 ]
 
@@ -76,12 +76,13 @@ export default function CoffrtPage() {
 
       {/* ══ HEADING ══ */}
       <div className="px-4 pt-4 pb-2 max-w-lg mx-auto">
-        <h1 className="font-black text-xl text-gray-900 mb-2 text-right">خزنة Beetro الإلكترونية — حماية كاملة لأموالك ووثائقك ✔️</h1>
+        <h1 className="font-black text-xl text-gray-900 mb-2 text-right">خزنة Beetro الإلكترونية</h1>
+        <p className="font-black text-base text-gray-800 mb-2">🔒 حمي فلوسك، مجوهراتك، ووثائقك المهمة</p>
         <div className="flex items-center gap-3 mb-2">
           <span className="font-black text-3xl text-gray-900">من {PRICE_1} درهم</span>
         </div>
-        <p className="text-green-600 font-black text-sm">✅ توصيل مجاني — الدفع عند الاستلام</p>
-        <p className="text-black font-black text-sm mt-0.5">⏳ الكمية محدودة — العرض سينتهي قريباً</p>
+        <p className="text-green-600 font-black text-sm">✅ توصيل مجاني، الدفع عند الاستلام</p>
+        <p className="text-black font-black text-sm mt-0.5">⏳ الكمية محدودة، العرض سينتهي قريباً</p>
       </div>
 
       <div className="h-px mx-4 bg-gray-100 my-3" />
@@ -92,8 +93,8 @@ export default function CoffrtPage() {
           sku={PRODUCT_SKU}
           pack="coffrt"
           options={[
-            { q: 1, label: "الحجم الصغير — 23×17×17 سم", price: PRICE_1, oldPrice: 365, sku: "COFFRT-SM" },
-            { q: 2, label: "الحجم الكبير — 35×25×25 سم", price: PRICE_2, oldPrice: 585, sku: "COFFRT-LG" },
+            { q: 1, label: "خزنة Beetro", price: PRICE_1, oldPrice: 365, sku: "COFFRT-SM" },
+            { q: 2, label: "جوج خزنات — عرض خاص", price: PRICE_2, oldPrice: 590, badge: `وفر ${590 - PRICE_2} درهم`, sku: "COFFRT-SM" },
           ]}
         />
       </section>
@@ -108,12 +109,12 @@ export default function CoffrtPage() {
       />
 
       {/* ══ LG MODEL SECTION ══ */}
-      <div className="max-w-lg mx-auto">
+      <div className="max-w-lg hidden mx-auto">
         <div className="py-3 w-[380px] mx-auto text-center font-black text-[26px] text-white" style={{ background: "#deb118" }}>
           الخزنة الكبيرة — 35×25×25 سم
         </div>
       </div>
-      <div className="max-w-lg mx-auto" style={{ lineHeight: 0, fontSize: 0 }}>
+      <div className="max-w-lg hidden mx-auto" style={{ lineHeight: 0, fontSize: 0 }}>
         {[
           "/products/coffre-fort/lg-1-2.webp",
           "/products/coffre-fort/lg-2.webp",
