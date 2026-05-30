@@ -49,7 +49,8 @@
       "Bash(dir \"C:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\\" | findstr /i \"clean\\\\|cleaner\")",
       "PowerShell(Get-ChildItem \"C:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\" | Where-Object { $_.Name -match \"clean\" } | Select-Object Name)",
       "PowerShell(Get-ChildItem \"C:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\" | Where-Object { $_.Name -match \"cleaner|vacuum|JpCQ|car-home\" } | Select-Object Name, @{N=\"KB\";E={[math]::Round\\($_.Length/1KB,1\\)}} | Sort-Object KB -Descending)",
-      "PowerShell(\\(Get-Item \"C:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\JpCQxc8s29Q6GGnEv8h6O0EQW0UKFWDeflYQn9sh.gif\"\\).Length / 1MB)"
+      "PowerShell(\\(Get-Item \"C:\\\\laragon\\\\www\\\\Ecom\\\\car-accessories-pack\\\\public\\\\products\\\\JpCQxc8s29Q6GGnEv8h6O0EQW0UKFWDeflYQn9sh.gif\"\\).Length / 1MB)",
+      "Bash(wsl ls *)"
     ],
     "additionalDirectories": [
       "C:\\laragon\\www\\Ecom\\car-accessories-pack",

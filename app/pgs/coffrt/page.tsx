@@ -5,8 +5,8 @@ import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "coffrt"
-const PRICE_1 = 295
-const PRICE_2 = 540
+const PRICE_1 = 320
+const PRICE_2 = 580
 const GOLD = "#E8B86D"
 
 const IMAGES = [
@@ -93,8 +93,8 @@ export default function CoffrtPage() {
           sku={PRODUCT_SKU}
           pack="coffrt"
           options={[
-            { q: 1, label: "خزنة Beetro", price: PRICE_1, oldPrice: 365, sku: "COFFRT-SM" },
-            { q: 2, label: "جوج خزنات — عرض خاص", price: PRICE_2, oldPrice: 590, badge: `وفر ${590 - PRICE_2} درهم`, sku: "COFFRT-SM" },
+            { q: 1, label: "خزنة Beetro", price: PRICE_1, oldPrice: Math.round(PRICE_1 * 1.4), sku: "COFFRT-SM" },
+            { q: 2, label: "جوج خزنات — عرض خاص", price: PRICE_2, oldPrice: PRICE_1 * 2, badge: `وفر ${PRICE_1 * 2 - PRICE_2} درهم`, sku: "COFFRT-SM" },
           ]}
         />
       </section>
