@@ -222,7 +222,7 @@ export const products: Product[] = [
 
   {
     id: "coffrt-sm",
-    sku: "COFFRT-SM",
+    sku: "19HOPA",
     nameDarija: "خزنة منزلية إلكترونية — الحجم الصغير",
     price: 299,
     descriptionDarija: "خزنة فولاذية بقفل رقمي — 23×17×17 سم",

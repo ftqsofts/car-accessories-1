@@ -93,8 +93,8 @@ export default function CoffrtPage() {
           sku={PRODUCT_SKU}
           pack="coffrt"
           options={[
-            { q: 1, label: "خزنة Beetro", price: PRICE_1, oldPrice: Math.round(PRICE_1 * 1.2), sku: "COFFRT-SM" },
-            { q: 2, label: "جوج خزنات — عرض خاص", price: PRICE_2, oldPrice: PRICE_1 * 2, badge: `وفر ${PRICE_1 * 2 - PRICE_2} درهم`, sku: "COFFRT-SM" },
+            { q: 1, label: "خزنة Beetro", price: PRICE_1, oldPrice: Math.round(PRICE_1 * 1.2), sku: "19HOPA" },
+            { q: 2, label: "جوج خزنات — عرض خاص", price: PRICE_2, oldPrice: PRICE_1 * 2, badge: `وفر ${PRICE_1 * 2 - PRICE_2} درهم`, sku: "19HOPA" },
           ]}
         />
       </section>
