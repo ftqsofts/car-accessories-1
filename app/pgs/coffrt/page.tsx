@@ -53,9 +53,12 @@ export default function CoffrtPage() {
       {/* ══ PRODUCT GALLERY ══ */}
       <div style={{ backgroundColor: "#fff", maxWidth: 520, margin: "0 auto" }}>
         <div style={{ position: "relative", backgroundColor: "#f5f5f5", lineHeight: 0 }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={IMAGES[activeImg]} alt="خزنة منزلية إلكترونية"
-            fetchPriority="high" decoding="async"
+          <Image
+            src={IMAGES[activeImg]}
+            alt="خزنة منزلية إلكترونية"
+            width={520}
+            height={380}
+            priority={activeImg === 0}
             style={{ width: "100%", height: 380, objectFit: "cover", display: "block", cursor: "pointer" }}
             onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
           />
@@ -109,7 +112,7 @@ export default function CoffrtPage() {
       />
 
       {/* ══ LG MODEL SECTION ══ */}
-      <div className="max-w-lg hidden mx-auto">
+      {/* <div className="max-w-lg hidden mx-auto">
         <div className="py-3 w-[380px] mx-auto text-center font-black text-[26px] text-white" style={{ background: "#deb118" }}>
           الخزنة الكبيرة — 35×25×25 سم
         </div>
@@ -121,13 +124,12 @@ export default function CoffrtPage() {
           "/products/coffre-fort/lg-3.webp",
           "/products/coffre-fort/lg-4.webp",
         ].map((src, i) => (
-          // eslint-disable-next-line @next/next/no-img-element
           <img key={i} src={src} alt="" width={800} height={800} loading="lazy"
             style={{ display: "block", width: "100%", height: "auto", margin: 0, padding: 0, marginTop: i === 0 ? 0 : -2, cursor: "pointer" }}
             onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
           />
         ))}
-      </div>
+      </div> */}
 
       {/* ══ CTA 1 ══ */}
       <div className="px-4 max-w-lg mx-auto py-6">
