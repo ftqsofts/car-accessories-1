@@ -13,6 +13,7 @@ const IMAGES = [
   "/products/coffre-fort/1.webp",
   "/products/coffre-fort/2.webp",
   "/products/coffre-fort/3.webp",
+  "/products/coffre-fort/how-to-use.webp",
   // "/products/coffre-fort/lg-1-2.webp",
   // "/products/coffre-fort/lg-2.webp",
 ]
