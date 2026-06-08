@@ -100,6 +100,9 @@ export default function CoffrtPage() {
             { q: 2, label: "جوج خزنات — عرض خاص", price: PRICE_2, oldPrice: PRICE_1 * 2, badge: `وفر ${PRICE_1 * 2 - PRICE_2} درهم`, sku: "19HOPA" },
           ]}
         />
+
+        <h2 className="font-black text-gray-800 text-xl mb-2 mx-auto text-center">🥇 جودة مضمونة مع ضمان ديال شهر</h2>
+
       </section>
 
       <div className="h-4" />
