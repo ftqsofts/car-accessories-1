@@ -86,6 +86,7 @@ export default function CoffrtPage() {
         </div>
         <p className="text-green-600 font-black text-sm">✅ توصيل مجاني، الدفع عند الاستلام</p>
         <p className="text-black font-black text-sm mt-0.5">⏳ الكمية محدودة، العرض سينتهي قريباً</p>
+        <p className="font-black text-sm mt-1.5" style={{ color: "#b45309" }}>🎁 هدية مفاجأة مع كل طلب — مفيدة للاستعمال اليومي فالدار</p>
       </div>
 
       <div className="h-px mx-4 bg-gray-100 my-3" />
