@@ -31,6 +31,7 @@ export default function CoffrtPage() {
   const [activeImg, setActiveImg] = useState(0)
   const [openFaq, setOpenFaq] = useState<Set<number>>(new Set(FAQ.map((_, i) => i)))
   const formRef = useRef<HTMLElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     const check = () => {
@@ -41,6 +42,17 @@ export default function CoffrtPage() {
     window.addEventListener("scroll", check, { passive: true })
     check()
     return () => window.removeEventListener("scroll", check)
+  }, [])
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { video.src = "/products/coffre-fort/explainer.mp4"; video.play(); observer.disconnect() } },
+      { threshold: 0.25 }
+    )
+    observer.observe(video)
+    return () => observer.disconnect()
   }, [])
 
   return (
@@ -113,6 +125,17 @@ export default function CoffrtPage() {
         
       </div>
 
+      {/* ══ EXPLAINER VIDEO ══ */}
+      <div className="max-w-lg mx-auto px-4 py-4">
+        <video
+          ref={videoRef}
+          muted
+          loop
+          playsInline
+          style={{ width: "100%", borderRadius: 16, display: "block" }}
+        />
+      </div>
+
       <div className="h-px mx-4 bg-gray-100 my-4" />
 
       {/* ══ FORM ══ */}
@@ -155,6 +178,7 @@ export default function CoffrtPage() {
         className="w-full h-auto block rounded-b-xl shadow-sm transition-transform duration-300 hover:scale-[1.01]" loading="lazy" decoding="async" style={{ cursor: "pointer" }}
         onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
       />
+
       {/* ══ LG MODEL SECTION ══ */}
       {/* <div className="max-w-lg hidden mx-auto">
         <div className="py-3 w-[380px] mx-auto text-center font-black text-[26px] text-white" style={{ background: "#deb118" }}>
