@@ -82,7 +82,7 @@ export default function CoffrtPage() {
         <h1 className="font-black text-xl text-gray-900 mb-2 text-right">خزنة Beetro الإلكترونية</h1>
         <p className="font-black text-base text-gray-800 mb-2">🔒 حمي فلوسك، مجوهراتك، ووثائقك المهمة</p>
         <div className="flex items-center gap-3 mb-2">
-          <span className="font-black text-3xl text-gray-900">من {PRICE_1} درهم</span>
+          <span className="font-black text-3xl text-gray-900">{PRICE_1} درهم</span>
         </div>
         <p className="text-green-600 font-black text-sm">✅ توصيل مجاني، الدفع عند الاستلام</p>
         <p className="text-black font-black text-sm mt-0.5">⏳ الكمية محدودة، العرض سينتهي قريباً</p>
