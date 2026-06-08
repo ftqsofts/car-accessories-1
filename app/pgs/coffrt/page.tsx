@@ -122,14 +122,14 @@ export default function CoffrtPage() {
           options={[
             { 
               q: 1, 
-              label: "باك الأمان الفردي (خزنة Beetro + طاقم التثبيت + الحقيبة الحرارية مجاناً)", 
+              label: "خزنة Beetro الفولاذية الذكية", 
               price: PRICE_1, 
               oldPrice: Math.round(PRICE_1 * 1.5), 
               sku: "19HOPA" 
             },
             { 
               q: 2, 
-              label: "العرض العائلي الفاخر (2 خزنات — للمكتب والمنزل لحماية مضاعفة)", 
+              label: "2 خزنات — للمكتب والمنزل لحماية مضاعفة", 
               price: PRICE_2, 
               oldPrice: PRICE_1 * 2, 
               badge: `وفر ${PRICE_1 * 2 - PRICE_2} درهم وتأمين شامل`, 
