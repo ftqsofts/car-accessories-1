@@ -5,8 +5,8 @@ import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "coffrt"
-const PRICE_1 = 295
-const PRICE_2 = 543
+const PRICE_1 = 495
+const PRICE_2 = 950
 const GOLD = "#E8B86D"
 
 const IMAGES = [
@@ -76,20 +76,43 @@ export default function CoffrtPage() {
           ))}
         </div>
       </div>
-
-      {/* ══ HEADING ══ */}
-      <div className="px-4 pt-4 pb-2 max-w-lg mx-auto">
-        <h1 className="font-black text-xl text-gray-900 mb-2 text-right">خزنة Beetro الإلكترونية</h1>
-        <p className="font-black text-base text-gray-800 mb-2">🔒 حمي فلوسك، مجوهراتك، ووثائقك المهمة</p>
-        <div className="flex items-center gap-3 mb-2">
-          <span className="font-black text-3xl text-gray-900">{PRICE_1} درهم</span>
+{/* ══ HEADING ══ */}
+      <div className="px-4 pt-4 pb-2 max-w-lg mx-auto text-right" dir="rtl">
+        <span className="bg-red-100 text-red-800 text-xs font-black px-2.5 py-1 rounded-full inline-block mb-2 animate-pulse">
+          🚨 عرض خاص 2026
+        </span>
+        
+        <h1 className="font-black text-2xl text-gray-900 mb-3 leading-tight">
+          خزنة Beetro الفولاذية الذكية <span className="text-amber-600">(Premium Edition)</span>
+        </h1>
+        
+        <div className="space-y-2.5 mb-4">
+          <p className="font-black text-base text-gray-800 flex items-start gap-2">
+            <span>🔒</span> 
+            <span> سافر وخلّي بالك مرتاح: حماية مطلقة للذهب، الكاش، والوثائق الرسمية من السرقة والتطفل.</span>
+          </p>
+          <p className="font-bold text-sm text-gray-600 flex items-start gap-2">
+            <span>🛠️</span> 
+            <span>مدعومة بنظام تثبيت جداري خارق (مستحيل تتهز من بلاصتها أو تتفتح بالقوة).</span>
+          </p>
         </div>
-        <p className="text-green-600 font-black text-sm">✅ توصيل مجاني، الدفع عند الاستلام</p>
-        <p className="text-black font-black text-sm mt-0.5">⏳ الكمية محدودة، العرض سينتهي قريباً</p>
-        <p className="font-black text-sm mt-1.5" style={{ color: "#b45309" }}>🎁 حصريًا عندنا في Storecoma — هدية مفاجأة مع كل طلب، مفيدة للاستعمال اليومي فالدار</p>
+
+        <div className="flex items-center gap-3 mb-2 justify-start">
+          <span className="font-black text-3xl text-gray-900">{PRICE_1} درهم</span>
+          <span className="text-gray-400 line-through text-sm font-bold">{Math.round(PRICE_1 * 1.5)} درهم</span>
+        </div>
+        
+        <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-2.5 my-3 space-y-1">
+          <p className="text-emerald-700 font-black text-sm flex items-center gap-1.5">
+            ✅ التوصيل مجاني فجميع مدن المغرب + حق فحص الخزنة والتأكد من الجودة قبل الدفع
+          </p>
+        </div>
+
+        <p className="text-red-600 font-black text-xs animate-bounce mb-3">⏳ مخزون محدود جداً — سينتهي العرض فور نفاد الكمية</p>
+        
       </div>
 
-      <div className="h-px mx-4 bg-gray-100 my-3" />
+      <div className="h-px mx-4 bg-gray-100 my-4" />
 
       {/* ══ FORM ══ */}
       <section ref={formRef} className="px-4 py-2 mb-16 max-w-lg mx-auto" id="order-form">
@@ -97,24 +120,40 @@ export default function CoffrtPage() {
           sku={PRODUCT_SKU}
           pack="coffrt"
           options={[
-            { q: 1, label: "خزنة Beetro", price: PRICE_1, oldPrice: Math.round(PRICE_1 * 1.2), sku: "19HOPA" },
-            { q: 2, label: "جوج خزنات — عرض خاص", price: PRICE_2, oldPrice: PRICE_1 * 2, badge: `وفر ${PRICE_1 * 2 - PRICE_2} درهم`, sku: "19HOPA" },
+            { 
+              q: 1, 
+              label: "باك الأمان الفردي (خزنة Beetro + طاقم التثبيت + الحقيبة الحرارية مجاناً)", 
+              price: PRICE_1, 
+              oldPrice: Math.round(PRICE_1 * 1.5), 
+              sku: "19HOPA" 
+            },
+            { 
+              q: 2, 
+              label: "العرض العائلي الفاخر (2 خزنات — للمكتب والمنزل لحماية مضاعفة)", 
+              price: PRICE_2, 
+              oldPrice: PRICE_1 * 2, 
+              badge: `وفر ${PRICE_1 * 2 - PRICE_2} درهم وتأمين شامل`, 
+              sku: "19HOPA" 
+            },
           ]}
         />
 
-        <h2 className="font-black text-gray-800 text-xl mb-2 mx-auto text-center">🥇 جودة مضمونة مع ضمان ديال شهر</h2>
-
+        <div className="bg-gray-900 text-white p-4 rounded-xl text-center shadow-lg mt-6">
+          <h2 className="font-black text-xl mb-1 text-amber-500">🛡️ الضمان الذهبي لرضا العملاء</h2>
+          <p className="text-xs text-gray-300 font-medium max-w-xs mx-auto leading-relaxed">
+            جودة Beetro غنية عن التعريف. نقدم لكم ضماناً حقيقياً لمدة سنة كاملة (12 شهر) ضد أي خلل إلكتروني أو ميكانيكي، مع استبدال فوري مجاني حتى باب منزلك.
+          </p>
+        </div>
       </section>
 
       <div className="h-4" />
 
       {/* ══ LP IMAGE (details) ══ */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/products/coffre-fort/lp-3.webp" alt="خزنة منزلية إلكترونية"
-        className="w-full h-auto block" loading="lazy" decoding="async" style={{ cursor: "pointer" }}
+      <img src="/products/coffre-fort/lp-3.webp" alt="خزنة منزلية إلكترونية فاخرة"
+        className="w-full h-auto block rounded-b-xl shadow-sm transition-transform duration-300 hover:scale-[1.01]" loading="lazy" decoding="async" style={{ cursor: "pointer" }}
         onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
       />
-
       {/* ══ LG MODEL SECTION ══ */}
       {/* <div className="max-w-lg hidden mx-auto">
         <div className="py-3 w-[380px] mx-auto text-center font-black text-[26px] text-white" style={{ background: "#deb118" }}>
