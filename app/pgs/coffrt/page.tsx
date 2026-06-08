@@ -5,8 +5,8 @@ import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "coffrt"
-const PRICE_1 = 275
-const PRICE_2 = 530
+const PRICE_1 = 299
+const PRICE_2 = 543
 const GOLD = "#E8B86D"
 
 const IMAGES = [
