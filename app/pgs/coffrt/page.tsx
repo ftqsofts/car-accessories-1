@@ -137,24 +137,8 @@ export default function CoffrtPage() {
       </div>
 
       {/* ══ QUALITY BLOCK ══ */}
-      <div className="max-w-lg mx-auto px-4 pb-4">
-        <div className="rounded-2xl p-5" style={{ background: "#1a1a1a" }}>
-          <p className="font-black text-base text-amber-400 mb-3 text-center">🏆 الأفضل في السوق — وهذا مو كلام</p>
-          <div className="flex flex-col gap-2.5">
-            <div className="flex items-start gap-3">
-              <span className="text-lg">🧱</span>
-              <p className="text-white text-sm font-bold leading-relaxed">مبنية من بلاستيك ABS عالي الجودة — نفس المادة المستخدمة في صناعة السيارات والطيران، خفيفة وصلبة في نفس الوقت</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="text-lg">🔐</span>
-              <p className="text-white text-sm font-bold leading-relaxed">قفل رقمي إلكتروني دقيق + مفاتيح احتياطية — ما تقدرش تتفتح بالقوة</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="text-lg">🥇</span>
-              <p className="text-white text-sm font-bold leading-relaxed">جودة ما كاينة فالسوق المغربي بهاد الثمن — جربها وإلا ردها مجانًا</p>
-            </div>
-          </div>
-        </div>
+      <div className="max-w-lg mx-auto px-4 pb-2">
+        <p className="font-black text-sm text-gray-700 text-center">🧱 مصنوعة من ABS عالي الجودة — أقوى مادة في السوق</p>
       </div>
 
       <div className="h-px mx-4 bg-gray-100 my-4" />
