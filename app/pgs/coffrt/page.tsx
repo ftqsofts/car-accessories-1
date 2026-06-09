@@ -132,7 +132,7 @@ export default function CoffrtPage() {
 
       {/* ══ QUALITY BLOCK ══ */}
       <div className="max-w-lg mx-auto px-4 pb-2">
-        <p className="font-black text-sm text-gray-700 text-center">🧱 مصنوعة من ABS عالي الجودة — أقوى خزنة في السوق</p>
+        <p className="font-black text-lg text-gray-700 text-center">🧱 مصنوعة من ABS عالي الجودة — أقوى خزنة في السوق</p>
       </div>
 
       <div className="h-px mx-4 bg-gray-100 my-4" />
