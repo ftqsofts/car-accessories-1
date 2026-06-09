@@ -114,12 +114,6 @@ export default function CoffrtPage() {
           <span className="font-black text-3xl text-gray-900">{PRICE_1} درهم</span>
           <span className="text-gray-400 line-through text-sm font-bold">{Math.round(PRICE_1 * 1.5)} درهم</span>
         </div>
-        
-        <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-2.5 my-3 space-y-1">
-          <p className="text-emerald-700 font-black text-sm flex items-center gap-1.5">
-            ✅ التوصيل مجاني فجميع مدن المغرب + حق فحص الخزنة والتأكد من الجودة قبل الدفع
-          </p>
-        </div>
 
         <p className="text-red-600 font-black text-xs animate-bounce mb-3">⏳ مخزون محدود جداً — سينتهي العرض فور نفاد الكمية</p>
         
@@ -166,6 +160,13 @@ export default function CoffrtPage() {
             },
           ]}
         />
+        
+        
+        <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-2.5 my-3 space-y-1">
+          <p className="text-emerald-700 font-black text-sm flex items-center gap-1.5">
+            ✅ التوصيل مجاني فجميع مدن المغرب + حق فحص الخزنة والتأكد من الجودة قبل الدفع
+          </p>
+        </div>
 
         <div className="bg-gray-900 text-white p-4 rounded-xl text-center shadow-lg mt-6">
           <h2 className="font-black text-xl mb-1 text-amber-500">🛡️ الضمان الذهبي لرضا العملاء</h2>
