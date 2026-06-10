@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
   }
 
   // Fetch drafts older than 5 minutes
-  const cutoff = new Date(Date.now() - 5 * 60 * 1000).toISOString()
+  const cutoff = new Date(Date.now() - 2 * 60 * 1000).toISOString()
   const res = await fetch(
     `${SUPABASE_URL}/drafts?updated_at=lt.${cutoff}&select=*`,
     { headers: SB_HEADERS }
