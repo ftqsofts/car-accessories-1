@@ -48,7 +48,7 @@ export default function CoffrtPage() {
     const video = videoRef.current
     if (!video) return
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { video.src = "/products/coffre-fort/explainer.mp4"; video.play(); observer.disconnect() } },
+      ([entry]) => { if (entry.isIntersecting) { video.src = "/products/coffre-fort/explainer-2.mp4"; video.play(); observer.disconnect() } },
       { threshold: 0.25 }
     )
     observer.observe(video)
