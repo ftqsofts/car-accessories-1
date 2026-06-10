@@ -51,7 +51,6 @@ export async function GET(req: NextRequest) {
 
   let sent = 0
   let failed = 0
-  const errors: Array<{ id: number; phone: string; status: number | null; body: string | null }> = []
 
   await Promise.all(drafts.map(async (draft) => {
     // skip if this phone already has a confirmed order
@@ -88,11 +87,9 @@ export async function GET(req: NextRequest) {
       }).catch(() => null)
       sent++
     } else {
-      const errorBody = await saleuraRes?.text().catch(() => null)
-      errors.push({ id: draft.id, phone: draft.phone, status: saleuraRes?.status ?? null, body: errorBody ?? null })
       failed++
     }
   }))
 
-  return NextResponse.json({ ok: true, sent, failed, total: drafts.length, errors })
+  return NextResponse.json({ ok: true, sent, failed, total: drafts.length })
 }
