@@ -98,10 +98,10 @@ export default function HrShampPage() {
         <video ref={videoRef} className="rounded-2xl" autoPlay loop muted playsInline style={{ display: "block", width: "100%", height: "auto" }} />
       </div> */}
 {/* ══ FORM ══ */}
-      <section ref={formRef} className="px-5 py-6 my-8 max-w-lg mx-auto bg-white rounded-xl border border-gray-200 text-right" id="order-form" dir="rtl">
+      <section ref={formRef} className="px-5 py-6 my-8 max-w-lg mx-auto bg-white rounded-xl  text-right" id="order-form" dir="rtl">
         
         {/* Sleek Minimalist Header */}
-        <div className="mb-6">
+        <div className="mb-6 text-center mx-auto">
           <h2 className="text-xl font-black text-gray-900 mb-2 leading-tight">
             تخلص من الشيب المزعج واسترجع شبابك في 10 دقائق ⏱️
           </h2>
