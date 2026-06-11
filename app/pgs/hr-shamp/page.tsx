@@ -127,23 +127,23 @@ export default function HrShampPage() {
           </div>
         </div>
 
-        {/* Order Form */}
+       {/* Order Form */}
         <OrderForm
           sku={PRODUCT_SKU}
           pack="hr-shamp"
           options={[
             {
               q: 1,
-              label: "كورس التجديد (قارورة واحدة لمعالجة الشيب)",
+              label: "قرعة وحدة (شامبو ديسار الأصلي)",
               price: PRICE_1,
               oldPrice: 160,
             },
             {
               q: 2,
-              label: "العرض الذكي (2 قنينات — مخزون لمدة أطول أو للمشاركة)",
+              label: "عرض 2 قرعات (تهنى مدة أطول ووفر كثر)",
               price: PRICE_2,
               oldPrice: PRICE_1 * 2,
-              badge: `وفر ${SAVING} درهم`,
+              badge: `وفر ${SAVING} درهم دقة وحدة`,
             },
           ]}
         />
