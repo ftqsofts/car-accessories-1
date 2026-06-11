@@ -103,11 +103,8 @@ export default function HrShampPage() {
         {/* Sleek Minimalist Header */}
         <div className="mb-6">
           <h2 className="text-xl font-black text-gray-900 mb-2 leading-tight">
-            تخلص من الشيب المزعج واسترجع شبابك في 5 دقائق ⏱️
+            تخلص من الشيب المزعج واسترجع شبابك في 10 دقائق ⏱️
           </h2>
-          <p className="text-gray-500 font-medium text-sm leading-relaxed">
-            قل وداعاً لصبغات الصالون المكلفة والمواد الكيماوية التي تتلف الشعر. شامبو Disaar الأصلي بخلاصة الأعشاب يغذي شعرك ويمنحه لوناً طبيعياً يدوم طويلاً وأنت في منزلك.
-          </p>
         </div>
 
         {/* Clean, Unified Info Rows */}
@@ -120,7 +117,7 @@ export default function HrShampPage() {
           <div className="flex items-center gap-2 text-gray-700 font-bold">
             <span>🎨</span>
             <span>
-              متوفر باللون **الأسود الطبيعي** أو **البني (Marron)**
+              متوفر باللون <span className="font-black text-gray-900">الأسود الطبيعي</span> أو <span className="font-black text-gray-900">البني (Marron)</span>
             </span>
           </div>
 
