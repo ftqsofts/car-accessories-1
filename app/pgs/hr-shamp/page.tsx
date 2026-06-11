@@ -97,31 +97,72 @@ export default function HrShampPage() {
       {/* <div className="max-w-lg mx-auto bg-white -mt-3" style={{ lineHeight: 0, fontSize: 0 }}>
         <video ref={videoRef} className="rounded-2xl" autoPlay loop muted playsInline style={{ display: "block", width: "100%", height: "auto" }} />
       </div> */}
-
-      {/* ══ FORM ══ */}
-      <section ref={formRef} className="px-4 py-2 my-8 max-w-lg mx-auto" id="order-form">
+{/* ══ FORM ══ */}
+      <section ref={formRef} className="px-4 py-6 my-8 max-w-lg mx-auto bg-white rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.04)] border border-gray-100" id="order-form">
         
-        <p className="text-green-600 font-black text-lg mt-3">✅ توصيل مجاني — الدفع عند الاستلام</p>
-        <p className="text-black font-black text-lg mt-0.5">⏳ الكمية محدودة — العرض سينتهي قريباً</p>
-        <OrderForm
-          sku={PRODUCT_SKU}
-          pack="hr-shamp"
-          options={[
-            {
-              q: 1,
-              label: "شامبو Disaar الأصلي — قارورة واحدة ",
-              price: PRICE_1,
-              oldPrice: 160,
-            },
-            {
-              q: 2,
-              label: "اثنان بسعر خاص",
-              price: PRICE_2,
-              oldPrice: PRICE_1 * 2,
-              badge: `وفر ${SAVING} درهم`,
-            },
-          ]}
-        />
+        {/* PAS Copywriting Header */}
+        <div className="text-center mb-5 text-right" dir="rtl">
+            <h2 className="text-2xl font-black text-gray-900 mb-2 leading-tight">
+              تخلص من الشيب المزعج واسترجع شبابك في 5 دقائق ⏱️
+            </h2>
+            <p className="text-gray-600 font-bold text-sm leading-relaxed">
+               قل وداعاً لصبغات الصالون المكلفة والمواد الكيماوية التي تتلف الشعر وتطبع على الجلد. شامبو Disaar الأصلي بخلاصة الأعشاب يغذي شعرك ويمنحه لوناً طبيعياً يدوم طويلاً وأنت في حمام منزلك.
+            </p>
+        </div>
+
+        {/* Trust Badges & Color Info */}
+        <div className="flex flex-col gap-2.5 mb-6 text-right" dir="rtl">
+            <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3 flex items-start gap-3">
+               <span className="text-lg mt-0.5">✅</span>
+               <div>
+                 <p className="text-emerald-900 font-black text-sm">توصيل مجاني لجميع المدن</p>
+                 <p className="text-emerald-700 font-bold text-xs mt-0.5">الدفع بعد الاستلام والتأكد من المنتوج</p>
+               </div>
+            </div>
+
+            <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 flex items-start gap-3">
+               <span className="text-lg mt-0.5">🎨</span>
+               <div>
+                 <p className="text-amber-900 font-black text-sm">
+                     متوفر بلونين طبيعيين: 
+                     <span className="text-gray-100 font-black bg-gray-900 px-2 py-0.5 rounded mx-1 shadow-sm">الأسود</span> 
+                     و 
+                     <span className="text-orange-50 font-black bg-amber-800 px-2 py-0.5 rounded mx-1 shadow-sm">البني (Marron)</span> 
+                 </p>
+                 <p className="text-amber-700 font-bold text-xs mt-1">
+                    📞 سيقوم فريقنا بالاتصال بك لاختيار لونك المفضل فور تأكيد الطلب.
+                 </p>
+               </div>
+            </div>
+
+            <div className="bg-red-50 border border-red-200 rounded-xl p-3 flex items-center gap-3">
+               <span className="text-lg animate-pulse">⏳</span>
+               <p className="text-red-700 font-black text-sm">الكمية الأصلية محدودة جداً — العرض سينتهي قريباً</p>
+            </div>
+        </div>
+
+        {/* Order Form with Value-Driven Labels */}
+        <div dir="rtl">
+          <OrderForm
+            sku={PRODUCT_SKU}
+            pack="hr-shamp"
+            options={[
+              {
+                q: 1,
+                label: "كورس التجديد (قارورة واحدة لمعالجة الشيب)",
+                price: PRICE_1,
+                oldPrice: 160,
+              },
+              {
+                q: 2,
+                label: "العرض الذكي (2 قنينات — مخزون لمدة أطول أو شاركه مع العائلة)",
+                price: PRICE_2,
+                oldPrice: PRICE_1 * 2,
+                badge: `وفر ${SAVING} درهم 🔥`,
+              },
+            ]}
+          />
+        </div>
       </section>
 
        {/* ══ WHATSAPP ══ */}
