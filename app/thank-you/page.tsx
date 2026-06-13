@@ -116,6 +116,8 @@ function ThankYouContent() {
                 <p className="text-gray-500 text-xs">باش نأكّدو معاك الطلبية والعنوان</p>
               </div>
             </div>
+          </div>
+          <div className="border-t border-gray-100 mt-4 pt-4 flex flex-col gap-3">
             <div className="flex items-center gap-3">
               <Truck className="w-5 h-5 text-gray-700 shrink-0" />
               <div>
