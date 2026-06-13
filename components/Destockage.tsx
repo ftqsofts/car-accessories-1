@@ -228,8 +228,8 @@ export default function Destockage({ niche, phone, onAdd }: Props) {
           <span className="inline-block bg-red-100 text-red-800 text-xs font-black px-3 py-1 rounded-full mb-2 shadow-sm animate-pulse">
             🔥 عرض سري خاص بالكليان ديالنا
           </span>
-          <h2 className="font-black text-xl text-blue-700 mb-1.5 leading-tight">
-            بما أنك تقديتي من عندنا، استافد من هاد المنتجات بثمن الجملة!
+          <h2 className="font-black text-xl text-gray-900 mb-1.5 leading-tight">
+            بما أنك تقديتي من عندنا، استافد من هاد المنتجات <span className="text-blue-600">بثمن الجملة</span>
           </h2>
           <p className="text-gray-600 font-bold text-sm leading-relaxed px-4 mb-3">
            هاد الأثمنة ممطروحاش للعموم. هادو هما المنتجات لي دايرين ضجة والأكثر طلباً عندنا، حطيناهم ليك بثمن الجملة غير باش نشكروك حيت كملتي الطلب ديالك
