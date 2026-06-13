@@ -5,7 +5,7 @@ import { packs, products } from "@/lib/products"
 import { Headphones, Truck } from "lucide-react"
 import Image from "next/image"
 import { useSearchParams } from "next/navigation"
-import { Suspense, useEffect } from "react"
+import { Suspense, useEffect, useState } from "react"
 
 declare global {
   interface Window { fbq?: (...args: unknown[]) => void }
@@ -37,7 +37,10 @@ function ThankYouContent() {
     "hr-shamp": "shampoo",
   }
   const niche = NICHE_MAP[packId] ?? undefined
-  
+
+  const [upsells, setUpsells] = useState<{ title: string; price: number; images: string[] }[]>([])
+  const upsellTotal = upsells.reduce((sum, u) => sum + u.price, 0)
+
   // Get products based on pack or SKUs
   const orderedProducts = pack
     ? pack.productIds.map(id => products.find(p => p.id === id)).filter(Boolean)
@@ -56,7 +59,7 @@ function ThankYouContent() {
           {/* Total */}
           <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-100">
             <span className="text-gray-400 text-sm font-bold">الدفع عند الاستلام</span>
-            <span className="text-[#C8962A] font-black text-2xl">{total} <span className="text-sm">درهم</span></span>
+            <span className="text-[#C8962A] font-black text-2xl">{Number(total) + upsellTotal} <span className="text-sm">درهم</span></span>
           </div>
           {/* Details */}
           <div className="flex flex-col gap-2 mb-4">
@@ -78,7 +81,7 @@ function ThankYouContent() {
             )}
           </div>
           {/* Ordered products */}
-          {orderedProducts.length > 0 && (
+          {(orderedProducts.length > 0 || upsells.length > 0) && (
             <div className="border-t border-gray-100 pt-4 flex flex-col gap-3">
               {orderedProducts.map((p) => (
                 <div key={p!.id} className="flex items-center gap-3">
@@ -88,6 +91,17 @@ function ThankYouContent() {
                   <div className="text-right">
                     <p className="text-gray-900 font-black text-sm">{p!.nameDarija}</p>
                     <p className="text-gray-400 text-xs mt-0.5">{p!.tagline}</p>
+                  </div>
+                </div>
+              ))}
+              {upsells.map((u, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="relative w-14 h-14 rounded-xl overflow-hidden shrink-0">
+                    <Image src={u.images[0]} alt={u.title} fill className="object-cover" />
+                  </div>
+                  <div className="text-right">
+                    <p className="text-gray-900 font-black text-sm">{u.title}</p>
+                    <p className="text-green-600 text-xs font-bold mt-0.5">{u.price} درهم</p>
                   </div>
                 </div>
               ))}
@@ -115,7 +129,7 @@ function ThankYouContent() {
       </div>
 
       {/* Cross-sell — full width below */}
-      {phone && <Destockage niche={niche} phone={phone} />}
+      {phone && <Destockage niche={niche} phone={phone} onAdd={(p) => setUpsells(prev => [...prev, p])} />}
     </div>
   )
 }

@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export type Niche = "vacuum" | "shampoo"
 
@@ -71,27 +71,22 @@ const CATALOG: Record<Niche, Product[]> = {
   shampoo: [SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, LOCK],
 }
 
-function ProductCard({ product, phone }: { product: Product; phone: string }) {
+function ProductCard({ product, phone, onAdd, onToast }: { product: Product; phone: string; onAdd?: (product: { title: string; price: number; images: string[] }) => void; onToast?: (title: string) => void }) {
   const [activeImg, setActiveImg] = useState(0)
   const [added, setAdded] = useState(false)
-  const [loading, setLoading] = useState(false)
 
-  const handleAdd = async () => {
-    if (added || loading) return
-    setLoading(true)
-    try {
-      await fetch("/api/upsell", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone, sku: product.sku, price: product.price }),
-      })
-      setAdded(true)
-    } catch {
-      // silent fail — still show added state
-      setAdded(true)
-    } finally {
-      setLoading(false)
-    }
+  const handleAdd = () => {
+    if (added) return
+    // Optimistic — show success immediately
+    setAdded(true)
+    onAdd?.({ title: product.title, price: product.price, images: product.images })
+    onToast?.(product.title)
+    // Fire and forget in background
+    fetch("/api/upsell", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ phone, sku: product.sku, price: product.price }),
+    }).catch(() => null)
   }
 
   return (
@@ -174,17 +169,17 @@ function ProductCard({ product, phone }: { product: Product; phone: string }) {
           </div>
           <button
             onClick={handleAdd}
-            disabled={loading}
+            disabled={added}
             className="font-black text-sm py-2.5 px-5 rounded-xl active:scale-95 transition-all"
             style={{
               background: added ? "#16a34a" : "#ffd200",
               color: added ? "#fff" : "#000",
               border: "none",
-              cursor: loading ? "wait" : "pointer",
+              cursor: added ? "default" : "pointer",
               minWidth: 120,
             }}
           >
-            {added ? "✅ تمت الإضافة" : loading ? "..." : "🛒 أضف للسلة"}
+            {added ? "✅ تمت الإضافة" : "🛒 أضف للسلة"}
           </button>
         </div>
       </div>
@@ -195,14 +190,38 @@ function ProductCard({ product, phone }: { product: Product; phone: string }) {
 type Props = {
   niche?: Niche
   phone: string
+  onAdd?: (product: { title: string; price: number; images: string[] }) => void
 }
 
-export default function Destockage({ niche, phone }: Props) {
+function Toast({ message }: { message: string }) {
+  return (
+    <div style={{
+      position: "fixed", bottom: 24, left: "50%", transform: "translateX(-50%)",
+      background: "#16a34a", color: "#fff", fontFamily: "var(--font-cairo), Cairo, sans-serif",
+      fontWeight: 900, fontSize: 14, padding: "12px 24px", borderRadius: 999,
+      boxShadow: "0 4px 20px rgba(0,0,0,0.2)", zIndex: 9999, whiteSpace: "nowrap",
+      animation: "slideUp 0.3s ease",
+    }}>
+      ✅ {message}
+      <style>{`@keyframes slideUp { from { opacity:0; transform:translateX(-50%) translateY(12px); } to { opacity:1; transform:translateX(-50%) translateY(0); } }`}</style>
+    </div>
+  )
+}
+
+export default function Destockage({ niche, phone, onAdd }: Props) {
   const products = niche ? CATALOG[niche] : ALL_UPSELLS
+  const [toast, setToast] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!toast) return
+    const t = setTimeout(() => setToast(null), 3000)
+    return () => clearTimeout(t)
+  }, [toast])
 
   if (!products.length) return null
 
   return (
+    <>
     <div dir="rtl" style={{ fontFamily: "var(--font-cairo), Cairo, sans-serif" }}>
       <div className="max-w-lg mx-auto px-4 py-6">
         <div className="text-center mb-5" dir="rtl">
@@ -213,15 +232,18 @@ export default function Destockage({ niche, phone }: Props) {
             بما أنك تقديتي من عندنا، استافد من هاد المنتجات بثمن الجملة!
           </h2>
           <p className="text-gray-600 font-bold text-sm leading-relaxed px-4 mb-3">
-            هاد الأثمنة ممطروحاش للعموم. نقصنا ليك الثمن لأقصى حد غير باش نشكروك حيت وليتي كليان ديالنا. 
+            هاد الأثمنة ممطروحاش للعموم. نقصنا ليك الثمن لأقصى حد غير باش نشكروك حيت وليتي كليان ديالنا.
           </p>
+
         </div>
         <div className="flex flex-col gap-5">
           {products.map(p => (
-            <ProductCard key={p.sku} product={p} phone={phone} />
+            <ProductCard key={p.sku} product={p} phone={phone} onAdd={onAdd} onToast={setToast} />
           ))}
         </div>
       </div>
     </div>
+    {toast && <Toast message="تضاف المنتج للطلبية بنجاح" />}
+    </>
   )
 }
