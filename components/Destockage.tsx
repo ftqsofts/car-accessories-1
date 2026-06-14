@@ -222,7 +222,7 @@ export default function Destockage({ niche, phone, onAdd }: Props) {
           <p className="sr-only">هاد الأثمنة ممطروحاش للعموم. هادو هما المنتجات لي دايرين ضجة والأكثر طلباً عندنا، حطيناهم ليك بثمن الجملة غير باش نشكروك حيت تقديتي من عندنا.</p>
           {/* Cover image */}
           <Image
-            src="/products/upsells/upsell-cover.webp"
+            src="/products/upsells/upsell-cover-2.webp"
             alt="عرض خاص"
             width={600}
             height={300}
