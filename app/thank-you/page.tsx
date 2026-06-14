@@ -58,7 +58,7 @@ function ThankYouContent() {
         <div className="bg-white border border-gray-200 rounded-2xl p-4 mb-4 shadow-sm">
           {/* Total */}
           <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-100">
-            <span className="text-gray-400 text-sm font-bold">الدفع عند الاستلام</span>
+            <span className="text-gray-400 text-sm font-bold">قالب عد خلاص</span>
             <span className="text-[#C8962A] font-black text-3xl">{Number(total) + upsellTotal} <span className="text-sm">درهم</span></span>
           </div>
           {/* Details */}
