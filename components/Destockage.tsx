@@ -157,20 +157,18 @@ function ProductCard({ product, phone, onAdd, onToast }: { product: Product; pho
       <div className="px-4 pt-3 pb-4">
         <h3 className="font-black text-base text-gray-900 mb-1">{product.title}</h3>
         <p className="text-gray-500 text-sm leading-relaxed mb-3">{product.description}</p>
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex flex-col">
-            <div className="flex items-center gap-2">
-              <span className="text-orange-500 text-lg">🔥</span>
-              <span className="font-black text-2xl text-gray-900">{product.price} درهم</span>
-              <span className="text-red-400 line-through text-sm font-bold">{product.oldPrice} درهم</span>
-            </div>
-            <span className="text-green-600 font-black text-xs">وفر {product.oldPrice - product.price} درهم 🎉</span>
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-2">
+            <span className="text-orange-500 text-lg">🔥</span>
+            <span className="font-black text-2xl text-gray-900">{product.price} درهم</span>
+            <span className="text-red-400 line-through text-sm font-bold">{product.oldPrice} درهم</span>
           </div>
+          <span className="text-green-600 font-black text-xs">وفر {product.oldPrice - product.price} درهم 🎉</span>
           <button
             onClick={handleAdd}
             disabled={added}
-            className="font-black text-sm py-2.5 px-5 rounded-xl active:scale-95 transition-all"
-            style={{ background: added ? "#16a34a" : "#ffd200", color: added ? "#fff" : "#000", border: "none", cursor: added ? "default" : "pointer", minWidth: 120 }}
+            className="font-black text-sm py-3 rounded-xl active:scale-95 transition-all w-full mt-1"
+            style={{ background: added ? "#16a34a" : "#ffd200", color: added ? "#fff" : "#000", border: "none", cursor: added ? "default" : "pointer" }}
           >
             {added ? "✅ تمت الإضافة" : "🛒 أضف للسلة"}
           </button>
