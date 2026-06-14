@@ -19,7 +19,7 @@ const SILICONE_CLEANER: Product = {
   title: "كراطة السيليكون السحرية (الحجم الكبير 1.4m)",
   description: "تنشيف الما ومسح الزاج والزليج بضربة وحدة بلا ما تخلي حتى أثر. كتهنيك من تمارة، وكتجمع الزغب والغبرة بسهولة تامة.",
   price: 49,
-  oldPrice: 89,
+  oldPrice: 109,
   images: [
     "/products/upsells/selicon-cleaaner-1.webp",
     "/products/upsells/selicon-cleaaner-2.webp",
@@ -56,7 +56,7 @@ const LOCK: Product = {
   title: "قفل الأمان لحماية الأطفال (بدون مسامير)",
   description: "تهناي من الروينة وحافظي على سلامة وليداتك! قفل قوي وساهل فالتركيب، كيلصق مزيان فالثلاجة، البلاكارات، والمجورة بلا حفير.",
   price: 29,
-  oldPrice: 59,
+  oldPrice: 69,
   images: [
     "/products/upsells/lock-1.webp",
     "/products/upsells/lock-3.webp",
