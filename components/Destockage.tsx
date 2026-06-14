@@ -215,17 +215,19 @@ export default function Destockage({ niche, phone, onAdd }: Props) {
     <>
     <div dir="rtl" style={{ fontFamily: "var(--font-cairo), Cairo, sans-serif" }}>
       <div className="max-w-lg mx-auto px-4 py-6">
-        <div className="text-center mb-5" dir="rtl">
-          <span className="inline-block bg-red-100 text-red-800 text-[15px] font-black px-3 py-1 rounded-full mb-2 shadow-sm animate-pulse">
-            🔥 عرض سري خاص بالكليان ديالنا
-          </span>
-         <h2 className="font-black text-xl text-gray-900 mb-1.5 leading-tight">
-  بما أنك تقديتي من عندنا، زيد هاد المنتجات للطلب ديالك <span className="text-blue-600">بثمن الجملة!</span>
-</h2>
-          <p className="text-gray-600 font-bold text-sm leading-relaxed px-4 mb-3">
-           هاد الأثمنة ممطروحاش للعموم. هادو هما المنتجات لي دايرين ضجة  <span className="text-blue-600">والأكثر طلباً</span> عندنا، حطيناهم ليك بثمن الجملة غير باش نشكروك حيت تقديتي من عندنا.
-          </p>
-
+        <div className="mb-5">
+          {/* Hidden text — kept for SEO/reference */}
+          <span className="sr-only">🔥 عرض سري خاص بالكليان ديالنا</span>
+          <h2 className="sr-only">بما أنك تقديتي من عندنا، زيد هاد المنتجات للطلب ديالك بثمن الجملة!</h2>
+          <p className="sr-only">هاد الأثمنة ممطروحاش للعموم. هادو هما المنتجات لي دايرين ضجة والأكثر طلباً عندنا، حطيناهم ليك بثمن الجملة غير باش نشكروك حيت تقديتي من عندنا.</p>
+          {/* Cover image */}
+          <Image
+            src="/products/upsells/upsell-cover.webp"
+            alt="عرض خاص"
+            width={600}
+            height={300}
+            style={{ width: "100%", height: "auto", display: "block", borderRadius: 16 }}
+          />
         </div>
         <div className="flex flex-col gap-5">
           {products.map(p => (
