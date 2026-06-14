@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export type Niche = "vacuum" | "shampoo"
 
@@ -74,14 +74,13 @@ const CATALOG: Record<Niche, Product[]> = {
 function ProductCard({ product, phone, onAdd, onToast }: { product: Product; phone: string; onAdd?: (product: { title: string; price: number; images: string[] }) => void; onToast?: (title: string) => void }) {
   const [activeImg, setActiveImg] = useState(0)
   const [added, setAdded] = useState(false)
+  const touchStartX = useRef<number | null>(null)
 
   const handleAdd = () => {
     if (added) return
-    // Optimistic — show success immediately
     setAdded(true)
     onAdd?.({ title: product.title, price: product.price, images: product.images })
     onToast?.(product.title)
-    // Fire and forget in background
     fetch("/api/upsell", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -89,10 +88,23 @@ function ProductCard({ product, phone, onAdd, onToast }: { product: Product; pho
     }).catch(() => null)
   }
 
+  const prev = () => setActiveImg(i => Math.max(0, i - 1))
+  const next = () => setActiveImg(i => Math.min(product.images.length - 1, i + 1))
+
+  const onTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.touches[0].clientX }
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return
+    const diff = touchStartX.current - e.changedTouches[0].clientX
+    if (diff > 40) next()
+    else if (diff < -40) prev()
+    touchStartX.current = null
+  }
+
   return (
     <div className="rounded-2xl overflow-hidden bg-white" style={{ border: "1px solid #e5e7eb", boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}>
       {/* Image carousel */}
-      <div dir="ltr" style={{ position: "relative", backgroundColor: "#f5f5f5", lineHeight: 0 }}>
+      <div dir="ltr" style={{ position: "relative", backgroundColor: "#f5f5f5", lineHeight: 0, userSelect: "none" }}
+        onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
         <Image
           src={product.images[activeImg]}
           alt={product.title}
@@ -103,36 +115,28 @@ function ProductCard({ product, phone, onAdd, onToast }: { product: Product; pho
         {product.images.length > 1 && (
           <>
             {/* Dot indicators */}
-            <div style={{ position: "absolute", bottom: 10, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 6 }}>
+            <div style={{ position: "absolute", bottom: 12, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 6 }}>
               {product.images.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveImg(i)}
-                  style={{
-                    width: i === activeImg ? 20 : 8,
-                    height: 8,
-                    borderRadius: 4,
-                    background: i === activeImg ? "#1E3A8A" : "rgba(255,255,255,0.7)",
-                    border: "none",
-                    cursor: "pointer",
-                    transition: "width 0.2s",
-                    padding: 0,
-                  }}
-                />
+                <button key={i} onClick={() => setActiveImg(i)} style={{ width: i === activeImg ? 22 : 8, height: 8, borderRadius: 4, background: i === activeImg ? "#1E3A8A" : "rgba(255,255,255,0.8)", border: "none", cursor: "pointer", transition: "width 0.2s", padding: 0 }} />
               ))}
             </div>
-            {/* Prev / Next arrows — explicit inset to ignore RTL */}
+            {/* Prev arrow */}
             {activeImg > 0 && (
-              <button onClick={() => setActiveImg(i => i - 1)}
-                style={{ position: "absolute", top: "50%", insetInlineEnd: "unset", insetInlineStart: "unset", left: "auto", right: 10, transform: "translateY(-50%)", background: "rgba(255,255,255,0.9)", border: "none", borderRadius: "50%", width: 36, height: 36, cursor: "pointer", fontSize: 20, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 1px 4px rgba(0,0,0,0.15)" }}>
+              <button onClick={prev} style={{ position: "absolute", top: "50%", right: 10, transform: "translateY(-50%)", background: "#fff", border: "none", borderRadius: "50%", width: 48, height: 48, cursor: "pointer", fontSize: 26, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(0,0,0,0.2)", fontWeight: 900 }}>
                 ›
               </button>
             )}
+            {/* Next arrow */}
             {activeImg < product.images.length - 1 && (
-              <button onClick={() => setActiveImg(i => i + 1)}
-                style={{ position: "absolute", top: "50%", insetInlineEnd: "unset", insetInlineStart: "unset", right: "auto", left: 10, transform: "translateY(-50%)", background: "rgba(255,255,255,0.9)", border: "none", borderRadius: "50%", width: 36, height: 36, cursor: "pointer", fontSize: 20, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 1px 4px rgba(0,0,0,0.15)" }}>
+              <button onClick={next} style={{ position: "absolute", top: "50%", left: 10, transform: "translateY(-50%)", background: "#fff", border: "none", borderRadius: "50%", width: 48, height: 48, cursor: "pointer", fontSize: 26, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(0,0,0,0.2)", fontWeight: 900 }}>
                 ‹
               </button>
+            )}
+            {/* Swipe hint — shown only on first image */}
+            {activeImg === 0 && (
+              <div style={{ position: "absolute", bottom: 36, right: 10, background: "rgba(0,0,0,0.45)", color: "#fff", fontSize: 11, fontWeight: 700, padding: "3px 8px", borderRadius: 999, pointerEvents: "none" }}>
+                صور أخرى ›
+              </div>
             )}
           </>
         )}
@@ -143,13 +147,7 @@ function ProductCard({ product, phone, onAdd, onToast }: { product: Product; pho
         <div style={{ display: "flex", gap: 6, padding: "8px 12px", backgroundColor: "#fff", overflowX: "auto" }}>
           {product.images.map((src, i) => (
             <button key={i} onClick={() => setActiveImg(i)} style={{ flexShrink: 0, padding: 0, border: "none", background: "none", cursor: "pointer" }}>
-              <Image
-                src={src}
-                alt=""
-                width={56}
-                height={56}
-                style={{ width: 56, height: 56, objectFit: "cover", borderRadius: 8, border: activeImg === i ? "2.5px solid #1E3A8A" : "2px solid #e5e7eb" }}
-              />
+              <Image src={src} alt="" width={56} height={56} style={{ width: 56, height: 56, objectFit: "cover", borderRadius: 8, border: activeImg === i ? "2.5px solid #1E3A8A" : "2px solid #e5e7eb" }} />
             </button>
           ))}
         </div>
@@ -162,6 +160,7 @@ function ProductCard({ product, phone, onAdd, onToast }: { product: Product; pho
         <div className="flex items-center justify-between gap-3">
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
+              <span className="text-orange-500 text-lg">🔥</span>
               <span className="font-black text-2xl text-gray-900">{product.price} درهم</span>
               <span className="text-red-400 line-through text-sm font-bold">{product.oldPrice} درهم</span>
             </div>
@@ -171,13 +170,7 @@ function ProductCard({ product, phone, onAdd, onToast }: { product: Product; pho
             onClick={handleAdd}
             disabled={added}
             className="font-black text-sm py-2.5 px-5 rounded-xl active:scale-95 transition-all"
-            style={{
-              background: added ? "#16a34a" : "#ffd200",
-              color: added ? "#fff" : "#000",
-              border: "none",
-              cursor: added ? "default" : "pointer",
-              minWidth: 120,
-            }}
+            style={{ background: added ? "#16a34a" : "#ffd200", color: added ? "#fff" : "#000", border: "none", cursor: added ? "default" : "pointer", minWidth: 120 }}
           >
             {added ? "✅ تمت الإضافة" : "🛒 أضف للسلة"}
           </button>
