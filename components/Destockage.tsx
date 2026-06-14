@@ -19,7 +19,7 @@ const SILICONE_CLEANER: Product = {
   title: "كراطة السيليكون السحرية (الحجم الكبير 1.4m)",
   description: "تنشيف الما ومسح الزاج والزليج بضربة وحدة بلا ما تخلي حتى أثر. كتهنيك من تمارة، وكتجمع الزغب والغبرة بسهولة تامة.",
   price: 49,
-  oldPrice: 109,
+  oldPrice: 163,
   images: [
     "/products/upsells/selicon-cleaaner-1.webp",
     "/products/upsells/selicon-cleaaner-2.webp",
@@ -32,7 +32,7 @@ const KITCHEN_BARRIER: Product = {
   title: "حاجز السيليكون المضاد للرش (للافابو)",
   description: "وداعاً للحوايج الفازكين وقت غسيل الماعن! حاجز كيلصق بسهولة فالبوطاجين، كيحبس رش الما وكيخلي حوايجك و الكوزينة ديالك ديما ناشفة.",
   price: 45,
-  oldPrice: 89,
+  oldPrice: 150,
   images: [
     "/products/upsells/kitchen-selecton-1.webp",
     "/products/upsells/kitchen-selecton-2.webp",
@@ -44,7 +44,7 @@ const ANTI_VIBRATION: Product = {
   title: "أرجل مطاطية مضادة لاهتزاز الماكينة (باك 4)",
   description: "الماكينة كدير الصداع وكتحرك فاش كتعصر؟ هاد الأرجل غادي يسكتوها فمرة! كتحمي الزليج من التخبيش وكتسهل عليك تسيق تحت منها.",
   price: 35,
-  oldPrice: 69,
+  oldPrice: 117,
   images: [
     "/products/upsells/antivibration-1.webp",
     "/products/upsells/antivibration-2.jpg",
@@ -56,7 +56,7 @@ const LOCK: Product = {
   title: "قفل الأمان لحماية الأطفال (بدون مسامير)",
   description: "تهناي من الروينة وحافظي على سلامة وليداتك! قفل قوي وساهل فالتركيب، كيلصق مزيان فالثلاجة، البلاكارات، والمجورة بلا حفير.",
   price: 29,
-  oldPrice: 69,
+  oldPrice: 97,
   images: [
     "/products/upsells/lock-1.webp",
     "/products/upsells/lock-3.webp",
