@@ -65,11 +65,11 @@ const LOCK: Product = {
 }
 
 const SIDE_SUNSHADE: Product = {
-  sku: "SUNSHADE_SIDE",
+  sku: "4T44-RRY-966",
   title: "ريدوات شبكة للزاج الجانبي (باك فيه 2)",
   description: "الشمش قاهرة الدراري اللور؟ هاد الريدوات كيركبو بسهولة بحال الغشا فالباب، كيحبسو أشعة الشمس وكيخليوك تهبط الزاج باش يدخل البرد بلا ما يدخل الناموس ولا الغبرة.",
-  price: 39,
-  oldPrice: 99,
+  price: 89,
+  oldPrice: 199,
   images: [
     "/products/upsells/sun-protection-2-1.webp",
     "/products/upsells/sun-protection-2-2.webp",
@@ -77,11 +77,11 @@ const SIDE_SUNSHADE: Product = {
 }
 
 const FRONT_SUNSHADE: Product = {
-  sku: "SUNSHADE_FRONT",
+  sku: "F1CB-BBR-3AB",
   title: "باراسول واقي للزاج القدامي",
   description: "الطوموبيل كترجع بحال الفران ملي كتباركيها فالشمش؟ هاد الواقي كيحبس السخونية، كيحمي الطابلو من التشققات، وكيخلي صالون الطوموبيل بارد. ساهل فالطي ومكيشدش البلاصة.",
-  price: 49,
-  oldPrice: 99,
+  price: 69,
+  oldPrice: 175,
   images: [
     "/products/upsells/sun-protection-1.webp",
     "/products/upsells/sun-protection-2.webp",
