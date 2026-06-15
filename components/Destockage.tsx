@@ -64,11 +64,11 @@ const LOCK: Product = {
   ],
 }
 
-const ALL_UPSELLS: Product[] = [SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, LOCK]
+const ALL_UPSELLS: Product[] = [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION]
 
 const CATALOG: Record<Niche, Product[]> = {
-  vacuum: [SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, LOCK],
-  shampoo: [SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, LOCK],
+  vacuum: [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION],
+  shampoo: [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION],
 }
 
 function ProductCard({ product, phone, onAdd, onToast }: { product: Product; phone: string; onAdd?: (product: { title: string; price: number; images: string[] }) => void; onToast?: (title: string) => void }) {
