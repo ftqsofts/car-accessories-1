@@ -64,11 +64,11 @@ const LOCK: Product = {
   ],
 }
 
-const ALL_UPSELLS: Product[] = [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION]
+const ALL_UPSELLS: Product[] = [SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, LOCK]
 
 const CATALOG: Record<Niche, Product[]> = {
-  vacuum: [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION],
-  shampoo: [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION],
+  vacuum: [SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, LOCK],
+  shampoo: [SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, LOCK],
 }
 
 function ProductCard({ product, phone, onAdd, onToast }: { product: Product; phone: string; onAdd?: (product: { title: string; price: number; images: string[] }) => void; onToast?: (title: string) => void }) {
@@ -216,8 +216,13 @@ export default function Destockage({ niche, phone, onAdd }: Props) {
     <div dir="rtl" style={{ fontFamily: "var(--font-cairo), Cairo, sans-serif" }}>
       <div className="max-w-lg mx-auto px-4 py-6">
         <div className="mb-5">
+          {/* Secret offer badge */}
+          <div className="text-center mb-3">
+            <span className="inline-block bg-red-100 text-red-800 text-[15px] font-black px-3 py-1 rounded-full shadow-sm animate-pulse">
+              🔥 عرض سري خاص بالكليان ديالنا
+            </span>
+          </div>
           {/* Hidden text — kept for SEO/reference */}
-          <span className="sr-only">🔥 عرض سري خاص بالكليان ديالنا</span>
           <h2 className="sr-only">بما أنك تقديتي من عندنا، زيد هاد المنتجات للطلب ديالك بثمن الجملة!</h2>
           <p className="sr-only">هاد الأثمنة ممطروحاش للعموم. هادو هما المنتجات لي دايرين ضجة والأكثر طلباً عندنا، حطيناهم ليك بثمن الجملة غير باش نشكروك حيت تقديتي من عندنا.</p>
           {/* Cover image */}
