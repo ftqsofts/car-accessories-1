@@ -18,7 +18,7 @@ const SILICONE_CLEANER: Product = {
   sku: "1A1T5D",
   title: "كراطة السيليكون السحرية (الحجم الكبير 1.4m)",
   description: "تنشيف الما ومسح الزاج والزليج بضربة وحدة بلا ما تخلي حتى أثر. كتهنيك من تمارة، وكتجمع الزغب والغبرة بسهولة تامة.",
-  price: 49,
+  price: 55,
   oldPrice: 163,
   images: [
     "/products/upsells/selicon-cleaaner-1.webp",
@@ -31,7 +31,7 @@ const KITCHEN_BARRIER: Product = {
   sku: "1A1A1G",
   title: "حاجز السيليكون المضاد للرش (للافابو)",
   description: "وداعاً للحوايج الفازكين وقت غسيل الماعن! حاجز كيلصق بسهولة فالبوطاجين، كيحبس رش الما وكيخلي حوايجك و الكوزينة ديالك ديما ناشفة.",
-  price: 45,
+  price: 49,
   oldPrice: 150,
   images: [
     "/products/upsells/kitchen-selecton-1.webp",
