@@ -73,6 +73,7 @@ const SIDE_SUNSHADE: Product = {
   images: [
     "/products/upsells/sun-protection-2-1.webp",
     "/products/upsells/sun-protection-2-2.webp",
+    "/products/upsells/sun-protection-2-3.webp",
   ],
 }
 
