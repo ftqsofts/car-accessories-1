@@ -89,7 +89,7 @@ export default function CarHomeCleanerPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name: form.name, phone: form.phone, city: form.city, skus: PRODUCT_SKU, qty, total: price }),
     }).catch(() => null)
-    const params = new URLSearchParams({ name: form.name, phone: form.phone, city: form.city, skus: PRODUCT_SKU, qty: String(qty), total: String(price) })
+    const params = new URLSearchParams({ name: form.name, phone: form.phone, city: form.city, skus: PRODUCT_SKU, qty: String(qty), total: String(price), pack: "super-vc" })
     router.push(`/thank-you?${params}`)
   }
 

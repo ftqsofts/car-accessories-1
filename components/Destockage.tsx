@@ -64,7 +64,6 @@ const LOCK: Product = {
   ],
 }
 
-
 const SIDE_SUNSHADE: Product = {
   sku: "SUNSHADE_SIDE",
   title: "ريدوات شبكة للزاج الجانبي (باك فيه 2)",
