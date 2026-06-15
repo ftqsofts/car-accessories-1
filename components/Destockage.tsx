@@ -173,7 +173,7 @@ function ProductCard({ product, phone, onAdd, onToast }: { product: Product; pho
         <div style={{ display: "flex", gap: 6, padding: "8px 12px", backgroundColor: "#fff", overflowX: "auto" }}>
           {product.images.map((src, i) => (
             <button key={i} onClick={() => setActiveImg(i)} style={{ flexShrink: 0, padding: 0, border: "none", background: "none", cursor: "pointer" }}>
-              <Image src={src} alt="" width={56} height={56} style={{ width: 56, height: 56, objectFit: "cover", borderRadius: 8, border: activeImg === i ? "2.5px solid #ffd200" : "2px solid #e5e7eb" }} />
+              <Image src={src} alt="" width={56} height={56} style={{ width: 56, height: 56, objectFit: "cover", borderRadius: 8, border: activeImg === i ? "2.5px solid #1E3A8A" : "2px solid #e5e7eb" }} />
             </button>
           ))}
         </div>
