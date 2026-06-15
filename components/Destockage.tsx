@@ -122,13 +122,13 @@ function ProductCard({ product, phone, onAdd, onToast }: { product: Product; pho
             </div>
             {/* Prev arrow */}
             {activeImg > 0 && (
-              <button onClick={prev} style={{ position: "absolute", top: "50%", right: 10, transform: "translateY(-50%)", background: "#fff", border: "none", borderRadius: "50%", width: 48, height: 48, cursor: "pointer", fontSize: 26, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(0,0,0,0.2)", fontWeight: 900 }}>
+              <button onClick={prev} style={{ position: "absolute", top: "50%", right: 10, transform: "translateY(-50%)", background: "#1E3A8A", border: "none", borderRadius: "50%", width: 48, height: 48, cursor: "pointer", fontSize: 26, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(0,0,0,0.35)", fontWeight: 900 }}>
                 ›
               </button>
             )}
             {/* Next arrow */}
             {activeImg < product.images.length - 1 && (
-              <button onClick={next} style={{ position: "absolute", top: "50%", left: 10, transform: "translateY(-50%)", background: "#fff", border: "none", borderRadius: "50%", width: 48, height: 48, cursor: "pointer", fontSize: 26, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(0,0,0,0.2)", fontWeight: 900 }}>
+              <button onClick={next} style={{ position: "absolute", top: "50%", left: 10, transform: "translateY(-50%)", background: "#1E3A8A", border: "none", borderRadius: "50%", width: 48, height: 48, cursor: "pointer", fontSize: 26, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(0,0,0,0.35)", fontWeight: 900 }}>
                 ‹
               </button>
             )}
