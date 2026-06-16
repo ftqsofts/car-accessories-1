@@ -129,7 +129,7 @@ export default function CoffrtPage() {
           </p>
           <p className="font-bold text-base text-gray-800 flex items-start gap-2">
             <span>🧱</span>
-            <span>مصنوعة من ABS عالي الجودة — أقوى خزنة في السوق.</span>
+            <span>مصنوعة من ABS عالي الجودة.</span>
           </p>
         </div>
 
@@ -207,6 +207,24 @@ export default function CoffrtPage() {
       </div> */}
 
       {/* ══ CTA 1 ══ */}
+      <div className="px-4 max-w-lg mx-auto py-6">
+        <button onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+          className="w-full text-black font-black text-lg py-5 rounded-2xl active:scale-95 shaked"
+          style={{ background: "#ffd200", boxShadow: "0 4px 24px rgba(255,210,0,0.4)" }}>
+          🛒 اطلب الآن — الدفع عند الاستلام
+        </button>
+      </div>
+
+      {/* ══ REVIEWS ══ */}
+      <div className="px-1 max-w-lg mx-auto">
+        <h2 className="font-black text-xl text-center text-gray-900 mb-4">عملائنا راضون</h2>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/products/coffre-fort/reviews.webp" alt="تقييمات العملاء"
+          className="w-full h-auto rounded-xl" loading="lazy" width={720} height={2950}
+        />
+      </div>
+
+      {/* ══ CTA 2 ══ */}
       <div className="px-4 max-w-lg mx-auto py-6">
         <button onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
           className="w-full text-black font-black text-lg py-5 rounded-2xl active:scale-95 shaked"
