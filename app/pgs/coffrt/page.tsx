@@ -172,7 +172,7 @@ export default function CoffrtPage() {
         <div className="bg-gray-900 text-white p-4 rounded-xl text-center shadow-lg mt-6">
           <h2 className="font-black text-xl mb-1 text-amber-500">🛡️ الضمان الذهبي لرضا العملاء</h2>
           <p className="text-xs text-gray-300 font-medium max-w-xs mx-auto leading-relaxed">
-            جودة Beetro غنية عن التعريف. نقدم لكم ضماناً حقيقياً لمدة سنة كاملة (12 شهر) ضد أي خلل إلكتروني أو ميكانيكي، مع استبدال فوري مجاني حتى باب منزلك.
+            جودة Beetro غنية عن التعريف. نقدم لكم ضماناً حقيقياً لمدة شهر كامل ضد أي خلل إلكتروني أو ميكانيكي، مع استبدال فوري مجاني حتى باب منزلك.
           </p>
         </div>
       </section>
