@@ -94,29 +94,18 @@ export default function CoffrtPage() {
         <span className="bg-red-100 text-red-800 text-xs font-black px-2.5 py-1 rounded-full inline-block mb-2 animate-pulse">
           🚨 عرض خاص 2026
         </span>
-        
+
         <h1 className="font-black text-2xl text-gray-900 mb-3 leading-tight">
           خزنة Beetro الفولاذية الذكية <span className="text-amber-600">(Premium Edition)</span>
         </h1>
-        
-        <div className="space-y-2.5 mb-4">
-          <p className="font-black text-base text-gray-800 flex items-start gap-2">
-            <span>🔒</span> 
-            <span> سافر وخلّي بالك مرتاح: حماية مطلقة للذهب، الكاش، والوثائق الرسمية من السرقة والتطفل.</span>
-          </p>
-          <p className="font-bold text-sm text-gray-600 flex items-start gap-2">
-            <span>🛠️</span> 
-            <span>مدعومة بنظام تثبيت جداري خارق (مستحيل تتهز من بلاصتها أو تتفتح بالقوة).</span>
-          </p>
-        </div>
-
+        <p className="font-bold text-base text-gray-800 flex items-start gap-2">
+          <span>🔒</span>
+          <span> <b>خلّي بالك مرتاح</b>: حماية مطلقة للذهب، الكاش، والوثائق الرسمية من السرقة والتطفل.</span>
+        </p>
         <div className="flex items-center gap-3 mb-2 justify-start">
           <span className="font-black text-3xl text-gray-900">{PRICE_1} درهم</span>
           <span className="text-gray-400 line-through text-sm font-bold">{Math.round(PRICE_1 * 1.5)} درهم</span>
         </div>
-
-        <p className="text-red-600 font-black text-xs animate-bounce mb-3">⏳ مخزون محدود جداً — سينتهي العرض فور نفاد الكمية</p>
-        
       </div>
 
       {/* ══ EXPLAINER VIDEO ══ */}
@@ -130,9 +119,21 @@ export default function CoffrtPage() {
         />
       </div>
 
-      {/* ══ QUALITY BLOCK ══ */}
-      <div className="max-w-lg mx-auto px-4 pb-2">
-        <p className="font-black text-lg text-gray-700 text-center">🧱 مصنوعة من ABS عالي الجودة <br /> أقوى خزنة في السوق</p>
+      {/* ══ DESCRIPTION ══ */}
+      <div className="px-4 pt-2 pb-2 max-w-lg mx-auto text-right" dir="rtl">
+        <div className="space-y-2.5 mb-3">
+          
+          <p className="font-bold text-base text-gray-800 flex items-start gap-2">
+            <span>🛠️</span>
+            <span>مدعومة بنظام تثبيت جداري خارق (مستحيل تتهز من بلاصتها أو تتفتح بالقوة).</span>
+          </p>
+          <p className="font-bold text-base text-gray-800 flex items-start gap-2">
+            <span>🧱</span>
+            <span>مصنوعة من ABS عالي الجودة — أقوى خزنة في السوق.</span>
+          </p>
+        </div>
+
+        <p className="text-red-600 font-black text-xs animate-bounce mb-3">⏳ مخزون محدود جداً — سينتهي العرض فور نفاد الكمية</p>
       </div>
 
       <div className="h-px mx-4 bg-gray-100 my-4" />
