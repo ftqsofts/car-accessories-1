@@ -1,14 +1,18 @@
 import { NextRequest, NextResponse } from "next/server"
 import OpenAI from "openai"
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
-
 export async function POST(req: NextRequest) {
   const { name } = await req.json()
 
   if (!name?.trim() || name.trim().toLowerCase() === "client") {
     return NextResponse.json({ gender: "unknown" })
   }
+
+  if (!process.env.OPENAI_API_KEY) {
+    return NextResponse.json({ gender: "unknown" })
+  }
+
+  const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
 
   try {
     const res = await client.chat.completions.create({
