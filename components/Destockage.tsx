@@ -100,12 +100,12 @@ const FRONT_SUNSHADE: Product = {
   ],
 }
 
-const ALL_UPSELLS: Product[] = [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION]
+const ALL_UPSELLS: Product[] = [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, FRONT_SUNSHADE, SIDE_SUNSHADE]
 
-const CATALOG: Record<Niche, Product[]> = {
-  vacuum: [FRONT_SUNSHADE, SIDE_SUNSHADE, SILICONE_CLEANER, KITCHEN_BARRIER],
-  shampoo: [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION],
-}
+// const CATALOG: Record<Niche, Product[]> = {
+//   vacuum: [FRONT_SUNSHADE, SIDE_SUNSHADE, SILICONE_CLEANER, KITCHEN_BARRIER],
+//   shampoo: [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, FRONT_SUNSHADE, SIDE_SUNSHADE],
+// }
 
 function ProductCard({ product, phone, onAdd, onToast }: { product: Product; phone: string; onAdd?: (product: { title: string; price: number; images: string[] }) => void; onToast?: (title: string) => void }) {
   const [activeImg, setActiveImg] = useState(0)
@@ -215,7 +215,7 @@ function ProductCard({ product, phone, onAdd, onToast }: { product: Product; pho
 }
 
 type Props = {
-  niche?: Niche
+  niche?: Niche,
   gender?: Gender
   phone: string
   onAdd?: (product: { title: string; price: number; images: string[] }) => void
@@ -237,10 +237,9 @@ function Toast({ message }: { message: string }) {
 }
 
 export default function Destockage({ niche, gender = "unknown", phone, onAdd }: Props) {
-  const baseProducts = niche ? CATALOG[niche] : ALL_UPSELLS
   const products = gender === "unknown"
-    ? baseProducts
-    : baseProducts.filter(p => p.gender === gender || p.gender === "both")
+    ? ALL_UPSELLS
+    : ALL_UPSELLS.filter((p: Product) => p.gender === gender || p.gender === "both")
   const [toast, setToast] = useState<string | null>(null)
 
   useEffect(() => {
