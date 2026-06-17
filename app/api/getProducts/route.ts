@@ -1,18 +1,18 @@
-import Anthropic from "@anthropic-ai/sdk"
 import { NextRequest, NextResponse } from "next/server"
+import OpenAI from "openai"
 
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
 
 export async function POST(req: NextRequest) {
-  const { name, niche } = await req.json()
+  const { name } = await req.json()
 
   if (!name?.trim() || name.trim().toLowerCase() === "client") {
     return NextResponse.json({ gender: "unknown" })
   }
 
   try {
-    const msg = await client.messages.create({
-      model: "claude-haiku-4-5-20251001",
+    const res = await client.chat.completions.create({
+      model: "gpt-4o-mini",
       max_tokens: 10,
       messages: [
         {
@@ -22,10 +22,10 @@ export async function POST(req: NextRequest) {
       ],
     })
 
-    const gender = (msg.content[0] as { text: string }).text.trim().toLowerCase()
-    const normalized = gender === "female" ? "female" : gender === "male" ? "male" : "unknown"
+    const text = res.choices[0]?.message?.content?.trim().toLowerCase() ?? ""
+    const gender = text === "female" ? "female" : text === "male" ? "male" : "unknown"
 
-    return NextResponse.json({ gender: normalized, niche })
+    return NextResponse.json({ gender })
   } catch {
     return NextResponse.json({ gender: "unknown" })
   }
