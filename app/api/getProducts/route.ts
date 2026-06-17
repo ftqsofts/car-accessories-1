@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
   }
 
   if (!process.env.OPENAI_API_KEY) {
-    return NextResponse.json({ gender: "unknown" })
+    return NextResponse.json({ gender: "unknown", reason: "no_api_key" })
   }
 
   const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
     const gender = text === "female" ? "female" : text === "male" ? "male" : "unknown"
 
     return NextResponse.json({ gender })
-  } catch {
-    return NextResponse.json({ gender: "unknown" })
+  } catch (err) {
+    return NextResponse.json({ gender: "unknown", reason: "error", error: String(err) })
   }
 }
