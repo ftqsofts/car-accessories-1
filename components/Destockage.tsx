@@ -57,6 +57,7 @@ const ANTI_VIBRATION: Product = {
   ],
 }
 
+
 const LOCK: Product = {
   sku: "1A20SA",
   title: "قفل الأمان لحماية الأطفال (بدون مسامير)",
