@@ -1,6 +1,6 @@
 "use client"
 
-import Destockage, { type Niche } from "@/components/Destockage"
+import Destockage from "@/components/Destockage"
 import { packs, products } from "@/lib/products"
 import { Headphones, Truck } from "lucide-react"
 import Image from "next/image"
@@ -31,15 +31,24 @@ function ThankYouContent() {
   // Find the pack if packId exists
   const pack = packId ? packs.find(p => p.id === packId) : null
 
-  const NICHE_MAP: Record<string, Niche> = {
-    "super-vc": "vacuum",
-    "coffrt": "shampoo",
-    "hr-shamp": "shampoo",
-  }
-  const niche = NICHE_MAP[packId] ?? undefined
+  // NICHE_MAP removed — filtering by gender only for now
 
   const [upsells, setUpsells] = useState<{ title: string; price: number; images: string[] }[]>([])
   const upsellTotal = upsells.reduce((sum, u) => sum + u.price, 0)
+  const [gender, setGender] = useState<"male" | "female" | "unknown">("unknown")
+
+  useEffect(() => {
+    const trimmed = name.trim()
+    if (!trimmed || trimmed.toLowerCase() === "client") return
+    fetch("/api/getProducts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: trimmed }),
+    })
+      .then(r => r.json())
+      .then(data => { if (data.gender) setGender(data.gender) })
+      .catch(() => null)
+  }, [name])
 
   // Get products based on pack or SKUs
   const orderedProducts = pack
@@ -131,7 +140,7 @@ function ThankYouContent() {
       </div>
 
       {/* Cross-sell — full width below */}
-      {phone && <Destockage niche={niche} phone={phone} onAdd={(p) => setUpsells(prev => [...prev, p])} />}
+      {phone && <Destockage gender={gender} phone={phone} onAdd={(p) => setUpsells(prev => [...prev, p])} />}
     </div>
   )
 }

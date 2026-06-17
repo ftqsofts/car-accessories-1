@@ -236,7 +236,7 @@ function Toast({ message }: { message: string }) {
   )
 }
 
-export default function Destockage({ niche, gender = "unknown", phone, onAdd }: Props) {
+export default function Destockage({ gender = "unknown", phone, onAdd }: Props) {
   const products = gender === "unknown"
     ? ALL_UPSELLS
     : ALL_UPSELLS.filter((p: Product) => p.gender === gender || p.gender === "both")
