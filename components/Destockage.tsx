@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react"
 
 export type Niche = "vacuum" | "shampoo"
 
+type Gender = "male" | "female" | "unknown"
+
 type Product = {
   sku: string
   title: string
@@ -12,6 +14,7 @@ type Product = {
   price: number
   oldPrice: number
   images: string[]
+  gender: "male" | "female" | "both"
 }
 
 const SILICONE_CLEANER: Product = {
@@ -20,6 +23,7 @@ const SILICONE_CLEANER: Product = {
   description: "تنشيف الما ومسح الزاج والزليج بضربة وحدة بلا ما تخلي حتى أثر. كتهنيك من تمارة، وكتجمع الزغب والغبرة بسهولة تامة.",
   price: 55,
   oldPrice: 163,
+  gender: "female",
   images: [
     "/products/upsells/selicon-cleaaner-1.webp",
     "/products/upsells/selicon-cleaaner-2.webp",
@@ -33,6 +37,7 @@ const KITCHEN_BARRIER: Product = {
   description: "وداعاً للحوايج الفازكين وقت غسيل الماعن! حاجز كيلصق بسهولة فالبوطاجين، كيحبس رش الما وكيخلي حوايجك و الكوزينة ديالك ديما ناشفة.",
   price: 49,
   oldPrice: 150,
+  gender: "female",
   images: [
     "/products/upsells/kitchen-selecton-1.webp",
     "/products/upsells/kitchen-selecton-2.webp",
@@ -45,6 +50,7 @@ const ANTI_VIBRATION: Product = {
   description: "الماكينة كدير الصداع وكتحرك فاش كتعصر؟ هاد الأرجل غادي يسكتوها فمرة! كتحمي الزليج من التخبيش وكتسهل عليك تسيق تحت منها.",
   price: 35,
   oldPrice: 117,
+  gender: "female",
   images: [
     "/products/upsells/antivibration-1.webp",
     "/products/upsells/antivibration-2.jpg",
@@ -57,6 +63,7 @@ const LOCK: Product = {
   description: "تهناي من الروينة وحافظي على سلامة وليداتك! قفل قوي وساهل فالتركيب، كيلصق مزيان فالثلاجة، البلاكارات، والمجورة بلا حفير.",
   price: 29,
   oldPrice: 97,
+  gender: "female",
   images: [
     "/products/upsells/lock-1.webp",
     "/products/upsells/lock-3.webp",
@@ -64,13 +71,13 @@ const LOCK: Product = {
   ],
 }
 
-
 const SIDE_SUNSHADE: Product = {
   sku: "1ADDZB",
   title: "ريدوات شبكة للزاج الجانبي (باك فيه 2)",
   description: "الشمش قاهرة الدراري اللور؟ هاد الريدوات كيركبو بسهولة بحال الغشا فالباب، كيحبسو أشعة الشمس وكيخليوك تهبط الزاج باش يدخل البرد بلا ما يدخل الناموس ولا الغبرة.",
   price: 89,
   oldPrice: 199,
+  gender: "male",
   images: [
     "/products/upsells/sun-protection-2-1.webp",
     "/products/upsells/sun-protection-2-2.webp",
@@ -84,6 +91,7 @@ const FRONT_SUNSHADE: Product = {
   description: "الطوموبيل كترجع بحال الفران ملي كتباركيها فالشمش؟ هاد الواقي كيحبس السخونية، كيحمي الطابلو من التشققات، وكيخلي صالون الطوموبيل بارد. ساهل فالطي ومكيشدش البلاصة.",
   price: 69,
   oldPrice: 175,
+  gender: "male",
   images: [
     "/products/upsells/sun-protection-1.webp",
     "/products/upsells/sun-protection-2.webp",
@@ -207,6 +215,7 @@ function ProductCard({ product, phone, onAdd, onToast }: { product: Product; pho
 
 type Props = {
   niche?: Niche
+  gender?: Gender
   phone: string
   onAdd?: (product: { title: string; price: number; images: string[] }) => void
 }
@@ -226,8 +235,11 @@ function Toast({ message }: { message: string }) {
   )
 }
 
-export default function Destockage({ niche, phone, onAdd }: Props) {
-  const products = niche ? CATALOG[niche] : ALL_UPSELLS
+export default function Destockage({ niche, gender = "unknown", phone, onAdd }: Props) {
+  const baseProducts = niche ? CATALOG[niche] : ALL_UPSELLS
+  const products = gender === "unknown"
+    ? baseProducts
+    : baseProducts.filter(p => p.gender === gender || p.gender === "both")
   const [toast, setToast] = useState<string | null>(null)
 
   useEffect(() => {

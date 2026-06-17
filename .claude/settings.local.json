@@ -53,12 +53,14 @@
       "Bash(wsl ls *)",
       "Bash(wc -c 1.webp 2.webp 3.webp lp-3.webp)",
       "Bash(stat --format=\"%n %s\" 1.webp 2.webp 3.webp lp-3.webp)",
-      "Bash(awk '{print $5, $9}')"
+      "Bash(awk '{print $5, $9}')",
+      "Bash(mkdir -p \"c:/laragon/www/Ecom/car-accessories-pack/app/api/getProducts\")"
     ],
     "additionalDirectories": [
       "C:\\laragon\\www\\Ecom\\car-accessories-pack",
       "C:\\laragon\\www",
-      "c:\\laragon\\www\\Ecom\\car-accessories-pack\\app\\pgs"
+      "c:\\laragon\\www\\Ecom\\car-accessories-pack\\app\\pgs",
+      "c:\\laragon\\www\\Ecom\\car-accessories-pack\\app\\api"
     ]
   }
 }
