@@ -313,6 +313,17 @@ export default function CarHomeCleanerPage() {
 
       <div className="h-px mx-4 bg-gray-100 my-3" />
 
+      
+      {/* ══ AUDIO REVIEWS ══ */}
+      <div className="px-4 max-w-lg mx-auto py-4">
+        <h2 className="font-black text-2xl text-center text-gray-900 mb-5">تقييمات صوتية من عملائنا</h2>
+        <div className="flex flex-col gap-3">
+          {AUDIO_REVIEWS.map((src, i) => (
+            <AudioReview key={src} src={src} index={i} />
+          ))}
+        </div>
+      </div>
+
 
       {/* ══ FORM ══ */}
       <section ref={formRef} className="px-4 py-2 max-w-lg mx-auto" id="order-form">
@@ -355,15 +366,6 @@ export default function CarHomeCleanerPage() {
         <img src="/products/car-home-cleaner-reviews.webp" alt="تقييمات العملاء"
           className="w-full h-auto rounded-xl" loading="lazy" width={720} height={2950}
         />
-      </div>
-
-      {/* ══ AUDIO REVIEWS ══ */}
-      <div className="px-4 max-w-lg mx-auto py-4">
-        <div className="flex flex-col gap-3">
-          {AUDIO_REVIEWS.map((src, i) => (
-            <AudioReview key={src} src={src} index={i} />
-          ))}
-        </div>
       </div>
 
       {/* ══ CTA 2 ══ */}
