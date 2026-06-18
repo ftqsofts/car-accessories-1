@@ -5,6 +5,10 @@ import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
+const AUDIO_REVIEWS = [
+  "/products/reviews/vacuum-cleaner-1.ogg",
+]
+
 const PRODUCT_SKU = "16ZJX1"
 const PRICE_1 = 115
 const PRICE_2 = 185
@@ -28,6 +32,41 @@ const FAQ = [
   { q: "واش كاين تخفيض إلا خديت جوج؟", a: "نعم، إلا خديتي جوج بثمن خاص: 185 درهم بجوج بلاصة 230 🔥 عرض زوين تستافد منو وتاخذ أكثر بثمن أقل." },
   { q: "التوصيل", a: "كتوصلك حتى للدار، بلا مصاريف خفية والدفع عند التسليم." },
 ]
+
+function AudioReview({ src, index }: { src: string; index: number }) {
+  const audioRef = useRef<HTMLAudioElement>(null)
+  const [playing, setPlaying] = useState(false)
+
+  const toggle = () => {
+    const audio = audioRef.current
+    if (!audio) return
+    if (playing) {
+      audio.pause()
+    } else {
+      audio.play()
+    }
+  }
+
+  return (
+    <div className="flex items-center gap-3 bg-white rounded-2xl p-4" style={{ border: "1px solid #e5e7eb", boxShadow: "0 1px 4px rgba(0,0,0,0.04)" }}>
+      <button onClick={toggle}
+        className="flex items-center justify-center w-12 h-12 rounded-full shrink-0 active:scale-95 transition-all"
+        style={{ background: "#1E3A8A" }}
+        aria-label={playing ? "إيقاف" : "تشغيل"}>
+        {playing ? (
+          <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white"><rect x="6" y="5" width="4" height="14" /><rect x="14" y="5" width="4" height="14" /></svg>
+        ) : (
+          <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white"><path d="M8 5v14l11-7z" /></svg>
+        )}
+      </button>
+      <div className="flex-1">
+        <p className="text-gray-900 font-black text-sm">تقييم صوتي من عميل #{index + 1}</p>
+        <p className="text-gray-400 text-xs mt-0.5">استمع لتجربته الحقيقية مع المنتج</p>
+      </div>
+      <audio ref={audioRef} src={src} onEnded={() => setPlaying(false)} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} preload="none" />
+    </div>
+  )
+}
 
 export default function CarHomeCleanerPage() {
   const router = useRouter()
@@ -316,6 +355,15 @@ export default function CarHomeCleanerPage() {
         <img src="/products/car-home-cleaner-reviews.webp" alt="تقييمات العملاء"
           className="w-full h-auto rounded-xl" loading="lazy" width={720} height={2950}
         />
+      </div>
+
+      {/* ══ AUDIO REVIEWS ══ */}
+      <div className="px-4 max-w-lg mx-auto py-4">
+        <div className="flex flex-col gap-3">
+          {AUDIO_REVIEWS.map((src, i) => (
+            <AudioReview key={src} src={src} index={i} />
+          ))}
+        </div>
       </div>
 
       {/* ══ CTA 2 ══ */}

@@ -160,12 +160,18 @@ export default function HrShampPage() {
               متوفر باللون <span className="font-black text-gray-900">الأسود الطبيعي</span> أو <span className="font-black text-gray-900">البني (Marron)</span>
             </span>
           </div>
-
-          <div className="flex items-center gap-2 text-gray-500 text-xs font-medium">
-            <span>ℹ️</span>
-            <span>سيتصل بك فريق الدعم لتأكيد اللون المطلوب فور إرسال طلبك.</span>
-          </div>
         </div>
+
+        
+      {/* ══ AUDIO REVIEWS ══ */}
+      <div className="px-4 max-w-lg mx-auto py-4">
+        <h2 className="font-black text-2xl text-center text-gray-900 mb-5">تقييمات صوتية من عملائنا</h2>
+        <div className="flex flex-col gap-3">
+          {AUDIO_REVIEWS.map((src, i) => (
+            <AudioReview key={src} src={src} index={i} />
+          ))}
+        </div>
+      </div>
 
        {/* Order Form */}
         <OrderForm
@@ -216,15 +222,6 @@ export default function HrShampPage() {
         ))}
       </div>
 
-      {/* ══ AUDIO REVIEWS ══ */}
-      <div className="px-4 max-w-lg mx-auto py-4">
-        <h2 className="font-black text-2xl text-center text-gray-900 mb-5">تقييمات صوتية من عملائنا</h2>
-        <div className="flex flex-col gap-3">
-          {AUDIO_REVIEWS.map((src, i) => (
-            <AudioReview key={src} src={src} index={i} />
-          ))}
-        </div>
-      </div>
 
       {/* ══ CTA ══ */}
       <div className="px-4 max-w-lg mx-auto py-6">
