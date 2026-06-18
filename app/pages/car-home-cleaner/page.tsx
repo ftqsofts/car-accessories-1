@@ -274,6 +274,12 @@ export default function CarHomeCleanerPage() {
 
       <div className="h-px mx-4 bg-gray-100 my-3" />
 
+      {/* ══ CROSS-SELL TEASER ══ */}
+      <div className="max-w-lg mx-auto px-4">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/products/cross-sell-lp.webp" alt="عرض خاص بعد الشراء" className="w-full h-auto rounded-xl" loading="lazy" width={600} height={900} />
+      </div>
+
       {/* ══ FORM ══ */}
       <section ref={formRef} className="px-4 py-2 max-w-lg mx-auto" id="order-form">
         {orderForm}
