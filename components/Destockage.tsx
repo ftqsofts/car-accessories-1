@@ -100,7 +100,21 @@ const FRONT_SUNSHADE: Product = {
   ],
 }
 
-const ALL_UPSELLS: Product[] = [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, FRONT_SUNSHADE, SIDE_SUNSHADE]
+const SAFE_BOX: Product = {
+  sku: "19HOPA",
+  title: "خزنة Beetro الفولاذية الذكية",
+  description: "حماية مطلقة للذهب، الكاش، والوثائق الرسمية من السرقة والتطفل. مدعومة بنظام تثبيت جداري خارق ومصنوعة من ABS عالي الجودة.",
+  price: 250,
+  oldPrice: 399,
+  gender: "male",
+  images: [
+    "/products/coffre-fort/1.webp",
+    "/products/coffre-fort/2.webp",
+    "/products/coffre-fort/3.webp",
+  ],
+}
+
+const ALL_UPSELLS: Product[] = [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, FRONT_SUNSHADE, SIDE_SUNSHADE, SAFE_BOX]
 
 // const CATALOG: Record<Niche, Product[]> = {
 //   vacuum: [FRONT_SUNSHADE, SIDE_SUNSHADE, SILICONE_CLEANER, KITCHEN_BARRIER],
