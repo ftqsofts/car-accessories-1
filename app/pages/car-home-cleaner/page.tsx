@@ -288,6 +288,8 @@ export default function CarHomeCleanerPage() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/products/cross-sell-lp.webp" alt="عرض خاص بعد الشراء" className="w-full h-auto rounded-xl" loading="lazy" width={600} height={900} />
       </div>
+      
+      <div className="h-4" />
 
       {/* ══ LONG HERO (details) ══ */}
       {/* eslint-disable-next-line @next/next/no-img-element */}

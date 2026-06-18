@@ -3,6 +3,11 @@
 import OrderForm from "@/components/OrderForm"
 import { useEffect, useRef, useState } from "react"
 
+const AUDIO_REVIEWS = [
+  "/products/reviews/review-disaar-1.ogg",
+  "/products/reviews/review-disaar-2.ogg",
+]
+
 const PRODUCT_SKU = "18SGTM"
 const PRICE_1 = 125
 const PRICE_2 = 200
@@ -33,6 +38,41 @@ const LP_IMAGES_BOTTOM = [
   "/products/hair-shampoo/social-proof.webp",
   "/products/hair-shampoo/proof.jpg",
 ]
+
+function AudioReview({ src, index }: { src: string; index: number }) {
+  const audioRef = useRef<HTMLAudioElement>(null)
+  const [playing, setPlaying] = useState(false)
+
+  const toggle = () => {
+    const audio = audioRef.current
+    if (!audio) return
+    if (playing) {
+      audio.pause()
+    } else {
+      audio.play()
+    }
+  }
+
+  return (
+    <div className="flex items-center gap-3 bg-white rounded-2xl p-4" style={{ border: "1px solid #e5e7eb", boxShadow: "0 1px 4px rgba(0,0,0,0.04)" }}>
+      <button onClick={toggle}
+        className="flex items-center justify-center w-12 h-12 rounded-full shrink-0 active:scale-95 transition-all"
+        style={{ background: "#1E3A8A" }}
+        aria-label={playing ? "إيقاف" : "تشغيل"}>
+        {playing ? (
+          <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white"><rect x="6" y="5" width="4" height="14" /><rect x="14" y="5" width="4" height="14" /></svg>
+        ) : (
+          <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white"><path d="M8 5v14l11-7z" /></svg>
+        )}
+      </button>
+      <div className="flex-1">
+        <p className="text-gray-900 font-black text-sm">تقييم صوتي من عميلة #{index + 1}</p>
+        <p className="text-gray-400 text-xs mt-0.5">استمعي لتجربتها الحقيقية مع المنتج</p>
+      </div>
+      <audio ref={audioRef} src={src} onEnded={() => setPlaying(false)} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} preload="none" />
+    </div>
+  )
+}
 
 export default function HrShampPage() {
   const [formPassed, setFormPassed] = useState(false)
@@ -174,6 +214,16 @@ export default function HrShampPage() {
             onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
           />
         ))}
+      </div>
+
+      {/* ══ AUDIO REVIEWS ══ */}
+      <div className="px-4 max-w-lg mx-auto py-4">
+        <h2 className="font-black text-2xl text-center text-gray-900 mb-5">تقييمات صوتية من عملائنا</h2>
+        <div className="flex flex-col gap-3">
+          {AUDIO_REVIEWS.map((src, i) => (
+            <AudioReview key={src} src={src} index={i} />
+          ))}
+        </div>
       </div>
 
       {/* ══ CTA ══ */}
