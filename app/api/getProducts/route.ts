@@ -1,7 +1,34 @@
 import { NextRequest, NextResponse } from "next/server"
 import OpenAI from "openai"
 
+const MAX_REQUESTS_PER_DAY = 5
+const WINDOW_MS = 24 * 60 * 60 * 1000
+
+// In-memory IP rate limit — max 5 requests per IP per 24h
+const ipHits = new Map<string, number[]>()
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now()
+  const hits = (ipHits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS)
+  if (hits.length >= MAX_REQUESTS_PER_DAY) {
+    ipHits.set(ip, hits)
+    return true
+  }
+  hits.push(now)
+  ipHits.set(ip, hits)
+  return false
+}
+
 export async function POST(req: NextRequest) {
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
+    req.headers.get("x-real-ip") ??
+    "unknown"
+
+  if (isRateLimited(ip)) {
+    return NextResponse.json({ gender: "unknown", reason: "rate_limited" }, { status: 429 })
+  }
+
   const { name } = await req.json()
 
   if (!name?.trim() || name.trim().toLowerCase() === "client") {
