@@ -6,8 +6,8 @@ import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "swimpool"
 const PRICE_1 = 299
-const PRICE_2 = 399
-const PRICE_3 = 499
+const PRICE_2 = 499
+const PRICE_3 = 599
 const GOLD = "#E8B86D"
 
 const IMAGES = [
