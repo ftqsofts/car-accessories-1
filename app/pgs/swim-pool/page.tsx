@@ -84,7 +84,7 @@ export default function SwimPoolPage() {
         </span>
 
         <h1 className="font-black text-2xl text-gray-900 mb-3 leading-tight">
-         الصهد هلككم؟ 🥵 جيب البحر تال الدار وفرح وليداتك بكل أمان! 🌊
+         الصيف هادا؟ 🥵 جيب البحر تال الدار وفرح وليداتك بكل أمان! 🌊
         </h1>
         <p className="font-bold text-base text-gray-800 flex items-start gap-2">
           <span>☀️</span>
