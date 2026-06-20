@@ -11,7 +11,8 @@ const PRICE_3 = 599
 const GOLD = "#E8B86D"
 
 const IMAGES = [
-  "/products/swim-pool/swim-pool -1.webp",
+  "/products/swim-pool/swim-pool-3.webp",
+  "/products/swim-pool/swim-pool-4.webp",
   "/products/swim-pool/swim-pool-2.webp",
 ]
 
@@ -84,7 +85,7 @@ export default function SwimPoolPage() {
         </span>
 
         <h1 className="font-black text-2xl text-gray-900 mb-3 leading-tight">
-         الصيف هادا 🥵 جيب البحر تال الدار وفرح وليداتك بكل أمان! 🌊
+         الصيف هادا 🥵 جيب البحر تال الدار وفرح وليداتك بكل أمان 🌊
         </h1>
         <p className="font-bold text-base text-gray-800 flex items-start gap-2">
           <span>☀️</span>
