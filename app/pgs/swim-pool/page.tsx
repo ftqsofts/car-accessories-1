@@ -169,7 +169,7 @@ export default function SwimPoolPage() {
       {/* ══ LP IMAGE (details) ══ */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/products/swim-pool/lp.webp" alt="مسبح عائلي قابل للنفخ"
-        className="w-full h-auto block rounded-b-xl shadow-sm transition-transform duration-300 hover:scale-[1.01]" loading="lazy" decoding="async" style={{ cursor: "pointer" }}
+        className="w-full h-auto block rounded-xl rounded-t-2xl shadow-sm transition-transform duration-300 hover:scale-[1.01]" loading="lazy" decoding="async" style={{ cursor: "pointer" }}
         onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
       />
 
