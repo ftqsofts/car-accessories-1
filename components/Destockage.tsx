@@ -101,7 +101,7 @@ const FRONT_SUNSHADE: Product = {
 }
 
 const BABY_SAFETY: Product = {
-  sku: "673C-CBL-00F",
+  sku: "1APWUQ",
   title: "حماية طفلك وضمان نوم عميق وصحي",
   description: "هاد الناموسية هي الحل المتكامل اللي غيهنيك هاد الصيف، حيث كتوفر لطفلك حماية كاملة وآمنة 100% من الناموس وكاع الحشرات بفضل شبكتها الرقيقة اللي كتمنعهم من الدخول وكتخلي الهواء يدوز نقي ومبرد، وبلا ما تحتاجي تشري ليها حتى حاجة زيادة، هي كتجي واجدة بماتلا رطبة ووسادة مريحة كتحمي العمود الفقري.",
   price: 59,
@@ -266,10 +266,12 @@ function Toast({ message }: { message: string }) {
 }
 
 export default function Destockage({ gender = "unknown", phone, onAdd }: Props) {
-  const products = gender === "unknown"
+  const primaryProducts = gender === "unknown"
     ? ALL_UPSELLS
     : ALL_UPSELLS.filter((p: Product) => p.gender === gender || p.gender === "both")
+  const restProducts = ALL_UPSELLS.filter((p: Product) => !primaryProducts.includes(p))
   const [toast, setToast] = useState<string | null>(null)
+  const [showMore, setShowMore] = useState(false)
 
   useEffect(() => {
     if (!toast) return
@@ -277,7 +279,7 @@ export default function Destockage({ gender = "unknown", phone, onAdd }: Props) 
     return () => clearTimeout(t)
   }, [toast])
 
-  if (!products.length) return null
+  if (!primaryProducts.length) return null
 
   return (
     <>
@@ -303,10 +305,22 @@ export default function Destockage({ gender = "unknown", phone, onAdd }: Props) 
           />
         </div>
         <div className="flex flex-col gap-5">
-          {products.map(p => (
+          {primaryProducts.map(p => (
+            <ProductCard key={p.sku} product={p} phone={phone} gender={gender} onAdd={onAdd} onToast={setToast} />
+          ))}
+          {showMore && restProducts.map(p => (
             <ProductCard key={p.sku} product={p} phone={phone} gender={gender} onAdd={onAdd} onToast={setToast} />
           ))}
         </div>
+        {!showMore && restProducts.length > 0 && (
+          <button
+            onClick={() => setShowMore(true)}
+            className="w-full font-black text-sm py-3 rounded-xl active:scale-95 transition-all mt-5"
+            style={{ background: "#fff", color: "#1E3A8A", border: "2px solid #1E3A8A" }}
+          >
+            بغيتي نشوف كل العروض؟ 👇
+          </button>
+        )}
       </div>
     </div>
     {toast && <Toast message="تضاف المنتج للطلبية بنجاح" />}
