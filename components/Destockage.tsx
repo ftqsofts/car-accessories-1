@@ -100,6 +100,21 @@ const FRONT_SUNSHADE: Product = {
   ],
 }
 
+const BABY_SAFETY: Product = {
+  sku: "1AD2HG",
+  title: "حماية طفلك وضمان نوم عميق وصحي",
+  description: "هاد الناموسية هي الحل المتكامل اللي غيهنيك هاد الصيف، حيث كتوفر لطفلك حماية كاملة وآمنة 100% من الناموس وكاع الحشرات بفضل شبكتها الرقيقة اللي كتمنعهم من الدخول وكتخلي الهواء يدوز نقي ومبرد، وبلا ما تحتاجي تشري ليها حتى حاجة زيادة، هي كتجي واجدة بماتلا رطبة ووسادة مريحة كتحمي العمود الفقري.",
+  price: 59,
+  oldPrice: 145,
+  gender: "female",
+  images: [
+    "/products/upsells/S3e4c3aff62004797bd954b917f409ed77.webp",
+    "/products/upsells/S8cf6de97b3db4c9282610665477bf0344.webp",
+    "/products/upsells/S963aefb7b37a4b69bb2013ec21371951v.webp",
+    "/products/upsells/S8903f616c79f4aae873495dc221afcf7r.webp",
+  ],
+}
+
 const SAFE_BOX: Product = {
   sku: "19HOPA",
   title: "خزنة Beetro الفولاذية الذكية",
@@ -114,7 +129,7 @@ const SAFE_BOX: Product = {
   ],
 }
 
-const ALL_UPSELLS: Product[] = [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, FRONT_SUNSHADE, SIDE_SUNSHADE, SAFE_BOX]
+const ALL_UPSELLS: Product[] = [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, FRONT_SUNSHADE, SIDE_SUNSHADE, SAFE_BOX, BABY_SAFETY]
 
 // const CATALOG: Record<Niche, Product[]> = {
 //   vacuum: [FRONT_SUNSHADE, SIDE_SUNSHADE, SILICONE_CLEANER, KITCHEN_BARRIER],
