@@ -136,7 +136,7 @@ const ALL_UPSELLS: Product[] = [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VI
 //   shampoo: [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, FRONT_SUNSHADE, SIDE_SUNSHADE],
 // }
 
-function ProductCard({ product, phone, onAdd, onToast }: { product: Product; phone: string; onAdd?: (product: { title: string; price: number; images: string[] }) => void; onToast?: (title: string) => void }) {
+function ProductCard({ product, phone, gender, onAdd, onToast }: { product: Product; phone: string; gender: Gender; onAdd?: (product: { title: string; price: number; images: string[] }) => void; onToast?: (title: string) => void }) {
   const [activeImg, setActiveImg] = useState(0)
   const [added, setAdded] = useState(false)
   const touchStartX = useRef<number | null>(null)
@@ -228,7 +228,7 @@ function ProductCard({ product, phone, onAdd, onToast }: { product: Product; pho
             <span className="font-black text-2xl text-gray-900">{product.price} درهم</span>
             <span className="text-red-400 line-through text-sm font-bold">{product.oldPrice} درهم</span>
           </div>
-          <span className="text-green-600 font-black text-xs">وفر {product.oldPrice - product.price} درهم 🎉</span>
+          <span className="text-green-600 font-black text-xs">{gender === "female" ? "وفري" : "وفر"} {product.oldPrice - product.price} درهم 🎉</span>
           <button
             onClick={handleAdd}
             disabled={added}
@@ -304,7 +304,7 @@ export default function Destockage({ gender = "unknown", phone, onAdd }: Props) 
         </div>
         <div className="flex flex-col gap-5">
           {products.map(p => (
-            <ProductCard key={p.sku} product={p} phone={phone} onAdd={onAdd} onToast={setToast} />
+            <ProductCard key={p.sku} product={p} phone={phone} gender={gender} onAdd={onAdd} onToast={setToast} />
           ))}
         </div>
       </div>
