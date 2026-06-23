@@ -318,7 +318,7 @@ export default function Destockage({ gender = "unknown", phone, onAdd }: Props) 
             className="w-full font-black text-sm py-3 rounded-xl active:scale-95 transition-all mt-5"
             style={{ background: "#fff", color: "#1E3A8A", border: "2px solid #1E3A8A" }}
           >
-            بغيت نشوف كل العروض؟ 👇
+            بغيت نشوف كل العروض 👇
           </button>
         )}
       </div>
