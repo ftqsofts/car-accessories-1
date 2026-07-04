@@ -9,9 +9,9 @@ const AUDIO_REVIEWS = [
 ]
 
 const PRODUCT_SKU = "18SGTM"
-const PRICE_1 = 125
+const PRICE_A = 125
+const PRICE_B = 110
 const PRICE_2 = 200
-const SAVING = PRICE_1 * 2 - PRICE_2
 
 const FAQ = [
   { q: "شنو هي الألوان المتوفرة؟", a: "كنقدمو جوج ألوان: أسود طبيعي ومارون — ختار اللي يناسبك ملي كتطلب." },
@@ -75,6 +75,15 @@ function AudioReview({ src, index }: { src: string; index: number }) {
 }
 
 export default function HrShampPage() {
+  const [price1] = useState<number>(() => {
+    if (typeof window === "undefined") return PRICE_A
+    const stored = sessionStorage.getItem("hr_shamp_ab")
+    if (stored) return Number(stored)
+    const variant = Math.random() < 0.5 ? PRICE_A : PRICE_B
+    sessionStorage.setItem("hr_shamp_ab", String(variant))
+    return variant
+  })
+  const saving = price1 * 2 - PRICE_2
   const [formPassed, setFormPassed] = useState(false)
   const [openFaq, setOpenFaq] = useState<Set<number>>(new Set(FAQ.map((_, i) => i)))
   const formRef = useRef<HTMLElement>(null)
@@ -181,15 +190,15 @@ export default function HrShampPage() {
             {
               q: 1,
               label: "قرعة وحدة (شامبو ديسار الأصلي)",
-              price: PRICE_1,
+              price: price1,
               oldPrice: 160,
             },
             {
               q: 2,
               label: "عرض 2 قرعات (تهنى مدة أطول ووفر كثر)",
               price: PRICE_2,
-              oldPrice: PRICE_1 * 2,
-              badge: `وفر ${SAVING} درهم دقة وحدة`,
+              oldPrice: price1 * 2,
+              badge: `وفر ${saving} درهم دقة وحدة`,
             },
           ]}
         />
