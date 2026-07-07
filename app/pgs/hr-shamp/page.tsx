@@ -119,14 +119,14 @@ export default function HrShampPage() {
       {/* ══ LP IMAGES TOP (1-6) ══ */}
       <div className="max-w-lg mx-auto" style={{ lineHeight: 0, fontSize: 0 }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={LP_IMAGES_TOP[0]} alt="شامبو طبيعي للشعر" width={800} height={800}
-          fetchPriority="high" decoding="async"
+        <img src={LP_IMAGES_TOP[0]} alt="شامبو طبيعي للشعر" width={800} height={1422}
+          fetchPriority="high" decoding="sync" loading="eager"
           style={{ display: "block", width: "100%", height: "auto", margin: 0, padding: 0, cursor: "pointer" }}
           onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
         />
         {LP_IMAGES_TOP.slice(1).map((src: string, i: number) => (
           // eslint-disable-next-line @next/next/no-img-element
-          <img key={i} src={src} alt="" width={800} height={800} loading="lazy"
+          <img key={i} src={src} alt="" width={800} height={1422} loading="lazy" decoding="async"
             style={{ display: "block", width: "100%", height: "auto", margin: 0, padding: 0, marginTop: -2, cursor: "pointer" }}
             onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
           />
@@ -215,7 +215,7 @@ export default function HrShampPage() {
       <div className="max-w-lg mx-auto" style={{ lineHeight: 0, fontSize: 0 }}>
         {LP_IMAGES_BOTTOM.map((src: string, i: number) => (
           // eslint-disable-next-line @next/next/no-img-element
-          <img key={i} src={src} alt="" width={800} height={800} loading="lazy"
+          <img key={i} src={src} alt="" width={800} height={1422} loading="lazy" decoding="async"
             style={{ display: "block", width: "100%", height: "auto", margin: 0, padding: 0, marginTop: -2, cursor: "pointer" }}
             onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
           />
