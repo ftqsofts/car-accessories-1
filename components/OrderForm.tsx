@@ -65,6 +65,9 @@ export default function OrderForm({ sku, pack, options, btnLabel = "اطلب ا�
     if (!validate()) return
     if (form._hp) return
     setLoading(true)
+    if (typeof window !== "undefined" && (window as any).saleura) {
+      (window as any).saleura("track", "lead_submitted")
+    }
     fetch("/api/order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
