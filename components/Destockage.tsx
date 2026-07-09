@@ -129,7 +129,21 @@ const SAFE_BOX: Product = {
   ],
 }
 
-const ALL_UPSELLS: Product[] = [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, FRONT_SUNSHADE, SIDE_SUNSHADE, SAFE_BOX, BABY_SAFETY]
+const FAN: Product = {
+  sku: "FAN001",
+  title: "مروحة يدوية قابلة للطي مع شاشة وستاند للتيليفون",
+  description: "سخونية الصيف ما عادت مشكلة! مروحة خفيفة كتطوى وكتحمل فاليد أو تتعلق فالعنق، فيها 5 سرعات، شاشة تبين البطارية، وستاند للتيليفون. بطارية 1800mAh كتشحن بـ USB وكتدوم معاك طول النهار.",
+  price: 49,
+  oldPrice: 119,
+  gender: "female",
+  images: [
+    "/products/fan/fan_1.webp",
+    "/products/fan/fan_2.webp",
+    "/products/fan/fan_3.webp",
+  ],
+}
+
+const ALL_UPSELLS: Product[] = [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, FAN, FRONT_SUNSHADE, SIDE_SUNSHADE, SAFE_BOX, BABY_SAFETY]
 
 // const CATALOG: Record<Niche, Product[]> = {
 //   vacuum: [FRONT_SUNSHADE, SIDE_SUNSHADE, SILICONE_CLEANER, KITCHEN_BARRIER],
