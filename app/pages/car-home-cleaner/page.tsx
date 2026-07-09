@@ -123,6 +123,9 @@ export default function CarHomeCleanerPage() {
     if (!validate()) return
     if (form._hp) return
     setLoading(true)
+    if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).saleura) {
+      (window as unknown as Record<string, (e: string, a: string) => void>).saleura("track", "lead_submitted")
+    }
     fetch("/api/order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
