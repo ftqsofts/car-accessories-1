@@ -143,7 +143,22 @@ const FAN: Product = {
   ],
 }
 
-const ALL_UPSELLS: Product[] = [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, FAN, FRONT_SUNSHADE, SIDE_SUNSHADE, SAFE_BOX, BABY_SAFETY]
+
+const CAMEL_FAT: Product = {
+  sku: "CML-FAT-100",
+  title: "دهن سنام الجمل الأصلي لجميع آلام المفاصل",
+  description: "تهنا من حريق المفاصل، الظهر والركاب! مرهم دهن سنام الجمل (Sanambio) طبيعي وآمن 100%، كيعطي مفعول سريع باش ترجع حيويتك. العبوة فيها 100 مل.",
+  price: 99,
+  oldPrice: 199,
+  gender: "both",
+  images: [
+    "/products/camel_fat/1.webp",
+    "/products/camel_fat/2.webp",
+    "/products/camel_fat/3.webp",
+  ],
+}
+
+const ALL_UPSELLS: Product[] = [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, FRONT_SUNSHADE, SIDE_SUNSHADE, SAFE_BOX, BABY_SAFETY, CAMEL_FAT]
 
 // const CATALOG: Record<Niche, Product[]> = {
 //   vacuum: [FRONT_SUNSHADE, SIDE_SUNSHADE, SILICONE_CLEANER, KITCHEN_BARRIER],
