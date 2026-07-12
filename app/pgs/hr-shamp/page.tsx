@@ -197,7 +197,7 @@ export default function HrShampPage() {
 
       {/* ══ RESULTS SOCIAL PROOF ══ */}
       <div className="max-w-lg mx-auto px-4 py-6">
-        <h2 className="font-black text-2xl text-center text-gray-900 mb-2">نتائج حقيقية من عملائنا </h2>
+        <h2 className="font-black text-2xl text-center text-gray-900 mb-2">نتائج حقيقية </h2>
         <p className="text-center text-gray-500 text-sm mb-5">قبل وبعد الاستعمال</p>
         <div className="grid grid-cols-1 gap-0">
           {[2, 3, 4].map((n) => (
