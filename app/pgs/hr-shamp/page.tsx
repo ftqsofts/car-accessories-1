@@ -27,7 +27,6 @@ const FAQ = [
 
 const LP_IMAGES_TOP = [
   "/products/hair-shampoo/lp-1-2.webp",
-  "/products/hair-shampoo/lp-2.webp",
   "/products/hair-shampoo/lp-6.webp",
   "/products/hair-shampoo/lp-5.webp",
   "/products/hair-shampoo/lp-3.webp",
@@ -35,7 +34,8 @@ const LP_IMAGES_TOP = [
 ]
 
 const LP_IMAGES_BOTTOM = [
-  "/products/hair-shampoo/social-proof.webp",
+  // "/products/hair-shampoo/lp-2.webp",
+  // "/products/hair-shampoo/social-proof.webp",
   "/products/hair-shampoo/proof.jpg",
 ]
 
@@ -194,6 +194,35 @@ export default function HrShampPage() {
           ]}
         />
       </section>
+
+      {/* ══ RESULTS SOCIAL PROOF ══ */}
+      <div className="max-w-lg mx-auto px-4 py-6">
+        <h2 className="font-black text-2xl text-center text-gray-900 mb-2">نتائج حقيقية من عملائنا </h2>
+        <p className="text-center text-gray-500 text-sm mb-5">قبل وبعد الاستعمال</p>
+        <div className="grid grid-cols-2 gap-0">
+          {[1, 2, 3, 4].map((n) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={n}
+              src={`/products/hair-shampoo/results/${n}.webp`}
+              alt={`نتيجة ${n}`}
+              width={400}
+              height={400}
+              loading="lazy"
+              decoding="async"
+              className="w-full rounded-2xl object-cover border-green-200!"
+              style={{ border: "2px solid #e5e7eb" }}
+            />
+          ))}
+        </div>
+        <div className="mt-5">
+          <button onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+            className="w-full text-black font-black text-lg py-5 rounded-2xl active:scale-95 shaked"
+            style={{ background: "#ffd200", boxShadow: "0 4px 24px rgba(255,210,0,0.4)" }}>
+            🛒 اطلب الآن — الدفع عند الاستلام
+          </button>
+        </div>
+      </div>
 
        {/* ══ WHATSAPP ══ */}
       <section className="max-w-lg mx-auto px-4 hidden py-4">
