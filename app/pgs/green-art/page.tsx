@@ -115,12 +115,12 @@ export default function GreenArtPage() {
         </div>
 
         <OrderForm
-          sku={PRODUCT_SKU}
-          pack="green-art"
-          options={[
-            { q: 1, label: "رول واحد (1م × 3م)", price: PRICE_1, oldPrice: OLD_PRICE_1 },
-            { q: 2, label: "عرض رولين (غطي مساحة أكبر ووفر)", price: PRICE_2, oldPrice: OLD_PRICE_2, badge: `وفر ${SAVING} درهم` },
-          ]}
+        sku={PRODUCT_SKU}
+        pack="green-art"
+        options={[
+          { q: 1, label: "رول واحد (1م × 3م)", price: PRICE_1, oldPrice: OLD_PRICE_1 },
+          { q: 2, label: "جوج رولوات (غطي مساحة أكبر بثمن حصري)", price: PRICE_2, oldPrice: OLD_PRICE_2, badge: `وفر ${SAVING} درهم` },
+        ]}
         />
       </section>
 
