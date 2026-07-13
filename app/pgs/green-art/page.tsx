@@ -13,11 +13,9 @@ const GOLD = "#E8B86D"
 const DARK = "#030712"
 
 const IMAGES = [
-  "/products/green-art/5khQgfDjdCcWJy0MxeUoBVKx3oMlxyRkzUoYBisE_lg.webp",
-  "/products/green-art/c2Wpv8m6pRangNhF3xyQg9a3PNDACwWZdOWGeDPN.webp",
-  "/products/green-art/v7CFlIEzYT0ttGdlwPqHx8zS1XvIJUEt0V0qCkoP.webp",
-  "/products/green-art/9oXx5Und9XwtxtcMgjteLNMVd8pPBwI7Qioj1Yxp.webp",
   "/products/green-art/PlrFwGHcNT5B0BZGSdCkvUKoYKNG5rVjBlvMZ9Sd.webp",
+  "/products/green-art/5khQgfDjdCcWJy0MxeUoBVKx3oMlxyRkzUoYBisE_lg.webp",
+  "/products/green-art/g1q9hvbq4StYofCR66yopvt7BCC0cEF3fLlLzoQg.webp",
 ]
 
 const FAQ = [
@@ -83,7 +81,7 @@ export default function GreenArtPage() {
 
       {/* ══ HEADING ══ */}
       <div className="px-4 pt-4 pb-2 max-w-lg mx-auto">
-        <h1 className="font-black text-xl text-gray-900 mb-2 text-right">🌿 حائط عشب صناعي — خصوصية أنيق للشرفة والحديقة ✔️</h1>
+        <h1 className="font-black text-xl text-gray-900 mb-2 text-right leading-snug">عييتي من حضية الجيران؟ وبغيتي ديكور واعر يرد الروح فمحلك؟ 🌿👀</h1>
         <div className="flex items-center gap-3 mb-2">
           <span className="font-black text-3xl" style={{ color: DARK }}>{PRICE_1} درهم</span>
           <span className="text-gray-400 text-lg font-bold line-through">{OLD_PRICE_1} درهم</span>
@@ -96,60 +94,6 @@ export default function GreenArtPage() {
       </div>
 
       <div className="h-px mx-4 bg-gray-100 my-3" />
-
-      <div className="px-4 max-w-lg mx-auto text-right">
-        <div className="space-y-2 mb-2">
-          <p className="text-gray-700 font-bold text-[15px]">🌿 ودّع عيون الجيران واستمتع بخصوصية أكثر</p>
-          <p className="text-gray-700 font-bold text-[15px]">🌿 لمسة طبيعية تغيّر شكل منزلك بالكامل</p>
-          <p className="text-gray-700 font-bold text-[15px]">🌿 الحل الأسرع لتجديد الحديقة أو البالكون</p>
-        </div>
-        <div className="space-y-2 text-sm border-t border-b border-gray-100 py-4">
-          {[
-            "يغطي الأسوار والبلاكونات والتراسات",
-            "سهل التركيب ولا يحتاج صيانة",
-            "يبقى أخضر طوال السنة",
-            "مناسب للمنازل، الفيلات، المقاهي والمحلات",
-          ].map((t, i) => (
-            <div key={i} className="flex items-center gap-2 text-gray-700 font-bold">
-              <span className="text-green-600">✔️</span>
-              <span>{t}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ══ PROBLEM / SOLUTION ══ */}
-      <div className="px-4 max-w-lg mx-auto py-6 text-right">
-        <h2 className="font-black text-xl text-gray-900 mb-3">هل تعاني من...</h2>
-        <div className="space-y-2 mb-6">
-          {[
-            "سور قديم يشوّه منظر المنزل؟",
-            "جيران أو مارة يطلّون على حديقتك أو البالكون؟",
-            "مكان خارجي يحتاج لمسة جمالية بدون تكلفة كبيرة؟",
-          ].map((t, i) => (
-            <div key={i} className="flex items-center gap-2 text-gray-700 font-bold">
-              <span className="text-red-500">❌</span>
-              <span>{t}</span>
-            </div>
-          ))}
-        </div>
-
-        <h2 className="font-black text-xl text-gray-900 mb-1">الحل بسيط 🌿</h2>
-        <p className="text-gray-500 text-sm mb-3">مع السياج الأخضر الصناعي، يمكنك خلال دقائق:</p>
-        <div className="space-y-2">
-          {[
-            "إخفاء الأسوار القديمة",
-            "زيادة الخصوصية",
-            "إعطاء المكان مظهراً راقياً وطبيعياً",
-            "الاستمتاع بمنظر أخضر طوال السنة",
-          ].map((t, i) => (
-            <div key={i} className="flex items-center gap-2 text-gray-700 font-bold">
-              <span className="text-green-600">✅</span>
-              <span>{t}</span>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* ══ FORM ══ */}
       <section ref={formRef} className="px-5 py-6 my-8 max-w-lg mx-auto bg-white rounded-xl text-right" id="order-form" dir="rtl">
@@ -189,82 +133,35 @@ export default function GreenArtPage() {
         />
       </div>
 
+      <div className="max-w-lg mx-auto px-4" style={{ lineHeight: 0, fontSize: 0 }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/products/green-art/9oXx5Und9XwtxtcMgjteLNMVd8pPBwI7Qioj1Yxp.webp" alt="مقاس حائط العشب الصناعي 1م × 3م" width={1419} height={1122} loading="lazy" decoding="async"
+          className="rounded-xl"
+          style={{ display: "block", width: "100%", height: "auto" }}
+        />
+      </div>
+
       {/* ══ FEATURES ══ */}
       <div className="px-4 max-w-lg mx-auto py-6 text-right">
-        <h2 className="font-black text-xl text-center text-gray-900 mb-5">لماذا يختاره الجميع؟</h2>
-        <div className="grid grid-cols-2 gap-3">
+        <h2 className="font-black text-xl text-center text-gray-900 mb-5">علاش هاد السياج خصو يكون عندك اليوم؟</h2>
+        <div className="flex flex-col gap-3">
           {[
-            { icon: "🌿", t: "مظهر طبيعي وأنيق" },
-            { icon: "🔧", t: "تركيب سريع وسهل" },
-            { icon: "✂️", t: "يمكن قصّه حسب المقاس" },
-            { icon: "🏡", t: "مناسب لأي سور تقريباً" },
-            { icon: "☀️", t: "مقاوم للعوامل الجوية" },
-            { icon: "💧", t: "لا يحتاج سقي أو عناية" },
+            { icon: "🔒", t: "خصوصية تامة", d: "الوراق مصممين بشكل كثيف باش يحجبو الرؤية 100%. علقو ف الشراجم أو البالكون وجلس مرتاح بلا ما يشوفك حتى شي براني." },
+            { icon: "🏪", t: "ديكور كيحمق للمشاريع والمحلات", d: "لمسة خضراء طبيعية كتزيد من جمالية المكان وكتخلي الكليان يحس بالراحة، ف القهاوي، المطاعم، أو واجهات المحلات." },
+            { icon: "☀️", t: "جودة عالية ومقاوم للعوامل الخارجية", d: "مصنوع من ثوب حرير ممتاز مخصص للاستعمال الخارجي، كيصبر للشمس والشتا وما كيبهاتش لونو." },
+            { icon: "✨", t: "زيرو تمارة", d: "بدون سقي، بدون تقطاع، بدون حشرات. كيتعلق بسهولة ويبقى ديما خضر وواعر طول العام." },
           ].map((f, i) => (
-            <div key={i} className="bg-white rounded-2xl p-4 text-center" style={{ border: "1px solid #e5e7eb", boxShadow: "0 1px 4px rgba(0,0,0,0.04)" }}>
-              <div className="text-2xl mb-2">{f.icon}</div>
-              <p className="text-gray-900 font-black text-sm">{f.t}</p>
+            <div key={i} className="bg-white rounded-2xl p-4 flex gap-3" style={{ border: "1px solid #e5e7eb", boxShadow: "0 1px 4px rgba(0,0,0,0.04)" }}>
+              <div className="text-2xl shrink-0">{f.icon}</div>
+              <div>
+                <p className="text-gray-900 font-black text-sm mb-1">{f.t}</p>
+                <p className="text-gray-500 text-sm leading-relaxed">{f.d}</p>
+              </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* ══ REAL INSTALL PHOTOS ══ */}
-      <div className="max-w-lg mx-auto px-4 py-4">
-        <h2 className="font-black text-xl text-center text-gray-900 mb-2">نتائج حقيقية من عملائنا</h2>
-        <p className="text-center text-gray-500 text-sm mb-5">تركيب فعلي في المنازل</p>
-        <div className="grid grid-cols-1 gap-3">
-          {[
-            "/products/green-art/v7CFlIEzYT0ttGdlwPqHx8zS1XvIJUEt0V0qCkoP.webp",
-            "/products/green-art/9oXx5Und9XwtxtcMgjteLNMVd8pPBwI7Qioj1Yxp.webp",
-          ].map((src, i) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img key={i} src={src} alt={`تركيب حقيقي ${i + 1}`} width={800} height={1400} loading="lazy" decoding="async"
-              className="w-full rounded-2xl object-cover" style={{ border: "1px solid #e5e7eb" }}
-            />
-          ))}
-        </div>
-        <div className="mt-5">
-          <button onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-            className="w-full text-black font-black text-lg py-5 rounded-2xl active:scale-95 shaked"
-            style={{ background: "#ffd200", boxShadow: "0 4px 24px rgba(255,210,0,0.4)" }}>
-            🛒 اطلب الآن — الدفع عند الاستلام
-          </button>
-        </div>
-      </div>
-
-      {/* ══ VERSATILITY ══ */}
-      <div className="px-4 max-w-lg mx-auto py-6 text-right">
-        <h2 className="font-black text-xl text-center text-gray-900 mb-5">استخدمه في أي مكان</h2>
-        <div className="flex flex-wrap gap-2 justify-center">
-          {["الحدائق", "البالكونات", "الأسطح", "أسوار المنازل", "الفيلات", "المقاهي", "المطاعم", "المحلات التجارية", "المسابح"].map((t, i) => (
-            <span key={i} className="px-3 py-2 rounded-full text-sm font-black" style={{ background: "#f0fdf4", color: "#166534", border: "1px solid #bbf7d0" }}>
-              ✔️ {t}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* ══ BENEFITS ══ */}
-      <div className="px-4 max-w-lg mx-auto py-6 text-right">
-        <h2 className="font-black text-xl text-gray-900 mb-4">أكثر من مجرد ديكور</h2>
-        <div className="space-y-2">
-          {["خصوصية أكثر", "منظر أجمل", "تكلفة أقل من تجديد السور", "تركيب بنفسك", "يدوم لفترة طويلة"].map((t, i) => (
-            <div key={i} className="flex items-center gap-2 text-gray-700 font-bold">
-              <span className="text-green-600">✔️</span>
-              <span>{t}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ══ WHY BUY NOW ══ */}
-      <div className="px-4 max-w-lg mx-auto py-6">
-        <div className="rounded-2xl p-6 text-center" style={{ background: "#fdf8ee", border: `1px solid ${GOLD}` }}>
-          <p className="font-black text-lg text-gray-900 mb-2">لا تنتظر حتى تغيّر السور بالكامل</p>
-          <p className="text-gray-600 font-bold text-sm">وفر المال... وغيّر شكل المكان في دقائق فقط.</p>
-        </div>
-      </div>
 
       {/* ══ CTA ══ */}
       <div className="px-4 max-w-lg mx-auto py-2">
