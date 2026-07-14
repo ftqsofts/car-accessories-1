@@ -124,7 +124,14 @@ export default function GreenArtPage() {
         />
       </section>
 
-      {/* ══ DIMENSIONS ══ */}
+      <div className="max-w-lg mx-auto px-4" style={{ lineHeight: 0, fontSize: 0 }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/products/green-art/g1q9hvbq4StYofCR66yopvt7BCC0cEF3fLlLzoQg.webp" alt="مقاس حائط العشب الصناعي 1م × 3م" width={1419} height={1122} loading="lazy" decoding="async"
+          className="rounded-xl"
+          style={{ display: "block", width: "100%", height: "auto" }}
+        />
+      </div>
+
       <div className="max-w-lg mx-auto px-4" style={{ lineHeight: 0, fontSize: 0 }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/products/green-art/PlrFwGHcNT5B0BZGSdCkvUKoYKNG5rVjBlvMZ9Sd.webp" alt="مقاس حائط العشب الصناعي 1م × 3م" width={1419} height={1122} loading="lazy" decoding="async"
