@@ -93,20 +93,12 @@ export default function GreenArtPage() {
         <p className="text-green-600 font-bold text-sm">توصيل مجاني — الدفع عند الاستلام</p>
       </div>
 
-      <div className="h-px mx-4 bg-gray-100 my-3" />
-
       {/* ══ FORM ══ */}
       <section ref={formRef} className="px-5 py-6 my-8 max-w-lg mx-auto bg-white rounded-xl text-right" id="order-form" dir="rtl">
-        <div className="mb-6 text-center mx-auto">
-          <h2 className="text-xl font-black text-gray-900 mb-2 leading-tight">
-            اطلب الآن
-          </h2>
-        </div>
-
         <div className="space-y-3 mb-6 text-sm border-t border-b border-gray-100 py-4">
           <div className="flex items-center gap-2 text-gray-700 font-bold">
             <span className="text-gray-900">✓</span>
-            <span>توصيل مجاني لجميع المدن + الدفع عند الاستلام والتأكد من الجودة</span>
+            <span>الدفع عند الاستلام والتأكد من الجودة</span>
           </div>
           <div className="flex items-center gap-2 text-gray-700 font-bold">
             <span>📏</span>
