@@ -4,7 +4,7 @@ import OrderForm from "@/components/OrderForm"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "1CHOM9"
-const PRICE_1 = 185
+const PRICE_1 = 159
 const PRICE_2 = 390
 const OLD_PRICE_1 = 250
 const OLD_PRICE_2 = 500
@@ -81,7 +81,8 @@ export default function GreenArtPage() {
 
       {/* ══ HEADING ══ */}
       <div className="px-4 pt-4 pb-2 max-w-lg mx-auto">
-        <h1 className="font-black text-xl text-gray-900 mb-2 text-right leading-snug">عييتي من حضية الجيران؟ وبغيتي ديكور واعر يرد الروح فمحلك؟ 🌿👀</h1>
+        <h1 className="font-black text-xl text-gray-900 mb-2 text-right leading-snug">سياج نباتي اصطناعي فاخر — خصوصية تامة وديكور أنيق لمنزلك أو محلك</h1>
+        <p className="text-gray-500 text-sm text-right mb-3">مقاوم للعوامل الخارجية، بدون صيانة، يبقى أخضر طوال السنة</p>
         <div className="flex items-center gap-3 mb-2">
           <span className="font-black text-3xl" style={{ color: DARK }}>{PRICE_1} درهم</span>
           <span className="text-gray-400 text-lg font-bold line-through">{OLD_PRICE_1} درهم</span>
@@ -89,8 +90,7 @@ export default function GreenArtPage() {
             -{Math.round((1 - PRICE_1 / OLD_PRICE_1) * 100)}%
           </span>
         </div>
-        <p className="text-green-600 font-black text-sm">✅ توصيل مجاني — الدفع عند الاستلام</p>
-        <p className="text-black font-black text-sm mt-0.5">⏳ الكمية محدودة — العرض سينتهي قريباً</p>
+        <p className="text-green-600 font-bold text-sm">توصيل مجاني — الدفع عند الاستلام</p>
       </div>
 
       <div className="h-px mx-4 bg-gray-100 my-3" />
@@ -99,7 +99,7 @@ export default function GreenArtPage() {
       <section ref={formRef} className="px-5 py-6 my-8 max-w-lg mx-auto bg-white rounded-xl text-right" id="order-form" dir="rtl">
         <div className="mb-6 text-center mx-auto">
           <h2 className="text-xl font-black text-gray-900 mb-2 leading-tight">
-            🌿 حوّل مكانك إلى مساحة أجمل وأكثر خصوصية
+            اطلب الآن
           </h2>
         </div>
 
@@ -126,23 +126,7 @@ export default function GreenArtPage() {
 
       <div className="max-w-lg mx-auto px-4" style={{ lineHeight: 0, fontSize: 0 }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/products/green-art/g1q9hvbq4StYofCR66yopvt7BCC0cEF3fLlLzoQg.webp" alt="مقاس حائط العشب الصناعي 1م × 3م" width={1419} height={1122} loading="lazy" decoding="async"
-          className="rounded-xl"
-          style={{ display: "block", width: "100%", height: "auto" }}
-        />
-      </div>
-
-      <div className="max-w-lg mx-auto px-4" style={{ lineHeight: 0, fontSize: 0 }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/products/green-art/PlrFwGHcNT5B0BZGSdCkvUKoYKNG5rVjBlvMZ9Sd.webp" alt="مقاس حائط العشب الصناعي 1م × 3م" width={1419} height={1122} loading="lazy" decoding="async"
-          className="rounded-xl"
-          style={{ display: "block", width: "100%", height: "auto" }}
-        />
-      </div>
-
-      <div className="max-w-lg mx-auto px-4" style={{ lineHeight: 0, fontSize: 0 }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/products/green-art/9oXx5Und9XwtxtcMgjteLNMVd8pPBwI7Qioj1Yxp.webp" alt="مقاس حائط العشب الصناعي 1م × 3م" width={1419} height={1122} loading="lazy" decoding="async"
           className="rounded-xl"
           style={{ display: "block", width: "100%", height: "auto" }}
         />
@@ -150,13 +134,13 @@ export default function GreenArtPage() {
 
       {/* ══ FEATURES ══ */}
       <div className="px-4 max-w-lg mx-auto py-6 text-right">
-        <h2 className="font-black text-xl text-center text-gray-900 mb-5">علاش هاد السياج خصو يكون عندك اليوم؟</h2>
+        <h2 className="font-black text-xl text-center text-gray-900 mb-5">مميزات المنتج</h2>
         <div className="flex flex-col gap-3">
           {[
-            { icon: "🔒", t: "خصوصية تامة", d: "الوراق مصممين بشكل كثيف باش يحجبو الرؤية 100%. علقو ف الشراجم أو البالكون وجلس مرتاح بلا ما يشوفك حتى شي براني." },
-            { icon: "🏪", t: "ديكور كيحمق للمشاريع والمحلات", d: "لمسة خضراء طبيعية كتزيد من جمالية المكان وكتخلي الكليان يحس بالراحة، ف القهاوي، المطاعم، أو واجهات المحلات." },
-            { icon: "☀️", t: "جودة عالية ومقاوم للعوامل الخارجية", d: "مصنوع من ثوب حرير ممتاز مخصص للاستعمال الخارجي، كيصبر للشمس والشتا وما كيبهاتش لونو." },
-            { icon: "✨", t: "زيرو تمارة", d: "بدون سقي، بدون تقطاع، بدون حشرات. كيتعلق بسهولة ويبقى ديما خضر وواعر طول العام." },
+            { icon: "🔒", t: "خصوصية تامة", d: "أوراق مصممة بشكل كثيف تحجب الرؤية بالكامل. مثالي للشرفات والأسوار حتى تستمتع بخصوصية دون إزعاج." },
+            { icon: "🏪", t: "ديكور احترافي للمحلات والمشاريع", d: "لمسة خضراء طبيعية تضيف جمالية للمكان وتحسّن تجربة الزبناء، مناسبة للمقاهي والمطاعم وواجهات المحلات." },
+            { icon: "☀️", t: "جودة عالية ومقاومة للعوامل الخارجية", d: "مصنوع من مواد ممتازة مخصصة للاستعمال الخارجي، يتحمل الشمس والأمطار دون أن يفقد لونه." },
+            { icon: "✨", t: "بدون صيانة", d: "لا يحتاج سقي ولا تقليم ولا عناية إضافية. سهل التركيب ويبقى أخضر طوال السنة." },
           ].map((f, i) => (
             <div key={i} className="bg-white rounded-2xl p-4 flex gap-3" style={{ border: "1px solid #e5e7eb", boxShadow: "0 1px 4px rgba(0,0,0,0.04)" }}>
               <div className="text-2xl shrink-0">{f.icon}</div>
