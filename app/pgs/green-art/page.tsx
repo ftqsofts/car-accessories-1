@@ -4,7 +4,7 @@ import OrderForm from "@/components/OrderForm"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "1CHOM9"
-const PRICE_1 = 195
+const PRICE_1 = 185
 const PRICE_2 = 390
 const OLD_PRICE_1 = 250
 const OLD_PRICE_2 = 500
