@@ -90,19 +90,24 @@ export default function GreenArtPage() {
             -{Math.round((1 - PRICE_1 / OLD_PRICE_1) * 100)}%
           </span>
         </div>
-        <p className="text-green-600 font-bold text-sm">توصيل مجاني — الدفع عند الاستلام</p>
+        <p className="text-green-600 font-bold text-sm">الدفع عند الاستلام والتأكد من الجودة</p>
       </div>
 
       {/* ══ FORM ══ */}
       <section ref={formRef} className="px-5 py-6 my-8 max-w-lg mx-auto bg-white rounded-xl text-right" id="order-form" dir="rtl">
-        <div className="space-y-3 mb-6 text-sm border-t border-b border-gray-100 py-4">
-          <div className="flex items-center gap-2 text-gray-700 font-bold">
-            <span className="text-gray-900">✓</span>
-            <span>الدفع عند الاستلام والتأكد من الجودة</span>
+        {/* ══ QUICK FEATURES ══ */}
+        <div className="flex flex-col gap-2 mb-6">
+          <div className="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3">
+            <span className="text-lg shrink-0">📏</span>
+            <span className="text-gray-900 font-black text-base">كل رول مقاسه 1 متر × 3 متر</span>
           </div>
-          <div className="flex items-center gap-2 text-gray-700 font-bold">
-            <span>📏</span>
-            <span>كل رول مقاسه <span className="font-black text-gray-900">1 متر × 3 متر</span></span>
+          <div className="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3">
+            <span className="text-lg shrink-0">✂️</span>
+            <span className="text-gray-900 font-black text-base">سهل القص والتفصيل حسب المقاس</span>
+          </div>
+          <div className="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3">
+            <span className="text-lg shrink-0">🌬️</span>
+            <span className="text-gray-900 font-black text-base">ثابت ومقاوم للرياح</span>
           </div>
         </div>
 
