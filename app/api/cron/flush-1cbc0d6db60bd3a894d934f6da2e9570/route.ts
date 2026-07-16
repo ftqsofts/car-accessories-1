@@ -51,6 +51,7 @@ export async function GET(req: NextRequest) {
 
   let sent = 0
   let failed = 0
+  const errs: string[] = []
 
   await Promise.all(drafts.map(async (draft) => {
     // skip if this phone already has a confirmed order
@@ -84,12 +85,12 @@ export async function GET(req: NextRequest) {
       await fetch(`${SUPABASE_URL}/drafts?id=eq.${draft.id}`, {
         method: "DELETE",
         headers: SB_HEADERS,
-      }).catch((err) => console.error(err))
+      }).catch((err) => errs.push(`Failed to delete draft ${draft.id}: ${err.message}`))
       sent++
     } else {
       failed++
     }
   }))
 
-  return NextResponse.json({ ok: true, sent, failed, total: drafts.length })
+  return NextResponse.json({ ok: true, sent, failed, total: drafts.length,  errors: errs })
 }
