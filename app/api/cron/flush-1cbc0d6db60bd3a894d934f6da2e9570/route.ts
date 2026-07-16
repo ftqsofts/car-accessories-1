@@ -78,7 +78,7 @@ export async function GET(req: NextRequest) {
           return { sku: sku.trim(), quantity: q ? parseInt(q) : (draft.qte ?? 1) }
         }),
       }),
-    }).catch(() => null)
+    }).catch((err) => errs.push(`Failed to send draft ${draft.id}: ${err.message}`))
 
     if (saleuraRes?.ok) {
       // Delete draft on success
@@ -89,7 +89,7 @@ export async function GET(req: NextRequest) {
       sent++
     } else {
       failed++
-      
+
     }
   }))
 
