@@ -92,7 +92,10 @@ export async function GET(req: NextRequest) {
       sent++
     } else {
       failed++
-
+      if (saleuraRes) {
+        const body = await saleuraRes.text().catch(() => "")
+        errs.push(`Draft ${draft.id}: HTTP ${saleuraRes.status} — ${body.slice(0, 300)}`)
+      }
     }
   }))
 
