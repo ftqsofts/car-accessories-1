@@ -78,14 +78,17 @@ export async function GET(req: NextRequest) {
           return { sku: sku.trim(), quantity: q ? parseInt(q) : (draft.qte ?? 1) }
         }),
       }),
-    }).catch((err) => errs.push(`Failed to send draft ${draft.id}: ${err.message}`))
+    }).catch((err) => {
+      errs.push(`Failed to send draft ${draft.id}: ${err.message}`)
+      return null
+    })
 
     if (saleuraRes?.ok) {
       // Delete draft on success
       await fetch(`${SUPABASE_URL}/drafts?id=eq.${draft.id}`, {
         method: "DELETE",
         headers: SB_HEADERS,
-      }).catch((err) => errs.push(`Failed to delete draft ${draft.id}: ${err.message}`))
+      }).catch(() => null)
       sent++
     } else {
       failed++
