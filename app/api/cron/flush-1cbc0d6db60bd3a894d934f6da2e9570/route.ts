@@ -84,7 +84,7 @@ export async function GET(req: NextRequest) {
       await fetch(`${SUPABASE_URL}/drafts?id=eq.${draft.id}`, {
         method: "DELETE",
         headers: SB_HEADERS,
-      }).catch(() => null)
+      }).catch((err) => console.error(err))
       sent++
     } else {
       failed++
