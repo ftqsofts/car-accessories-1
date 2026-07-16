@@ -89,6 +89,7 @@ export async function GET(req: NextRequest) {
       sent++
     } else {
       failed++
+      
     }
   }))
 
