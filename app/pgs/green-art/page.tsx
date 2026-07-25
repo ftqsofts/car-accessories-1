@@ -4,10 +4,10 @@ import OrderForm from "@/components/OrderForm"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "1DAIRB"
-const PRICE_1 = 120
-const PRICE_2 = 220
-const OLD_PRICE_1 = 250
-const OLD_PRICE_2 = 500
+const PRICE_1 = 129
+const PRICE_2 = 239
+const OLD_PRICE_1 = 259
+const OLD_PRICE_2 = 499
 const DELIVERY_FEE = 20
 const SAVING = PRICE_1 * 2 - PRICE_2
 const GOLD = "#E8B86D"
