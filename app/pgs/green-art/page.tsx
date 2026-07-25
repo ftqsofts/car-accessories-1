@@ -89,7 +89,7 @@ export default function GreenArtPage() {
 
       {/* ══ HEADING ══ */}
       <div className="px-4 pt-4 pb-2 max-w-lg mx-auto">
-        <h1 className="font-black text-xl text-gray-900 mb-2 text-right leading-snug">سياج نباتي اصطناعي فاخر — خصوصية تامة وديكور أنيق لمنزلك أو محلك</h1>
+        <h1 className="font-black text-xl text-gray-900 mb-2 text-right leading-snug">سياج نباتي فاخر أنيق لمنزلك أو محلك</h1>
         <p className="text-gray-500 text-sm text-right mb-3">مقاوم للعوامل الخارجية، بدون صيانة، يبقى أخضر طوال السنة</p>
         <div className="flex items-center gap-3 mb-2">
           <span className="font-black text-3xl" style={{ color: DARK }}>{PRICE_1} درهم</span>
@@ -106,18 +106,20 @@ export default function GreenArtPage() {
       <section ref={formRef} className="px-5 py-6 my-8 max-w-lg mx-auto bg-white rounded-xl text-right" id="order-form" dir="rtl">
         {/* ══ QUICK FEATURES ══ */}
         <div className="flex flex-col gap-2 mb-6">
-          <div className="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3">
-            <span className="text-lg shrink-0">📏</span>
-            <span className="text-gray-900 font-black text-base">كل رول مقاسه 1 متر × 3 متر</span>
-          </div>
-          <div className="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3">
-            <span className="text-lg shrink-0">✂️</span>
-            <span className="text-gray-900 font-black text-base">سهل القص والتفصيل حسب المقاس</span>
-          </div>
-          <div className="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3">
-            <span className="text-lg shrink-0">🌬️</span>
-            <span className="text-gray-900 font-black text-base">ثابت ومقاوم للرياح</span>
-          </div>
+          {[
+            "كل رول مقاسه 1 متر × 3 متر",
+            "سهل القص والتفصيل حسب المقاس",
+            "ثابت ومقاوم للرياح",
+          ].map((t, i) => (
+            <div key={i} className="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3">
+              <span className="flex items-center justify-center w-6 h-6 rounded-full shrink-0" style={{ background: "#1E3A8A" }}>
+                <svg viewBox="0 0 16 16" className="w-3.5 h-3.5 fill-none">
+                  <path d="M3 8.5l3 3 7-7" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              <span className="text-gray-900 font-black text-base">{t}</span>
+            </div>
+          ))}
         </div>
 
         <OrderForm
