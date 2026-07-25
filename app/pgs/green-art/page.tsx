@@ -4,18 +4,26 @@ import OrderForm from "@/components/OrderForm"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "1CHOM9"
-const PRICE_1 = 159
-const PRICE_2 = 390
+const PRICE_1 = 120
+const PRICE_2 = 220
 const OLD_PRICE_1 = 250
 const OLD_PRICE_2 = 500
+const DELIVERY_FEE = 20
 const SAVING = PRICE_1 * 2 - PRICE_2
 const GOLD = "#E8B86D"
 const DARK = "#030712"
 
 const IMAGES = [
-  "/products/green-art/PlrFwGHcNT5B0BZGSdCkvUKoYKNG5rVjBlvMZ9Sd.webp",
-  "/products/green-art/5khQgfDjdCcWJy0MxeUoBVKx3oMlxyRkzUoYBisE_lg.webp",
+  "/products/green-art/2.webp",
+  "/products/green-art/1.webp",
   "/products/green-art/g1q9hvbq4StYofCR66yopvt7BCC0cEF3fLlLzoQg.webp",
+]
+
+const IMAGES2 = [
+  "/products/green-art/g1q9hvbq4StYofCR66yopvt7BCC0cEF3fLlLzoQg.webp",
+  "/products/green-art/2.webp",
+  "/products/green-art/3.webp",
+  "/products/green-art/PlrFwGHcNT5B0BZGSdCkvUKoYKNG5rVjBlvMZ9Sd.webp",
 ]
 
 const FAQ = [
@@ -25,7 +33,7 @@ const FAQ = [
   { q: "هل يصلح للاستعمال الخارجي ومقاوم للشمس والمطر؟", a: "نعم، مصنوع بمواد مقاومة للعوامل الجوية، مناسب للحدائق، البالكونات، والأسوار الخارجية طوال السنة." },
   { q: "شحال المقاس ديال القطعة الواحدة؟", a: "كل رول قياسه 1 متر × 3 متر، تقدر تربط عدة رولات باش تغطي مساحة أكبر." },
   { q: "واش كاين Garantie على المنتج؟", a: "نعم، كنقدمو ضمان — إلا ماعجبكش المنتج كنعاونوك مباشرة." },
-  { q: "التوصيل", a: "كنوصلو لجميع مدن المغرب، والدفع عند الاستلام — ماخصكش تخلص حتى حاجة قبل ما يوصلك المنتج." },
+  { q: "التوصيل", a: "كنوصلو لجميع مدن المغرب برسوم توصيل 20 درهم، والدفع عند الاستلام — كتخلص فقط ملي توصلك السلعة وتتأكد منها." },
 ]
 
 export default function GreenArtPage() {
@@ -91,6 +99,7 @@ export default function GreenArtPage() {
           </span>
         </div>
         <p className="text-green-600 font-bold text-sm">الدفع عند الاستلام والتأكد من الجودة</p>
+        <p className="text-gray-500 font-bold text-sm mt-0.5">رسوم التوصيل {DELIVERY_FEE} درهم لجميع مدن المغرب</p>
       </div>
 
       {/* ══ FORM ══ */}
@@ -122,32 +131,10 @@ export default function GreenArtPage() {
       </section>
 
       <div className="max-w-lg mx-auto px-4" style={{ lineHeight: 0, fontSize: 0 }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/products/green-art/PlrFwGHcNT5B0BZGSdCkvUKoYKNG5rVjBlvMZ9Sd.webp" alt="مقاس حائط العشب الصناعي 1م × 3م" width={1419} height={1122} loading="lazy" decoding="async"
-          className="rounded-xl"
-          style={{ display: "block", width: "100%", height: "auto" }}
-        />
-      </div>
-
-      {/* ══ FEATURES ══ */}
-      <div className="px-4 max-w-lg mx-auto py-6 text-right">
-        <h2 className="font-black text-xl text-center text-gray-900 mb-5">مميزات المنتج</h2>
-        <div className="flex flex-col gap-3">
-          {[
-            { icon: "🔒", t: "خصوصية تامة", d: "أوراق مصممة بشكل كثيف تحجب الرؤية بالكامل. مثالي للشرفات والأسوار حتى تستمتع بخصوصية دون إزعاج." },
-            { icon: "🏪", t: "ديكور احترافي للمحلات والمشاريع", d: "لمسة خضراء طبيعية تضيف جمالية للمكان وتحسّن تجربة الزبناء، مناسبة للمقاهي والمطاعم وواجهات المحلات." },
-            { icon: "☀️", t: "جودة عالية ومقاومة للعوامل الخارجية", d: "مصنوع من مواد ممتازة مخصصة للاستعمال الخارجي، يتحمل الشمس والأمطار دون أن يفقد لونه." },
-            { icon: "✨", t: "بدون صيانة", d: "لا يحتاج سقي ولا تقليم ولا عناية إضافية. سهل التركيب ويبقى أخضر طوال السنة." },
-          ].map((f, i) => (
-            <div key={i} className="bg-white rounded-2xl p-4 flex gap-3" style={{ border: "1px solid #e5e7eb", boxShadow: "0 1px 4px rgba(0,0,0,0.04)" }}>
-              <div className="text-2xl shrink-0">{f.icon}</div>
-              <div>
-                <p className="text-gray-900 font-black text-sm mb-1">{f.t}</p>
-                <p className="text-gray-500 text-sm leading-relaxed">{f.d}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        {IMAGES2.map((src, i) => (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img key={i} src={src} alt="" className="w-full mb-2 rounded-xl" style={{ objectFit: "cover"}} />
+        ))}
       </div>
 
 
@@ -209,7 +196,7 @@ export default function GreenArtPage() {
       {/* ══ FOOTER ══ */}
       <footer className="px-5 py-8 mb-20 text-center" style={{ borderTop: "1px solid #e5e7eb" }}>
         <div className="inline-flex items-center gap-2 font-black text-sm px-4 py-2 rounded-full mb-4" style={{ background: "#fdf8ee", border: `1px solid ${GOLD}`, color: "#92712a" }}>
-          🚚 توصيل مجاني لجميع مدن المغرب
+          🚚 توصيل لجميع مدن المغرب بـ {DELIVERY_FEE} درهم
         </div>
         <p className="text-gray-400 text-xs">© 2025 Storecoma — جميع الحقوق محفوظة</p>
       </footer>
