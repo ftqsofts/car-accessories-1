@@ -125,7 +125,7 @@ export default function GreenArtPage() {
         pack="green-art"
         options={[
           { q: 1, label: "رول واحد (1م × 3م)", price: PRICE_1, oldPrice: OLD_PRICE_1 },
-          { q: 2, label: "جوج رولوات (غطي مساحة أكبر بثمن حصري)", price: PRICE_2, oldPrice: OLD_PRICE_2, badge: `وفر ${SAVING} درهم` },
+          { q: 2, label: "جوج رولوات (غطي مساحة أكبر)", price: PRICE_2, oldPrice: OLD_PRICE_2, badge: `وفر ${SAVING} درهم` },
         ]}
         />
       </section>
