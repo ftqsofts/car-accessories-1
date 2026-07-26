@@ -20,10 +20,10 @@ const IMAGES = [
 ]
 
 const IMAGES2 = [
+  "/products/green-art/PlrFwGHcNT5B0BZGSdCkvUKoYKNG5rVjBlvMZ9Sd.webp",
   "/products/green-art/g1q9hvbq4StYofCR66yopvt7BCC0cEF3fLlLzoQg.webp",
   "/products/green-art/2.webp",
   "/products/green-art/3.webp",
-  "/products/green-art/PlrFwGHcNT5B0BZGSdCkvUKoYKNG5rVjBlvMZ9Sd.webp",
 ]
 
 const FAQ = [
