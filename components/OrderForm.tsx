@@ -195,7 +195,7 @@ export default function OrderForm({ sku, pack, options, btnLabel = "اطلب ا�
         
         {deliveryFee > 0 && (
           <div className="flex items-center justify-center text-gray-500 text-sm font-bold" style={{ direction: "rtl" }}>
-            <span>+{deliveryFee} درهم رسوم التوصيل مشمولة</span>
+            <span>رسوم التوصيل مشمولة</span>
             <span></span>
           </div>
         )}
