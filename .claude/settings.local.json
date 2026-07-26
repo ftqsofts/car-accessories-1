@@ -55,7 +55,8 @@
       "Bash(stat --format=\"%n %s\" 1.webp 2.webp 3.webp lp-3.webp)",
       "Bash(awk '{print $5, $9}')",
       "Bash(mkdir -p \"c:/laragon/www/Ecom/car-accessories-pack/app/api/getProducts\")",
-      "Bash(mkdir -p \"C:\\\\Users\\\\LEGION\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--laragon-www-Ecom-car-accessories-pack\\\\5c2d46b6-5ca3-4dc9-98e2-0eefc9f7ccc9\\\\scratchpad\")"
+      "Bash(mkdir -p \"C:\\\\Users\\\\LEGION\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--laragon-www-Ecom-car-accessories-pack\\\\5c2d46b6-5ca3-4dc9-98e2-0eefc9f7ccc9\\\\scratchpad\")",
+      "Bash(node -e ' *)"
     ],
     "additionalDirectories": [
       "C:\\laragon\\www\\Ecom\\car-accessories-pack",

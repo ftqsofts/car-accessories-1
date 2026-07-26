@@ -18,6 +18,7 @@ function ThankYouContent() {
   const phone = params.get("phone") || ""
   const city = params.get("city") || ""
   const total = params.get("total") || ""
+  const delivery = Number(params.get("delivery") || 0)
   const skus = params.get("skus") || ""
   const qty = params.get("qty") || ""
   const packId = params.get("pack") || ""
@@ -130,7 +131,9 @@ function ThankYouContent() {
             <div className="flex items-center gap-3">
               <Truck className="w-5 h-5 text-gray-700 shrink-0" />
               <div>
-                <p className="text-gray-900 font-black text-sm">توصيل مجاني لجميع مدن المغرب</p>
+                <p className="text-gray-900 font-black text-sm">
+                  {delivery > 0 ? `رسوم التوصيل ${delivery} درهم` : "توصيل مجاني لجميع مدن المغرب"}
+                </p>
                 <p className="text-gray-500 text-xs">بين 24h و 48h — الدفع عند الاستلام</p>
               </div>
             </div>

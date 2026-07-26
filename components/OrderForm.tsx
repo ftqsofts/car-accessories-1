@@ -1,7 +1,7 @@
 "use client"
 
-import { useRef, useState } from "react"
 import { useRouter } from "next/navigation"
+import { useRef, useState } from "react"
 
 export type QtyOption = {
   q: number
@@ -18,11 +18,12 @@ type Props = {
   options: QtyOption[]          // pass a single-item array for no-qty-selector pages
   btnLabel?: string             // default: "اطلب الآن"
   btnColor?: string             // default: #ffd200
+  deliveryFee?: number          // default: 0 (free delivery)
 }
 
 type OrderForm = { name: string; city: string; phone: string; _hp?: string }
 
-export default function OrderForm({ sku, pack, options, btnLabel = "اطلب الآن", btnColor = "#ffd200" }: Props) {
+export default function OrderForm({ sku, pack, options, btnLabel = "اطلب الآن", btnColor = "#ffd200", deliveryFee = 0 }: Props) {
   const router = useRouter()
   const [form, setForm] = useState<OrderForm>({ name: "", city: "", phone: "" })
   const [errors, setErrors] = useState<Partial<OrderForm>>({})
@@ -34,6 +35,7 @@ export default function OrderForm({ sku, pack, options, btnLabel = "اطلب ا�
 
   const selectedOption = options.find(o => o.q === qty) ?? options[0]
   const price = selectedOption.price
+  const total = price + deliveryFee
   const effectiveSku = selectedOption.sku ?? sku
 
   const saveDraft = (f: OrderForm, q: number, p: number) => {
@@ -71,9 +73,9 @@ export default function OrderForm({ sku, pack, options, btnLabel = "اطلب ا�
     fetch("/api/order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: form.name, phone: form.phone, city: form.city, skus: effectiveSku, qty, total: price }),
+      body: JSON.stringify({ name: form.name, phone: form.phone, city: form.city, skus: effectiveSku, qty, total }),
     }).catch(() => null)
-    const params = new URLSearchParams({ name: form.name, phone: form.phone, city: form.city, skus: effectiveSku, qty: String(qty), total: String(price), pack })
+    const params = new URLSearchParams({ name: form.name, phone: form.phone, city: form.city, skus: effectiveSku, qty: String(qty), total: String(total), delivery: String(deliveryFee), pack })
     router.push(`/thank-you?${params}`)
   }
 
@@ -131,7 +133,7 @@ export default function OrderForm({ sku, pack, options, btnLabel = "اطلب ا�
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#555" viewBox="0 0 16 16"><path fillRule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/></svg>
             </span>
             <input type="tel" value={form.phone}
-              onChange={(e) => { const f = { ...form, phone: e.target.value }; setForm(f); saveDraft(f, qty, price) }}
+              onChange={(e) => { const f = { ...form, phone: e.target.value }; setForm(f); saveDraft(f, qty, total) }}
               placeholder="رقم الهاتف" dir="rtl"
               style={{ flex: 1, height: 45, fontSize: 18, padding: "5px 15px", border: `1px solid ${errors.phone ? "#e20000" : "#c0c0c0"}`, borderRadius: "6px 0 0 6px", outline: "none", color: "#212529", background: "#fff" }}
             />
@@ -147,7 +149,7 @@ export default function OrderForm({ sku, pack, options, btnLabel = "اطلب ا�
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#555" viewBox="0 0 16 16"><path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/></svg>
             </span>
             <input type="text" value={form.name}
-              onChange={(e) => { const f = { ...form, name: e.target.value }; setForm(f); saveDraft(f, qty, price) }}
+              onChange={(e) => { const f = { ...form, name: e.target.value }; setForm(f); saveDraft(f, qty, total) }}
               placeholder="الاسم الكامل" dir="rtl"
               style={{ flex: 1, height: 50, fontSize: 18, padding: "5px 15px", border: "1px solid #c0c0c0", borderRadius: "6px 0 0 6px", outline: "none", color: "#212529", background: "#fff" }}
             />
@@ -162,7 +164,7 @@ export default function OrderForm({ sku, pack, options, btnLabel = "اطلب ا�
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#555" viewBox="0 0 16 16"><path fillRule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
             </span>
             <input type="text" value={form.city}
-              onChange={(e) => { const f = { ...form, city: e.target.value }; setForm(f); saveDraft(f, qty, price) }}
+              onChange={(e) => { const f = { ...form, city: e.target.value }; setForm(f); saveDraft(f, qty, total) }}
               placeholder="المدينة" dir="rtl"
               style={{ flex: 1, height: 50, fontSize: 18, padding: "5px 15px", border: "1px solid #c0c0c0", borderRadius: "6px 0 0 6px", outline: "none", color: "#212529", background: "#fff" }}
             />
@@ -186,10 +188,17 @@ export default function OrderForm({ sku, pack, options, btnLabel = "اطلب ا�
           ) : (
             <>
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" viewBox="0 0 16 16" style={{ marginLeft: 10 }}><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
-              <span style={{ color: "#fff" }}>{btnLabel} — {price} درهم</span>
+              <span style={{ color: "#fff" }}>{btnLabel} — {total} درهم</span>
             </>
           )}
         </button>
+        
+        {deliveryFee > 0 && (
+          <div className="flex items-center justify-center text-gray-500 text-sm font-bold" style={{ direction: "rtl" }}>
+            <span>+{deliveryFee} درهم رسوم التوصيل مشمولة</span>
+            <span></span>
+          </div>
+        )}
       </form>
     </div>
   )
