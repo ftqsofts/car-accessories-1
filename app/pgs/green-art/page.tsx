@@ -20,7 +20,6 @@ const IMAGES = [
 ]
 
 const IMAGES2 = [
-  "/products/green-art/g1q9hvbq4StYofCR66yopvt7BCC0cEF3fLlLzoQg.webp",
   "/products/green-art/PlrFwGHcNT5B0BZGSdCkvUKoYKNG5rVjBlvMZ9Sd.webp",
   "/products/green-art/2.webp",
   "/products/green-art/3.webp",
@@ -110,7 +109,7 @@ export default function GreenArtPage() {
             style={{ display: "block", width: "100%", height: "auto" }}
           />
         </div>
-        <h2 className="font-black text-lg text-gray-900 mb-3 text-right">أفضل جودة</h2>
+        <h2 className="font-black text-xl text-center text-gray-900 mb-4">أفضل جودة</h2>
         <div className="flex flex-col gap-2">
           {[
             { t: "أوراق مزدوجة الطبقة (Double-Layer)", d: "طبقتين كثيفتين، منظر طبيعي 100% وحجب كامل للرؤية." },
@@ -157,11 +156,14 @@ export default function GreenArtPage() {
         />
       </section>
 
-      <div className="max-w-lg mx-auto px-4" style={{ lineHeight: 0, fontSize: 0 }}>
-        {IMAGES2.map((src, i) => (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img key={i} src={src} alt="" className="w-full mb-2 rounded-xl" style={{ objectFit: "cover"}} />
-        ))}
+      <div className="max-w-lg mx-auto px-4 pt-2">
+        <h2 className="font-black text-xl text-center text-gray-900 mb-4">نتائج رائعة</h2>
+        <div style={{ lineHeight: 0, fontSize: 0 }}>
+          {IMAGES2.map((src, i) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img key={i} src={src} alt="" className="w-full mb-2 rounded-xl" style={{ objectFit: "cover"}} />
+          ))}
+        </div>
       </div>
 
 
