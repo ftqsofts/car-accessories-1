@@ -102,6 +102,29 @@ export default function GreenArtPage() {
         <p className="text-gray-500 font-bold text-sm mt-0.5">رسوم التوصيل {DELIVERY_FEE} درهم لجميع مدن المغرب</p>
       </div>
 
+      {/* ══ QUALITY PROOF ══ */}
+      <div className="max-w-lg mx-auto px-4 py-4">
+        <div className="rounded-2xl overflow-hidden mb-4" style={{ border: "1px solid #e5e7eb" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/products/green-art/g1q9hvbq4StYofCR66yopvt7BCC0cEF3fLlLzoQg.webp" alt="جودة أوراق السياج عن قرب" width={1141} height={2000} loading="lazy" decoding="async"
+            style={{ display: "block", width: "100%", height: "auto" }}
+          />
+        </div>
+        <h2 className="font-black text-lg text-gray-900 mb-3 text-right">أفضل جودة</h2>
+        <div className="flex flex-col gap-2">
+          {[
+            { t: "أوراق مزدوجة الطبقة (Double-Layer)", d: "طبقتين كثيفتين، منظر طبيعي 100% وحجب كامل للرؤية." },
+            { t: "مادة مقاومة للأشعة UV", d: "ما كتصفرش ولا كتبهت، اللون كيبقى أخضر طول السنة." },
+            { t: "شبكة تثبيت متينة", d: "سلك مقوى كيبقى ثابت حتى فالرياح القوية." },
+          ].map((f, i) => (
+            <div key={i} className="bg-white rounded-2xl p-4" style={{ border: "1px solid #e5e7eb", boxShadow: "0 1px 4px rgba(0,0,0,0.04)" }}>
+              <p className="text-gray-900 font-black text-sm mb-1 text-right">✔️ {f.t}</p>
+              <p className="text-gray-500 font-semibold text-sm leading-relaxed text-right">{f.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* ══ FORM ══ */}
       <section ref={formRef} className="px-5 py-6 my-8 max-w-lg mx-auto bg-white rounded-xl text-right" id="order-form" dir="rtl">
         {/* ══ QUICK FEATURES ══ */}
