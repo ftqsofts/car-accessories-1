@@ -110,6 +110,7 @@ export default function GreenArtPage() {
             "كل رول مقاسه 1 متر × 3 متر",
             "سهل القص والتفصيل حسب المقاس",
             "ثابت ومقاوم للرياح",
+            "ضمان شهر و خدمة ما بعد البيع",
           ].map((t, i) => (
             <div key={i} className="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3">
               <span className="flex items-center justify-center w-6 h-6 rounded-full shrink-0" style={{ background: "#1E3A8A" }}>
@@ -128,7 +129,7 @@ export default function GreenArtPage() {
         deliveryFee={DELIVERY_FEE}
         options={[
           { q: 1, label: "رول واحد (1م × 3م)", price: PRICE_1, oldPrice: OLD_PRICE_1 },
-          { q: 2, label: "جوج رولوات (غطي مساحة أكبر)", price: PRICE_2, oldPrice: OLD_PRICE_2, badge: `وفر ${SAVING} درهم` },
+          { q: 2, label: "جوج رولوات (غطي مساحة أكبر 6 متر)", price: PRICE_2, oldPrice: OLD_PRICE_2, badge: `وفر ${SAVING} درهم` },
         ]}
         />
       </section>
