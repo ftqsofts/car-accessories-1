@@ -4,11 +4,10 @@ import OrderForm from "@/components/OrderForm"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "1DAIRB"
-const PRICE_1 = 129
+const PRICE_1 = 149
 const PRICE_2 = 239
-const OLD_PRICE_1 = 159
+const OLD_PRICE_1 = 250
 const OLD_PRICE_2 = 318
-const DELIVERY_FEE = 20
 const SAVING = PRICE_1 * 2 - PRICE_2
 const GOLD = "#E8B86D"
 const DARK = "#030712"
@@ -32,7 +31,7 @@ const FAQ = [
   { q: "هل يصلح للاستعمال الخارجي ومقاوم للشمس والمطر؟", a: "نعم، مصنوع بمواد مقاومة للعوامل الجوية، مناسب للحدائق، البالكونات، والأسوار الخارجية طوال السنة." },
   { q: "شحال المقاس ديال القطعة الواحدة؟", a: "كل رول قياسه 1 متر × 3 متر، تقدر تربط عدة رولات باش تغطي مساحة أكبر." },
   { q: "واش كاين Garantie على المنتج؟", a: "نعم، كنقدمو ضمان — إلا ماعجبكش المنتج كنعاونوك مباشرة." },
-  { q: "التوصيل", a: "كنوصلو لجميع مدن المغرب برسوم توصيل 20 درهم، والدفع عند الاستلام — كتخلص فقط ملي توصلك السلعة وتتأكد منها." },
+  { q: "التوصيل", a: "كنوصلو لجميع مدن المغرب، توصيل مجاني والدفع عند الاستلام — ماخصكش تخلص حتى حاجة قبل ما يوصلك المنتج." },
 ]
 
 export default function GreenArtPage() {
@@ -98,7 +97,7 @@ export default function GreenArtPage() {
           </span>
         </div>
         <p className="text-green-600 font-bold text-sm">الدفع عند الاستلام والتأكد من الجودة</p>
-        <p className="text-gray-500 font-bold text-sm mt-0.5">رسوم التوصيل {DELIVERY_FEE} درهم لجميع مدن المغرب</p>
+        <p className="text-gray-500 font-bold text-sm mt-0.5">توصيل مجاني لجميع مدن المغرب</p>
       </div>
 
       {/* ══ QUALITY PROOF ══ */}
@@ -148,7 +147,6 @@ export default function GreenArtPage() {
         <OrderForm
         sku={PRODUCT_SKU}
         pack="green-art"
-        deliveryFee={DELIVERY_FEE}
         options={[
           { q: 1, label: "رول واحد (1م × 3م)", price: PRICE_1, oldPrice: OLD_PRICE_1 },
           { q: 2, label: "جوج رولوات (غطي مساحة أكبر 6 متر)", price: PRICE_2, oldPrice: OLD_PRICE_2, badge: `وفر ${SAVING} درهم` },
@@ -225,7 +223,7 @@ export default function GreenArtPage() {
       {/* ══ FOOTER ══ */}
       <footer className="px-5 py-8 mb-20 text-center" style={{ borderTop: "1px solid #e5e7eb" }}>
         <div className="inline-flex items-center gap-2 font-black text-sm px-4 py-2 rounded-full mb-4" style={{ background: "#fdf8ee", border: `1px solid ${GOLD}`, color: "#92712a" }}>
-          🚚 توصيل لجميع مدن المغرب بـ {DELIVERY_FEE} درهم
+          🚚 توصيل مجاني لجميع مدن المغرب
         </div>
         <p className="text-gray-400 text-xs">© 2025 Storecoma — جميع الحقوق محفوظة</p>
       </footer>
