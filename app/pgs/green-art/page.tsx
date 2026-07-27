@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "1DAIRB"
 const PRICE_1 = 149
-const PRICE_2 = 239
+const PRICE_2 = 268
 const OLD_PRICE_1 = 250
 const OLD_PRICE_2 = 318
 const SAVING = PRICE_1 * 2 - PRICE_2
