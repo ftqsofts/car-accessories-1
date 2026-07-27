@@ -6,8 +6,8 @@ import { useEffect, useRef, useState } from "react"
 const PRODUCT_SKU = "1DAIRB"
 const PRICE_1 = 149
 const PRICE_2 = 268
-const OLD_PRICE_1 = 250
-const OLD_PRICE_2 = 318
+const OLD_PRICE_1 = 199
+const OLD_PRICE_2 = 399
 const SAVING = PRICE_1 * 2 - PRICE_2
 const GOLD = "#E8B86D"
 const DARK = "#030712"
@@ -160,6 +160,40 @@ export default function GreenArtPage() {
           {IMAGES2.map((src, i) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img key={i} src={src} alt="" className="w-full mb-2 rounded-xl" style={{ objectFit: "cover"}} />
+          ))}
+        </div>
+      </div>
+
+
+      
+
+      {/* ══ COMPARISON ══ */}
+      <div className="max-w-lg mx-auto px-4 my-12">
+        <h2 className="font-black text-xl text-center text-gray-900 mb-4">مقارنة مع الأنواع العادية</h2>
+        <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid #e5e7eb" }}>
+          {/* header row */}
+          <div className="grid grid-cols-5 text-center" style={{ background: "#F8FAFC" }}>
+            <div className="col-span-3 py-3 text-gray-500 font-bold text-xs">المعيار</div>
+            <div className="py-3 text-gray-500 font-bold text-xs border-x" style={{ borderColor: "#e5e7eb" }}>العادي</div>
+            <div className="py-3 font-black text-xs" style={{ color: "#166534" }}>ديالنا 🌿</div>
+          </div>
+          {[
+            { c: "كثافة الأوراق", a: false, b: true },
+            { c: "مقاومة الأشعة UV", a: false, b: true },
+            { c: "ثبات مع الرياح", a: false, b: true },
+            { c: "منظر طبيعي 100%", a: false, b: true },
+            { c: "قابل للقص بلا ما يتفكك", a: false, b: true },
+            { c: "ضمان شهر", a: false, b: true },
+          ].map((row, i) => (
+            <div key={i} className="grid grid-cols-5 text-center items-center" style={{ borderTop: "1px solid #e5e7eb" }}>
+              <div className="col-span-3 py-3 text-gray-700 font-bold text-xs px-1">{row.c}</div>
+              <div className="py-3 border-x flex items-center justify-center" style={{ borderColor: "#e5e7eb" }}>
+                <span className="text-red-500 text-lg">✕</span>
+              </div>
+              <div className="py-3 flex items-center justify-center" style={{ background: "#F0FDF4" }}>
+                <span className="text-lg" style={{ color: "#166534" }}>✓</span>
+              </div>
+            </div>
           ))}
         </div>
       </div>
