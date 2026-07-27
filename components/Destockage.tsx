@@ -158,7 +158,21 @@ const CAMEL_FAT: Product = {
   ],
 }
 
-const ALL_UPSELLS: Product[] = [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, FRONT_SUNSHADE, SIDE_SUNSHADE, SAFE_BOX, BABY_SAFETY, CAMEL_FAT]
+const GREEN_ART: Product = {
+  sku: "1DAIRB",
+  title: "سياج نباتي فاخر أنيق لمنزلك أو محلك",
+  description: "مقاوم للعوامل الخارجية، بدون صيانة، ويبقى أخضر طوال السنة. حل سريع وأنيق لتغطية الشرفة أو السور.",
+  price: 100,
+  oldPrice: 199,
+  gender: "both",
+  images: [
+    "/products/green-art/2.webp",
+    "/products/green-art/1.webp",
+    "/products/green-art/g1q9hvbq4StYofCR66yopvt7BCC0cEF3fLlLzoQg.webp",
+  ],
+}
+
+const ALL_UPSELLS: Product[] = [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, FRONT_SUNSHADE, SIDE_SUNSHADE, SAFE_BOX, BABY_SAFETY, CAMEL_FAT, GREEN_ART]
 
 // const CATALOG: Record<Niche, Product[]> = {
 //   vacuum: [FRONT_SUNSHADE, SIDE_SUNSHADE, SILICONE_CLEANER, KITCHEN_BARRIER],
