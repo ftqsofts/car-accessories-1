@@ -102,7 +102,7 @@ export default function GreenArtPage() {
 
       {/* ══ QUALITY PROOF ══ */}
       <div className="max-w-lg mx-auto px-4 py-4">
-        <div className="rounded-2xl overflow-hidden mb-4" style={{ border: "1px solid #e5e7eb" }}>
+        <div className="rounded-2xl overflow-hidden mb-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/products/green-art/g1q9hvbq4StYofCR66yopvt7BCC0cEF3fLlLzoQg.webp" alt="جودة أوراق السياج عن قرب" width={1141} height={2000} loading="lazy" decoding="async"
             style={{ display: "block", width: "100%", height: "auto" }}
