@@ -13,7 +13,7 @@ const GOLD = "#E8B86D"
 const DARK = "#030712"
 
 const IMAGES = [
-  "/products/green-art/2.webp",
+  "/products/green-art/3.webp",
   "/products/green-art/1.webp",
   "/products/green-art/g1q9hvbq4StYofCR66yopvt7BCC0cEF3fLlLzoQg.webp",
 ]
