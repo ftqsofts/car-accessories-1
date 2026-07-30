@@ -14,14 +14,14 @@ const DARK = "#030712"
 
 const IMAGES = [
   "/products/green-art/3.webp",
-  "/products/green-art/1.webp",
-  "/products/green-art/g1q9hvbq4StYofCR66yopvt7BCC0cEF3fLlLzoQg.webp",
+  "/products/green-art/2.webp",
 ]
 
 const IMAGES2 = [
   "/products/green-art/PlrFwGHcNT5B0BZGSdCkvUKoYKNG5rVjBlvMZ9Sd.webp",
   "/products/green-art/2.webp",
   "/products/green-art/3.webp",
+  "/products/green-art/9oXx5Und9XwtxtcMgjteLNMVd8pPBwI7Qioj1Yxp.webp",
 ]
 
 const FAQ = [
@@ -159,7 +159,8 @@ export default function GreenArtPage() {
         <div style={{ lineHeight: 0, fontSize: 0 }}>
           {IMAGES2.map((src, i) => (
             // eslint-disable-next-line @next/next/no-img-element
-            <img key={i} src={src} alt="" className="w-full mb-2 rounded-xl" style={{ objectFit: "cover"}} />
+            <img key={i} src={src} alt="" width={800} height={1000} loading="lazy" decoding="async"
+              className="w-full mb-2 rounded-xl" style={{ objectFit: "cover" }} />
           ))}
         </div>
       </div>
