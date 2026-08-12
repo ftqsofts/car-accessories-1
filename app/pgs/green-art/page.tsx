@@ -87,7 +87,7 @@ export default function GreenArtPage() {
 
       {/* ══ HEADING ══ */}
       <div className="px-4 pt-4 pb-2 max-w-lg mx-auto">
-        <h1 className="font-black text-xl text-gray-900 mb-2 text-right leading-snug">سياج نباتي فاخر أنيق لمنزلك أو محلك</h1>
+        <h1 className="font-black text-xl text-gray-900 mb-2 text-right leading-snug">سياج نباتي فاخر أنيق لمنزلك أو محلك (أفضل جودة)</h1>
         <p className="text-gray-500 text-sm text-right mb-3">مقاوم للعوامل الخارجية، بدون صيانة، يبقى أخضر طوال السنة</p>
         <div className="flex items-center gap-3 mb-2">
           <span className="font-black text-3xl" style={{ color: DARK }}>{PRICE_1} درهم</span>
