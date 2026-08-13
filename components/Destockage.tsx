@@ -72,19 +72,19 @@ const LOCK: Product = {
   ],
 }
 
-// const SIDE_SUNSHADE: Product = {
-//   sku: "1ADDZB",
-//   title: "ريدوات شبكة للزاج الجانبي (باك فيه 4)",
-//   description: "الشمش قاهرة الدراري اللور؟ هاد الريدوات كيركبو بسهولة بحال الغشا فالباب، كيحبسو أشعة الشمس وكيخليوك تهبط الزاج باش يدخل البرد بلا ما يدخل الناموس ولا الغبرة.",
-//   price: 89,
-//   oldPrice: 199,
-//   gender: "male",
-//   images: [
-//     "/products/upsells/sun-protection-2-1.webp",
-//     "/products/upsells/sun-protection-2-2.webp",
-//     "/products/upsells/sun-protection-2-3.webp",
-//   ],
-// }
+const SIDE_SUNSHADE: Product = {
+  sku: "1ADDZB",
+  title: "ريدوات شبكة للزاج الجانبي (باك فيه 4)",
+  description: "الشمش قاهرة الدراري اللور؟ هاد الريدوات كيركبو بسهولة بحال الغشا فالباب، كيحبسو أشعة الشمس وكيخليوك تهبط الزاج باش يدخل البرد بلا ما يدخل الناموس ولا الغبرة.",
+  price: 89,
+  oldPrice: 199,
+  gender: "male",
+  images: [
+    "/products/upsells/sun-protection-2-1.webp",
+    "/products/upsells/sun-protection-2-2.webp",
+    "/products/upsells/sun-protection-2-3.webp",
+  ],
+}
 
 const FRONT_SUNSHADE: Product = {
   sku: "1AD2HG",
@@ -172,7 +172,7 @@ const GREEN_ART: Product = {
   ],
 }
 
-const ALL_UPSELLS: Product[] = [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, FRONT_SUNSHADE, SIDE_SUNSHADE, SAFE_BOX, BABY_SAFETY, CAMEL_FAT, GREEN_ART]
+const ALL_UPSELLS: Product[] = [LOCK, SILICONE_CLEANER, KITCHEN_BARRIER, ANTI_VIBRATION, FRONT_SUNSHADE, SAFE_BOX, BABY_SAFETY, CAMEL_FAT, GREEN_ART]
 
 // const CATALOG: Record<Niche, Product[]> = {
 //   vacuum: [FRONT_SUNSHADE, SIDE_SUNSHADE, SILICONE_CLEANER, KITCHEN_BARRIER],
