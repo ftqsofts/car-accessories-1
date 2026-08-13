@@ -72,19 +72,19 @@ const LOCK: Product = {
   ],
 }
 
-const SIDE_SUNSHADE: Product = {
-  sku: "1ADDZB",
-  title: "ريدوات شبكة للزاج الجانبي (باك فيه 4)",
-  description: "الشمش قاهرة الدراري اللور؟ هاد الريدوات كيركبو بسهولة بحال الغشا فالباب، كيحبسو أشعة الشمس وكيخليوك تهبط الزاج باش يدخل البرد بلا ما يدخل الناموس ولا الغبرة.",
-  price: 89,
-  oldPrice: 199,
-  gender: "male",
-  images: [
-    "/products/upsells/sun-protection-2-1.webp",
-    "/products/upsells/sun-protection-2-2.webp",
-    "/products/upsells/sun-protection-2-3.webp",
-  ],
-}
+// const SIDE_SUNSHADE: Product = {
+//   sku: "1ADDZB",
+//   title: "ريدوات شبكة للزاج الجانبي (باك فيه 4)",
+//   description: "الشمش قاهرة الدراري اللور؟ هاد الريدوات كيركبو بسهولة بحال الغشا فالباب، كيحبسو أشعة الشمس وكيخليوك تهبط الزاج باش يدخل البرد بلا ما يدخل الناموس ولا الغبرة.",
+//   price: 89,
+//   oldPrice: 199,
+//   gender: "male",
+//   images: [
+//     "/products/upsells/sun-protection-2-1.webp",
+//     "/products/upsells/sun-protection-2-2.webp",
+//     "/products/upsells/sun-protection-2-3.webp",
+//   ],
+// }
 
 const FRONT_SUNSHADE: Product = {
   sku: "1AD2HG",
