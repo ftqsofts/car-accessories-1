@@ -10,10 +10,10 @@ const AUDIO_REVIEWS = [
 ]
 
 const PRODUCT_SKU = "16ZJX1"
-const PRICE_1 = 115
+const PRICE_1 = 99
 const PRICE_2 = 185
-const OLD_PRICE_1 = 199
-const OLD_PRICE_2 = 230
+const OLD_PRICE_1 = 149
+const OLD_PRICE_2 = 249
 const GOLD = "#E8B86D"
 const DARK = "#030712"
 
