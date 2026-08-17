@@ -14,12 +14,10 @@ const DARK = "#030712"
 
 const IMAGES = [
   "/products/green-art/3.webp",
-  "/products/green-art/2.webp",
 ]
 
 const IMAGES2 = [
   "/products/green-art/PlrFwGHcNT5B0BZGSdCkvUKoYKNG5rVjBlvMZ9Sd.webp",
-  "/products/green-art/2.webp",
   "/products/green-art/3.webp",
   "/products/green-art/9oXx5Und9XwtxtcMgjteLNMVd8pPBwI7Qioj1Yxp.webp",
 ]
