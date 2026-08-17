@@ -14,11 +14,11 @@ const DARK = "#030712"
 
 const IMAGES = [
   "/products/green-art/3.webp",
+  "/products/green-art/4.webp",
 ]
 
 const IMAGES2 = [
   "/products/green-art/PlrFwGHcNT5B0BZGSdCkvUKoYKNG5rVjBlvMZ9Sd.webp",
-  "/products/green-art/3.webp",
   "/products/green-art/9oXx5Und9XwtxtcMgjteLNMVd8pPBwI7Qioj1Yxp.webp",
 ]
 
@@ -100,18 +100,19 @@ export default function GreenArtPage() {
 
       {/* ══ QUALITY PROOF ══ */}
       <div className="max-w-lg mx-auto px-4 py-4">
+        <h2 className="font-black text-xl text-center text-gray-900 mb-4">أفضل جودة</h2>
         <div className="rounded-2xl overflow-hidden mb-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/products/green-art/g1q9hvbq4StYofCR66yopvt7BCC0cEF3fLlLzoQg.webp" alt="جودة أوراق السياج عن قرب" width={1141} height={2000} loading="lazy" decoding="async"
+          <img src="/products/green-art/4.webp" alt="جودة أوراق السياج عن قرب" width={1141} height={2000} loading="lazy" decoding="async"
             style={{ display: "block", width: "100%", height: "auto" }}
           />
         </div>
-        <h2 className="font-black text-xl text-center text-gray-900 mb-4">أفضل جودة</h2>
         <div className="flex flex-col gap-2">
           {[
             { t: "أوراق مزدوجة الطبقة (Double-Layer)", d: "طبقتين كثيفتين، منظر طبيعي 100% وحجب كامل للرؤية." },
             { t: "مادة مقاومة للأشعة UV", d: "ما كتصفرش ولا كتبهت، اللون كيبقى أخضر طول السنة." },
             { t: "شبكة تثبيت متينة", d: "سلك مقوى كيبقى ثابت حتى فالرياح القوية." },
+            { t: "متوفر فـ لونين", d: "أخضر فاتح وأخضر غامق ختار اللي يناسب الديكور ديالك." },
           ].map((f, i) => (
             <div key={i} className="bg-white rounded-2xl p-4" style={{ border: "1px solid #e5e7eb", boxShadow: "0 1px 4px rgba(0,0,0,0.04)" }}>
               <p className="text-gray-900 font-black text-sm mb-1 text-right">✔️ {f.t}</p>
@@ -123,10 +124,19 @@ export default function GreenArtPage() {
 
       {/* ══ FORM ══ */}
       <section ref={formRef} className="px-5 py-6 my-8 max-w-lg mx-auto bg-white rounded-xl text-right" id="order-form" dir="rtl">
+        {/* ══ SIZE CALLOUT ══ */}
+        <div className="flex items-center gap-3 rounded-xl px-4 py-3 mb-3" style={{ background: "#FEF2F2", border: "1px solid #FCA5A5" }}>
+          <span className="flex items-center justify-center w-6 h-6 rounded-full shrink-0" style={{ background: "#dc2626" }}>
+            <svg viewBox="0 0 16 16" className="w-3.5 h-3.5 fill-none">
+              <path d="M3 8.5l3 3 7-7" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+          <span className="font-black text-base" style={{ color: "#dc2626" }}>كل رول مقاسه 1 متر × 3 متر</span>
+        </div>
+
         {/* ══ QUICK FEATURES ══ */}
         <div className="flex flex-col gap-2 mb-6">
           {[
-            "كل رول مقاسه 1 متر × 3 متر",
             "سهل القص والتفصيل حسب المقاس",
             "ثابت ومقاوم للرياح",
             "ضمان شهر و خدمة ما بعد البيع",
