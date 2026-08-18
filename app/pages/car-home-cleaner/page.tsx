@@ -33,6 +33,56 @@ const FAQ = [
   { q: "التوصيل", a: "كتوصلك حتى للدار، بلا مصاريف خفية والدفع عند التسليم." },
 ]
 
+const OFFER_DEADLINE_KEY = "car-home-cleaner-offer-deadline"
+const OFFER_DURATION_MS = 24 * 60 * 60 * 1000
+
+function useCountdown() {
+  const [remaining, setRemaining] = useState<number | null>(null)
+
+  useEffect(() => {
+    let deadline = Number(localStorage.getItem(OFFER_DEADLINE_KEY))
+    if (!deadline || deadline < Date.now()) {
+      deadline = Date.now() + OFFER_DURATION_MS
+      localStorage.setItem(OFFER_DEADLINE_KEY, String(deadline))
+    }
+    const tick = () => setRemaining(Math.max(0, deadline - Date.now()))
+    tick()
+    const id = setInterval(tick, 1000)
+    return () => clearInterval(id)
+  }, [])
+
+  if (remaining === null) return null
+  const totalSeconds = Math.floor(remaining / 1000)
+  const h = Math.floor(totalSeconds / 3600)
+  const m = Math.floor((totalSeconds % 3600) / 60)
+  const s = totalSeconds % 60
+  const pad = (n: number) => String(n).padStart(2, "0")
+  return { h: pad(h), m: pad(m), s: pad(s) }
+}
+
+function OfferTimer() {
+  const t = useCountdown()
+  if (!t) return null
+  const units = [
+    { v: t.h, label: "ساعة" },
+    { v: t.m, label: "دقيقة" },
+    { v: t.s, label: "ثانية" },
+  ]
+  return (
+    <div className="flex items-center justify-center gap-2 mt-2" dir="ltr">
+      {units.map((u, i) => (
+        <div key={i} className="flex items-center gap-2">
+          <div className="rounded-lg px-3 py-1.5 text-center" style={{ background: "#DC2626" }}>
+            <span className="text-white font-black text-lg tabular-nums block leading-none">{u.v}</span>
+            <span className="text-white/80 font-bold text-[10px] block mt-0.5">{u.label}</span>
+          </div>
+          {i < 2 && <span className="text-red-600 font-black">:</span>}
+        </div>
+      ))}
+    </div>
+  )
+}
+
 function AudioReview({ src, index }: { src: string; index: number }) {
   const audioRef = useRef<HTMLAudioElement>(null)
   const [playing, setPlaying] = useState(false)
@@ -311,7 +361,8 @@ export default function CarHomeCleanerPage() {
           </span>
         </div>
         <p className="text-green-600 font-black text-sm">✅ توصيل مجاني — الدفع عند الاستلام</p>
-        <p className="text-black font-black text-sm mt-0.5">⏳ الكمية محدودة — العرض سينتهي قريباً</p>
+        <p className="text-black font-black text-sm mt-5 text-center">⏳ العرض ديال {PRICE_1} درهم غادي يسالي فـ</p>
+        <OfferTimer />
       </div>
 
       <div className="h-px mx-4 bg-gray-100 my-3" />
