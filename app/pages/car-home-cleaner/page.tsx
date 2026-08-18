@@ -387,12 +387,6 @@ export default function CarHomeCleanerPage() {
       <div className="h-4" />
 
       
-      {/* ══ CROSS-SELL TEASER ══ */}
-      <div className="max-w-lg mx-auto px-4">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/products/cross-sell-lp.webp" alt="عرض خاص بعد الشراء" className="w-full h-auto rounded-xl" loading="lazy" width={600} height={900} />
-      </div>
-      
       <div className="h-4" />
 
       {/* ══ LONG HERO (details) ══ */}
@@ -433,6 +427,14 @@ export default function CarHomeCleanerPage() {
           style={{ background: "#ffd200", boxShadow: "0 4px 24px rgba(255,210,0,0.4)" }}>
           🛒 اطلب الآن — الدفع عند الاستلام
         </button>
+      </div>
+
+      
+      
+      {/* ══ CROSS-SELL TEASER ══ */}
+      <div className="max-w-lg mx-auto px-4">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/products/cross-sell-lp.webp" alt="عرض خاص بعد الشراء" className="w-full h-auto rounded-xl" loading="lazy" width={600} height={900} />
       </div>
 
       <div className="h-6" />
