@@ -397,11 +397,15 @@ export default function CarHomeCleanerPage() {
 
       {/* ══ LONG HERO (details) ══ */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/products/car-home-cleaner-hero.webp" alt="سبيراتور 3 في 1 للسيارة والدار"
-        className="w-full h-auto block" width={600} height={4783}
-        loading="lazy" decoding="async" style={{ cursor: "pointer" }}
-        onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-      />
+      {IMAGES.map((src, i) => (
+        <div key={i} className="px-4 max-w-lg mx-auto py-4">
+          <img src={src} alt="سبيراتور 3 في 1 للسيارة والدار"
+            className="w-full h-auto block" width={600} height={4783}
+            loading="lazy" decoding="async" style={{ cursor: "pointer" }}
+            onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+          />
+        </div>
+      ))}
 
       {/* ══ CTA 1 ══ */}
       <div className="px-4 max-w-lg mx-auto py-6">
