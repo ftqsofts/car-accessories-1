@@ -361,7 +361,7 @@ export default function CarHomeCleanerPage() {
           </span>
         </div>
         <p className="text-green-600 font-black text-sm">✅ توصيل مجاني — الدفع عند الاستلام</p>
-        <p className="text-black font-black text-sm mt-5 text-center">⏳ العرض ديال {PRICE_1} درهم غادي يسالي فـ</p>
+        <p className="text-black font-black mt-5 text-center">⏳ العرض ديال {PRICE_1} درهم غادي يسالي فـ</p>
         <OfferTimer />
       </div>
 
