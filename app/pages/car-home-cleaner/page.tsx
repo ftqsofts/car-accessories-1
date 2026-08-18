@@ -34,7 +34,7 @@ const FAQ = [
 ]
 
 const OFFER_DEADLINE_KEY = "car-home-cleaner-offer-deadline"
-const OFFER_DURATION_MS = 24 * 60 * 60 * 1000
+const OFFER_DURATION_MS = 3 * 60 * 60 * 1000
 
 function useCountdown() {
   const [remaining, setRemaining] = useState<number | null>(null)
