@@ -386,20 +386,12 @@ export default function CarHomeCleanerPage() {
 
       <div className="h-4" />
 
-      
-      <div className="h-4" />
-
       {/* ══ LONG HERO (details) ══ */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      {IMAGES.map((src, i) => (
-        <div key={i} className="px-4 max-w-lg mx-auto py-4">
-          <img src={src} alt="سبيراتور 3 في 1 للسيارة والدار"
-            className="w-full h-auto block" width={600} height={4783}
-            loading="lazy" decoding="async" style={{ cursor: "pointer" }}
-            onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-          />
-        </div>
-      ))}
+      <div className="px-0">
+        <img src="/products/Copy of Copy of   2 مكنسة كهربائية لاسلكية.webp" alt="مكنسة كهربائية 3 في 1" className="w-full h-auto rounded-xl" loading="lazy" width={720} height={900}
+          style={{ transform: "scale(1.008)", transformOrigin: "center" }}
+        />
+      </div>
 
       {/* ══ CTA 1 ══ */}
       <div className="px-4 max-w-lg mx-auto py-6">
