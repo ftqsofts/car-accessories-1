@@ -5,10 +5,10 @@ import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "176TSC"
-const PRICE_1 = 165
-const PRICE_2 = 270
-const OLD_PRICE_1 = 195
-const OLD_PRICE_2 = 390
+const PRICE_1 = 149
+const PRICE_2 = 249
+const OLD_PRICE_1 = 199
+const OLD_PRICE_2 = 270
 const SAVING = PRICE_1 * 2 - PRICE_2
 
 
@@ -363,22 +363,6 @@ export default function VcClPage() {
           </div>
         </div>
       </section>
-
-
-      <div className="px-4 pb-8 pt-2">
-        <div className="max-w-lg mx-auto rounded-2xl overflow-hidden">
-          <video
-            ref={video2Ref}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="none"
-            poster=""
-            style={{ width: "100%", height: 500, objectFit: "cover", objectPosition: "center center", display: "block" }}
-          />
-        </div>
-      </div>
 
       {/* ══ REVIEWS ══ */}
       <section className="max-w-lg mx-auto px-4 pb-6" style={{ backgroundColor: "#f8fafc" }}>
