@@ -9,8 +9,8 @@ const AUDIO_REVIEWS = [
 ]
 
 const PRODUCT_SKU = "18SGTM"
-const PRICE_1 = 99
-const PRICE_2 = 183
+const PRICE_1 = 115
+const PRICE_2 = 195
 const SAVING = PRICE_1 * 2 - PRICE_2
 
 const FAQ = [
