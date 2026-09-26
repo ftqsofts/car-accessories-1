@@ -59,7 +59,7 @@ const ANTI_VIBRATION: Product = {
 
 
 const LOCK: Product = {
-  sku: "1A20SA",
+  sku: "LOCKREFRIGER",
   title: "قفل الأمان لحماية الأطفال (بدون مسامير)",
   description: "تهناي من الروينة وحافظي على سلامة وليداتك! قفل قوي وساهل فالتركيب، كيلصق مزيان فالثلاجة، البلاكارات، والمجورة بلا حفير.",
   price: 29,
