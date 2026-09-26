@@ -45,7 +45,7 @@ const KITCHEN_BARRIER: Product = {
 }
 
 const ANTI_VIBRATION: Product = {
-  sku: "1A1MSH",
+  sku: "SHOCKPAD",
   title: "أرجل مطاطية مضادة لاهتزاز الماكينة (باك 4)",
   description: "الماكينة كدير الصداع وكتحرك فاش كتعصر؟ هاد الأرجل غادي يسكتوها فمرة! كتحمي الزليج من التخبيش وكتسهل عليك تسيق تحت منها.",
   price: 35,
