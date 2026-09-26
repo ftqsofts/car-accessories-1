@@ -18,7 +18,7 @@ type Product = {
 }
 
 const SILICONE_CLEANER: Product = {
-  sku: "1A1T5D",
+  sku: "SILICONEDOUC",
   title: "كراطة السيليكون السحرية (الحجم الكبير 1.4m)",
   description: "تنشيف الما ومسح الزاج والزليج بضربة وحدة بلا ما تخلي حتى أثر. كتهنيك من تمارة، وكتجمع الزغب والغبرة بسهولة تامة.",
   price: 55,

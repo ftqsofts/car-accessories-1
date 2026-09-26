@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
-const PRODUCT_SKU = "176TSC"
+const PRODUCT_SKU = "176TSCXX"
 const PRICE_1 = 129
 const PRICE_2 = 219
 const OLD_PRICE_1 = 199

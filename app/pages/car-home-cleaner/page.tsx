@@ -9,7 +9,7 @@ const AUDIO_REVIEWS = [
   "/products/reviews/vacuum-cleaner-1.ogg",
 ]
 
-const PRODUCT_SKU = "16ZJX1"
+const PRODUCT_SKU = "16ZJX1XX"
 const PRICE_1 = 99
 const PRICE_2 = 168
 const OLD_PRICE_1 = 149
