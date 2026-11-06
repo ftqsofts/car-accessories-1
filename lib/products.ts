@@ -254,7 +254,7 @@ export const products: Product[] = [
 
   {
     id: "hr-shamp",
-    sku: "18SGTM",
+    sku: "DISAARNOIR",
     nameDarija: "شامبو طبيعي للشيب",
     price: 120,
     descriptionDarija: "شامبو كيغطي الشيب من أول استعمال",
