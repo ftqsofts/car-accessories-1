@@ -328,10 +328,7 @@ export default function HrShampPage() {
         <div className="inline-flex items-center gap-2 font-black text-sm px-4 py-2 rounded-full mb-4" style={{ background: "#fdf8ee", border: "1px solid #E8B86D", color: "#92712a" }}>
           🚚 توصيل مجاني لجميع مدن المغرب
         </div>
-        <p className="text-gray-400 text-xs">© 2025 Storecoma — جميع الحقوق محفوظة</p>
-        {/* <div className="mx-auto mt-4 w-max">
-          <Image src="/storecoma-logo.webp" alt="storecoma" width={90} height={90} className="object-contain" loading="lazy" />
-        </div> */}
+        <p className="text-gray-400 text-xs">© 2025 جميع الحقوق محفوظة</p>
       </footer>
 
       {/* ══ STICKY BUTTON ══ */}
