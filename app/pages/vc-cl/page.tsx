@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
 const PRODUCT_SKU = "176TSCXX"
-const PRICE_1 = 129
+const PRICE_1 = 139
 const PRICE_2 = 219
 const OLD_PRICE_1 = 199
 const OLD_PRICE_2 = 270
@@ -272,16 +272,16 @@ export default function VcClPage() {
       </div>
 
       {/* ── Wave: white → black ── */}
-      <div className="mt-12" style={{ lineHeight: 0, backgroundColor: "#fff", marginBottom: -2 }}>
+      {/* <div className="mt-12" style={{ lineHeight: 0, backgroundColor: "#fff", marginBottom: -2 }}>
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: 60 }}>
           <path d="M0,0 C360,80 1080,80 1440,0 L1440,80 L0,80 Z" fill="#0b0b0b" />
         </svg>
-      </div>
+      </div> */}
 
       {/* ══ IMAGE 2 — dark ══ */}
       <div style={{ backgroundColor: "#0b0b0b", lineHeight: 0, position: "relative" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        {/* <img
           src="/products/2-2.webp"
           alt="قوية الشفط — مكنسة 6 في 1"
           className="w-full h-auto block"
@@ -289,15 +289,15 @@ export default function VcClPage() {
           height={2400}
           loading="lazy"
           onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-        />
+        /> */}
       </div>
 
       {/* ── Wave: black → white ── */}
-      <div style={{ lineHeight: 0, backgroundColor: "#0b0b0b" }}>
+      {/* <div style={{ lineHeight: 0, backgroundColor: "#0b0b0b" }}>
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: 60 }}>
           <path d="M0,0 C360,80 1080,80 1440,0 L1440,80 L0,80 Z" fill="#fff" />
         </svg>
-      </div>
+      </div> */}
 
       {/* ══ CTA BUTTON ══ */}
       <div style={{ backgroundColor: "#fff", padding: "16px 20px 8px", maxWidth: 520, margin: "0 auto" }}>
