@@ -76,7 +76,7 @@ function ProductCard({ product, selected, onToggle }: { product: PromoProduct; s
           </div>
         )}
         <span className="absolute top-3 left-3 bg-green-700 text-white text-xs font-black px-3 py-1.5 rounded-full">
-          99 درهم فقط
+          ثمن الجملة — 99 درهم
         </span>
         {product.images.length > 1 && (
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
@@ -161,16 +161,16 @@ export default function Promo99Page() {
       <section className="relative px-6 pt-10 pb-8 text-center" style={{ background: "linear-gradient(135deg, #C1272D 0%, #8e1c21 100%)" }}>
         <div className="max-w-lg mx-auto">
           <span className="inline-block bg-white text-red-700 text-sm font-black px-5 py-2 rounded-full mb-4 shadow-md">
-            🇲🇦 عيد الاستقلال — عرض ديستوكاج
+            🇲🇦 عيد الاستقلال — ديستوكاج بثمن الجملة
           </span>
           <h1 className="text-white font-black leading-tight mb-3" style={{ fontSize: "clamp(2.2rem, 10vw, 3.2rem)" }}>
             كلشي بـ <span style={{ color: "#006633" }}>99 درهم</span> فقط!
           </h1>
           <p className="text-white/90 font-bold text-lg mb-4">
-            بمناسبة عيد الاستقلال، هاد المنتجات بسعر واحد — 99 درهم غير اليوم
+            بمناسبة عيد الاستقلال، فتحنا ليك المخزن بثمن الجملة — هاد المنتجات بسعر واحد غير اليوم
           </p>
           <div className="bg-white/15 border border-white/30 rounded-2xl px-4 py-3 text-white font-black text-sm">
-            ⏳ سطوك محدود
+            ⏳ سطوك محدود — بعد اليوم كيرجع الثمن العادي
           </div>
         </div>
       </section>
@@ -178,7 +178,7 @@ export default function Promo99Page() {
       {/* ══ PRODUCTS ══ */}
       <section className="max-w-lg mx-auto px-4 py-6">
         <h2 className="text-xl font-black text-gray-900 text-center mb-1">👇 ختار المنتجات اللي بغيتي</h2>
-        <p className="text-gray-500 text-sm text-center font-bold mb-5">تقدر تختار بزاف ديال المنتجات — كل واحد 99 درهم</p>
+        <p className="text-gray-500 text-sm text-center font-bold mb-5">تقدر تختار بزاف ديال المنتجات — كل واحد بثمن الجملة 99 درهم</p>
 
         <div className={`sticky top-0 z-30 rounded-2xl px-4 py-3 text-center border mb-5 transition-all shadow-md ${canOrder ? "bg-red-600 border-red-600" : "bg-white border-gray-200"}`}>
           {canOrder ? (
