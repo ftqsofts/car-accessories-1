@@ -169,9 +169,6 @@ export default function Promo99Page() {
           <p className="text-white/90 font-bold text-lg mb-4">
             بمناسبة عيد الاستقلال، هاد المنتجات بسعر واحد — 99 درهم غير اليوم
           </p>
-          <div className="bg-white/15 border border-white/30 rounded-2xl px-4 py-3 text-white font-black text-sm">
-            ⏳ سطوك محدود — أول جا أول خدم
-          </div>
         </div>
       </section>
 
