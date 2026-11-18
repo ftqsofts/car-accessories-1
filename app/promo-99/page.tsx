@@ -104,7 +104,8 @@ function ProductCard({ product, selected, onToggle }: { product: PromoProduct; s
         </div>
         <button
           onClick={onToggle}
-          className={`font-black text-sm py-3 rounded-xl active:scale-95 transition-all w-full ${selected ? "bg-gray-900 text-white" : "bg-gray-900 text-white cart-pulse"}`}
+          className={`font-black text-sm py-3 rounded-xl active:scale-95 transition-all w-full ${selected ? "bg-gray-900 text-white" : "text-white cart-pulse"}`}
+          style={selected ? undefined : { backgroundColor: "#1E66F5" }}
         >
           {selected ? "✓ مختار — اضغط لإلغاء" : "🛒 أضف لطلبيتي"}
         </button>
@@ -164,7 +165,7 @@ export default function Promo99Page() {
   return (
     <div className="min-h-screen bg-gray-50" dir="rtl" style={{ fontFamily: "var(--font-cairo), Cairo, sans-serif" }}>
       <style>{`
-        @keyframes cartPulse { 0%,100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(17,24,39,0.35); } 50% { transform: scale(1.02); box-shadow: 0 0 0 8px rgba(17,24,39,0); } }
+        @keyframes cartPulse { 0%,100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(30,102,245,0.45); } 50% { transform: scale(1.02); box-shadow: 0 0 0 8px rgba(30,102,245,0); } }
         .cart-pulse { animation: cartPulse 1.8s ease-in-out infinite; }
       `}</style>
 
@@ -274,7 +275,8 @@ export default function Promo99Page() {
               <button
                 type="submit"
                 disabled={!canOrder || loading}
-                className={`w-full py-5 rounded-2xl font-black text-lg transition-all duration-200 active:scale-95 ${canOrder && !loading ? "bg-gray-900 text-white shadow-xl shadow-black/20" : "bg-gray-100 text-gray-400 cursor-not-allowed"}`}
+                className={`w-full py-5 rounded-2xl font-black text-lg transition-all duration-200 active:scale-95 text-white ${canOrder && !loading ? "shadow-xl" : "bg-gray-100 text-gray-400 cursor-not-allowed"}`}
+                style={canOrder && !loading ? { backgroundColor: "#1E66F5", boxShadow: "0 20px 25px -5px rgba(30,102,245,0.3)" } : undefined}
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">
@@ -316,7 +318,8 @@ export default function Promo99Page() {
         <div className="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 px-4 py-3">
           <button
             onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-            className="w-full bg-gray-900 text-white font-black text-base py-4 rounded-2xl active:scale-95 transition-all shadow-xl shadow-black/20"
+            className="w-full text-white font-black text-base py-4 rounded-2xl active:scale-95 transition-all shadow-xl"
+            style={{ backgroundColor: "#1E66F5", boxShadow: "0 20px 25px -5px rgba(30,102,245,0.3)" }}
           >
             🔥 طلب دابا وخلص عند الاستلام — {total} درهم
           </button>
