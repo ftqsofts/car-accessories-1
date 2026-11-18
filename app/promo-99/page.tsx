@@ -76,7 +76,7 @@ function ProductCard({ product, selected, onToggle }: { product: PromoProduct; s
       className={`rounded-2xl overflow-hidden bg-white border-2 transition-all ${selected ? "border-red-600 shadow-lg shadow-red-600/20" : "border-gray-200"}`}
     >
       <div dir="ltr" className="relative bg-gray-100" style={{ lineHeight: 0, userSelect: "none" }} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-        <Image src={product.images[activeImg]} alt={product.title} width={520} height={340} style={{ width: "100%", height: 260, objectFit: "cover", display: "block" }} />
+        <Image src={product.images[activeImg]} alt={product.title} width={520} height={420} style={{ width: "100%", height: 320, objectFit: "cover", display: "block" }} />
         {selected && (
           <div className="absolute top-3 right-3 w-8 h-8 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
             <Check className="w-4 h-4 text-white" strokeWidth={3} />
