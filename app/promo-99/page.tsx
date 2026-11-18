@@ -17,46 +17,25 @@ type PromoProduct = {
 
 const DEALS: PromoProduct[] = [
   {
-    sku: "LOCKREFRIGER",
-    title: "قفل الأمان لحماية الأطفال (بدون مسامير)",
-    description: "تهناي من الروينة وحافظي على سلامة وليداتك! قفل قوي وساهل فالتركيب، كيلصق مزيان فالثلاجة، البلاكارات، والمجورة بلا حفير.",
-    oldPrice: 97,
-    images: ["/products/upsells/lock-1.webp", "/products/upsells/lock-3.webp", "/products/upsells/lock-4.webp"],
+    sku: "176TSCXX",
+    title: "أسبيراتور و سوفلور 6 في 1 — للسيارة والدار",
+    description: "مكنسة قوية وعملية كتجبد كاع الوسخ من القنات الصعاب، فيها الشفط والنفخ بجوج. خفيفة، ساهلة، وديما واجدة تنقي طوموبيلتك والدار فدقيقة.",
+    oldPrice: 199,
+    images: ["/products/cleaner-4-in-1-hero.webp", "/products/S6a6bce2b49ce4690bb48c2896297d230t.avif", "/products/cleaner-4-in-1-package.webp"],
   },
   {
-    sku: "SILICONEDOUC",
-    title: "كراطة السيليكون السحرية (الحجم الكبير 1.4m)",
-    description: "تنشيف الما ومسح الزاج والزليج بضربة وحدة بلا ما تخلي حتى أثر. كتهنيك من تمارة، وكتجمع الزغب والغبرة بسهولة تامة.",
-    oldPrice: 163,
-    images: ["/products/upsells/selicon-cleaaner-1.webp", "/products/upsells/selicon-cleaaner-2.webp", "/products/upsells/selicon-cleaaner-3.webp"],
+    sku: "16ZJX1XX",
+    title: "مكنسة كهربائية 3 في 1 — للسيارة والدار",
+    description: "سبيراتور قوي ومجرّب، كينقّي الكراسي، الكوفر وحتى الزوايا الضيقة، وكيجمع الشعر والغبرة بسهولة من أول مرة. صالح للدار والطوموبيل بجوج.",
+    oldPrice: 149,
+    images: ["/products/Vacuum-cleaner-3-in-1-6.webp", "/products/cleaner-3-in-1.jpg"],
   },
   {
-    sku: "1A1A1G",
-    title: "حاجز السيليكون المضاد للرش (للافابو)",
-    description: "وداعاً للحوايج الفازكين وقت غسيل الماعن! حاجز كيلصق بسهولة فالبوطاجين، كيحبس رش الما وكيخلي حوايجك و الكوزينة ديالك ديما ناشفة.",
-    oldPrice: 150,
-    images: ["/products/upsells/kitchen-selecton-1.webp", "/products/upsells/kitchen-selecton-2.webp"],
-  },
-  {
-    sku: "SHOCKPAD",
-    title: "أرجل مطاطية مضادة لاهتزاز الماكينة (باك 4)",
-    description: "الماكينة كدير الصداع وكتحرك فاش كتعصر؟ هاد الأرجل غادي يسكتوها فمرة! كتحمي الزليج من التخبيش وكتسهل عليك تسيق تحت منها.",
-    oldPrice: 117,
-    images: ["/products/upsells/antivibration-1.webp", "/products/upsells/antivibration-2.jpg"],
-  },
-  {
-    sku: "1AD2HG",
-    title: "باراسول واقي للزاج القدامي",
-    description: "الطوموبيل كترجع بحال الفران ملي كتباركيها فالشمش؟ هاد الواقي كيحبس السخونية، كيحمي الطابلو من التشققات، وكيخلي صالون الطوموبيل بارد.",
-    oldPrice: 175,
-    images: ["/products/upsells/sun-protection-1.webp", "/products/upsells/sun-protection-2.webp", "/products/upsells/sun-protection-3.webp"],
-  },
-  {
-    sku: "1APWUQ",
-    title: "ناموسية حماية طفلك وضمان نوم عميق وصحي",
-    description: "الحل المتكامل اللي غيهنيك هاد الصيف، كتوفر لطفلك حماية كاملة وآمنة 100% من الناموس وكاع الحشرات.",
-    oldPrice: 145,
-    images: ["/products/upsells/S3e4c3aff62004797bd954b917f409ed77.webp", "/products/upsells/S8cf6de97b3db4c9282610665477bf0344.webp", "/products/upsells/S963aefb7b37a4b69bb2013ec21371951v.webp"],
+    sku: "DISAARNOIR",
+    title: "شامبو ديسار لتغطية الشيب — أسود أو بني",
+    description: "تخلص من الشيب المزعج واسترجع شبابك في 10 دقائق! النتيجة كتبان من أول استعمال، مناسب لجميع أنواع الشعر. كيجي مع قفازات للحماية.",
+    oldPrice: 160,
+    images: ["/products/hair-shampoo/disaar-shampoo.webp", "/products/hair-shampoo/lp-1.webp"],
   },
   {
     sku: "CML-FAT-100",
@@ -188,7 +167,7 @@ export default function Promo99Page() {
             كلشي بـ <span style={{ color: "#006633" }}>99 درهم</span> فقط!
           </h1>
           <p className="text-white/90 font-bold text-lg mb-4">
-            بمناسبة عيد الاستقلال، كاع هاد المنتجات بسعر واحد — 99 درهم غير اليوم
+            بمناسبة عيد الاستقلال، هاد المنتجات بسعر واحد — 99 درهم غير اليوم
           </p>
           <div className="bg-white/15 border border-white/30 rounded-2xl px-4 py-3 text-white font-black text-sm">
             ⏳ سطوك محدود — أول جا أول خدم
