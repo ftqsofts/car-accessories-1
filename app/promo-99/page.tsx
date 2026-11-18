@@ -73,12 +73,12 @@ function ProductCard({ product, selected, onToggle }: { product: PromoProduct; s
 
   return (
     <div
-      className={`rounded-2xl overflow-hidden bg-white border-2 transition-all ${selected ? "border-red-600 shadow-lg shadow-red-600/20" : "border-gray-200"}`}
+      className={`rounded-2xl overflow-hidden bg-white border-2 transition-all ${selected ? "border-gray-900 shadow-lg shadow-black/10" : "border-gray-200"}`}
     >
       <div dir="ltr" className="relative bg-gray-100" style={{ lineHeight: 0, userSelect: "none" }} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
         <Image src={product.images[activeImg]} alt={product.title} width={520} height={420} style={{ width: "100%", height: 320, objectFit: "cover", display: "block" }} />
         {selected && (
-          <div className="absolute top-3 right-3 w-8 h-8 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
+          <div className="absolute top-3 right-3 w-8 h-8 bg-gray-900 rounded-full flex items-center justify-center shadow-lg">
             <Check className="w-4 h-4 text-white" strokeWidth={3} />
           </div>
         )}
@@ -88,7 +88,7 @@ function ProductCard({ product, selected, onToggle }: { product: PromoProduct; s
         {product.images.length > 1 && (
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
             {product.images.map((_, i) => (
-              <button key={i} onClick={() => setActiveImg(i)} style={{ width: i === activeImg ? 20 : 7, height: 7, borderRadius: 4, background: i === activeImg ? "#C1272D" : "rgba(255,255,255,0.8)", border: "none", padding: 0 }} />
+              <button key={i} onClick={() => setActiveImg(i)} style={{ width: i === activeImg ? 20 : 7, height: 7, borderRadius: 4, background: i === activeImg ? "#111827" : "rgba(255,255,255,0.8)", border: "none", padding: 0 }} />
             ))}
           </div>
         )}
@@ -98,13 +98,13 @@ function ProductCard({ product, selected, onToggle }: { product: PromoProduct; s
         <h3 className="font-black text-base text-gray-900 mb-1">{product.title}</h3>
         <p className="text-gray-500 text-sm leading-relaxed mb-3">{product.description}</p>
         <div className="flex items-center gap-2 mb-3">
-          <span className="font-black text-2xl text-red-600">{FLAT_PRICE} درهم</span>
+          <span className="font-black text-2xl text-gray-900">{FLAT_PRICE} درهم</span>
           <span className="text-gray-400 line-through text-sm font-bold">{product.oldPrice} درهم</span>
           <span className="text-green-700 font-black text-xs">وفر {product.oldPrice - FLAT_PRICE} درهم</span>
         </div>
         <button
           onClick={onToggle}
-          className={`font-black text-sm py-3 rounded-xl active:scale-95 transition-all w-full ${selected ? "bg-gray-900 text-white" : "bg-red-600 text-white"}`}
+          className={`font-black text-sm py-3 rounded-xl active:scale-95 transition-all w-full ${selected ? "bg-gray-900 text-white" : "bg-gray-900 text-white cart-pulse"}`}
         >
           {selected ? "✓ مختار — اضغط لإلغاء" : "🛒 أضف لطلبيتي"}
         </button>
@@ -163,6 +163,10 @@ export default function Promo99Page() {
 
   return (
     <div className="min-h-screen bg-gray-50" dir="rtl" style={{ fontFamily: "var(--font-cairo), Cairo, sans-serif" }}>
+      <style>{`
+        @keyframes cartPulse { 0%,100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(17,24,39,0.35); } 50% { transform: scale(1.02); box-shadow: 0 0 0 8px rgba(17,24,39,0); } }
+        .cart-pulse { animation: cartPulse 1.8s ease-in-out infinite; }
+      `}</style>
 
       {/* ══ HERO ══ */}
       <section className="relative px-6 pt-10 pb-8 text-center" style={{ background: "linear-gradient(135deg, #C1272D 0%, #8e1c21 100%)" }}>
@@ -187,7 +191,7 @@ export default function Promo99Page() {
         <h2 className="text-xl font-black text-gray-900 text-center mb-1">👇 ختار المنتجات اللي بغيتي</h2>
         <p className="text-gray-500 text-sm text-center font-bold mb-5">تقدر تختار بزاف ديال المنتجات — كل واحد بثمن الجملة 99 درهم</p>
 
-        <div className={`sticky top-0 z-30 rounded-2xl px-4 py-3 text-center border mb-5 transition-all shadow-md ${canOrder ? "bg-red-600 border-red-600" : "bg-white border-gray-200"}`}>
+        <div className={`sticky top-0 z-30 rounded-2xl px-4 py-3 text-center border mb-5 transition-all shadow-md ${canOrder ? "bg-gray-900 border-gray-900" : "bg-white border-gray-200"}`}>
           {canOrder ? (
             <p className="text-white font-black text-base">✔️ اخترتي {selected.length} منتج — {total} درهم</p>
           ) : (
@@ -205,7 +209,7 @@ export default function Promo99Page() {
       {/* ══ ORDER FORM ══ */}
       <section ref={formRef} className="max-w-lg mx-auto px-4 pb-8" id="order-form">
         <div className="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg">
-          <div className={`p-5 text-center transition-all ${canOrder ? "bg-red-600" : "bg-gray-100"}`}>
+          <div className={`p-5 text-center transition-all ${canOrder ? "bg-gray-900" : "bg-gray-100"}`}>
             {canOrder ? (
               <>
                 <p className="text-white/80 text-sm font-bold mb-1">{selected.length} منتجات + توصيل مجاني</p>
@@ -233,9 +237,9 @@ export default function Promo99Page() {
                       </div>
                       <div className="text-right flex-1">
                         <p className="text-gray-900 font-black text-sm">{p.title}</p>
-                        <p className="text-red-600 text-xs font-bold">{FLAT_PRICE} درهم</p>
+                        <p className="text-gray-500 text-xs font-bold">{FLAT_PRICE} درهم</p>
                       </div>
-                      <Check className="w-4 h-4 text-red-600 shrink-0" strokeWidth={3} />
+                      <Check className="w-4 h-4 text-gray-900 shrink-0" strokeWidth={3} />
                     </div>
                   ))}
                 </div>
@@ -263,14 +267,14 @@ export default function Promo99Page() {
                 <label className="block text-sm text-gray-600 mb-2 font-black">رقم التيليفون <span className="text-red-500">*</span></label>
                 <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
                   placeholder="06XXXXXXXX"
-                  className={`w-full bg-gray-50 border-2 rounded-xl px-4 py-3.5 text-gray-900 text-base placeholder-gray-300 outline-none transition-colors ${errors.phone ? "border-red-400" : "border-gray-200 focus:border-red-400"}`} />
+                  className={`w-full bg-gray-50 border-2 rounded-xl px-4 py-3.5 text-gray-900 text-base placeholder-gray-300 outline-none transition-colors ${errors.phone ? "border-red-400" : "border-gray-200 focus:border-gray-400"}`} />
                 {errors.phone && <p className="text-red-500 text-sm mt-1 font-bold">{errors.phone}</p>}
               </div>
 
               <button
                 type="submit"
                 disabled={!canOrder || loading}
-                className={`w-full py-5 rounded-2xl font-black text-lg transition-all duration-200 active:scale-95 ${canOrder && !loading ? "bg-red-600 text-white shadow-xl shadow-red-600/30" : "bg-gray-100 text-gray-400 cursor-not-allowed"}`}
+                className={`w-full py-5 rounded-2xl font-black text-lg transition-all duration-200 active:scale-95 ${canOrder && !loading ? "bg-gray-900 text-white shadow-xl shadow-black/20" : "bg-gray-100 text-gray-400 cursor-not-allowed"}`}
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">
@@ -312,7 +316,7 @@ export default function Promo99Page() {
         <div className="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 px-4 py-3">
           <button
             onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-            className="w-full bg-red-600 text-white font-black text-base py-4 rounded-2xl active:scale-95 transition-all shadow-xl shadow-red-600/30"
+            className="w-full bg-gray-900 text-white font-black text-base py-4 rounded-2xl active:scale-95 transition-all shadow-xl shadow-black/20"
           >
             🔥 طلب دابا وخلص عند الاستلام — {total} درهم
           </button>
