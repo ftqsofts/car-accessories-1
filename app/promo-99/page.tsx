@@ -1,6 +1,6 @@
 "use client"
 
-import { Check } from "lucide-react"
+import { Check, ShoppingCart } from "lucide-react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
@@ -107,7 +107,12 @@ function ProductCard({ product, selected, onToggle }: { product: PromoProduct; s
           className={`font-black text-sm py-3 rounded-xl active:scale-95 transition-all w-full ${selected ? "bg-gray-900 text-white" : "text-white cart-pulse"}`}
           style={selected ? undefined : { backgroundColor: "#1E66F5" }}
         >
-          {selected ? "✓ مختار — اضغط لإلغاء" : "🛒 أضف لطلبيتي"}
+          {selected ? "✓ مختار — اضغط لإلغاء" : (
+            <span className="flex items-center justify-center gap-2">
+              <ShoppingCart className="w-4 h-4 text-white" strokeWidth={2.5} />
+              أضف لطلبيتي
+            </span>
+          )}
         </button>
       </div>
     </div>
