@@ -75,7 +75,17 @@ function ProductCard({ product, selected, onToggle }: { product: PromoProduct; s
     <div
       className={`rounded-2xl overflow-hidden bg-white border-2 transition-all ${selected ? "border-gray-900 shadow-lg shadow-black/10" : "border-gray-200"}`}
     >
-      <div dir="ltr" className="relative bg-gray-100" style={{ lineHeight: 0, userSelect: "none" }} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+      <div
+        dir="ltr"
+        className="relative bg-gray-100"
+        style={{ lineHeight: 0, userSelect: "none", cursor: product.images.length > 1 ? "pointer" : "default" }}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+        onClick={() => {
+          if (product.images.length <= 1) return
+          setActiveImg(i => (i + 1) % product.images.length)
+        }}
+      >
         <Image src={product.images[activeImg]} alt={product.title} width={520} height={420} style={{ width: "100%", height: 320, objectFit: "cover", display: "block" }} />
         {selected && (
           <div className="absolute top-3 right-3 w-8 h-8 bg-gray-900 rounded-full flex items-center justify-center shadow-lg">
@@ -88,7 +98,7 @@ function ProductCard({ product, selected, onToggle }: { product: PromoProduct; s
         {product.images.length > 1 && (
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
             {product.images.map((_, i) => (
-              <button key={i} onClick={() => setActiveImg(i)} style={{ width: i === activeImg ? 20 : 7, height: 7, borderRadius: 4, background: i === activeImg ? "#111827" : "rgba(255,255,255,0.8)", border: "none", padding: 0 }} />
+              <button key={i} onClick={(e) => { e.stopPropagation(); setActiveImg(i) }} style={{ width: i === activeImg ? 20 : 7, height: 7, borderRadius: 4, background: i === activeImg ? "#111827" : "rgba(255,255,255,0.8)", border: "none", padding: 0 }} />
             ))}
           </div>
         )}
