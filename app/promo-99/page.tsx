@@ -184,7 +184,7 @@ export default function Promo99Page() {
             كلشي بـ <span style={{ color: "#00A651", textShadow: "0 1px 2px rgba(255,255,255,0.6)" }}>99 درهم</span> فقط!
           </h1>
           <p className="text-white/90 font-bold text-lg mb-4">
-            بمناسبة عيد الاستقلال، فتحنا ليك المخزن بثمن الجملة — هاد المنتجات بسعر واحد غير اليوم
+            بمناسبة عيد الاستقلال، فتحنا ليك الستوك بثمن الجملة — هاد المنتجات بسعر واحد غير اليوم
           </p>
           <div className="bg-white/15 border border-white/30 rounded-2xl px-4 py-3 text-white font-black text-sm">
             ⏳ سطوك محدود — بعد اليوم كيرجع الثمن العادي
