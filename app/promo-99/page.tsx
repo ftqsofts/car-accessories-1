@@ -164,7 +164,7 @@ export default function Promo99Page() {
             🇲🇦 عيد الاستقلال — ديستوكاج بثمن الجملة
           </span>
           <h1 className="text-white font-black leading-tight mb-3" style={{ fontSize: "clamp(2.2rem, 10vw, 3.2rem)" }}>
-            كلشي بـ <span style={{ color: "#00A651", padding: "2px 10px", border: "2px solid #fff", borderRadius: 10, boxShadow: "0 2px 6px rgba(0,0,0,0.25)", background: "rgba(255,255,255,0.1)" }}>99 درهم</span> فقط!
+            كلشي بـ <span style={{ color: "#00A651", textShadow: "0 1px 2px rgba(0,0,0,0.35)" }}>99 درهم</span> فقط!
           </h1>
           <p className="text-white/90 font-bold text-lg mb-4">
             بمناسبة عيد الاستقلال، فتحنا ليك المخزن بثمن الجملة — هاد المنتجات بسعر واحد غير اليوم
