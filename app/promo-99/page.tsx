@@ -308,6 +308,33 @@ export default function Promo99Page() {
         </div>
       </section>
 
+      {/* ══ TRUST BADGES ══ */}
+      <div className="max-w-lg mx-auto px-4 py-4">
+        <h2 className="text-gray-900 font-black text-2xl text-center mb-5">الضمانات والاسترجاع</h2>
+        <div className="flex flex-col gap-3">
+          {[
+            { img: "/icons/waraico.webp", title: "ضمان المنتج", sub: "ضمان لمدة 30 يوم — ماعجبكيش كنرجعو ليك الفلوس" },
+            { img: "/icons/codincon.webp", title: "جرب عاد خلصي", sub: "ماغادي تخلصي حتى شي حتى توصلك المنتج وتفحصيه" },
+            { img: "/icons/cussup.webp", title: "خدمة ما بعد البيع", sub: "فريق العملاء تحت تصرفك طيلة أيام الأسبوع" },
+            { img: "/icons/shipico.webp", title: "شحن سريع وموثوق", sub: "كنشحنو لجميع المدن خلال 24h إلى 48h" },
+          ].map((item, i) => (
+            <div key={i} className="px-5 py-6 bg-white rounded-2xl text-center" style={{ border: "1px solid #e5e7eb", boxShadow: "0 1px 4px rgba(0,0,0,0.04)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={item.img} alt={item.title} className="h-16 w-auto mx-auto mb-3 object-contain" />
+              <p className="text-gray-900 font-black text-base mb-1">{item.title}</p>
+              <p className="text-gray-500 text-sm">{item.sub}</p>
+            </div>
+          ))}
+        </div>
+        <button
+          onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+          className="w-full text-white font-black text-lg py-5 rounded-2xl active:scale-95 transition-all shadow-xl mt-5"
+          style={{ backgroundColor: "#1E66F5", boxShadow: "0 20px 25px -5px rgba(30,102,245,0.3)" }}
+        >
+          🔥 طلب دابا وخلص عند الاستلام — {total} درهم
+        </button>
+      </div>
+
       {/* ══ WHATSAPP CTA ══ */}
       <section className="max-w-lg mx-auto px-4 pb-12">
         <div className="bg-white border border-gray-200 rounded-3xl p-6 text-center space-y-4">
