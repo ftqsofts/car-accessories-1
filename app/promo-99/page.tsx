@@ -341,7 +341,7 @@ export default function Promo99Page() {
           <p className="text-gray-900 font-black text-xl">عندك سؤال؟ تواصل معنا مباشرة</p>
           <p className="text-gray-500 text-sm">فريقنا مساند ليك على واتساب — رد سريع</p>
           <a
-            href="https://wa.me/212728214523?text=Salam%2C%20bghit%20na3ref%20ktar%203la%20l-3ar9%20dyal%2099dh"
+            href="https://wa.me/212728214523?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B9%D8%B1%D9%81%20%D9%83%D8%AB%D8%B1%20%D8%B9%D9%84%D8%A7%20%D8%A7%D9%84%D8%B9%D8%B1%D8%B6%20%D8%AF%D9%8A%D8%A7%D9%84%2099%D8%AF%D8%B1%D9%87%D9%85"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-3 w-full py-4 rounded-2xl font-black text-lg text-white active:scale-95 transition-all shadow-lg"
